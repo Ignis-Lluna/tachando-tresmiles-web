@@ -1,697 +1,838 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tachando 3000s</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --verde-oscuro: #173d25;
-            --verde: #4f7a35;
-            --verde-claro: #7f9f54;
-            --crema: #f4f1e8;
-            --blanco: #ffffff;
-            --gris: #6d746c;
-            --borde: #ddd9cd;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f4ef;
-            color: #172119;
-        }
-
-        .app {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 180px 1fr;
-        }
-
-        /* MENÚ LATERAL */
-
-        .sidebar {
-            background: #faf9f4;
-            border-right: 1px solid #dedbd2;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            position: sticky;
-            top: 0;
-        }
-
-        .marca {
-            padding: 28px 20px 25px;
-            text-align: center;
-            border-bottom: 1px solid #ece9e0;
-        }
-
-        .montana-logo {
-            font-size: 42px;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .marca strong {
-            display: block;
-            color: var(--verde-oscuro);
-            font-size: 18px;
-            line-height: 1.1;
-        }
-
-        nav {
-            padding-top: 20px;
-        }
-
-        nav a {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 17px 20px;
-            color: #273128;
-            text-decoration: none;
-            font-size: 14px;
-            border-left: 4px solid transparent;
-        }
-
-        nav a:hover,
-        nav a.activo {
-            background: #e9ede2;
-            border-left-color: var(--verde);
-            color: var(--verde-oscuro);
-        }
-
-        .icono {
-            width: 24px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        /* CONTENIDO */
-
-        .contenido {
-            min-width: 0;
-        }
-
-        /* CABECERA */
-
-        .hero {
-            min-height: 560px;
-            padding: 30px 50px 35px;
-            background:
-                linear-gradient(
-                    rgba(255,255,255,0.30),
-                    rgba(245,242,232,0.40)
-                ),
-                linear-gradient(
-                    135deg,
-                    #d8e5dc 0%,
-                    #edf1ea 45%,
-                    #cbd8cf 100%
-                );
-            position: relative;
-        }
-
-        .hero-top {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .boton-mini {
-            background: rgba(255,255,255,.85);
-            border: 1px solid #d2d6cd;
-            border-radius: 10px;
-            padding: 10px 15px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .titulo {
-            text-align: center;
-            font-size: clamp(52px, 6vw, 88px);
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--verde-oscuro);
-        }
-
-        .subtitulo {
-            text-align: center;
-            font-size: 27px;
-            margin-top: 6px;
-            margin-bottom: 48px;
-        }
-
-        .elige {
-            text-align: center;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 26px;
-        }
-
-        .zona-principal {
-            display: grid;
-            grid-template-columns: 1fr 1fr 0.85fr;
-            gap: 24px;
-            max-width: 1250px;
-            margin: auto;
-        }
-
-        /* TARJETAS */
-
-        .tarjeta-lista,
-        .panel-progreso {
-            background: rgba(255,255,255,.92);
-            border-radius: 16px;
-            border: 1px solid rgba(120,120,120,.25);
-            box-shadow: 0 10px 25px rgba(0,0,0,.12);
-            overflow: hidden;
-        }
-
-        .tarjeta-lista {
-            cursor: pointer;
-            transition: .2s ease;
-        }
-
-        .tarjeta-lista:hover {
-            transform: translateY(-5px);
-        }
-
-        .lista-contenido {
-            padding: 22px 25px 0;
-            text-align: center;
-        }
-
-        .lista-nombre {
-            font-size: 19px;
-            font-weight: 800;
-        }
-
-        .lista-numero {
-            font-size: 58px;
-            font-weight: 900;
-            margin: 8px 0 2px;
-            color: var(--verde-oscuro);
-        }
-
-        .lista-sub {
-            font-weight: 700;
-        }
-
-        .montanas-decorativas {
-            height: 76px;
-            margin-top: 12px;
-            background:
-                linear-gradient(145deg, transparent 48%, #76905d 49% 55%, transparent 56%),
-                linear-gradient(35deg, transparent 49%, #9aaa83 50% 58%, transparent 59%);
-            background-size: 50% 100%;
-            background-position: left bottom, right bottom;
-            background-repeat: no-repeat;
-        }
-
-        .lista-pie {
-            background: var(--verde-oscuro);
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 16px;
-            font-size: 14px;
-        }
-
-        /* PROGRESO */
-
-        .panel-progreso {
-            padding: 24px;
-            text-align: center;
-        }
-
-        .panel-progreso h3 {
-            font-size: 15px;
-            margin-bottom: 18px;
-        }
-
-        .contador {
-            font-size: 47px;
-            font-weight: 900;
-            color: var(--verde);
-        }
-
-        .contador span {
-            color: #7d817d;
-            font-size: 29px;
-        }
-
-        .porcentaje {
-            margin-top: 18px;
-            font-size: 38px;
-            font-weight: 800;
-            color: var(--verde-claro);
-        }
-
-        .barra {
-            width: 100%;
-            height: 15px;
-            border-radius: 20px;
-            background: #dedfd9;
-            margin-top: 17px;
-            overflow: hidden;
-        }
-
-        .barra > div {
-            height: 100%;
-            width: 44.7%;
-            background: linear-gradient(90deg, #5e8a36, #86a756);
-            border-radius: inherit;
-        }
-
-        .lista-activa {
-            margin-top: 20px;
-            font-size: 13px;
-            padding-top: 15px;
-            border-top: 1px solid #dedfd9;
-        }
-
-        /* ZONA INFERIOR */
-
-        .dashboard {
-            padding: 24px 28px 40px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 0.8fr;
-            gap: 20px;
-        }
-
-        .bloque {
-            background: white;
-            border: 1px solid #e2e0d7;
-            border-radius: 13px;
-            box-shadow: 0 5px 16px rgba(0,0,0,.06);
-            padding: 20px;
-        }
-
-        .bloque h2 {
-            font-size: 16px;
-            margin-bottom: 18px;
-        }
-
-        /* MAPA PROVISIONAL */
-
-        .mapa {
-            min-height: 270px;
-            border-radius: 10px;
-            background:
-                linear-gradient(rgba(255,255,255,.30),rgba(255,255,255,.30)),
-                linear-gradient(135deg,#d4dfc4,#b7c6a7,#d8d6b5);
-            display: flex;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 20px;
-        }
-
-        .sector {
-            background: rgba(255,255,255,.88);
-            border-radius: 50px;
-            padding: 10px 14px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* SECTORES */
-
-        .fila-sector {
-            display: grid;
-            grid-template-columns: 1.3fr 55px 1fr 42px;
-            gap: 10px;
-            align-items: center;
-            margin: 13px 0;
-            font-size: 13px;
-        }
-
-        .mini-barra {
-            height: 7px;
-            background: #dedfd9;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .mini-barra div {
-            height: 100%;
-            background: var(--verde);
-        }
-
-        /* ÚLTIMAS CUMBRES */
-
-        .cumbre {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #ecebe5;
-        }
-
-        .cumbre-icono {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #dce3d5;
-            display: grid;
-            place-items: center;
-            font-size: 21px;
-        }
-
-        .cumbre strong {
-            font-size: 13px;
-            display: block;
-        }
-
-        .cumbre small {
-            color: #777;
-        }
-
-        /* LOGROS */
-
-        .logros {
-            margin: 0 28px 38px;
-            background: white;
-            border: 1px solid #e2e0d7;
-            border-radius: 13px;
-            padding: 20px;
-        }
-
-        .logros h2 {
-            font-size: 16px;
-            margin-bottom: 17px;
-        }
-
-        .logros-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        .logro {
-            background: #f4f5ef;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .medalla {
-            font-size: 28px;
-        }
-
-        .logro strong {
-            font-size: 13px;
-        }
-
-        .logro small {
-            display: block;
-            color: #6d746c;
-            margin-top: 3px;
-        }
-
-        @media (max-width: 1100px) {
-            .app {
-                grid-template-columns: 80px 1fr;
-            }
-
-            .marca strong,
-            nav a span:not(.icono) {
-                display: none;
-            }
-
-            nav a {
-                justify-content: center;
-            }
-
-            .zona-principal,
-            .dashboard {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .panel-progreso {
-                grid-column: span 2;
-            }
-
-            .dashboard .bloque:first-child {
-                grid-column: span 2;
-            }
-        }
-
-        @media (max-width: 760px) {
-            .app {
-                display: block;
-            }
-
-            .sidebar {
-                display: none;
-            }
-
-            .hero {
-                padding: 25px 18px;
-            }
-
-            .zona-principal,
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .panel-progreso,
-            .dashboard .bloque:first-child {
-                grid-column: auto;
-            }
-
-            .logros-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .dashboard {
-                padding: 18px;
-            }
-
-            .logros {
-                margin: 0 18px 25px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tachando 3000s</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --verde-oscuro:#163f24;
+    --verde:#557f38;
+    --verde-claro:#82a557;
+    --crema:#f5f3ec;
+    --blanco:#ffffff;
+    --gris:#707770;
+    --borde:#dfddd4;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--crema);
+    color:#172119;
+    overflow:hidden;
+}
+
+.app{
+    height:100vh;
+    display:grid;
+    grid-template-columns:150px 1fr;
+}
+
+/* =========================
+   MENÚ LATERAL
+========================= */
+
+.sidebar{
+    height:100vh;
+    background:#faf9f4;
+    border-right:1px solid #dedbd2;
+    display:flex;
+    flex-direction:column;
+}
+
+.marca{
+    height:125px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border-bottom:1px solid #ebe8df;
+}
+
+.logo-montana{
+    font-size:31px;
+    line-height:1;
+    margin-bottom:6px;
+}
+
+.marca strong{
+    color:var(--verde-oscuro);
+    font-size:17px;
+    line-height:1.05;
+    text-align:center;
+}
+
+nav{
+    padding-top:10px;
+}
+
+nav a{
+    height:58px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:0 15px;
+    text-decoration:none;
+    color:#222;
+    font-size:13px;
+    border-left:3px solid transparent;
+}
+
+nav a:hover,
+nav a.activo{
+    background:#e9ede2;
+    border-left-color:var(--verde);
+    color:var(--verde-oscuro);
+}
+
+.icono{
+    width:24px;
+    text-align:center;
+    font-size:18px;
+}
+
+/* =========================
+   CONTENIDO GENERAL
+========================= */
+
+.contenido{
+    height:100vh;
+    display:grid;
+    grid-template-rows:47% 53%;
+    min-width:0;
+}
+
+/* =========================
+   CABECERA
+========================= */
+
+.hero{
+    position:relative;
+    padding:12px 34px 16px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.30),
+            rgba(242,244,238,.40)
+        ),
+        linear-gradient(
+            135deg,
+            #d8e4da,
+            #eef1eb 48%,
+            #ccd9cf
+        );
+
+    overflow:hidden;
+}
+
+.hero-top{
+    height:36px;
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+.boton-mini{
+    padding:7px 12px;
+    border-radius:8px;
+    border:1px solid #d7d8d2;
+    background:rgba(255,255,255,.88);
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.titulo{
+    text-align:center;
+    font-size:clamp(38px,4.2vw,64px);
+    line-height:1;
+    font-weight:900;
+    letter-spacing:1.5px;
+    color:var(--verde-oscuro);
+}
+
+.subtitulo{
+    text-align:center;
+    margin-top:6px;
+    font-size:20px;
+}
+
+.elige{
+    text-align:center;
+    margin-top:17px;
+    margin-bottom:12px;
+    font-size:14px;
+    font-weight:800;
+}
+
+.zona-principal{
+    max-width:1180px;
+    height:210px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr .78fr;
+    gap:17px;
+}
+
+/* =========================
+   TARJETAS DE LISTAS
+========================= */
+
+.tarjeta-lista,
+.panel-progreso{
+    background:rgba(255,255,255,.94);
+    border:1px solid rgba(130,130,130,.25);
+    border-radius:12px;
+    box-shadow:0 6px 17px rgba(0,0,0,.10);
+    overflow:hidden;
+}
+
+.tarjeta-lista{
+    cursor:pointer;
+    transition:.18s ease;
+    display:flex;
+    flex-direction:column;
+}
+
+.tarjeta-lista:hover{
+    transform:translateY(-3px);
+    box-shadow:0 9px 22px rgba(0,0,0,.14);
+}
+
+.lista-contenido{
+    flex:1;
+    text-align:center;
+    padding:14px 18px 0;
+}
+
+.lista-nombre{
+    font-size:15px;
+    font-weight:900;
+}
+
+.lista-numero{
+    color:var(--verde-oscuro);
+    font-size:47px;
+    line-height:1;
+    font-weight:900;
+    margin:7px 0 1px;
+}
+
+.lista-sub{
+    font-size:12px;
+    font-weight:800;
+}
+
+.montanas-decorativas{
+    height:43px;
+    margin:6px auto 0;
+    max-width:250px;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 48%,
+            #7e985f 49% 55%,
+            transparent 56%
+        ),
+        linear-gradient(
+            35deg,
+            transparent 49%,
+            #a7b592 50% 57%,
+            transparent 58%
+        );
+
+    background-size:50% 100%;
+    background-position:left bottom,right bottom;
+    background-repeat:no-repeat;
+}
+
+.lista-pie{
+    height:36px;
+    background:var(--verde-oscuro);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    font-size:11px;
+}
+
+/* =========================
+   PROGRESO
+========================= */
+
+.panel-progreso{
+    padding:13px 17px;
+    text-align:center;
+}
+
+.panel-progreso h3{
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.contador{
+    font-size:37px;
+    font-weight:900;
+    color:var(--verde);
+}
+
+.contador span{
+    color:#828782;
+    font-size:23px;
+}
+
+.texto-completados{
+    margin-top:2px;
+    font-size:10px;
+    font-weight:700;
+}
+
+.porcentaje{
+    margin-top:8px;
+    font-size:29px;
+    font-weight:900;
+    color:var(--verde-claro);
+}
+
+.barra{
+    height:10px;
+    margin-top:8px;
+    background:#dedfd9;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.barra div{
+    width:44.7%;
+    height:100%;
+    background:linear-gradient(90deg,#5e8a36,#86a756);
+    border-radius:inherit;
+}
+
+.lista-activa{
+    margin-top:9px;
+    padding-top:7px;
+    border-top:1px solid #dedfd9;
+    font-size:10px;
+}
+
+/* =========================
+   PARTE INFERIOR
+========================= */
+
+.dashboard{
+    padding:14px 20px 17px;
+    display:grid;
+    grid-template-columns:1.35fr .88fr .72fr .82fr;
+    gap:13px;
+    min-height:0;
+}
+
+.bloque{
+    min-width:0;
+    min-height:0;
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:11px;
+    padding:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    overflow:hidden;
+}
+
+.bloque h2{
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+/* MAPA PROVISIONAL */
+
+.mapa{
+    height:calc(100% - 27px);
+    min-height:0;
+    border-radius:8px;
+    padding:13px;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-content:center;
+    gap:8px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.18)
+        ),
+        linear-gradient(
+            135deg,
+            #d0dac2,
+            #b7c7a7,
+            #ded8b9
+        );
+}
+
+.sector{
+    padding:7px 10px;
+    border-radius:30px;
+    background:rgba(255,255,255,.9);
+    font-size:10px;
+    font-weight:800;
+}
+
+/* PROGRESO SECTORES */
+
+.fila-sector{
+    display:grid;
+    grid-template-columns:1fr 40px .8fr 32px;
+    gap:6px;
+    align-items:center;
+    margin:9px 0;
+    font-size:10px;
+}
+
+.mini-barra{
+    height:6px;
+    background:#dddeda;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.mini-barra div{
+    height:100%;
+    background:var(--verde);
+}
+
+/* ÚLTIMAS CUMBRES */
+
+.cumbre{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 0;
+    border-bottom:1px solid #ecebe5;
+}
+
+.cumbre-icono{
+    width:31px;
+    height:31px;
+    flex:0 0 31px;
+    border-radius:50%;
+    background:#e0e6da;
+    display:grid;
+    place-items:center;
+    font-size:15px;
+}
+
+.cumbre strong{
+    display:block;
+    font-size:10px;
+}
+
+.cumbre small{
+    font-size:9px;
+    color:#707770;
+}
+
+/* LOGROS */
+
+.logro{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 7px;
+    margin-bottom:7px;
+    border-radius:8px;
+    background:#f4f5ef;
+}
+
+.medalla{
+    width:29px;
+    text-align:center;
+    font-size:20px;
+}
+
+.logro strong{
+    display:block;
+    font-size:10px;
+}
+
+.logro small{
+    display:block;
+    margin-top:1px;
+    color:#777;
+    font-size:9px;
+}
+
+/* =========================
+   PANTALLAS MÁS PEQUEÑAS
+========================= */
+
+@media(max-width:1150px){
+
+    .app{
+        grid-template-columns:80px 1fr;
+    }
+
+    .marca strong{
+        font-size:12px;
+    }
+
+    nav a span:not(.icono){
+        display:none;
+    }
+
+    nav a{
+        justify-content:center;
+        padding:0;
+    }
+
+    .zona-principal{
+        gap:10px;
+    }
+
+    .dashboard{
+        gap:8px;
+        padding:10px;
+    }
+}
+
+@media(max-height:760px){
+
+    body{
+        overflow:auto;
+    }
+
+    .app,
+    .sidebar,
+    .contenido{
+        height:auto;
+        min-height:100vh;
+    }
+
+    .contenido{
+        display:block;
+    }
+
+    .hero{
+        min-height:420px;
+    }
+
+    .dashboard{
+        min-height:330px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <div class="marca">
-            <div class="montana-logo">⛰</div>
-            <strong>TACHANDO<br>3000s</strong>
+    <div class="marca">
+        <div class="logo-montana">⛰</div>
+        <strong>TACHANDO<br>3000s</strong>
+    </div>
+
+    <nav>
+        <a href="#" class="activo">
+            <span class="icono">⌂</span>
+            <span>Inicio</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">⛰</span>
+            <span>Mis 3000s</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">🗺</span>
+            <span>Mapa</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">▥</span>
+            <span>Estadísticas</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">🏆</span>
+            <span>Logros</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">⚙</span>
+            <span>Ajustes</span>
+        </a>
+
+        <a href="#">
+            <span class="icono">⇅</span>
+            <span>Importar / Exportar</span>
+        </a>
+    </nav>
+
+</aside>
+
+
+<main class="contenido">
+
+<section class="hero">
+
+    <div class="hero-top">
+        <button class="boton-mini">? Ayuda</button>
+        <button class="boton-mini">☰ Menú</button>
+    </div>
+
+    <h1 class="titulo">TACHANDO 3000s</h1>
+
+    <p class="subtitulo">
+        Tu reto, tus cumbres
+    </p>
+
+    <p class="elige">
+        ELIGE LA LISTA QUE QUIERES COMPLETAR
+    </p>
+
+    <div class="zona-principal">
+
+        <div class="tarjeta-lista">
+
+            <div class="lista-contenido">
+
+                <div class="lista-nombre">
+                    LISTA ACTUALIZADA
+                </div>
+
+                <div class="lista-numero">
+                    217
+                </div>
+
+                <div class="lista-sub">
+                    TRESMILES
+                </div>
+
+                <div class="montanas-decorativas"></div>
+
+            </div>
+
+            <div class="lista-pie">
+                <span>97 completados</span>
+                <span>120 pendientes</span>
+            </div>
+
         </div>
 
-        <nav>
-            <a href="#" class="activo"><span class="icono">⌂</span><span>Inicio</span></a>
-            <a href="#"><span class="icono">⛰</span><span>Mis 3000s</span></a>
-            <a href="#"><span class="icono">🗺</span><span>Mapa</span></a>
-            <a href="#"><span class="icono">▥</span><span>Estadísticas</span></a>
-            <a href="#"><span class="icono">🏆</span><span>Logros</span></a>
-            <a href="#"><span class="icono">⚙</span><span>Ajustes</span></a>
-            <a href="#"><span class="icono">⇅</span><span>Importar / Exportar</span></a>
-        </nav>
 
-    </aside>
+        <div class="tarjeta-lista">
 
-    <main class="contenido">
+            <div class="lista-contenido">
 
-        <section class="hero">
-
-            <div class="hero-top">
-                <button class="boton-mini">? Ayuda</button>
-                <button class="boton-mini">☰ Menú</button>
-            </div>
-
-            <h1 class="titulo">TACHANDO 3000s</h1>
-            <p class="subtitulo">Tu reto, tus cumbres</p>
-
-            <p class="elige">ELIGE LA LISTA QUE QUIERES COMPLETAR</p>
-
-            <div class="zona-principal">
-
-                <div class="tarjeta-lista">
-                    <div class="lista-contenido">
-                        <div class="lista-nombre">LISTA CAZAFANTASMAS</div>
-                        <div class="lista-numero">217</div>
-                        <div class="lista-sub">TRESMILES</div>
-                        <div class="montanas-decorativas"></div>
-                    </div>
-                    <div class="lista-pie">
-                        <span>97 completados</span>
-                        <span>120 pendientes</span>
-                    </div>
+                <div class="lista-nombre">
+                    LISTA OFICIAL
                 </div>
 
-                <div class="tarjeta-lista">
-                    <div class="lista-contenido">
-                        <div class="lista-nombre">LISTA OFICIAL</div>
-                        <div class="lista-numero">212</div>
-                        <div class="lista-sub">TRESMILES</div>
-                        <div class="montanas-decorativas"></div>
-                    </div>
-                    <div class="lista-pie">
-                        <span>94 completados</span>
-                        <span>118 pendientes</span>
-                    </div>
+                <div class="lista-numero">
+                    212
                 </div>
 
-                <div class="panel-progreso">
-                    <h3>PROGRESO ACTUAL</h3>
-
-                    <div class="contador">
-                        97 <span>/ 217</span>
-                    </div>
-
-                    <div>TRESMILES COMPLETADOS</div>
-
-                    <div class="porcentaje">44,7 %</div>
-
-                    <div class="barra">
-                        <div></div>
-                    </div>
-
-                    <div class="lista-activa">
-                        Lista activa:<br>
-                        <strong>CAZAFANTASMAS (217)</strong>
-                    </div>
+                <div class="lista-sub">
+                    TRESMILES
                 </div>
+
+                <div class="montanas-decorativas"></div>
 
             </div>
 
-        </section>
-
-        <section class="dashboard">
-
-            <div class="bloque">
-                <h2>EL PIRINEO POR SECTORES</h2>
-
-                <div class="mapa">
-                    <div class="sector">Occidental</div>
-                    <div class="sector">Ordesa</div>
-                    <div class="sector">Benasque</div>
-                    <div class="sector">Aigüestortes</div>
-                    <div class="sector">Néouvielle</div>
-                    <div class="sector">Oriental</div>
-                </div>
+            <div class="lista-pie">
+                <span>94 completados</span>
+                <span>118 pendientes</span>
             </div>
 
-            <div class="bloque">
-                <h2>PROGRESO POR SECTORES</h2>
+        </div>
 
-                <div class="fila-sector">
-                    <span>Ordesa</span><span>18/25</span>
-                    <div class="mini-barra"><div style="width:72%"></div></div>
-                    <span>72%</span>
-                </div>
 
-                <div class="fila-sector">
-                    <span>Benasque</span><span>31/63</span>
-                    <div class="mini-barra"><div style="width:49%"></div></div>
-                    <span>49%</span>
-                </div>
+        <div class="panel-progreso">
 
-                <div class="fila-sector">
-                    <span>Aigüestortes</span><span>14/41</span>
-                    <div class="mini-barra"><div style="width:34%"></div></div>
-                    <span>34%</span>
-                </div>
+            <h3>PROGRESO ACTUAL</h3>
 
-                <div class="fila-sector">
-                    <span>Néouvielle</span><span>7/25</span>
-                    <div class="mini-barra"><div style="width:28%"></div></div>
-                    <span>28%</span>
-                </div>
-
+            <div class="contador">
+                97 <span>/ 217</span>
             </div>
 
-            <div class="bloque">
-                <h2>ÚLTIMAS CUMBRES TACHADAS</h2>
-
-                <div class="cumbre">
-                    <div class="cumbre-icono">⛰</div>
-                    <div>
-                        <strong>Aneto</strong>
-                        <small>3.404 m</small>
-                    </div>
-                </div>
-
-                <div class="cumbre">
-                    <div class="cumbre-icono">⛰</div>
-                    <div>
-                        <strong>Posets</strong>
-                        <small>3.375 m</small>
-                    </div>
-                </div>
-
-                <div class="cumbre">
-                    <div class="cumbre-icono">⛰</div>
-                    <div>
-                        <strong>Monte Perdido</strong>
-                        <small>3.355 m</small>
-                    </div>
-                </div>
-
+            <div class="texto-completados">
+                TRESMILES COMPLETADOS
             </div>
 
-        </section>
-
-        <section class="logros">
-            <h2>LOGROS</h2>
-
-            <div class="logros-grid">
-
-                <div class="logro">
-                    <span class="medalla">🏆</span>
-                    <div>
-                        <strong>Primer 3000</strong>
-                        <small>Conseguido</small>
-                    </div>
-                </div>
-
-                <div class="logro">
-                    <span class="medalla">🥉</span>
-                    <div>
-                        <strong>25 cumbres</strong>
-                        <small>Conseguido</small>
-                    </div>
-                </div>
-
-                <div class="logro">
-                    <span class="medalla">🥈</span>
-                    <div>
-                        <strong>50 cumbres</strong>
-                        <small>Conseguido</small>
-                    </div>
-                </div>
-
-                <div class="logro">
-                    <span class="medalla">🏔</span>
-                    <div>
-                        <strong>100 tresmiles</strong>
-                        <small>Próximo objetivo</small>
-                    </div>
-                </div>
-
+            <div class="porcentaje">
+                44,7 %
             </div>
-        </section>
 
-    </main>
+            <div class="barra">
+                <div></div>
+            </div>
+
+            <div class="lista-activa">
+                Lista activa:
+                <br>
+                <strong>ACTUALIZADA (217)</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard">
+
+    <!-- MAPA -->
+
+    <div class="bloque">
+
+        <h2>EL PIRINEO POR SECTORES</h2>
+
+        <div class="mapa">
+
+            <div class="sector">Occidental</div>
+            <div class="sector">Ordesa</div>
+            <div class="sector">Benasque</div>
+            <div class="sector">Aigüestortes</div>
+            <div class="sector">Néouvielle</div>
+            <div class="sector">Oriental</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROGRESO POR SECTORES -->
+
+    <div class="bloque">
+
+        <h2>PROGRESO POR SECTORES</h2>
+
+        <div class="fila-sector">
+            <span>Ordesa</span>
+            <span>18/25</span>
+            <div class="mini-barra"><div style="width:72%"></div></div>
+            <span>72%</span>
+        </div>
+
+        <div class="fila-sector">
+            <span>Benasque</span>
+            <span>31/63</span>
+            <div class="mini-barra"><div style="width:49%"></div></div>
+            <span>49%</span>
+        </div>
+
+        <div class="fila-sector">
+            <span>Aigüestortes</span>
+            <span>14/41</span>
+            <div class="mini-barra"><div style="width:34%"></div></div>
+            <span>34%</span>
+        </div>
+
+        <div class="fila-sector">
+            <span>Néouvielle</span>
+            <span>7/25</span>
+            <div class="mini-barra"><div style="width:28%"></div></div>
+            <span>28%</span>
+        </div>
+
+    </div>
+
+
+    <!-- ÚLTIMAS CUMBRES -->
+
+    <div class="bloque">
+
+        <h2>ÚLTIMAS CUMBRES TACHADAS</h2>
+
+        <div class="cumbre">
+            <div class="cumbre-icono">⛰</div>
+            <div>
+                <strong>Aneto</strong>
+                <small>3.404 m</small>
+            </div>
+        </div>
+
+        <div class="cumbre">
+            <div class="cumbre-icono">⛰</div>
+            <div>
+                <strong>Posets</strong>
+                <small>3.375 m</small>
+            </div>
+        </div>
+
+        <div class="cumbre">
+            <div class="cumbre-icono">⛰</div>
+            <div>
+                <strong>Monte Perdido</strong>
+                <small>3.355 m</small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- LOGROS -->
+
+    <div class="bloque">
+
+        <h2>LOGROS</h2>
+
+        <div class="logro">
+            <span class="medalla">🏆</span>
+            <div>
+                <strong>Primer 3000</strong>
+                <small>Conseguido</small>
+            </div>
+        </div>
+
+        <div class="logro">
+            <span class="medalla">🥉</span>
+            <div>
+                <strong>25 cumbres</strong>
+                <small>Conseguido</small>
+            </div>
+        </div>
+
+        <div class="logro">
+            <span class="medalla">🥈</span>
+            <div>
+                <strong>50 cumbres</strong>
+                <small>Conseguido</small>
+            </div>
+        </div>
+
+        <div class="logro">
+            <span class="medalla">🏔</span>
+            <div>
+                <strong>100 tresmiles</strong>
+                <small>Próximo objetivo</small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
 
 </div>
 
