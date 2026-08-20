@@ -2,10 +2,124 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tachando 3000s</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f1e8;
+            color: #1f2b20;
+            min-height: 100vh;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .contenedor {
+            width: min(1100px, 100%);
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: clamp(48px, 7vw, 92px);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #173b22;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: clamp(20px, 2vw, 30px);
+            margin-bottom: 70px;
+            color: #465846;
+        }
+
+        .pregunta {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 35px;
+        }
+
+        .listas {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta {
+            background: white;
+            border: 2px solid #d6d2c4;
+            border-radius: 22px;
+            padding: 45px 30px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            border-color: #527a3f;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .numero {
+            font-size: 72px;
+            font-weight: 800;
+            color: #2f5d2f;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .texto-lista {
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 700px) {
+            .listas {
+                grid-template-columns: 1fr;
+            }
+
+            .subtitulo {
+                margin-bottom: 45px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>TACHANDO 3000s</h1>
-    <p>Tu reto, tus cumbres</p>
+    <main class="hero">
+        <div class="contenedor">
+            <h1 class="titulo">TACHANDO 3000s</h1>
+
+            <p class="subtitulo">Tu reto, tus cumbres</p>
+
+            <p class="pregunta">Elige la lista que quieres completar</p>
+
+            <div class="listas">
+                <div class="tarjeta">
+                    <div class="numero">217</div>
+                    <div class="texto-lista">Lista Cazafantasmas</div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="numero">212</div>
+                    <div class="texto-lista">Lista oficial</div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
