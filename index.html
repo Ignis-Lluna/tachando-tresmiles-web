@@ -6,6 +6,7 @@
 <title>Tachando 3000s</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,74 +19,96 @@
     --verde-claro:#82a557;
     --crema:#f5f3ec;
     --blanco:#ffffff;
-    --gris:#707770;
     --borde:#dfddd4;
+    --texto:#172119;
 }
 
-html,body{
+html,
+body{
+    width:100%;
     height:100%;
+    overflow:hidden;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--crema);
-    color:#172119;
+    color:var(--texto);
+}
+
+/* ========================================
+   ESTRUCTURA GENERAL
+======================================== */
+
+.app{
+    width:100%;
+    height:100dvh;
+    display:grid;
+    grid-template-columns:150px minmax(0,1fr);
     overflow:hidden;
 }
 
-.app{
-    height:100vh;
-    display:grid;
-    grid-template-columns:150px 1fr;
-}
-
-/* =========================
-   MENÚ LATERAL
-========================= */
+/* ========================================
+   MENÚ IZQUIERDO
+======================================== */
 
 .sidebar{
-    height:100vh;
+    height:100dvh;
     background:#faf9f4;
     border-right:1px solid #dedbd2;
     display:flex;
     flex-direction:column;
+    overflow:hidden;
 }
 
 .marca{
-    height:125px;
+    height:112px;
+    flex:0 0 112px;
+
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
     border-bottom:1px solid #ebe8df;
 }
 
 .logo-montana{
-    font-size:31px;
+    font-size:29px;
     line-height:1;
-    margin-bottom:6px;
+    margin-bottom:5px;
 }
 
 .marca strong{
     color:var(--verde-oscuro);
-    font-size:17px;
+    font-size:16px;
     line-height:1.05;
     text-align:center;
 }
 
 nav{
-    padding-top:10px;
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+
+    padding:4px 0 10px;
 }
 
 nav a{
-    height:58px;
+    min-height:44px;
+
     display:flex;
     align-items:center;
-    gap:11px;
-    padding:0 15px;
+    gap:10px;
+
+    padding:0 14px;
+
     text-decoration:none;
     color:#222;
     font-size:13px;
+
     border-left:3px solid transparent;
 }
 
@@ -97,34 +120,36 @@ nav a.activo{
 }
 
 .icono{
-    width:24px;
+    width:22px;
     text-align:center;
-    font-size:18px;
+    font-size:17px;
 }
 
-/* =========================
-   CONTENIDO GENERAL
-========================= */
+/* ========================================
+   CONTENIDO
+======================================== */
 
 .contenido{
-    height:100vh;
-    display:grid;
-    grid-template-rows:47% 53%;
+    height:100dvh;
     min-width:0;
+
+    display:grid;
+    grid-template-rows:auto minmax(0,1fr);
+
+    overflow:hidden;
 }
 
-/* =========================
-   CABECERA
-========================= */
+/* ========================================
+   ZONA SUPERIOR
+======================================== */
 
 .hero{
-    position:relative;
-    padding:12px 34px 16px;
+    padding:8px 28px 12px;
 
     background:
         linear-gradient(
-            rgba(255,255,255,.30),
-            rgba(242,244,238,.40)
+            rgba(255,255,255,.28),
+            rgba(242,244,238,.38)
         ),
         linear-gradient(
             135deg,
@@ -132,113 +157,131 @@ nav a.activo{
             #eef1eb 48%,
             #ccd9cf
         );
-
-    overflow:hidden;
 }
 
 .hero-top{
-    height:36px;
+    height:31px;
+
     display:flex;
     justify-content:flex-end;
     gap:8px;
 }
 
 .boton-mini{
-    padding:7px 12px;
-    border-radius:8px;
+    height:29px;
+    padding:0 11px;
+
+    border-radius:7px;
     border:1px solid #d7d8d2;
-    background:rgba(255,255,255,.88);
-    font-size:12px;
+
+    background:rgba(255,255,255,.9);
+
+    font-size:11px;
     font-weight:700;
     cursor:pointer;
 }
 
 .titulo{
     text-align:center;
-    font-size:clamp(38px,4.2vw,64px);
-    line-height:1;
+
+    font-size:clamp(36px,4vw,57px);
+    line-height:.98;
+
     font-weight:900;
-    letter-spacing:1.5px;
+    letter-spacing:1.3px;
+
     color:var(--verde-oscuro);
 }
 
 .subtitulo{
     text-align:center;
-    margin-top:6px;
-    font-size:20px;
+    margin-top:5px;
+
+    font-size:18px;
 }
 
 .elige{
     text-align:center;
-    margin-top:17px;
-    margin-bottom:12px;
-    font-size:14px;
+
+    margin-top:12px;
+    margin-bottom:10px;
+
+    font-size:13px;
     font-weight:800;
 }
 
 .zona-principal{
-    max-width:1180px;
-    height:210px;
+    width:min(1160px,100%);
     margin:auto;
 
     display:grid;
     grid-template-columns:1fr 1fr .78fr;
-    gap:17px;
+    gap:14px;
 }
 
-/* =========================
-   TARJETAS DE LISTAS
-========================= */
+/* ========================================
+   TARJETAS 217 / 212
+======================================== */
 
 .tarjeta-lista,
 .panel-progreso{
-    background:rgba(255,255,255,.94);
-    border:1px solid rgba(130,130,130,.25);
-    border-radius:12px;
-    box-shadow:0 6px 17px rgba(0,0,0,.10);
+    height:188px;
+
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(130,130,130,.24);
+    border-radius:11px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.09);
+
     overflow:hidden;
 }
 
 .tarjeta-lista{
-    cursor:pointer;
-    transition:.18s ease;
     display:flex;
     flex-direction:column;
+
+    cursor:pointer;
+    transition:.18s ease;
 }
 
 .tarjeta-lista:hover{
-    transform:translateY(-3px);
-    box-shadow:0 9px 22px rgba(0,0,0,.14);
+    transform:translateY(-2px);
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
 }
 
 .lista-contenido{
     flex:1;
+
     text-align:center;
-    padding:14px 18px 0;
+    padding:11px 15px 0;
 }
 
 .lista-nombre{
-    font-size:15px;
+    font-size:14px;
     font-weight:900;
 }
 
 .lista-numero{
     color:var(--verde-oscuro);
-    font-size:47px;
+
+    font-size:45px;
     line-height:1;
+
     font-weight:900;
-    margin:7px 0 1px;
+
+    margin:5px 0 0;
 }
 
 .lista-sub{
-    font-size:12px;
+    font-size:11px;
     font-weight:800;
 }
 
 .montanas-decorativas{
-    height:43px;
-    margin:6px auto 0;
-    max-width:250px;
+    height:42px;
+    max-width:235px;
+
+    margin:3px auto 0;
 
     background:
         linear-gradient(
@@ -260,57 +303,69 @@ nav a.activo{
 }
 
 .lista-pie{
-    height:36px;
+    height:33px;
+    flex:0 0 33px;
+
     background:var(--verde-oscuro);
     color:white;
+
     display:flex;
     align-items:center;
     justify-content:space-around;
-    font-size:11px;
+
+    font-size:10px;
 }
 
-/* =========================
-   PROGRESO
-========================= */
+/* ========================================
+   PROGRESO GENERAL
+======================================== */
 
 .panel-progreso{
-    padding:13px 17px;
+    padding:11px 15px;
     text-align:center;
 }
 
 .panel-progreso h3{
-    font-size:13px;
-    margin-bottom:8px;
+    font-size:12px;
+    margin-bottom:6px;
 }
 
 .contador{
-    font-size:37px;
+    font-size:35px;
+    line-height:1;
+
     font-weight:900;
     color:var(--verde);
 }
 
 .contador span{
     color:#828782;
-    font-size:23px;
+    font-size:21px;
 }
 
 .texto-completados{
-    margin-top:2px;
-    font-size:10px;
+    margin-top:4px;
+
+    font-size:9px;
     font-weight:700;
 }
 
 .porcentaje{
-    margin-top:8px;
-    font-size:29px;
+    margin-top:7px;
+
+    font-size:27px;
     font-weight:900;
+
     color:var(--verde-claro);
 }
 
 .barra{
-    height:10px;
-    margin-top:8px;
+    height:9px;
+
+    margin-top:6px;
+
     background:#dedfd9;
+
     border-radius:20px;
     overflow:hidden;
 }
@@ -318,63 +373,94 @@ nav a.activo{
 .barra div{
     width:44.7%;
     height:100%;
-    background:linear-gradient(90deg,#5e8a36,#86a756);
+
+    background:linear-gradient(
+        90deg,
+        #5e8a36,
+        #86a756
+    );
+
     border-radius:inherit;
 }
 
 .lista-activa{
-    margin-top:9px;
-    padding-top:7px;
+    margin-top:7px;
+    padding-top:5px;
+
     border-top:1px solid #dedfd9;
-    font-size:10px;
+
+    font-size:9px;
 }
 
-/* =========================
-   PARTE INFERIOR
-========================= */
+/* ========================================
+   DASHBOARD INFERIOR
+======================================== */
 
 .dashboard{
-    padding:14px 20px 17px;
-    display:grid;
-    grid-template-columns:1.35fr .88fr .72fr .82fr;
-    gap:13px;
     min-height:0;
+
+    padding:10px 18px 12px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        .92fr
+        .78fr
+        .84fr;
+
+    gap:11px;
+
+    align-items:start;
+
+    overflow:hidden;
 }
 
 .bloque{
     min-width:0;
-    min-height:0;
+
     background:white;
+
     border:1px solid var(--borde);
-    border-radius:11px;
-    padding:14px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    border-radius:10px;
+
+    padding:11px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.045);
+
     overflow:hidden;
 }
 
 .bloque h2{
-    font-size:13px;
-    margin-bottom:12px;
+    font-size:12px;
+    line-height:1.1;
+
+    margin-bottom:9px;
 }
 
-/* MAPA PROVISIONAL */
+/* ========================================
+   MAPA
+======================================== */
 
 .mapa{
-    height:calc(100% - 27px);
-    min-height:0;
-    border-radius:8px;
-    padding:13px;
+    height:174px;
+
+    border-radius:7px;
 
     display:flex;
     flex-wrap:wrap;
+
     justify-content:center;
     align-content:center;
-    gap:8px;
+
+    gap:7px;
+
+    padding:10px;
 
     background:
         linear-gradient(
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.18)
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.17)
         ),
         linear-gradient(
             135deg,
@@ -385,28 +471,45 @@ nav a.activo{
 }
 
 .sector{
-    padding:7px 10px;
-    border-radius:30px;
+    padding:6px 9px;
+
     background:rgba(255,255,255,.9);
-    font-size:10px;
+
+    border-radius:25px;
+
+    font-size:9px;
     font-weight:800;
 }
 
-/* PROGRESO SECTORES */
+/* ========================================
+   PROGRESO POR SECTORES
+======================================== */
 
 .fila-sector{
     display:grid;
-    grid-template-columns:1fr 40px .8fr 32px;
-    gap:6px;
+
+    grid-template-columns:
+        1fr
+        37px
+        .75fr
+        30px;
+
+    gap:5px;
+
     align-items:center;
-    margin:9px 0;
-    font-size:10px;
+
+    margin:7px 0;
+
+    font-size:9px;
 }
 
 .mini-barra{
-    height:6px;
+    height:5px;
+
     background:#dddeda;
+
     border-radius:10px;
+
     overflow:hidden;
 }
 
@@ -415,83 +518,111 @@ nav a.activo{
     background:var(--verde);
 }
 
-/* ÚLTIMAS CUMBRES */
+/* ========================================
+   ÚLTIMAS CUMBRES
+======================================== */
 
 .cumbre{
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:8px 0;
+
+    gap:7px;
+
+    padding:6px 0;
+
     border-bottom:1px solid #ecebe5;
 }
 
+.cumbre:last-child{
+    border-bottom:none;
+}
+
 .cumbre-icono{
-    width:31px;
-    height:31px;
-    flex:0 0 31px;
+    width:28px;
+    height:28px;
+
+    flex:0 0 28px;
+
     border-radius:50%;
+
     background:#e0e6da;
+
     display:grid;
     place-items:center;
-    font-size:15px;
+
+    font-size:13px;
 }
 
 .cumbre strong{
     display:block;
-    font-size:10px;
+    font-size:9px;
 }
 
 .cumbre small{
-    font-size:9px;
+    display:block;
+
+    font-size:8px;
     color:#707770;
 }
 
-/* LOGROS */
+/* ========================================
+   LOGROS
+======================================== */
 
 .logro{
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:9px 7px;
-    margin-bottom:7px;
-    border-radius:8px;
+
+    gap:7px;
+
+    padding:7px;
+
+    margin-bottom:5px;
+
+    border-radius:7px;
+
     background:#f4f5ef;
 }
 
+.logro:last-child{
+    margin-bottom:0;
+}
+
 .medalla{
-    width:29px;
+    width:25px;
     text-align:center;
-    font-size:20px;
+
+    font-size:18px;
 }
 
 .logro strong{
     display:block;
-    font-size:10px;
+
+    font-size:9px;
 }
 
 .logro small{
     display:block;
+
     margin-top:1px;
+
     color:#777;
-    font-size:9px;
+
+    font-size:8px;
 }
 
-/* =========================
-   PANTALLAS MÁS PEQUEÑAS
-========================= */
+/* ========================================
+   PANTALLAS MÁS ESTRECHAS
+======================================== */
 
 @media(max-width:1150px){
 
     .app{
-        grid-template-columns:80px 1fr;
+        grid-template-columns:76px minmax(0,1fr);
     }
 
     .marca strong{
-        font-size:12px;
-    }
-
-    nav a span:not(.icono){
-        display:none;
+        font-size:11px;
     }
 
     nav a{
@@ -499,41 +630,116 @@ nav a.activo{
         padding:0;
     }
 
+    nav a span:not(.icono){
+        display:none;
+    }
+
     .zona-principal{
-        gap:10px;
+        gap:9px;
     }
 
     .dashboard{
         gap:8px;
-        padding:10px;
+        padding-left:10px;
+        padding-right:10px;
     }
 }
+
+/*
+ IMPORTANTE:
+ En pantallas de poca altura NO activamos scroll.
+ Simplemente reducimos ligeramente los elementos.
+*/
 
 @media(max-height:760px){
 
-    body{
-        overflow:auto;
+    .marca{
+        height:92px;
+        flex-basis:92px;
     }
 
-    .app,
-    .sidebar,
-    .contenido{
-        height:auto;
-        min-height:100vh;
+    .logo-montana{
+        font-size:24px;
     }
 
-    .contenido{
-        display:block;
+    nav a{
+        min-height:38px;
     }
 
     .hero{
-        min-height:420px;
+        padding-top:5px;
+    }
+
+    .hero-top{
+        height:27px;
+    }
+
+    .titulo{
+        font-size:38px;
+    }
+
+    .subtitulo{
+        font-size:15px;
+    }
+
+    .elige{
+        margin-top:8px;
+        margin-bottom:7px;
+        font-size:11px;
+    }
+
+    .tarjeta-lista,
+    .panel-progreso{
+        height:166px;
+    }
+
+    .lista-numero{
+        font-size:38px;
+    }
+
+    .montanas-decorativas{
+        height:34px;
+    }
+
+    .lista-pie{
+        height:29px;
+        flex-basis:29px;
+    }
+
+    .contador{
+        font-size:30px;
+    }
+
+    .porcentaje{
+        font-size:23px;
     }
 
     .dashboard{
-        min-height:330px;
+        padding-top:7px;
+    }
+
+    .mapa{
+        height:145px;
+    }
+
+    .bloque{
+        padding:9px;
+    }
+
+    .fila-sector{
+        margin:5px 0;
+    }
+
+    .cumbre{
+        padding:4px 0;
+    }
+
+    .logro{
+        padding:5px;
+        margin-bottom:4px;
     }
 }
+
 </style>
 </head>
 
@@ -544,11 +750,20 @@ nav a.activo{
 <aside class="sidebar">
 
     <div class="marca">
-        <div class="logo-montana">⛰</div>
-        <strong>TACHANDO<br>3000s</strong>
+
+        <div class="logo-montana">
+            ⛰
+        </div>
+
+        <strong>
+            TACHANDO<br>
+            3000s
+        </strong>
+
     </div>
 
     <nav>
+
         <a href="#" class="activo">
             <span class="icono">⌂</span>
             <span>Inicio</span>
@@ -583,6 +798,7 @@ nav a.activo{
             <span class="icono">⇅</span>
             <span>Importar / Exportar</span>
         </a>
+
     </nav>
 
 </aside>
@@ -593,21 +809,36 @@ nav a.activo{
 <section class="hero">
 
     <div class="hero-top">
-        <button class="boton-mini">? Ayuda</button>
-        <button class="boton-mini">☰ Menú</button>
+
+        <button class="boton-mini">
+            ? Ayuda
+        </button>
+
+        <button class="boton-mini">
+            ☰ Menú
+        </button>
+
     </div>
 
-    <h1 class="titulo">TACHANDO 3000s</h1>
+
+    <h1 class="titulo">
+        TACHANDO 3000s
+    </h1>
+
 
     <p class="subtitulo">
         Tu reto, tus cumbres
     </p>
 
+
     <p class="elige">
         ELIGE LA LISTA QUE QUIERES COMPLETAR
     </p>
 
+
     <div class="zona-principal">
+
+        <!-- 217 -->
 
         <div class="tarjeta-lista">
 
@@ -630,12 +861,21 @@ nav a.activo{
             </div>
 
             <div class="lista-pie">
-                <span>97 completados</span>
-                <span>120 pendientes</span>
+
+                <span>
+                    97 completados
+                </span>
+
+                <span>
+                    120 pendientes
+                </span>
+
             </div>
 
         </div>
 
+
+        <!-- 212 -->
 
         <div class="tarjeta-lista">
 
@@ -658,19 +898,36 @@ nav a.activo{
             </div>
 
             <div class="lista-pie">
-                <span>94 completados</span>
-                <span>118 pendientes</span>
+
+                <span>
+                    94 completados
+                </span>
+
+                <span>
+                    118 pendientes
+                </span>
+
             </div>
 
         </div>
 
 
+        <!-- PROGRESO -->
+
         <div class="panel-progreso">
 
-            <h3>PROGRESO ACTUAL</h3>
+            <h3>
+                PROGRESO ACTUAL
+            </h3>
 
             <div class="contador">
-                97 <span>/ 217</span>
+
+                97
+
+                <span>
+                    / 217
+                </span>
+
             </div>
 
             <div class="texto-completados">
@@ -686,9 +943,14 @@ nav a.activo{
             </div>
 
             <div class="lista-activa">
+
                 Lista activa:
                 <br>
-                <strong>ACTUALIZADA (217)</strong>
+
+                <strong>
+                    ACTUALIZADA (217)
+                </strong>
+
             </div>
 
         </div>
@@ -704,87 +966,181 @@ nav a.activo{
 
     <div class="bloque">
 
-        <h2>EL PIRINEO POR SECTORES</h2>
+        <h2>
+            EL PIRINEO POR SECTORES
+        </h2>
 
         <div class="mapa">
 
-            <div class="sector">Occidental</div>
-            <div class="sector">Ordesa</div>
-            <div class="sector">Benasque</div>
-            <div class="sector">Aigüestortes</div>
-            <div class="sector">Néouvielle</div>
-            <div class="sector">Oriental</div>
+            <div class="sector">
+                Occidental
+            </div>
+
+            <div class="sector">
+                Ordesa
+            </div>
+
+            <div class="sector">
+                Benasque
+            </div>
+
+            <div class="sector">
+                Aigüestortes
+            </div>
+
+            <div class="sector">
+                Néouvielle
+            </div>
+
+            <div class="sector">
+                Oriental
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- PROGRESO POR SECTORES -->
+    <!-- SECTORES -->
 
     <div class="bloque">
 
-        <h2>PROGRESO POR SECTORES</h2>
+        <h2>
+            PROGRESO POR SECTORES
+        </h2>
+
 
         <div class="fila-sector">
+
             <span>Ordesa</span>
+
             <span>18/25</span>
-            <div class="mini-barra"><div style="width:72%"></div></div>
+
+            <div class="mini-barra">
+                <div style="width:72%"></div>
+            </div>
+
             <span>72%</span>
+
         </div>
 
+
         <div class="fila-sector">
+
             <span>Benasque</span>
+
             <span>31/63</span>
-            <div class="mini-barra"><div style="width:49%"></div></div>
+
+            <div class="mini-barra">
+                <div style="width:49%"></div>
+            </div>
+
             <span>49%</span>
+
         </div>
 
+
         <div class="fila-sector">
+
             <span>Aigüestortes</span>
+
             <span>14/41</span>
-            <div class="mini-barra"><div style="width:34%"></div></div>
+
+            <div class="mini-barra">
+                <div style="width:34%"></div>
+            </div>
+
             <span>34%</span>
+
         </div>
 
+
         <div class="fila-sector">
+
             <span>Néouvielle</span>
+
             <span>7/25</span>
-            <div class="mini-barra"><div style="width:28%"></div></div>
+
+            <div class="mini-barra">
+                <div style="width:28%"></div>
+            </div>
+
             <span>28%</span>
+
         </div>
 
     </div>
 
 
-    <!-- ÚLTIMAS CUMBRES -->
+    <!-- CUMBRES -->
 
     <div class="bloque">
 
-        <h2>ÚLTIMAS CUMBRES TACHADAS</h2>
+        <h2>
+            ÚLTIMAS CUMBRES TACHADAS
+        </h2>
+
 
         <div class="cumbre">
-            <div class="cumbre-icono">⛰</div>
-            <div>
-                <strong>Aneto</strong>
-                <small>3.404 m</small>
+
+            <div class="cumbre-icono">
+                ⛰
             </div>
+
+            <div>
+
+                <strong>
+                    Aneto
+                </strong>
+
+                <small>
+                    3.404 m
+                </small>
+
+            </div>
+
         </div>
 
-        <div class="cumbre">
-            <div class="cumbre-icono">⛰</div>
-            <div>
-                <strong>Posets</strong>
-                <small>3.375 m</small>
-            </div>
-        </div>
 
         <div class="cumbre">
-            <div class="cumbre-icono">⛰</div>
-            <div>
-                <strong>Monte Perdido</strong>
-                <small>3.355 m</small>
+
+            <div class="cumbre-icono">
+                ⛰
             </div>
+
+            <div>
+
+                <strong>
+                    Posets
+                </strong>
+
+                <small>
+                    3.375 m
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="cumbre">
+
+            <div class="cumbre-icono">
+                ⛰
+            </div>
+
+            <div>
+
+                <strong>
+                    Monte Perdido
+                </strong>
+
+                <small>
+                    3.355 m
+                </small>
+
+            </div>
+
         </div>
 
     </div>
@@ -794,38 +1150,92 @@ nav a.activo{
 
     <div class="bloque">
 
-        <h2>LOGROS</h2>
+        <h2>
+            LOGROS
+        </h2>
+
 
         <div class="logro">
-            <span class="medalla">🏆</span>
+
+            <span class="medalla">
+                🏆
+            </span>
+
             <div>
-                <strong>Primer 3000</strong>
-                <small>Conseguido</small>
+
+                <strong>
+                    Primer 3000
+                </strong>
+
+                <small>
+                    Conseguido
+                </small>
+
             </div>
+
         </div>
 
-        <div class="logro">
-            <span class="medalla">🥉</span>
-            <div>
-                <strong>25 cumbres</strong>
-                <small>Conseguido</small>
-            </div>
-        </div>
 
         <div class="logro">
-            <span class="medalla">🥈</span>
+
+            <span class="medalla">
+                🥉
+            </span>
+
             <div>
-                <strong>50 cumbres</strong>
-                <small>Conseguido</small>
+
+                <strong>
+                    25 cumbres
+                </strong>
+
+                <small>
+                    Conseguido
+                </small>
+
             </div>
+
         </div>
 
+
         <div class="logro">
-            <span class="medalla">🏔</span>
+
+            <span class="medalla">
+                🥈
+            </span>
+
             <div>
-                <strong>100 tresmiles</strong>
-                <small>Próximo objetivo</small>
+
+                <strong>
+                    50 cumbres
+                </strong>
+
+                <small>
+                    Conseguido
+                </small>
+
             </div>
+
+        </div>
+
+
+        <div class="logro">
+
+            <span class="medalla">
+                🏔
+            </span>
+
+            <div>
+
+                <strong>
+                    100 tresmiles
+                </strong>
+
+                <small>
+                    Próximo objetivo
+                </small>
+
+            </div>
+
         </div>
 
     </div>
