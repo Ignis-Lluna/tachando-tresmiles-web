@@ -1017,6 +1017,100 @@ nav a.activo{
 }
 
 /* =========================================================
+   IMPORTAR / EXPORTAR
+========================================================= */
+
+.backup-grid{
+    width:min(980px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.backup-card{
+    min-height:245px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:28px;
+    background:white;
+    border:1px solid #cbdde9;
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(8,43,76,.07);
+}
+
+.backup-icono{
+    width:62px;
+    height:62px;
+    display:grid;
+    place-items:center;
+    margin-bottom:14px;
+    border-radius:50%;
+    background:#e4f0f7;
+    color:var(--azul-oscuro);
+    font-size:29px;
+    font-weight:900;
+}
+
+.backup-card h3{
+    font-size:17px;
+    color:var(--azul-muy-oscuro);
+    margin-bottom:8px;
+}
+
+.backup-card p{
+    max-width:360px;
+    min-height:50px;
+    font-size:10px;
+    line-height:1.5;
+    color:#698091;
+}
+
+.backup-boton{
+    margin-top:16px;
+    padding:10px 18px;
+    border:1px solid #246b9d;
+    border-radius:8px;
+    background:linear-gradient(180deg,#246f9f,#14557f);
+    color:white;
+    font-size:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.backup-boton.secundario{
+    background:white;
+    color:var(--azul-oscuro);
+    border-color:#aec7d7;
+}
+
+.backup-boton:hover{
+    transform:translateY(-1px);
+}
+
+.backup-info{
+    width:min(980px,100%);
+    margin:16px auto 0;
+    padding:13px 16px;
+    background:#f7fbfd;
+    border:1px solid #d4e2eb;
+    border-radius:10px;
+    text-align:center;
+    font-size:9px;
+    line-height:1.5;
+    color:#617b8d;
+}
+
+@media(max-width:850px){
+    .backup-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -1136,7 +1230,7 @@ nav a.activo{
             <span>Ajustes</span>
         </a>
 
-        <a href="#">
+        <a href="#" id="menuBackup">
             <span class="icono">⇅</span>
             <span>Importar / Exportar</span>
         </a>
@@ -1144,7 +1238,6 @@ nav a.activo{
     </nav>
 
 </aside>
-
 
 <main class="contenido" id="contenidoPrincipal">
 
@@ -1203,7 +1296,6 @@ nav a.activo{
 
         </div>
 
-
         <div class="tarjeta-lista historica" id="tarjeta212">
 
             <div class="lista-contenido">
@@ -1237,7 +1329,6 @@ nav a.activo{
             </div>
 
         </div>
-
 
         <div class="panel-progreso">
 
@@ -1297,7 +1388,6 @@ nav a.activo{
     </div>
 
 </section>
-
 
 <section class="dashboard">
 
@@ -1361,7 +1451,6 @@ nav a.activo{
 
     </div>
 
-
     <div class="columna-central">
 
         <div class="bloque">
@@ -1374,7 +1463,6 @@ nav a.activo{
 
         </div>
 
-
         <div class="bloque">
 
             <h2>
@@ -1386,7 +1474,6 @@ nav a.activo{
         </div>
 
     </div>
-
 
     <div class="bloque">
 
@@ -1403,7 +1490,6 @@ nav a.activo{
 </main>
 
 </div>
-
 
 <script src="datos-tresmiles.js"></script>
 
@@ -1450,6 +1536,12 @@ const menuMapa =
 const menuLogros =
     document.getElementById(
         "menuLogros"
+    );
+
+
+const menuBackup =
+    document.getElementById(
+        "menuBackup"
     );
 
 
@@ -1751,34 +1843,6 @@ function progresoDeSector(
 }
 
 
-function porcentajeSector(
-    indice,
-    lista
-){
-
-    const datos =
-        progresoDeSector(
-            indice,
-            lista
-        );
-
-
-    if(!datos.total){
-        return 0;
-    }
-
-
-    return (
-        datos.completadas
-        /
-        datos.total
-        *
-        100
-    );
-
-}
-
-
 function sectorCompleto(
     indice,
     lista
@@ -1891,6 +1955,18 @@ menuLogros.addEventListener(
 );
 
 
+menuBackup.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        mostrarBackup();
+
+    }
+);
+
+
 document
 .querySelectorAll(
     ".sector-mapa"
@@ -1994,8 +2070,7 @@ function mostrarSectores(){
                         </strong>
 
                         <span>
-                            ${datos.total}
-                            tresmiles
+                            ${datos.total} tresmiles
                         </span>
 
                         <span
@@ -2466,6 +2541,14 @@ function marcarMenu(zona){
     else if(zona === "logros"){
 
         menuLogros
+        .classList.add(
+            "activo"
+        );
+
+    }
+    else if(zona === "backup"){
+
+        menuBackup
         .classList.add(
             "activo"
         );
@@ -3385,6 +3468,330 @@ function mostrarLogros(){
         </section>
 
     `;
+
+}
+
+
+function mostrarBackup(){
+
+    marcarMenu("backup");
+
+
+    const totalMarcadas =
+        Object.keys(progreso).length;
+
+
+    contenido.innerHTML = `
+
+        <section class="vista-app">
+
+            <div class="cabecera-vista">
+
+                <button
+                    class="btn-vista"
+                    onclick="volverInicio()"
+                >
+                    ‹ Inicio
+                </button>
+
+
+                <div class="cabecera-vista-centro">
+
+                    <h1>
+                        COPIA DE SEGURIDAD
+                    </h1>
+
+                    <p>
+                        Protege y recupera tu progreso de Tachando 3000s
+                    </p>
+
+                </div>
+
+
+                <div></div>
+
+            </div>
+
+
+            <div class="backup-grid">
+
+                <div class="backup-card">
+
+                    <div class="backup-icono">
+                        ↓
+                    </div>
+
+                    <h3>
+                        Exportar copia
+                    </h3>
+
+                    <p>
+                        Guarda en un archivo tu progreso actual, incluyendo
+                        las cumbres marcadas y la lista que tienes activa.
+                    </p>
+
+                    <button
+                        class="backup-boton"
+                        onclick="exportarCopia()"
+                    >
+                        EXPORTAR COPIA DE SEGURIDAD
+                    </button>
+
+                </div>
+
+
+                <div class="backup-card">
+
+                    <div class="backup-icono">
+                        ↑
+                    </div>
+
+                    <h3>
+                        Importar copia
+                    </h3>
+
+                    <p>
+                        Recupera una copia creada anteriormente en este
+                        ordenador o en otro dispositivo.
+                    </p>
+
+                    <button
+                        class="backup-boton secundario"
+                        onclick="seleccionarCopia()"
+                    >
+                        IMPORTAR COPIA DE SEGURIDAD
+                    </button>
+
+                    <input
+                        id="archivoBackup"
+                        type="file"
+                        accept=".json,application/json"
+                        hidden
+                        onchange="importarCopia(event)"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="backup-info">
+                Ahora mismo tienes <strong>${totalMarcadas}</strong> cumbres
+                guardadas en este navegador. La copia de seguridad no se envía
+                a Internet: el archivo queda bajo tu control.
+            </div>
+
+        </section>
+
+    `;
+
+}
+
+
+function exportarCopia(){
+
+    const copia = {
+
+        aplicacion:"Tachando 3000s",
+        versionBackup:1,
+        fechaExportacion:new Date().toISOString(),
+        listaActiva:listaActiva,
+        progreso:progreso
+
+    };
+
+
+    const contenidoArchivo =
+        JSON.stringify(
+            copia,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [contenidoArchivo],
+            {type:"application/json"}
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const enlace =
+        document.createElement("a");
+
+
+    const fecha =
+        new Date()
+        .toISOString()
+        .slice(0,10);
+
+
+    enlace.href = url;
+
+    enlace.download =
+        "tachando-3000s-copia-"
+        + fecha
+        + ".json";
+
+
+    document.body.appendChild(enlace);
+
+    enlace.click();
+
+    enlace.remove();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+function seleccionarCopia(){
+
+    const input =
+        document.getElementById(
+            "archivoBackup"
+        );
+
+
+    if(input){
+
+        input.value = "";
+        input.click();
+
+    }
+
+}
+
+
+function importarCopia(event){
+
+    const archivo =
+        event.target.files[0];
+
+
+    if(!archivo){
+        return;
+    }
+
+
+    const lector =
+        new FileReader();
+
+
+    lector.onload =
+        function(){
+
+            try{
+
+                const copia =
+                    JSON.parse(
+                        lector.result
+                    );
+
+
+                if(
+                    !copia
+                    ||
+                    copia.aplicacion !== "Tachando 3000s"
+                    ||
+                    typeof copia.progreso !== "object"
+                    ||
+                    copia.progreso === null
+                    ||
+                    ![
+                        "217",
+                        "212"
+                    ].includes(
+                        String(
+                            copia.listaActiva
+                        )
+                    )
+                ){
+
+                    throw new Error(
+                        "Formato no válido"
+                    );
+
+                }
+
+
+                const cantidad =
+                    Object.keys(
+                        copia.progreso
+                    ).length;
+
+
+                const aceptar =
+                    confirm(
+                        "Esta copia contiene "
+                        + cantidad
+                        + " cumbres marcadas. "
+                        + "Al importarla sustituirá el progreso guardado actualmente en este navegador. ¿Continuar?"
+                    );
+
+
+                if(!aceptar){
+                    return;
+                }
+
+
+                progreso =
+                    copia.progreso;
+
+
+                listaActiva =
+                    String(
+                        copia.listaActiva
+                    );
+
+
+                localStorage.setItem(
+                    "tachando_progreso_v1",
+                    JSON.stringify(progreso)
+                );
+
+
+                localStorage.setItem(
+                    "tachando_lista",
+                    listaActiva
+                );
+
+
+                alert(
+                    "Copia de seguridad importada correctamente."
+                );
+
+
+                location.reload();
+
+            }
+            catch(error){
+
+                alert(
+                    "No se ha podido importar el archivo. Asegúrate de seleccionar una copia de seguridad válida de Tachando 3000s."
+                );
+
+            }
+
+        };
+
+
+    lector.onerror =
+        function(){
+
+            alert(
+                "No se ha podido leer el archivo seleccionado."
+            );
+
+        };
+
+
+    lector.readAsText(archivo);
 
 }
 
