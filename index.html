@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tachando 3000s</title>
 
 <style>
@@ -23,12 +20,13 @@
     --azul-medio:#3b7fb0;
     --azul-claro:#dfeef8;
     --azul-hielo:#eef6fb;
-
     --blanco:#ffffff;
+    --gris:#6f7d89;
     --texto:#10293d;
+    --fondo:#edf4f8;
 
     --oro:#d4a62a;
-    --oro-oscuro:#92680b;
+    --oro-oscuro:#9c7112;
     --oro-claro:#fff3bf;
     --oro-fondo:#fff9df;
 }
@@ -43,80 +41,55 @@ body{
 body{
     font-family:Arial,Helvetica,sans-serif;
     color:var(--texto);
-    background:#edf4f8;
+    background:var(--fondo);
 }
 
-
 /* =========================================================
-   ESTRUCTURA GENERAL
+   ESTRUCTURA
 ========================================================= */
 
 .app{
     width:100%;
     height:100dvh;
-
     display:grid;
     grid-template-columns:150px minmax(0,1fr);
-
     overflow:hidden;
 }
 
-
-/* =========================================================
-   MENÚ LATERAL
-========================================================= */
-
 .sidebar{
     height:100dvh;
-
+    background:rgba(255,255,255,.97);
+    border-right:1px solid #cad8e2;
     display:flex;
     flex-direction:column;
-
-    background:rgba(255,255,255,.97);
-
-    border-right:1px solid #cad8e2;
-
     overflow:hidden;
 }
 
 .marca{
     height:110px;
     flex:0 0 110px;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     border-bottom:1px solid #d9e4eb;
-
-    background:
-        linear-gradient(
-            180deg,
-            #f7fbfe,
-            #eef6fb
-        );
+    background:linear-gradient(180deg,#f7fbfe,#eef6fb);
 }
 
 .logo-montana{
     position:relative;
-
     width:54px;
     height:33px;
-
     margin-bottom:6px;
 }
 
 .logo-montana:before,
 .logo-montana:after{
     content:"";
-
     position:absolute;
     bottom:0;
-
     width:0;
     height:0;
-
     border-left:16px solid transparent;
     border-right:16px solid transparent;
     border-bottom:29px solid var(--azul-oscuro);
@@ -128,104 +101,69 @@ body{
 
 .logo-montana:after{
     right:1px;
-
     transform:scale(.78);
     transform-origin:bottom;
-
     opacity:.78;
 }
 
 .marca strong{
     text-align:center;
-
     font-size:15px;
     line-height:1.05;
-
     color:var(--azul-muy-oscuro);
 }
 
 nav{
     flex:1;
-
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
-
     padding:5px 0 8px;
 }
 
 nav a{
     min-height:42px;
-
     display:flex;
     align-items:center;
-
     gap:10px;
-
     padding:0 14px;
-
     text-decoration:none;
-
     color:#18354b;
-
     font-size:12px;
-
     border-left:4px solid transparent;
-
     transition:.15s ease;
 }
 
 nav a:hover,
 nav a.activo{
     background:#e5f1f8;
-
     border-left-color:var(--azul);
-
     color:var(--azul-muy-oscuro);
 }
 
 .icono{
     width:22px;
-
     text-align:center;
-
     font-size:16px;
 }
-
-
-/* =========================================================
-   CONTENIDO
-========================================================= */
 
 .contenido{
     height:100dvh;
     min-width:0;
-
     display:grid;
     grid-template-rows:auto minmax(0,1fr);
-
     overflow:hidden;
-
     background:
-        linear-gradient(
-            rgba(240,247,251,.88),
-            rgba(234,243,248,.94)
-        ),
-        linear-gradient(
-            135deg,
-            #dbeaf4,
-            #edf6fb
-        );
+        linear-gradient(rgba(240,247,251,.88),rgba(234,243,248,.94)),
+        linear-gradient(135deg,#dbeaf4,#edf6fb);
 }
 
-
 /* =========================================================
-   CABECERA INICIO
+   CABECERA
 ========================================================= */
 
 .hero{
     padding:7px 26px 10px;
-
     background:
         radial-gradient(
             circle at 50% -10%,
@@ -233,46 +171,34 @@ nav a.activo{
             rgba(230,242,249,.83) 46%,
             rgba(187,215,232,.76) 100%
         );
-
     border-bottom:1px solid #c8dbe8;
 }
 
 .hero-top{
     height:28px;
-
     display:flex;
     justify-content:flex-end;
-
     gap:7px;
 }
 
 .boton-mini{
     height:27px;
-
     padding:0 10px;
-
     border-radius:7px;
-
     border:1px solid #b9cfde;
-
     background:rgba(255,255,255,.88);
-
     font-size:10px;
     font-weight:700;
-
     color:var(--azul-muy-oscuro);
-
     cursor:pointer;
 }
 
 .titulo{
     text-align:center;
-
     font-size:clamp(34px,3.8vw,54px);
     line-height:.95;
-
     font-weight:900;
-
+    letter-spacing:1px;
     color:var(--azul-muy-oscuro);
 }
 
@@ -281,42 +207,28 @@ nav a.activo{
 }
 
 .subtitulo{
-    margin-top:4px;
-
     text-align:center;
-
+    margin-top:4px;
     font-size:16px;
-
     color:#23445d;
 }
 
 .elige{
+    text-align:center;
     margin-top:10px;
     margin-bottom:8px;
-
-    text-align:center;
-
     font-size:12px;
     font-weight:800;
-
     color:var(--azul-muy-oscuro);
 }
 
 .zona-principal{
     width:min(1160px,100%);
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        .78fr;
-
+    grid-template-columns:1fr 1fr .78fr;
     gap:13px;
 }
-
 
 /* =========================================================
    TARJETAS 217 / 212
@@ -325,41 +237,26 @@ nav a.activo{
 .tarjeta-lista,
 .panel-progreso{
     height:181px;
-
     border-radius:13px;
-
     overflow:hidden;
-
-    box-shadow:
-        0 6px 17px rgba(8,43,76,.12);
+    box-shadow:0 6px 17px rgba(8,43,76,.12);
 }
 
 .tarjeta-lista{
     display:flex;
     flex-direction:column;
-
     cursor:pointer;
-
     transition:.16s ease;
 }
 
 .tarjeta-lista:hover{
     transform:translateY(-2px);
-
-    box-shadow:
-        0 9px 22px rgba(8,43,76,.17);
+    box-shadow:0 9px 22px rgba(8,43,76,.17);
 }
 
 .actualizada{
+    background:linear-gradient(180deg,#174f7e,#0c3b67);
     color:white;
-
-    background:
-        linear-gradient(
-            180deg,
-            #174f7e,
-            #0c3b67
-        );
-
     border:1px solid #2e6690;
 }
 
@@ -374,13 +271,7 @@ nav a.activo{
 }
 
 .historica{
-    background:
-        linear-gradient(
-            180deg,
-            #f6fbfe,
-            #dceaf3
-        );
-
+    background:linear-gradient(180deg,#f6fbfe,#dceaf3);
     border:1px solid #b8cddb;
 }
 
@@ -399,13 +290,9 @@ nav a.activo{
 
 .lista-contenido{
     flex:1;
-
     position:relative;
-
     text-align:center;
-
     padding:10px 15px 0;
-
     overflow:hidden;
 }
 
@@ -415,97 +302,72 @@ nav a.activo{
 }
 
 .lista-numero{
-    margin-top:5px;
-
     font-size:43px;
     line-height:1;
     font-weight:900;
+    margin-top:5px;
 }
 
 .lista-sub{
-    margin-top:1px;
-
     font-size:10px;
     font-weight:800;
+    margin-top:1px;
 }
 
 .montanas{
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
     height:55px;
 }
 
 .montanas:before,
 .montanas:after{
     content:"";
-
     position:absolute;
-
     bottom:0;
-
     width:62%;
     height:100%;
-
     clip-path:polygon(
-        0 100%,
-        19% 69%,
-        32% 78%,
-        50% 37%,
-        65% 64%,
-        82% 48%,
-        100% 100%
+        0 100%,19% 69%,32% 78%,50% 37%,
+        65% 64%,82% 48%,100% 100%
     );
 }
 
 .actualizada .montanas:before{
     left:-4%;
-
     background:#1f679c;
-
     opacity:.70;
 }
 
 .actualizada .montanas:after{
     right:-5%;
-
     background:#0b3156;
-
     opacity:.85;
 }
 
 .historica .montanas:before{
     left:-4%;
-
     background:#a9c4d7;
-
     opacity:.8;
 }
 
 .historica .montanas:after{
     right:-5%;
-
     background:#779eb8;
-
     opacity:.7;
 }
 
 .lista-pie{
     height:31px;
     flex:0 0 31px;
-
+    color:white;
     display:flex;
     align-items:center;
     justify-content:space-around;
-
-    color:white;
-
     font-size:9px;
 }
-
 
 /* =========================================================
    PROGRESO GENERAL
@@ -513,85 +375,62 @@ nav a.activo{
 
 .panel-progreso{
     padding:10px 14px;
-
     text-align:center;
-
     background:rgba(255,255,255,.96);
-
     border:1px solid #c2d4df;
 }
 
 .panel-progreso h3{
-    margin-bottom:5px;
-
     font-size:11px;
-
     color:var(--azul-muy-oscuro);
+    margin-bottom:5px;
 }
 
 .contador{
     font-size:32px;
     line-height:1;
     font-weight:900;
-
     color:var(--azul);
 }
 
 .contador span{
-    font-size:20px;
-
     color:#7d8992;
+    font-size:20px;
 }
 
 .texto-completados{
     margin-top:3px;
-
     font-size:8px;
     font-weight:700;
 }
 
 .porcentaje{
     margin-top:7px;
-
     font-size:25px;
     line-height:1;
     font-weight:900;
-
     color:#2b75a9;
 }
 
 .barra{
     height:8px;
-
     margin-top:7px;
-
-    overflow:hidden;
-
     border-radius:20px;
-
     background:#dfe5e8;
+    overflow:hidden;
 }
 
 .barra div{
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0b4c7d,
-            #3a89bd
-        );
+    background:linear-gradient(90deg,#0b4c7d,#3a89bd);
 }
 
 .lista-activa{
     margin-top:6px;
     padding-top:5px;
-
     border-top:1px solid #dde5e9;
-
     font-size:8px;
 }
-
 
 /* =========================================================
    DASHBOARD
@@ -599,174 +438,100 @@ nav a.activo{
 
 .dashboard{
     min-height:0;
-
     padding:9px 16px 11px;
-
     display:grid;
-
     grid-template-columns:
         minmax(0,1.75fr)
         minmax(260px,.95fr)
         minmax(230px,.78fr);
-
     gap:11px;
-
     align-items:stretch;
-
     overflow:hidden;
 }
 
 .bloque{
     min-width:0;
     min-height:0;
-
+    background:rgba(255,255,255,.95);
+    border:1px solid #cbdbe5;
+    border-radius:11px;
     padding:10px;
-
+    box-shadow:0 4px 12px rgba(10,45,70,.06);
+    overflow:hidden;
     display:flex;
     flex-direction:column;
-
-    overflow:hidden;
-
-    background:rgba(255,255,255,.95);
-
-    border:1px solid #cbdbe5;
-
-    border-radius:11px;
-
-    box-shadow:
-        0 4px 12px rgba(10,45,70,.06);
 }
 
 .bloque h2{
-    margin-bottom:8px;
-
     font-size:11px;
-
     color:var(--azul-muy-oscuro);
+    margin-bottom:8px;
 }
 
-
 /* =========================================================
-   MAPA PROVISIONAL
+   MAPA
 ========================================================= */
 
 .mapa{
     flex:1;
-
     position:relative;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(6,1fr);
-
-    grid-template-rows:
-        repeat(2,auto);
-
+    grid-template-columns:repeat(6,1fr);
+    grid-template-rows:repeat(2,auto);
     align-content:center;
-
     gap:8px;
-
     padding:28px 12px 70px;
-
-    overflow:hidden;
-
     border-radius:8px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b9d4e3,
-            #d4e5ee
-        );
+    background:linear-gradient(135deg,#b9d4e3,#d4e5ee);
+    overflow:hidden;
 }
 
 .mapa:before{
     content:"";
-
     position:absolute;
-
     left:3%;
     right:3%;
     bottom:10%;
-
     height:38%;
-
-    background:
-        rgba(61,115,151,.17);
-
+    background:rgba(61,115,151,.17);
     clip-path:polygon(
-        0 87%,
-        6% 71%,
-        12% 76%,
-        18% 55%,
-        23% 68%,
-        29% 43%,
-        35% 60%,
-        41% 34%,
-        48% 53%,
-        54% 27%,
-        61% 50%,
-        67% 35%,
-        74% 59%,
-        80% 40%,
-        86% 61%,
-        92% 48%,
-        100% 73%,
-        100% 100%,
-        0 100%
+        0 87%,6% 71%,12% 76%,18% 55%,23% 68%,
+        29% 43%,35% 60%,41% 34%,48% 53%,54% 27%,
+        61% 50%,67% 35%,74% 59%,80% 40%,86% 61%,
+        92% 48%,100% 73%,100% 100%,0 100%
     );
 }
 
 .sector-mapa{
     position:relative;
-
     z-index:2;
-
     padding:6px 5px;
-
-    border:
-        1px solid rgba(112,150,174,.30);
-
-    border-radius:25px;
-
     background:rgba(255,255,255,.92);
-
-    color:var(--azul-muy-oscuro);
-
+    border:1px solid rgba(112,150,174,.30);
+    border-radius:25px;
     font-size:8px;
     font-weight:800;
-
+    color:var(--azul-muy-oscuro);
     cursor:pointer;
-
     transition:.15s ease;
 }
 
 .sector-mapa:hover{
-    transform:translateY(-1px);
-
     background:var(--azul-oscuro);
-
     color:white;
+    transform:translateY(-1px);
 }
 
 .sector-mapa.completo{
-    background:
-        linear-gradient(
-            180deg,
-            #f5d76e,
-            #d6a926
-        );
-
+    background:linear-gradient(180deg,#f5d76e,#d6a926);
     border-color:#b68817;
-
     color:#5d4305;
+    box-shadow:0 0 0 1px rgba(255,226,119,.7);
 }
 
 .sector-mapa.completo:before{
     content:"🏆 ";
 }
-
 
 /* =========================================================
    COLUMNA CENTRAL
@@ -775,83 +540,46 @@ nav a.activo{
 .columna-central{
     min-width:0;
     min-height:0;
-
     display:grid;
-
-    grid-template-rows:
-        1fr
-        1fr;
-
+    grid-template-rows:1fr 1fr;
     gap:11px;
 }
 
 .fila-sector{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        42px
-        .75fr
-        31px;
-
+    grid-template-columns:1fr 42px .75fr 31px;
     gap:5px;
-
     align-items:center;
-
     margin:5px 0;
-
     font-size:8px;
 }
 
 .fila-sector.completo{
     color:var(--oro-oscuro);
-
     font-weight:800;
 }
 
 .fila-sector.completo .mini-barra div{
-    background:
-        linear-gradient(
-            90deg,
-            #d4a62a,
-            #f2ce58
-        );
+    background:linear-gradient(90deg,#d4a62a,#f2ce58);
 }
 
 .mini-barra{
     height:5px;
-
-    overflow:hidden;
-
-    border-radius:10px;
-
     background:#dce4e9;
+    border-radius:10px;
+    overflow:hidden;
 }
 
 .mini-barra div{
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #165c8d,
-            #4d91bd
-        );
+    background:linear-gradient(90deg,#165c8d,#4d91bd);
 }
-
-
-/* =========================================================
-   ÚLTIMAS CUMBRES
-========================================================= */
 
 .cumbre{
     display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:5px 0;
-
     border-bottom:1px solid #e2eaef;
 }
 
@@ -862,126 +590,169 @@ nav a.activo{
 .cumbre-icono{
     width:27px;
     height:27px;
-
     flex:0 0 27px;
-
+    border-radius:50%;
+    background:#e1eef6;
     display:grid;
     place-items:center;
-
-    border-radius:50%;
-
-    background:#e1eef6;
-
     color:var(--azul-oscuro);
-
     font-size:12px;
 }
 
 .cumbre strong{
     display:block;
-
     font-size:9px;
 }
 
 .cumbre small{
     display:block;
-
-    font-size:8px;
-
     color:#758590;
+    font-size:8px;
 }
-
 
 /* =========================================================
    LOGROS EN INICIO
 ========================================================= */
 
-.logros-inicio{
+.logros-lista{
     flex:1;
-
     display:flex;
     flex-direction:column;
-
+    justify-content:space-between;
     gap:6px;
 }
 
-.logro-mini{
+.logro{
     flex:1;
-
-    display:grid;
-
-    grid-template-columns:
-        26px
-        minmax(0,1fr)
-        auto;
-
+    display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:6px;
-
-    border:
-        1px solid #dce8ef;
-
-    border-radius:8px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #edf5fa,
-            #f7fbfd
-        );
+    border-radius:7px;
+    background:linear-gradient(90deg,#edf5fa,#f7fbfd);
+    border:1px solid #dce8ef;
+    transition:.2s ease;
 }
 
-.logro-mini.conseguido{
-    border-color:#dbb94d;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff4bd,
-            #fffaf0
-        );
+.logro.conseguido{
+    background:linear-gradient(90deg,#fff5c7,#fffaf0);
+    border-color:#dfbd55;
 }
 
-.logro-mini-icono{
-    font-size:17px;
+.logro.conseguido strong{
+    color:#805c0b;
+}
 
+.logro.conseguido small{
+    color:#a27917;
+    font-weight:800;
+}
+
+.medalla{
+    width:24px;
     text-align:center;
+    font-size:17px;
 }
 
-.logro-mini strong{
+.logro strong{
     display:block;
+    font-size:9px;
+}
 
+.logro small{
+    display:block;
+    color:#71818d;
     font-size:8px;
 }
 
-.logro-mini small{
+/* =========================================================
+   LOGROS - VISTA COMPLETA
+========================================================= */
+
+.grid-logros-app{
+    width:min(980px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.tarjeta-logro-app{
+    min-height:130px;
+    display:grid;
+    grid-template-columns:52px minmax(0,1fr);
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    background:white;
+    border:1px solid #cbdde9;
+    border-radius:12px;
+    box-shadow:0 4px 14px rgba(8,43,76,.06);
+}
+
+.tarjeta-logro-app.conseguido{
+    background:linear-gradient(135deg,#fffdf3,#fff2b7);
+    border-color:#d4a62a;
+}
+
+.icono-logro-app{
+    width:46px;
+    height:46px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#e3eff7;
+    font-size:24px;
+}
+
+.tarjeta-logro-app.conseguido .icono-logro-app{
+    background:#d7aa2c;
+}
+
+.datos-logro-app strong{
     display:block;
-
-    margin-top:2px;
-
-    font-size:7px;
-
-    color:#6f8290;
+    font-size:14px;
+    color:var(--azul-muy-oscuro);
 }
 
-.logro-mini.conseguido strong{
-    color:#76530a;
+.datos-logro-app p{
+    margin-top:5px;
+    font-size:10px;
+    color:#687f90;
 }
 
-.logro-mini.conseguido small{
-    color:#9a7117;
-}
-
-.logro-mini-porcentaje{
-    font-size:8px;
-    font-weight:900;
-
+.estado-logro-app{
+    margin-top:9px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:9px;
+    font-weight:800;
     color:var(--azul);
 }
 
+.barra-logro-app{
+    height:7px;
+    margin-top:6px;
+    background:#dfe7ec;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.barra-logro-app > div{
+    height:100%;
+    background:linear-gradient(90deg,#145d96,#4c9aca);
+    border-radius:20px;
+}
+
+.tarjeta-logro-app.conseguido .barra-logro-app > div{
+    background:linear-gradient(90deg,#b88716,#e7c653);
+}
+
+.tarjeta-logro-app.conseguido .datos-logro-app strong,
+.tarjeta-logro-app.conseguido .estado-logro-app{
+    color:#805c0b;
+}
 
 /* =========================================================
    PANTALLAS SECUNDARIAS
@@ -989,42 +760,22 @@ nav a.activo{
 
 .vista-app{
     height:100dvh;
-
     padding:18px 28px;
-
     overflow:auto;
-
-    background:
-        linear-gradient(
-            180deg,
-            #eaf5fb,
-            #f6fafc
-        );
+    background:linear-gradient(180deg,#eaf5fb,#f6fafc);
 }
 
 .cabecera-vista{
     min-height:82px;
-
     display:grid;
-
-    grid-template-columns:
-        150px
-        1fr
-        150px;
-
+    grid-template-columns:150px 1fr 150px;
     align-items:center;
-
     padding:12px 18px;
     margin-bottom:18px;
-
     background:white;
-
     border:1px solid #cbdde9;
-
     border-radius:13px;
-
-    box-shadow:
-        0 4px 14px rgba(8,43,76,.07);
+    box-shadow:0 4px 14px rgba(8,43,76,.07);
 }
 
 .cabecera-vista-centro{
@@ -1033,35 +784,24 @@ nav a.activo{
 
 .cabecera-vista h1{
     font-size:27px;
-
     color:var(--azul-muy-oscuro);
 }
 
 .cabecera-vista p{
     margin-top:4px;
-
     font-size:11px;
-
     color:#638098;
 }
 
 .btn-vista{
     width:max-content;
-
     padding:8px 11px;
-
-    border:
-        1px solid #b9cfde;
-
     border-radius:8px;
-
+    border:1px solid #b9cfde;
     background:white;
-
     color:var(--azul-oscuro);
-
     font-size:10px;
     font-weight:700;
-
     cursor:pointer;
 }
 
@@ -1070,76 +810,50 @@ nav a.activo{
 }
 
 .titulo-listado{
-    margin-bottom:15px;
-
     text-align:center;
+    margin-bottom:15px;
 }
 
 .titulo-listado h2{
     font-size:15px;
-
     color:var(--azul-muy-oscuro);
 }
 
 .titulo-listado p{
     margin-top:3px;
-
     font-size:9px;
-
     color:#72899a;
 }
 
-
 /* =========================================================
-   PANTALLA SECTORES
+   SECTORES
 ========================================================= */
 
 .grid-sectores-app{
     width:min(1080px,100%);
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:11px;
 }
 
 .tarjeta-sector-app{
     min-height:88px;
-
     display:grid;
-
-    grid-template-columns:
-        43px
-        minmax(0,1fr)
-        30px;
-
+    grid-template-columns:43px minmax(0,1fr) 30px;
     align-items:center;
-
     gap:8px;
-
     padding:12px;
-
     background:white;
-
     border:1px solid #c8dae6;
-
     border-radius:11px;
-
-    box-shadow:
-        0 3px 11px rgba(8,43,76,.05);
-
+    box-shadow:0 3px 11px rgba(8,43,76,.05);
     cursor:pointer;
-
     transition:.15s ease;
 }
 
 .tarjeta-sector-app:hover{
     transform:translateY(-2px);
-
     border-color:#5492ba;
 }
 
@@ -1150,119 +864,89 @@ nav a.activo{
             #fffdf3,
             #fff2b7
         );
-
     border:1px solid #d4a62a;
-
     box-shadow:
         0 4px 13px rgba(175,128,21,.18);
 }
 
-.numero-sector{
-    width:34px;
-    height:34px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:#dfedf6;
-
-    color:var(--azul);
-
-    font-size:9px;
-    font-weight:900;
+.tarjeta-sector-app.completo:hover{
+    border-color:#b77f0b;
 }
 
 .tarjeta-sector-app.completo .numero-sector{
     background:#d7aa2c;
-
     color:white;
-}
-
-.datos-sector strong{
-    display:block;
-
-    font-size:12px;
-
-    color:var(--azul-muy-oscuro);
 }
 
 .tarjeta-sector-app.completo .datos-sector strong{
     color:#795508;
 }
 
+.tarjeta-sector-app.completo .progreso-sector-texto{
+    color:#9c7112 !important;
+}
+
+.numero-sector{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#dfedf6;
+    color:var(--azul);
+    font-size:9px;
+    font-weight:900;
+}
+
+.datos-sector strong{
+    display:block;
+    font-size:12px;
+    color:var(--azul-muy-oscuro);
+}
+
 .datos-sector span{
     display:block;
-
     margin-top:3px;
-
     font-size:9px;
-
     color:#768b9a;
 }
 
 .progreso-sector-texto{
     color:var(--azul) !important;
-
     font-weight:700;
-}
-
-.tarjeta-sector-app.completo .progreso-sector-texto{
-    color:#9c7112 !important;
 }
 
 .flecha-sector{
     text-align:right;
-
     font-size:22px;
-
     color:#5f95b7;
 }
 
 .copa-sector{
-    text-align:center;
-
     font-size:18px;
+    text-align:center;
 }
 
-
 /* =========================================================
-   PANTALLA CUMBRES
+   CUMBRES
 ========================================================= */
 
 .contenedor-cumbres{
     width:min(1000px,100%);
-
     margin:auto;
-
     padding:7px 16px;
-
     background:white;
-
     border:1px solid #cbdde9;
-
     border-radius:12px;
-
-    box-shadow:
-        0 4px 14px rgba(8,43,76,.06);
+    box-shadow:0 4px 14px rgba(8,43,76,.06);
 }
 
 .fila-cumbre-app{
     min-height:47px;
-
     display:grid;
-
-    grid-template-columns:
-        35px
-        minmax(0,1fr)
-        75px
-        42px;
-
+    grid-template-columns:35px minmax(0,1fr) 75px 42px;
     align-items:center;
-
     gap:8px;
-
     border-bottom:1px solid #e2eaef;
 }
 
@@ -1270,48 +954,34 @@ nav a.activo{
     border-bottom:none;
 }
 
-.fila-cumbre-app.conquistada{
-    background:#f3f9fc;
-}
-
 .numero-cumbre{
     text-align:center;
-
-    font-size:9px;
-
     color:#879ba9;
+    font-size:9px;
 }
 
 .nombre-cumbre-app{
     display:flex;
     align-items:center;
-
     gap:7px;
 }
 
 .nombre-cumbre-app strong{
     font-size:11px;
-
     color:#15364e;
 }
 
 .altitud-cumbre{
     text-align:right;
-
     font-size:10px;
-
     color:#687f90;
 }
 
 .marca-nueva{
     padding:2px 5px;
-
-    border-radius:8px;
-
     background:#ddecf6;
-
+    border-radius:8px;
     color:#17608e;
-
     font-size:6px;
     font-weight:900;
 }
@@ -1319,179 +989,29 @@ nav a.activo{
 .check-cima{
     width:29px;
     height:29px;
-
     justify-self:end;
-
-    border:1px solid #afc8d7;
-
     border-radius:7px;
-
+    border:1px solid #afc8d7;
     background:white;
-
     color:#a3b3be;
-
-    font-weight:900;
-
     cursor:pointer;
+    font-weight:900;
 }
 
 .check-cima.conquistada{
     background:var(--azul);
-
     border-color:var(--azul);
-
     color:white;
+}
+
+.fila-cumbre-app.conquistada{
+    background:#f3f9fc;
 }
 
 .sector-completado-cabecera{
     color:#a47712;
-
     font-weight:900;
 }
-
-
-/* =========================================================
-   PANTALLA COMPLETA DE LOGROS
-========================================================= */
-
-.grid-logros{
-    width:min(1050px,100%);
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:13px;
-}
-
-.tarjeta-logro{
-    min-height:125px;
-
-    display:grid;
-
-    grid-template-columns:
-        58px
-        minmax(0,1fr);
-
-    gap:14px;
-
-    align-items:center;
-
-    padding:17px;
-
-    background:white;
-
-    border:1px solid #cbdde9;
-
-    border-radius:13px;
-
-    box-shadow:
-        0 4px 13px rgba(8,43,76,.06);
-}
-
-.tarjeta-logro.conseguido{
-    background:
-        linear-gradient(
-            135deg,
-            #fffef6,
-            #fff2b9
-        );
-
-    border-color:#d2a529;
-
-    box-shadow:
-        0 4px 14px rgba(174,127,17,.15);
-}
-
-.icono-logro-grande{
-    width:52px;
-    height:52px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:#e6f1f7;
-
-    font-size:27px;
-}
-
-.tarjeta-logro.conseguido .icono-logro-grande{
-    background:#efd269;
-}
-
-.info-logro h3{
-    margin-bottom:5px;
-
-    font-size:14px;
-
-    color:var(--azul-muy-oscuro);
-}
-
-.tarjeta-logro.conseguido .info-logro h3{
-    color:#75520a;
-}
-
-.descripcion-logro{
-    margin-bottom:10px;
-
-    font-size:10px;
-
-    color:#718595;
-}
-
-.estado-logro{
-    display:flex;
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-bottom:5px;
-
-    font-size:9px;
-    font-weight:800;
-
-    color:#426781;
-}
-
-.tarjeta-logro.conseguido .estado-logro{
-    color:#956c10;
-}
-
-.barra-logro{
-    height:7px;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:#e0e8ed;
-}
-
-.barra-logro div{
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #145d96,
-            #51a0ce
-        );
-}
-
-.tarjeta-logro.conseguido .barra-logro div{
-    background:
-        linear-gradient(
-            90deg,
-            #bb8919,
-            #eccb59
-        );
-}
-
 
 /* =========================================================
    RESPONSIVE
@@ -1519,7 +1039,6 @@ nav a.activo{
     .elige{
         margin-top:7px;
         margin-bottom:6px;
-
         font-size:10px;
     }
 
@@ -1554,13 +1073,11 @@ nav a.activo{
 @media(max-width:1150px){
 
     .app{
-        grid-template-columns:
-            76px minmax(0,1fr);
+        grid-template-columns:76px minmax(0,1fr);
     }
 
     nav a{
         justify-content:center;
-
         padding:0;
     }
 
@@ -1571,83 +1088,50 @@ nav a.activo{
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 <div class="app">
 
-
-<!-- =====================================================
-     MENÚ
-===================================================== -->
-
 <aside class="sidebar">
 
     <div class="marca">
-
         <div class="logo-montana"></div>
-
-        <strong>
-            TACHANDO<br>
-            3000s
-        </strong>
-
+        <strong>TACHANDO<br>3000s</strong>
     </div>
-
 
     <nav>
 
-        <a
-            href="#"
-            id="menuInicio"
-            class="activo"
-        >
+        <a href="#" id="menuInicio" class="activo">
             <span class="icono">⌂</span>
             <span>Inicio</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuMis3000"
-        >
+        <a href="#" id="menuMis3000">
             <span class="icono">▲</span>
             <span>Mis 3000s</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuMapa"
-        >
+        <a href="#" id="menuMapa">
             <span class="icono">🗺</span>
             <span>Mapa</span>
         </a>
-
 
         <a href="#">
             <span class="icono">▥</span>
             <span>Estadísticas</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuLogros"
-        >
+        <a href="#" id="menuLogros">
             <span class="icono">🏆</span>
             <span>Logros</span>
         </a>
-
 
         <a href="#">
             <span class="icono">⚙</span>
             <span>Ajustes</span>
         </a>
-
 
         <a href="#">
             <span class="icono">⇅</span>
@@ -1658,66 +1142,30 @@ nav a.activo{
 
 </aside>
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
-<main
-    class="contenido"
-    id="contenidoPrincipal"
->
-
-
-<!-- =====================================================
-     INICIO
-===================================================== -->
+<main class="contenido" id="contenidoPrincipal">
 
 <section class="hero">
 
     <div class="hero-top">
-
-        <button class="boton-mini">
-            ? Ayuda
-        </button>
-
-        <button class="boton-mini">
-            ☰ Menú
-        </button>
-
+        <button class="boton-mini">? Ayuda</button>
+        <button class="boton-mini">☰ Menú</button>
     </div>
 
-
     <h1 class="titulo">
-
-        TACHANDO
-
-        <span>
-            3000s
-        </span>
-
+        TACHANDO <span>3000s</span>
     </h1>
-
 
     <p class="subtitulo">
         Tu reto, tus cumbres
     </p>
 
-
     <p class="elige">
         ELIGE LA LISTA QUE QUIERES COMPLETAR
     </p>
 
-
     <div class="zona-principal">
 
-
-        <!-- 217 -->
-
-        <div
-            class="tarjeta-lista actualizada"
-            id="tarjeta217"
-        >
+        <div class="tarjeta-lista actualizada" id="tarjeta217">
 
             <div class="lista-contenido">
 
@@ -1737,7 +1185,6 @@ nav a.activo{
 
             </div>
 
-
             <div class="lista-pie">
 
                 <span id="completados217">
@@ -1752,13 +1199,7 @@ nav a.activo{
 
         </div>
 
-
-        <!-- 212 -->
-
-        <div
-            class="tarjeta-lista historica"
-            id="tarjeta212"
-        >
+        <div class="tarjeta-lista historica" id="tarjeta212">
 
             <div class="lista-contenido">
 
@@ -1778,7 +1219,6 @@ nav a.activo{
 
             </div>
 
-
             <div class="lista-pie">
 
                 <span id="completados212">
@@ -1793,24 +1233,17 @@ nav a.activo{
 
         </div>
 
-
-        <!-- PROGRESO -->
-
         <div class="panel-progreso">
 
             <h3>
                 PROGRESO ACTUAL
             </h3>
 
-
             <div class="contador">
 
                 <span
                     id="progresoNumero"
-                    style="
-                        color:#145d96;
-                        font-size:32px;
-                    "
+                    style="color:#145d96;font-size:32px"
                 >
                     0
                 </span>
@@ -1821,11 +1254,9 @@ nav a.activo{
 
             </div>
 
-
             <div class="texto-completados">
                 TRESMILES COMPLETADOS
             </div>
-
 
             <div
                 class="porcentaje"
@@ -1834,26 +1265,20 @@ nav a.activo{
                 0 %
             </div>
 
-
             <div class="barra">
-
                 <div
                     id="barraGeneral"
                     style="width:0%"
                 ></div>
-
             </div>
 
-
             <div class="lista-activa">
-
                 Lista activa:
                 <br>
 
                 <strong id="textoListaActiva">
                     ACTUALIZADA (217)
                 </strong>
-
             </div>
 
         </div>
@@ -1862,15 +1287,7 @@ nav a.activo{
 
 </section>
 
-
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
-
 <section class="dashboard">
-
-
-    <!-- MAPA -->
 
     <div class="bloque">
 
@@ -1878,90 +1295,53 @@ nav a.activo{
             EL PIRINEO POR SECTORES
         </h2>
 
-
         <div class="mapa">
 
-            <button
-                class="sector-mapa"
-                data-sector="0"
-            >
+            <button class="sector-mapa" data-sector="0">
                 Balaitus
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="1"
-            >
+            <button class="sector-mapa" data-sector="1">
                 Panticosa
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="2"
-            >
+            <button class="sector-mapa" data-sector="2">
                 Vignemale
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="3"
-            >
+            <button class="sector-mapa" data-sector="3">
                 Ordesa
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="4"
-            >
+            <button class="sector-mapa" data-sector="4">
                 La Munia
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="5"
-            >
+            <button class="sector-mapa" data-sector="5">
                 Néouvielle
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="6"
-            >
+            <button class="sector-mapa" data-sector="6">
                 Bachimala
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="7"
-            >
+            <button class="sector-mapa" data-sector="7">
                 Posets
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="8"
-            >
+            <button class="sector-mapa" data-sector="8">
                 Perdiguero
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="9"
-            >
+            <button class="sector-mapa" data-sector="9">
                 Maladeta-Aneto
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="10"
-            >
+            <button class="sector-mapa" data-sector="10">
                 Besiberris
             </button>
 
-            <button
-                class="sector-mapa"
-                data-sector="11"
-            >
+            <button class="sector-mapa" data-sector="11">
                 Estats
             </button>
 
@@ -1969,11 +1349,7 @@ nav a.activo{
 
     </div>
 
-
-    <!-- CENTRO -->
-
     <div class="columna-central">
-
 
         <div class="bloque">
 
@@ -1984,7 +1360,6 @@ nav a.activo{
             <div id="resumenSectores"></div>
 
         </div>
-
 
         <div class="bloque">
 
@@ -1998,22 +1373,85 @@ nav a.activo{
 
     </div>
 
-
-    <!-- LOGROS -->
-
     <div class="bloque">
 
         <h2>
             LOGROS
         </h2>
 
-        <div
-            class="logros-inicio"
-            id="logrosInicio"
-        ></div>
+        <div class="logros-lista">
+
+            <div
+                class="logro"
+                id="cajaLogro1"
+            >
+                <span class="medalla">🏔</span>
+
+                <div>
+                    <strong>
+                        Mi primer tres mil
+                    </strong>
+
+                    <small id="logro1">
+                        Pendiente
+                    </small>
+                </div>
+            </div>
+
+            <div
+                class="logro"
+                id="cajaLogro25"
+            >
+                <span class="medalla">💯</span>
+
+                <div>
+                    <strong>
+                        Centenario de las cumbres
+                    </strong>
+
+                    <small id="logro25">
+                        Pendiente
+                    </small>
+                </div>
+            </div>
+
+            <div
+                class="logro"
+                id="cajaLogroSector"
+            >
+                <span class="medalla">🏆</span>
+
+                <div>
+                    <strong>
+                        Sector conquistado
+                    </strong>
+
+                    <small id="logroSector">
+                        Pendiente
+                    </small>
+                </div>
+            </div>
+
+            <div
+                class="logro"
+                id="cajaLogro100"
+            >
+                <span class="medalla">⭐</span>
+
+                <div>
+                    <strong>
+                        Doscientas razones para seguir
+                    </strong>
+
+                    <small id="logro100">
+                        Pendiente
+                    </small>
+                </div>
+            </div>
+
+        </div>
 
     </div>
-
 
 </section>
 
@@ -2021,9 +1459,7 @@ nav a.activo{
 
 </div>
 
-
 <script src="datos-tresmiles.js"></script>
-
 
 <script>
 
@@ -2032,11 +1468,8 @@ nav a.activo{
 ========================================================= */
 
 let listaActiva =
-    localStorage.getItem(
-        "tachando_lista"
-    )
-    ||
-    "217";
+    localStorage.getItem("tachando_lista")
+    || "217";
 
 
 let progreso =
@@ -2044,8 +1477,7 @@ let progreso =
         localStorage.getItem(
             "tachando_progreso_v1"
         )
-        ||
-        "{}"
+        || "{}"
     );
 
 
@@ -2080,43 +1512,37 @@ const menuLogros =
 
 
 /* =========================================================
-   NORMALIZACIÓN
+   NORMALIZAR
 ========================================================= */
 
 function normalizar(texto){
 
     return texto
         .toLowerCase()
-
         .normalize("NFD")
-
         .replace(
             /[\u0300-\u036f]/g,
             ""
         )
-
         .replace(
             /[´’']/g,
             ""
         )
-
         .replace(
             /lliterola/g,
             "literola"
         )
-
         .replace(
             /\s+/g,
             " "
         )
-
         .trim();
 
 }
 
 
 /* =========================================================
-   CLAVE DE UNA CUMBRE
+   CLAVE COMPARTIDA
 ========================================================= */
 
 function claveCima(
@@ -2185,11 +1611,7 @@ function claveCima(
         ];
 
 
-    if(
-        nombres.length
-        ===
-        1
-    ){
+    if(nombres.length === 1){
 
         return (
             indiceSector
@@ -2214,7 +1636,7 @@ function claveCima(
 
 
 /* =========================================================
-   GUARDAR PROGRESO
+   GUARDAR
 ========================================================= */
 
 function guardarProgreso(){
@@ -2228,7 +1650,7 @@ function guardarProgreso(){
 
 
 /* =========================================================
-   CUMBRES DE UN SECTOR
+   CUMBRES DE UNA LISTA
 ========================================================= */
 
 function cumbresSector(
@@ -2240,17 +1662,11 @@ function cumbresSector(
         TACHANDO_DATA[indice];
 
 
-    if(
-        lista
-        ===
-        "217"
-    ){
+    if(lista === "217"){
 
         return sector.a.filter(
             cima =>
-            cima[2]
-            ===
-            1
+            cima[2] === 1
         );
 
     }
@@ -2262,7 +1678,7 @@ function cumbresSector(
 
 
 /* =========================================================
-   ¿ESTÁ CONSEGUIDA?
+   CUMBRE CONSEGUIDA
 ========================================================= */
 
 function estaConquistada(
@@ -2304,9 +1720,7 @@ function alternarCima(
         );
 
 
-    if(
-        progreso[clave]
-    ){
+    if(progreso[clave]){
 
         delete progreso[clave];
 
@@ -2340,7 +1754,7 @@ function alternarCima(
 
 
 /* =========================================================
-   PROGRESO LISTA
+   PROGRESO GENERAL
 ========================================================= */
 
 function progresoLista(lista){
@@ -2400,7 +1814,7 @@ function progresoLista(lista){
 
 
 /* =========================================================
-   PROGRESO SECTOR
+   PROGRESO DEL SECTOR
 ========================================================= */
 
 function progresoDeSector(
@@ -2450,7 +1864,7 @@ function progresoDeSector(
 
 
 /* =========================================================
-   SECTOR COMPLETO
+   SECTOR COMPLETADO
 ========================================================= */
 
 function sectorCompleto(
@@ -2477,42 +1891,7 @@ function sectorCompleto(
 
 
 /* =========================================================
-   NÚMERO DE SECTORES COMPLETOS
-========================================================= */
-
-function contarSectoresCompletos(lista){
-
-    let total = 0;
-
-
-    TACHANDO_DATA.forEach(
-        function(
-            sector,
-            indice
-        ){
-
-            if(
-                sectorCompleto(
-                    indice,
-                    lista
-                )
-            ){
-
-                total++;
-
-            }
-
-        }
-    );
-
-
-    return total;
-
-}
-
-
-/* =========================================================
-   LISTA ACTIVA
+   SELECCIONAR LISTA
 ========================================================= */
 
 function seleccionarLista(lista){
@@ -2530,7 +1909,7 @@ function seleccionarLista(lista){
 
 
 /* =========================================================
-   BOTONES 217 / 212
+   TARJETAS 217 / 212
 ========================================================= */
 
 document
@@ -2660,7 +2039,8 @@ function mostrarSectores(){
     );
 
 
-    let tarjetas = "";
+    let tarjetas =
+        "";
 
 
     TACHANDO_DATA.forEach(
@@ -2704,9 +2084,9 @@ function mostrarSectores(){
             tarjetas += `
 
                 <div
-
                     class="
                         tarjeta-sector-app
+
                         ${
                             completo
                             ?
@@ -2723,7 +2103,11 @@ function mostrarSectores(){
                     "
                 >
 
-                    <div class="numero-sector">
+                    <div
+                        class="
+                            numero-sector
+                        "
+                    >
 
                         ${
                             String(
@@ -2738,18 +2122,19 @@ function mostrarSectores(){
                     </div>
 
 
-                    <div class="datos-sector">
+                    <div
+                        class="
+                            datos-sector
+                        "
+                    >
 
                         <strong>
                             ${sector.s}
                         </strong>
 
                         <span>
-
                             ${datos.total}
-
                             tresmiles
-
                         </span>
 
                         <span
@@ -2764,7 +2149,8 @@ function mostrarSectores(){
 
                             ·
 
-                            ${porcentaje} %
+                            ${porcentaje}
+                            %
 
                         </span>
 
@@ -2809,15 +2195,26 @@ function mostrarSectores(){
 
     contenido.innerHTML = `
 
-        <section class="vista-app">
+        <section
+            class="
+                vista-app
+            "
+        >
 
-
-            <div class="cabecera-vista">
-
+            <div
+                class="
+                    cabecera-vista
+                "
+            >
 
                 <button
-                    class="btn-vista"
-                    onclick="volverInicio()"
+                    class="
+                        btn-vista
+                    "
+
+                    onclick="
+                        volverInicio()
+                    "
                 >
                     ‹ Inicio
                 </button>
@@ -2867,11 +2264,14 @@ function mostrarSectores(){
                     Cambiar lista
                 </button>
 
-
             </div>
 
 
-            <div class="titulo-listado">
+            <div
+                class="
+                    titulo-listado
+                "
+            >
 
                 <h2>
                     SECTORES DEL PIRINEO
@@ -2889,9 +2289,10 @@ function mostrarSectores(){
                     grid-sectores-app
                 "
             >
-                ${tarjetas}
-            </div>
 
+                ${tarjetas}
+
+            </div>
 
         </section>
 
@@ -2936,7 +2337,8 @@ function mostrarSector(indice){
         );
 
 
-    let filas = "";
+    let filas =
+        "";
 
 
     cumbres.forEach(
@@ -2975,7 +2377,6 @@ function mostrarSector(indice){
             filas += `
 
                 <div
-
                     class="
                         fila-cumbre-app
 
@@ -2987,18 +2388,14 @@ function mostrarSector(indice){
                             ""
                         }
                     "
-
                 >
-
 
                     <div
                         class="
                             numero-cumbre
                         "
                     >
-
                         ${posicion+1}
-
                     </div>
 
 
@@ -3041,14 +2438,11 @@ function mostrarSector(indice){
                             altitud-cumbre
                         "
                     >
-
                         ${altitud}
-
                     </div>
 
 
                     <button
-
                         class="
                             check-cima
 
@@ -3068,11 +2462,9 @@ function mostrarSector(indice){
                                 ${JSON.stringify(altitud)}
                             )
                         '
-
                     >
                         ✓
                     </button>
-
 
                 </div>
 
@@ -3102,14 +2494,22 @@ function mostrarSector(indice){
 
     contenido.innerHTML = `
 
-        <section class="vista-app">
+        <section
+            class="
+                vista-app
+            "
+        >
 
-
-            <div class="cabecera-vista">
-
+            <div
+                class="
+                    cabecera-vista
+                "
+            >
 
                 <button
-                    class="btn-vista"
+                    class="
+                        btn-vista
+                    "
 
                     onclick="
                         mostrarSectores()
@@ -3174,7 +2574,8 @@ function mostrarSector(indice){
 
                         ·
 
-                        ${porcentaje} %
+                        ${porcentaje}
+                        %
 
                         ${
                             completo
@@ -3194,7 +2595,6 @@ function mostrarSector(indice){
 
 
                 <button
-
                     class="
                         btn-vista
                         btn-derecha
@@ -3209,7 +2609,6 @@ function mostrarSector(indice){
                     Cambiar lista
                 </button>
 
-
             </div>
 
 
@@ -3222,7 +2621,6 @@ function mostrarSector(indice){
                 ${filas}
 
             </div>
-
 
         </section>
 
@@ -3363,518 +2761,6 @@ function marcarMenu(zona){
 
 
 /* =========================================================
-   DEFINICIÓN OFICIAL DE LOGROS
-========================================================= */
-
-function obtenerLogros(){
-
-    const p217 =
-        progresoLista(
-            "217"
-        );
-
-
-    const p212 =
-        progresoLista(
-            "212"
-        );
-
-
-    const unicas =
-        Object.keys(
-            progreso
-        ).length;
-
-
-    const sectores217 =
-        contarSectoresCompletos(
-            "217"
-        );
-
-
-    const sectores212 =
-        contarSectoresCompletos(
-            "212"
-        );
-
-
-    const mejorSectores =
-        Math.max(
-            sectores217,
-            sectores212
-        );
-
-
-    const lista212Completa =
-        (
-            p212.completadas
-            ===
-            p212.total
-        );
-
-
-    const lista217Completa =
-        (
-            p217.completadas
-            ===
-            p217.total
-        );
-
-
-    return [
-
-
-        {
-
-            nombre:
-                "Mi primer tres mil",
-
-            descripcion:
-                "Alcanza tu primera cima de más de 3.000 metros.",
-
-            icono:
-                "🏔",
-
-            actual:
-                Math.min(
-                    unicas,
-                    1
-                ),
-
-            total:
-                1
-
-        },
-
-
-        {
-
-            nombre:
-                "Sector conquistado",
-
-            descripcion:
-                "Completa todas las cimas de un sector.",
-
-            icono:
-                "🏆",
-
-            actual:
-                Math.min(
-                    mejorSectores,
-                    1
-                ),
-
-            total:
-                1
-
-        },
-
-
-        {
-
-            nombre:
-                "Centenario de las cumbres",
-
-            descripcion:
-                "Alcanza las 100 cimas únicas ascendidas.",
-
-            icono:
-                "💯",
-
-            actual:
-                Math.min(
-                    unicas,
-                    100
-                ),
-
-            total:
-                100
-
-        },
-
-
-        {
-
-            nombre:
-                "A las puertas de la gloria",
-
-            descripcion:
-                "Conquista 11 de los 12 sectores.",
-
-            icono:
-                "🧭",
-
-            actual:
-                Math.min(
-                    mejorSectores,
-                    11
-                ),
-
-            total:
-                11
-
-        },
-
-
-        {
-
-            nombre:
-                "Doscientas razones para seguir",
-
-            descripcion:
-                "Alcanza las 200 cimas únicas ascendidas.",
-
-            icono:
-                "⭐",
-
-            actual:
-                Math.min(
-                    unicas,
-                    200
-                ),
-
-            total:
-                200
-
-        },
-
-
-        {
-
-            nombre:
-                "Lista oficial histórica",
-
-            descripcion:
-                "Completa los 212 tresmiles.",
-
-            icono:
-                "📜",
-
-            actual:
-                p212.completadas,
-
-            total:
-                p212.total
-
-        },
-
-
-        {
-
-            nombre:
-                "Lista actualizada",
-
-            descripcion:
-                "Completa los 217 tresmiles.",
-
-            icono:
-                "⛰️",
-
-            actual:
-                p217.completadas,
-
-            total:
-                p217.total
-
-        },
-
-
-        {
-
-            nombre:
-                "Maestro de los Pirineos",
-
-            descripcion:
-                "Completa ambas listas.",
-
-            icono:
-                "👑",
-
-            actual:
-                (
-                    lista212Completa
-                    ?
-                    1
-                    :
-                    0
-                )
-                +
-                (
-                    lista217Completa
-                    ?
-                    1
-                    :
-                    0
-                ),
-
-            total:
-                2
-
-        }
-
-    ]
-    .map(
-        logro => {
-
-            logro.porcentaje =
-                logro.total
-
-                ?
-
-                Math.min(
-                    100,
-                    (
-                        logro.actual
-                        /
-                        logro.total
-                        *
-                        100
-                    )
-                )
-
-                :
-
-                0;
-
-
-            logro.conseguido =
-                logro.actual
-                >=
-                logro.total;
-
-
-            return logro;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   PANTALLA COMPLETA DE LOGROS
-========================================================= */
-
-function mostrarLogros(){
-
-    marcarMenu(
-        "logros"
-    );
-
-
-    const logros =
-        obtenerLogros();
-
-
-    let html = "";
-
-
-    logros.forEach(
-        function(logro){
-
-            html += `
-
-                <div
-
-                    class="
-                        tarjeta-logro
-
-                        ${
-                            logro.conseguido
-                            ?
-                            "conseguido"
-                            :
-                            ""
-                        }
-                    "
-
-                >
-
-
-                    <div
-                        class="
-                            icono-logro-grande
-                        "
-                    >
-
-                        ${logro.icono}
-
-                    </div>
-
-
-                    <div
-                        class="
-                            info-logro
-                        "
-                    >
-
-
-                        <h3>
-                            ${logro.nombre}
-                        </h3>
-
-
-                        <div
-                            class="
-                                descripcion-logro
-                            "
-                        >
-
-                            ${logro.descripcion}
-
-                        </div>
-
-
-                        <div
-                            class="
-                                estado-logro
-                            "
-                        >
-
-                            <span>
-
-                                ${
-                                    logro.conseguido
-
-                                    ?
-
-                                    "CONSEGUIDO"
-
-                                    :
-
-                                    (
-                                        logro.actual
-                                        +
-                                        " / "
-                                        +
-                                        logro.total
-                                    )
-                                }
-
-                            </span>
-
-
-                            <span>
-
-                                ${
-                                    Math.round(
-                                        logro.porcentaje
-                                    )
-                                }
-                                %
-
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                barra-logro
-                            "
-                        >
-
-                            <div
-                                style="
-                                    width:
-                                    ${logro.porcentaje}%
-                                "
-                            ></div>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    contenido.innerHTML = `
-
-        <section class="vista-app">
-
-
-            <div class="cabecera-vista">
-
-
-                <button
-                    class="btn-vista"
-                    onclick="volverInicio()"
-                >
-                    ‹ Inicio
-                </button>
-
-
-                <div
-                    class="
-                        cabecera-vista-centro
-                    "
-                >
-
-                    <h1>
-                        LOGROS
-                    </h1>
-
-                    <p>
-                        Tu camino por los tresmiles del Pirineo
-                    </p>
-
-                </div>
-
-
-                <div></div>
-
-
-            </div>
-
-
-            <div class="titulo-listado">
-
-                <h2>
-                    TUS LOGROS
-                </h2>
-
-                <p>
-
-                    ${
-                        logros.filter(
-                            logro =>
-                            logro.conseguido
-                        ).length
-                    }
-
-                    de
-
-                    ${logros.length}
-
-                    conseguidos
-
-                </p>
-
-            </div>
-
-
-            <div class="grid-logros">
-
-                ${html}
-
-            </div>
-
-
-        </section>
-
-    `;
-
-}
-
-
-/* =========================================================
    TOP 6 SECTORES
 ========================================================= */
 
@@ -3977,7 +2863,8 @@ function actualizarTop6(){
         );
 
 
-    let html = "";
+    let html =
+        "";
 
 
     ranking.forEach(
@@ -3991,6 +2878,7 @@ function actualizarTop6(){
 
             const completo =
                 item.total > 0
+
                 &&
                 item.completadas
                 ===
@@ -4000,7 +2888,6 @@ function actualizarTop6(){
             html += `
 
                 <div
-
                     class="
                         fila-sector
 
@@ -4012,9 +2899,7 @@ function actualizarTop6(){
                             ""
                         }
                     "
-
                 >
-
 
                     <span>
 
@@ -4032,11 +2917,9 @@ function actualizarTop6(){
 
 
                     <span>
-
                         ${item.completadas}
                         /
                         ${item.total}
-
                     </span>
 
 
@@ -4057,12 +2940,8 @@ function actualizarTop6(){
 
 
                     <span>
-
-                        ${porcentaje}
-                        %
-
+                        ${porcentaje}%
                     </span>
-
 
                 </div>
 
@@ -4192,7 +3071,8 @@ function actualizarUltimasCumbres(){
     }
 
 
-    let html = "";
+    let html =
+        "";
 
 
     elementos.forEach(
@@ -4200,7 +3080,11 @@ function actualizarUltimasCumbres(){
 
             html += `
 
-                <div class="cumbre">
+                <div
+                    class="
+                        cumbre
+                    "
+                >
 
                     <div
                         class="
@@ -4238,40 +3122,458 @@ function actualizarUltimasCumbres(){
 
 
 /* =========================================================
-   4 LOGROS MÁS AVANZADOS EN INICIO
+   DATOS DE LOGROS
 ========================================================= */
 
-function actualizarLogrosInicio(){
+function datosLogros(){
 
-    const contenedor =
-        document.getElementById(
-            "logrosInicio"
+    const totalMarcadas =
+        Object.keys(
+            progreso
+        ).length;
+
+
+    const sectores217 =
+        TACHANDO_DATA.filter(
+            (
+                sector,
+                indice
+            )
+            =>
+            sectorCompleto(
+                indice,
+                "217"
+            )
+        ).length;
+
+
+    const sectores212 =
+        TACHANDO_DATA.filter(
+            (
+                sector,
+                indice
+            )
+            =>
+            sectorCompleto(
+                indice,
+                "212"
+            )
+        ).length;
+
+
+    const maxSectores =
+        Math.max(
+            sectores217,
+            sectores212
         );
 
 
+    const p217 =
+        progresoLista(
+            "217"
+        );
+
+
+    const p212 =
+        progresoLista(
+            "212"
+        );
+
+
+    const completa217 =
+        p217.total > 0
+
+        &&
+        p217.completadas
+        ===
+        p217.total;
+
+
+    const completa212 =
+        p212.total > 0
+
+        &&
+        p212.completadas
+        ===
+        p212.total;
+
+
+    return [
+
+
+        {
+
+            nombre:
+                "Mi primer tres mil",
+
+            descripcion:
+                "Alcanza tu primera cima de 3.000 metros.",
+
+            icono:
+                "🏔",
+
+            conseguido:
+                totalMarcadas
+                >=
+                1,
+
+            progreso:
+                Math.min(
+                    totalMarcadas,
+                    1
+                ),
+
+            objetivo:
+                1,
+
+            texto:
+                totalMarcadas
+                >=
+                1
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                "0 / 1"
+
+        },
+
+
+        {
+
+            nombre:
+                "Sector conquistado",
+
+            descripcion:
+                "Completa todas las cimas de un sector.",
+
+            icono:
+                "🏆",
+
+            conseguido:
+                maxSectores
+                >=
+                1,
+
+            progreso:
+                Math.min(
+                    maxSectores,
+                    1
+                ),
+
+            objetivo:
+                1,
+
+            texto:
+                maxSectores
+                >=
+                1
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                "0 / 1 sector"
+
+        },
+
+
+        {
+
+            nombre:
+                "Centenario de las cumbres",
+
+            descripcion:
+                "Alcanza las 100 cimas únicas ascendidas.",
+
+            icono:
+                "💯",
+
+            conseguido:
+                totalMarcadas
+                >=
+                100,
+
+            progreso:
+                Math.min(
+                    totalMarcadas,
+                    100
+                ),
+
+            objetivo:
+                100,
+
+            texto:
+                totalMarcadas
+                >=
+                100
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                totalMarcadas
+                +
+                " / 100"
+
+        },
+
+
+        {
+
+            nombre:
+                "A las puertas de la gloria",
+
+            descripcion:
+                "Conquista 11 de los 12 sectores.",
+
+            icono:
+                "⭐",
+
+            conseguido:
+                maxSectores
+                >=
+                11,
+
+            progreso:
+                Math.min(
+                    maxSectores,
+                    11
+                ),
+
+            objetivo:
+                11,
+
+            texto:
+                maxSectores
+                >=
+                11
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                maxSectores
+                +
+                " / 11 sectores"
+
+        },
+
+
+        {
+
+            nombre:
+                "Doscientas razones para seguir",
+
+            descripcion:
+                "Alcanza las 200 únicas cimas ascendidas.",
+
+            icono:
+                "⛰",
+
+            conseguido:
+                totalMarcadas
+                >=
+                200,
+
+            progreso:
+                Math.min(
+                    totalMarcadas,
+                    200
+                ),
+
+            objetivo:
+                200,
+
+            texto:
+                totalMarcadas
+                >=
+                200
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                totalMarcadas
+                +
+                " / 200"
+
+        },
+
+
+        {
+
+            nombre:
+                "Lista oficial histórica",
+
+            descripcion:
+                "Completa los 212 tresmiles.",
+
+            icono:
+                "📜",
+
+            conseguido:
+                completa212,
+
+            progreso:
+                p212.completadas,
+
+            objetivo:
+                p212.total,
+
+            texto:
+                completa212
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                p212.completadas
+                +
+                " / "
+                +
+                p212.total
+
+        },
+
+
+        {
+
+            nombre:
+                "Lista actualizada",
+
+            descripcion:
+                "Completa los 217 tresmiles.",
+
+            icono:
+                "🗻",
+
+            conseguido:
+                completa217,
+
+            progreso:
+                p217.completadas,
+
+            objetivo:
+                p217.total,
+
+            texto:
+                completa217
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                p217.completadas
+                +
+                " / "
+                +
+                p217.total
+
+        },
+
+
+        {
+
+            nombre:
+                "Maestro de los Pirineos",
+
+            descripcion:
+                "Completa ambas listas.",
+
+            icono:
+                "👑",
+
+            conseguido:
+                completa212
+                &&
+                completa217,
+
+            progreso:
+                (
+                    completa212
+                    ?
+                    1
+                    :
+                    0
+                )
+                +
+                (
+                    completa217
+                    ?
+                    1
+                    :
+                    0
+                ),
+
+            objetivo:
+                2,
+
+            texto:
+                completa212
+                &&
+                completa217
+
+                ?
+
+                "Conseguido"
+
+                :
+
+                (
+                    (
+                        completa212
+                        ?
+                        1
+                        :
+                        0
+                    )
+                    +
+                    (
+                        completa217
+                        ?
+                        1
+                        :
+                        0
+                    )
+                )
+                +
+                " / 2 listas"
+
+        }
+
+    ];
+
+}
+
+
+/* =========================================================
+   4 LOGROS RELEVANTES EN INICIO
+========================================================= */
+
+function actualizarLogros(){
+
     const logros =
-        obtenerLogros()
+        datosLogros();
 
 
-        .map(
-            (
-                logro,
-                indice
-            )
-            => {
-
-                return {
-
-                    ...logro,
-
-                    indice:
-                        indice
-
-                };
-
-            }
-        )
-
+    const relevantes =
+        [...logros]
 
         .sort(
             function(
@@ -4280,29 +3582,58 @@ function actualizarLogrosInicio(){
             ){
 
                 if(
-                    b.porcentaje
+                    a.conseguido
                     !==
-                    a.porcentaje
+                    b.conseguido
                 ){
 
                     return (
-                        b.porcentaje
-                        -
-                        a.porcentaje
+                        a.conseguido
+                        ?
+                        -1
+                        :
+                        1
                     );
 
                 }
 
 
+                const pa =
+                    a.objetivo
+
+                    ?
+
+                    a.progreso
+                    /
+                    a.objetivo
+
+                    :
+
+                    0;
+
+
+                const pb =
+                    b.objetivo
+
+                    ?
+
+                    b.progreso
+                    /
+                    b.objetivo
+
+                    :
+
+                    0;
+
+
                 return (
-                    a.indice
+                    pb
                     -
-                    b.indice
+                    pa
                 );
 
             }
         )
-
 
         .slice(
             0,
@@ -4310,99 +3641,359 @@ function actualizarLogrosInicio(){
         );
 
 
-    let html = "";
+    const cajas =
+        [
+
+            [
+                "cajaLogro1",
+                "logro1"
+            ],
+
+            [
+                "cajaLogro25",
+                "logro25"
+            ],
+
+            [
+                "cajaLogroSector",
+                "logroSector"
+            ],
+
+            [
+                "cajaLogro100",
+                "logro100"
+            ]
+
+        ];
 
 
-    logros.forEach(
-        function(logro){
+    cajas.forEach(
+        function(
+            ids,
+            indice
+        ){
 
-            html += `
-
-                <div
-
-                    class="
-                        logro-mini
-
-                        ${
-                            logro.conseguido
-                            ?
-                            "conseguido"
-                            :
-                            ""
-                        }
-                    "
-
-                >
+            const logro =
+                relevantes[indice];
 
 
-                    <div
-                        class="
-                            logro-mini-icono
-                        "
-                    >
-
-                        ${logro.icono}
-
-                    </div>
+            const caja =
+                document.getElementById(
+                    ids[0]
+                );
 
 
-                    <div>
+            if(
+                !caja
+                ||
+                !logro
+            ){
 
-                        <strong>
-                            ${logro.nombre}
-                        </strong>
+                return;
 
-                        <small>
-
-                            ${
-                                logro.conseguido
-
-                                ?
-
-                                "Conseguido"
-
-                                :
-
-                                (
-                                    logro.actual
-                                    +
-                                    " / "
-                                    +
-                                    logro.total
-                                )
-                            }
-
-                        </small>
-
-                    </div>
+            }
 
 
-                    <div
-                        class="
-                            logro-mini-porcentaje
-                        "
-                    >
-
-                        ${
-                            Math.round(
-                                logro.porcentaje
-                            )
-                        }
-                        %
-
-                    </div>
+            caja
+            .querySelector(
+                ".medalla"
+            )
+            .textContent =
+                logro.icono;
 
 
-                </div>
+            caja
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+                logro.nombre;
 
-            `;
+
+            marcarLogro(
+                ids[0],
+                ids[1],
+                logro.conseguido,
+                logro.texto
+            );
 
         }
     );
 
+}
 
-    contenedor.innerHTML =
-        html;
+
+/* =========================================================
+   PANTALLA COMPLETA DE LOGROS
+========================================================= */
+
+function mostrarLogros(){
+
+    document
+    .querySelectorAll(
+        "nav a"
+    )
+    .forEach(
+        enlace =>
+        enlace.classList.remove(
+            "activo"
+        )
+    );
+
+
+    menuLogros
+    .classList.add(
+        "activo"
+    );
+
+
+    const logros =
+        datosLogros();
+
+
+    const tarjetas =
+        logros.map(
+            logro => {
+
+                const porcentaje =
+                    logro.objetivo
+
+                    ?
+
+                    Math.min(
+                        100,
+                        (
+                            logro.progreso
+                            /
+                            logro.objetivo
+                        )
+                        *
+                        100
+                    )
+
+                    :
+
+                    0;
+
+
+                return `
+
+                    <div
+                        class="
+                            tarjeta-logro-app
+
+                            ${
+                                logro.conseguido
+                                ?
+                                "conseguido"
+                                :
+                                ""
+                            }
+                        "
+                    >
+
+                        <div
+                            class="
+                                icono-logro-app
+                            "
+                        >
+                            ${logro.icono}
+                        </div>
+
+
+                        <div
+                            class="
+                                datos-logro-app
+                            "
+                        >
+
+                            <strong>
+                                ${logro.nombre}
+                            </strong>
+
+
+                            <p>
+                                ${logro.descripcion}
+                            </p>
+
+
+                            <div
+                                class="
+                                    estado-logro-app
+                                "
+                            >
+
+                                <span>
+                                    ${logro.texto}
+                                </span>
+
+                                <span>
+
+                                    ${
+                                        Math.round(
+                                            porcentaje
+                                        )
+                                    }
+                                    %
+
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    barra-logro-app
+                                "
+                            >
+
+                                <div
+                                    style="
+                                        width:
+                                        ${porcentaje}%
+                                    "
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join(
+            ""
+        );
+
+
+    contenido.innerHTML = `
+
+        <section
+            class="
+                vista-app
+            "
+        >
+
+            <div
+                class="
+                    cabecera-vista
+                "
+            >
+
+                <button
+                    class="
+                        btn-vista
+                    "
+
+                    onclick="
+                        volverInicio()
+                    "
+                >
+                    ← Inicio
+                </button>
+
+
+                <div
+                    class="
+                        cabecera-vista-centro
+                    "
+                >
+
+                    <h1>
+                        LOGROS
+                    </h1>
+
+                    <p>
+                        Tu camino hacia la conquista de los tresmiles del Pirineo
+                    </p>
+
+                </div>
+
+
+                <div></div>
+
+            </div>
+
+
+            <div
+                class="
+                    grid-logros-app
+                "
+            >
+
+                ${tarjetas}
+
+            </div>
+
+        </section>
+
+    `;
+
+}
+
+
+/* =========================================================
+   MOSTRAR LOGRO EN INICIO
+========================================================= */
+
+function marcarLogro(
+    cajaId,
+    textoId,
+    conseguido,
+    texto
+){
+
+    const caja =
+        document.getElementById(
+            cajaId
+        );
+
+
+    const elementoTexto =
+        document.getElementById(
+            textoId
+        );
+
+
+    if(
+        !caja
+        ||
+        !elementoTexto
+    ){
+
+        return;
+
+    }
+
+
+    elementoTexto.textContent =
+        texto;
+
+
+    if(
+        conseguido
+    ){
+
+        caja
+        .classList
+        .add(
+            "conseguido"
+        );
+
+    }
+    else{
+
+        caja
+        .classList
+        .remove(
+            "conseguido"
+        );
+
+    }
 
 }
 
@@ -4529,7 +4120,9 @@ function actualizarInicio(){
     )
     .textContent =
         porcentaje
-        .toFixed(1)
+        .toFixed(
+            1
+        )
         .replace(
             ".",
             ","
@@ -4572,7 +4165,7 @@ function actualizarInicio(){
 
     actualizarMapa();
 
-    actualizarLogrosInicio();
+    actualizarLogros();
 
 }
 
@@ -4586,5 +4179,4 @@ actualizarInicio();
 </script>
 
 </body>
-
 </html>
