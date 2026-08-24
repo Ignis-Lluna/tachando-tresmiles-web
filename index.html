@@ -21,10 +21,13 @@
     --azul-hielo:#eef6fb;
     --blanco:#ffffff;
     --gris:#6f7d89;
-    --gris-claro:#e8edf1;
     --texto:#10293d;
     --fondo:#edf4f8;
-    --verde-logro:#2e8b57;
+
+    --oro:#d4a62a;
+    --oro-oscuro:#9c7112;
+    --oro-claro:#fff3bf;
+    --oro-fondo:#fff9df;
 }
 
 html,
@@ -41,7 +44,7 @@ body{
 }
 
 /* =========================================================
-   ESTRUCTURA GENERAL
+   ESTRUCTURA
 ========================================================= */
 
 .app{
@@ -51,10 +54,6 @@ body{
     grid-template-columns:150px minmax(0,1fr);
     overflow:hidden;
 }
-
-/* =========================================================
-   MENÚ LATERAL
-========================================================= */
 
 .sidebar{
     height:100dvh;
@@ -147,10 +146,6 @@ nav a.activo{
     font-size:16px;
 }
 
-/* =========================================================
-   CONTENIDO
-========================================================= */
-
 .contenido{
     height:100dvh;
     min-width:0;
@@ -158,10 +153,7 @@ nav a.activo{
     grid-template-rows:auto minmax(0,1fr);
     overflow:hidden;
     background:
-        linear-gradient(
-            rgba(240,247,251,.88),
-            rgba(234,243,248,.94)
-        ),
+        linear-gradient(rgba(240,247,251,.88),rgba(234,243,248,.94)),
         linear-gradient(135deg,#dbeaf4,#edf6fb);
 }
 
@@ -337,13 +329,8 @@ nav a.activo{
     width:62%;
     height:100%;
     clip-path:polygon(
-        0 100%,
-        19% 69%,
-        32% 78%,
-        50% 37%,
-        65% 64%,
-        82% 48%,
-        100% 100%
+        0 100%,19% 69%,32% 78%,50% 37%,
+        65% 64%,82% 48%,100% 100%
     );
 }
 
@@ -525,11 +512,26 @@ nav a.activo{
     font-weight:800;
     color:var(--azul-muy-oscuro);
     cursor:pointer;
+    transition:.15s ease;
 }
 
 .sector-mapa:hover{
     background:var(--azul-oscuro);
     color:white;
+    transform:translateY(-1px);
+}
+
+/* SECTOR COMPLETO EN MAPA */
+
+.sector-mapa.completo{
+    background:linear-gradient(180deg,#f5d76e,#d6a926);
+    border-color:#b68817;
+    color:#5d4305;
+    box-shadow:0 0 0 1px rgba(255,226,119,.7);
+}
+
+.sector-mapa.completo:before{
+    content:"🏆 ";
 }
 
 /* =========================================================
@@ -546,11 +548,20 @@ nav a.activo{
 
 .fila-sector{
     display:grid;
-    grid-template-columns:1fr 42px .75fr 30px;
+    grid-template-columns:1fr 42px .75fr 31px;
     gap:5px;
     align-items:center;
-    margin:6px 0;
-    font-size:9px;
+    margin:5px 0;
+    font-size:8px;
+}
+
+.fila-sector.completo{
+    color:var(--oro-oscuro);
+    font-weight:800;
+}
+
+.fila-sector.completo .mini-barra div{
+    background:linear-gradient(90deg,#d4a62a,#f2ce58);
 }
 
 .mini-barra{
@@ -580,6 +591,7 @@ nav a.activo{
 .cumbre-icono{
     width:27px;
     height:27px;
+    flex:0 0 27px;
     border-radius:50%;
     background:#e1eef6;
     display:grid;
@@ -620,6 +632,21 @@ nav a.activo{
     border-radius:7px;
     background:linear-gradient(90deg,#edf5fa,#f7fbfd);
     border:1px solid #dce8ef;
+    transition:.2s ease;
+}
+
+.logro.conseguido{
+    background:linear-gradient(90deg,#fff5c7,#fffaf0);
+    border-color:#dfbd55;
+}
+
+.logro.conseguido strong{
+    color:#805c0b;
+}
+
+.logro.conseguido small{
+    color:#a27917;
+    font-weight:800;
 }
 
 .medalla{
@@ -725,7 +752,7 @@ nav a.activo{
 .tarjeta-sector-app{
     min-height:88px;
     display:grid;
-    grid-template-columns:43px minmax(0,1fr) 22px;
+    grid-template-columns:43px minmax(0,1fr) 30px;
     align-items:center;
     gap:8px;
     padding:12px;
@@ -734,11 +761,43 @@ nav a.activo{
     border-radius:11px;
     box-shadow:0 3px 11px rgba(8,43,76,.05);
     cursor:pointer;
+    transition:.15s ease;
 }
 
 .tarjeta-sector-app:hover{
     transform:translateY(-2px);
     border-color:#5492ba;
+}
+
+/* SECTOR 100 % */
+
+.tarjeta-sector-app.completo{
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf3,
+            #fff2b7
+        );
+    border:1px solid #d4a62a;
+    box-shadow:
+        0 4px 13px rgba(175,128,21,.18);
+}
+
+.tarjeta-sector-app.completo:hover{
+    border-color:#b77f0b;
+}
+
+.tarjeta-sector-app.completo .numero-sector{
+    background:#d7aa2c;
+    color:white;
+}
+
+.tarjeta-sector-app.completo .datos-sector strong{
+    color:#795508;
+}
+
+.tarjeta-sector-app.completo .progreso-sector-texto{
+    color:#9c7112 !important;
 }
 
 .numero-sector{
@@ -775,6 +834,11 @@ nav a.activo{
     text-align:right;
     font-size:22px;
     color:#5f95b7;
+}
+
+.copa-sector{
+    font-size:18px;
+    text-align:center;
 }
 
 /* =========================================================
@@ -846,12 +910,6 @@ nav a.activo{
     color:#a3b3be;
     cursor:pointer;
     font-weight:900;
-    transition:.15s ease;
-}
-
-.check-cima:hover{
-    background:#e3f1f9;
-    color:#0b5688;
 }
 
 .check-cima.conquistada{
@@ -864,8 +922,9 @@ nav a.activo{
     background:#f3f9fc;
 }
 
-.fila-cumbre-app.conquistada .nombre-cumbre-app strong{
-    color:#426e8c;
+.sector-completado-cabecera{
+    color:#a47712;
+    font-weight:900;
 }
 
 /* =========================================================
@@ -922,6 +981,7 @@ nav a.activo{
     .porcentaje{
         font-size:21px;
     }
+
 }
 
 @media(max-width:1150px){
@@ -938,6 +998,7 @@ nav a.activo{
     nav a span:not(.icono){
         display:none;
     }
+
 }
 
 </style>
@@ -995,6 +1056,7 @@ nav a.activo{
 
 </aside>
 
+
 <main class="contenido" id="contenidoPrincipal">
 
 <section class="hero">
@@ -1021,67 +1083,124 @@ nav a.activo{
         <div class="tarjeta-lista actualizada" id="tarjeta217">
 
             <div class="lista-contenido">
-                <div class="lista-nombre">LISTA ACTUALIZADA</div>
-                <div class="lista-numero">217</div>
-                <div class="lista-sub">TRESMILES</div>
+
+                <div class="lista-nombre">
+                    LISTA ACTUALIZADA
+                </div>
+
+                <div class="lista-numero">
+                    217
+                </div>
+
+                <div class="lista-sub">
+                    TRESMILES
+                </div>
+
                 <div class="montanas"></div>
+
             </div>
 
             <div class="lista-pie">
-                <span id="completados217">0 completados</span>
-                <span id="pendientes217">217 pendientes</span>
+
+                <span id="completados217">
+                    0 completados
+                </span>
+
+                <span id="pendientes217">
+                    217 pendientes
+                </span>
+
             </div>
 
         </div>
+
 
         <div class="tarjeta-lista historica" id="tarjeta212">
 
             <div class="lista-contenido">
-                <div class="lista-nombre">LISTA HISTÓRICA</div>
-                <div class="lista-numero">212</div>
-                <div class="lista-sub">TRESMILES</div>
+
+                <div class="lista-nombre">
+                    LISTA HISTÓRICA
+                </div>
+
+                <div class="lista-numero">
+                    212
+                </div>
+
+                <div class="lista-sub">
+                    TRESMILES
+                </div>
+
                 <div class="montanas"></div>
+
             </div>
 
             <div class="lista-pie">
-                <span id="completados212">0 completados</span>
-                <span id="pendientes212">212 pendientes</span>
+
+                <span id="completados212">
+                    0 completados
+                </span>
+
+                <span id="pendientes212">
+                    212 pendientes
+                </span>
+
             </div>
 
         </div>
 
+
         <div class="panel-progreso">
 
-            <h3>PROGRESO ACTUAL</h3>
+            <h3>
+                PROGRESO ACTUAL
+            </h3>
 
             <div class="contador">
-                <span id="progresoNumero" style="color:#145d96;font-size:32px">
+
+                <span
+                    id="progresoNumero"
+                    style="
+                        color:#145d96;
+                        font-size:32px;
+                    "
+                >
                     0
                 </span>
 
                 <span id="progresoTotal">
                     / 217
                 </span>
+
             </div>
 
             <div class="texto-completados">
                 TRESMILES COMPLETADOS
             </div>
 
-            <div class="porcentaje" id="progresoPorcentaje">
+            <div
+                class="porcentaje"
+                id="progresoPorcentaje"
+            >
                 0 %
             </div>
 
             <div class="barra">
-                <div id="barraGeneral" style="width:0%"></div>
+                <div
+                    id="barraGeneral"
+                    style="width:0%"
+                ></div>
             </div>
 
             <div class="lista-activa">
+
                 Lista activa:
                 <br>
+
                 <strong id="textoListaActiva">
                     ACTUALIZADA (217)
                 </strong>
+
             </div>
 
         </div>
@@ -1090,44 +1209,88 @@ nav a.activo{
 
 </section>
 
+
 <section class="dashboard">
 
-    <div class="bloque bloque-mapa">
+    <div class="bloque">
 
-        <h2>EL PIRINEO POR SECTORES</h2>
+        <h2>
+            EL PIRINEO POR SECTORES
+        </h2>
 
         <div class="mapa">
 
-            <button class="sector-mapa" data-sector="0">Balaitus</button>
-            <button class="sector-mapa" data-sector="1">Panticosa</button>
-            <button class="sector-mapa" data-sector="2">Vignemale</button>
-            <button class="sector-mapa" data-sector="3">Ordesa</button>
-            <button class="sector-mapa" data-sector="4">La Munia</button>
-            <button class="sector-mapa" data-sector="5">Néouvielle</button>
-            <button class="sector-mapa" data-sector="6">Bachimala</button>
-            <button class="sector-mapa" data-sector="7">Posets</button>
-            <button class="sector-mapa" data-sector="8">Perdiguero</button>
-            <button class="sector-mapa" data-sector="9">Maladeta-Aneto</button>
-            <button class="sector-mapa" data-sector="10">Besiberris</button>
-            <button class="sector-mapa" data-sector="11">Estats</button>
+            <button class="sector-mapa" data-sector="0">
+                Balaitus
+            </button>
+
+            <button class="sector-mapa" data-sector="1">
+                Panticosa
+            </button>
+
+            <button class="sector-mapa" data-sector="2">
+                Vignemale
+            </button>
+
+            <button class="sector-mapa" data-sector="3">
+                Ordesa
+            </button>
+
+            <button class="sector-mapa" data-sector="4">
+                La Munia
+            </button>
+
+            <button class="sector-mapa" data-sector="5">
+                Néouvielle
+            </button>
+
+            <button class="sector-mapa" data-sector="6">
+                Bachimala
+            </button>
+
+            <button class="sector-mapa" data-sector="7">
+                Posets
+            </button>
+
+            <button class="sector-mapa" data-sector="8">
+                Perdiguero
+            </button>
+
+            <button class="sector-mapa" data-sector="9">
+                Maladeta-Aneto
+            </button>
+
+            <button class="sector-mapa" data-sector="10">
+                Besiberris
+            </button>
+
+            <button class="sector-mapa" data-sector="11">
+                Estats
+            </button>
 
         </div>
 
     </div>
 
+
     <div class="columna-central">
 
         <div class="bloque">
 
-            <h2>PROGRESO POR SECTORES</h2>
+            <h2>
+                PROGRESO POR SECTORES
+            </h2>
 
             <div id="resumenSectores"></div>
 
         </div>
 
+
         <div class="bloque">
 
-            <h2>ÚLTIMAS CUMBRES TACHADAS</h2>
+            <h2>
+                ÚLTIMAS CUMBRES TACHADAS
+            </h2>
 
             <div id="ultimasCumbres"></div>
 
@@ -1135,38 +1298,60 @@ nav a.activo{
 
     </div>
 
+
     <div class="bloque">
 
-        <h2>LOGROS</h2>
+        <h2>
+            LOGROS
+        </h2>
 
         <div class="logros-lista">
 
-            <div class="logro">
-                <span class="medalla">🏆</span>
+            <div
+                class="logro"
+                id="cajaLogro1"
+            >
+                <span class="medalla">🏔</span>
+
                 <div>
                     <strong>Primer 3000</strong>
                     <small id="logro1">Pendiente</small>
                 </div>
             </div>
 
-            <div class="logro">
+
+            <div
+                class="logro"
+                id="cajaLogro25"
+            >
                 <span class="medalla">🥉</span>
+
                 <div>
                     <strong>25 cumbres</strong>
                     <small id="logro25">Pendiente</small>
                 </div>
             </div>
 
-            <div class="logro">
-                <span class="medalla">🥈</span>
+
+            <div
+                class="logro"
+                id="cajaLogroSector"
+            >
+                <span class="medalla">🏆</span>
+
                 <div>
-                    <strong>50 cumbres</strong>
-                    <small id="logro50">Pendiente</small>
+                    <strong>Primer sector completo</strong>
+                    <small id="logroSector">Pendiente</small>
                 </div>
             </div>
 
-            <div class="logro">
-                <span class="medalla">🏔</span>
+
+            <div
+                class="logro"
+                id="cajaLogro100"
+            >
+                <span class="medalla">⭐</span>
+
                 <div>
                     <strong>100 tresmiles</strong>
                     <small id="logro100">Pendiente</small>
@@ -1183,38 +1368,55 @@ nav a.activo{
 
 </div>
 
+
 <script src="datos-tresmiles.js"></script>
 
 <script>
 
 /* =========================================================
-   CONFIGURACIÓN Y ALMACENAMIENTO
+   DATOS LOCALES
 ========================================================= */
 
 let listaActiva =
-    localStorage.getItem("tachando_lista") || "217";
+    localStorage.getItem("tachando_lista")
+    || "217";
+
 
 let progreso =
     JSON.parse(
-        localStorage.getItem("tachando_progreso_v1") || "{}"
+        localStorage.getItem(
+            "tachando_progreso_v1"
+        )
+        || "{}"
     );
 
 
 const contenido =
-    document.getElementById("contenidoPrincipal");
+    document.getElementById(
+        "contenidoPrincipal"
+    );
+
 
 const menuInicio =
-    document.getElementById("menuInicio");
+    document.getElementById(
+        "menuInicio"
+    );
+
 
 const menuMis3000 =
-    document.getElementById("menuMis3000");
+    document.getElementById(
+        "menuMis3000"
+    );
+
 
 const menuMapa =
-    document.getElementById("menuMapa");
+    document.getElementById(
+        "menuMapa"
+    );
 
 
 /* =========================================================
-   NORMALIZACIÓN DE NOMBRES
+   NORMALIZAR
 ========================================================= */
 
 function normalizar(texto){
@@ -1222,7 +1424,10 @@ function normalizar(texto){
     return texto
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g,"")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
         .replace(/[´’']/g,"")
         .replace(/lliterola/g,"literola")
         .replace(/\s+/g," ")
@@ -1232,79 +1437,90 @@ function normalizar(texto){
 
 
 /* =========================================================
-   IDENTIFICADOR COMPARTIDO 217 / 212
+   CLAVE COMPARTIDA
 ========================================================= */
 
-function claveCima(indiceSector,nombre,altitud){
+function claveCima(
+    indiceSector,
+    nombre,
+    altitud
+){
 
     const sector =
         TACHANDO_DATA[indiceSector];
 
-    const nombreNormal =
-        normalizar(nombre);
-
-    /*
-       Primero buscamos coincidencia exacta
-       del nombre normalizado.
-    */
 
     const todas =
         [
-            ...sector.a.map(c=>[c[0],c[1]]),
+            ...sector.a.map(
+                c => [c[0],c[1]]
+            ),
             ...sector.h
         ];
+
+
+    const nombreNormal =
+        normalizar(nombre);
+
 
     const exacta =
         todas.find(
             c =>
-            normalizar(c[0]) === nombreNormal
+            normalizar(c[0])
+            ===
+            nombreNormal
         );
+
 
     if(exacta){
 
         return (
-            indiceSector +
-            "|" +
+            indiceSector
+            +
+            "|"
+            +
             normalizar(exacta[0])
         );
 
     }
 
 
-    /*
-       Si el nombre difiere entre 212 y 217,
-       intentamos relacionarlo por altitud
-       siempre que esa altitud sea única
-       dentro del sector.
-    */
-
     const mismaAltitud =
         todas.filter(
-            c => c[1] === altitud
+            c =>
+            c[1] === altitud
         );
 
-    const nombresUnicos =
-        [...new Set(
-            mismaAltitud.map(
-                c => normalizar(c[0])
+
+    const nombres =
+        [
+            ...new Set(
+                mismaAltitud.map(
+                    c =>
+                    normalizar(c[0])
+                )
             )
-        )];
+        ];
 
 
-    if(nombresUnicos.length === 1){
+    if(nombres.length === 1){
 
         return (
-            indiceSector +
-            "|" +
-            nombresUnicos[0]
+            indiceSector
+            +
+            "|"
+            +
+            nombres[0]
         );
 
     }
 
 
     return (
-        indiceSector +
-        "|" +
+        indiceSector
+        +
+        "|"
+        +
         nombreNormal
     );
 
@@ -1312,7 +1528,7 @@ function claveCima(indiceSector,nombre,altitud){
 
 
 /* =========================================================
-   GUARDAR PROGRESO
+   GUARDAR
 ========================================================= */
 
 function guardarProgreso(){
@@ -1326,22 +1542,27 @@ function guardarProgreso(){
 
 
 /* =========================================================
-   OBTENER CUMBRES DE UNA LISTA
+   CUMBRES DE UNA LISTA
 ========================================================= */
 
-function cumbresSector(indiceSector,lista){
+function cumbresSector(
+    indice,
+    lista
+){
 
     const sector =
-        TACHANDO_DATA[indiceSector];
+        TACHANDO_DATA[indice];
+
 
     if(lista === "217"){
 
-        return sector.a
-            .filter(
-                cima => cima[2] === 1
-            );
+        return sector.a.filter(
+            cima =>
+            cima[2] === 1
+        );
 
     }
+
 
     return sector.h;
 
@@ -1349,21 +1570,22 @@ function cumbresSector(indiceSector,lista){
 
 
 /* =========================================================
-   ESTADO DE UNA CUMBRE
+   CUMBRE CONSEGUIDA
 ========================================================= */
 
 function estaConquistada(
-    indiceSector,
+    indice,
     nombre,
     altitud
 ){
 
     const clave =
         claveCima(
-            indiceSector,
+            indice,
             nombre,
             altitud
         );
+
 
     return Boolean(
         progreso[clave]
@@ -1373,18 +1595,18 @@ function estaConquistada(
 
 
 /* =========================================================
-   ALTERNAR CUMBRE
+   MARCAR / DESMARCAR
 ========================================================= */
 
 function alternarCima(
-    indiceSector,
+    indice,
     nombre,
     altitud
 ){
 
     const clave =
         claveCima(
-            indiceSector,
+            indice,
             nombre,
             altitud
         );
@@ -1398,10 +1620,15 @@ function alternarCima(
     else{
 
         progreso[clave] = {
+
             fecha:Date.now(),
+
             nombre:nombre,
+
             altitud:altitud,
-            sector:indiceSector
+
+            sector:indice
+
         };
 
     }
@@ -1409,13 +1636,13 @@ function alternarCima(
 
     guardarProgreso();
 
-    mostrarSector(indiceSector);
+    mostrarSector(indice);
 
 }
 
 
 /* =========================================================
-   CONTAR PROGRESO
+   PROGRESO GENERAL
 ========================================================= */
 
 function progresoLista(lista){
@@ -1428,9 +1655,14 @@ function progresoLista(lista){
         function(sector,indice){
 
             const cumbres =
-                cumbresSector(indice,lista);
+                cumbresSector(
+                    indice,
+                    lista
+                );
 
-            total += cumbres.length;
+
+            total +=
+                cumbres.length;
 
 
             cumbres.forEach(
@@ -1464,13 +1696,20 @@ function progresoLista(lista){
 
 
 /* =========================================================
-   PROGRESO DE UN SECTOR
+   PROGRESO DEL SECTOR
 ========================================================= */
 
-function progresoDeSector(indice,lista){
+function progresoDeSector(
+    indice,
+    lista
+){
 
     const cumbres =
-        cumbresSector(indice,lista);
+        cumbresSector(
+            indice,
+            lista
+        );
+
 
     let completadas = 0;
 
@@ -1495,20 +1734,84 @@ function progresoDeSector(indice,lista){
 
 
     return {
+
         completadas,
-        total:cumbres.length
+
+        total:
+            cumbres.length
+
     };
 
 }
 
 
 /* =========================================================
-   SELECCIONAR LISTA
+   PORCENTAJE
+========================================================= */
+
+function porcentajeSector(
+    indice,
+    lista
+){
+
+    const datos =
+        progresoDeSector(
+            indice,
+            lista
+        );
+
+
+    if(!datos.total){
+        return 0;
+    }
+
+
+    return (
+        datos.completadas
+        /
+        datos.total
+        *
+        100
+    );
+
+}
+
+
+/* =========================================================
+   SECTOR COMPLETADO
+========================================================= */
+
+function sectorCompleto(
+    indice,
+    lista
+){
+
+    const datos =
+        progresoDeSector(
+            indice,
+            lista
+        );
+
+
+    return (
+        datos.total > 0
+        &&
+        datos.completadas
+        ===
+        datos.total
+    );
+
+}
+
+
+/* =========================================================
+   SELECCIÓN LISTA
 ========================================================= */
 
 function seleccionarLista(lista){
 
     listaActiva = lista;
+
 
     localStorage.setItem(
         "tachando_lista",
@@ -1595,7 +1898,9 @@ menuMapa.addEventListener(
 ========================================================= */
 
 document
-.querySelectorAll(".sector-mapa")
+.querySelectorAll(
+    ".sector-mapa"
+)
 .forEach(
     function(boton){
 
@@ -1617,12 +1922,13 @@ document
 
 
 /* =========================================================
-   PANTALLA DE SECTORES
+   SECTORES
 ========================================================= */
 
 function mostrarSectores(){
 
     marcarMenu("mis");
+
 
     let tarjetas = "";
 
@@ -1636,29 +1942,60 @@ function mostrarSectores(){
                     listaActiva
                 );
 
+
             const porcentaje =
                 datos.total
-                ? Math.round(
-                    datos.completadas /
-                    datos.total *
+                ?
+                Math.round(
+                    datos.completadas
+                    /
+                    datos.total
+                    *
                     100
                 )
-                : 0;
+                :
+                0;
+
+
+            const completo =
+                sectorCompleto(
+                    indice,
+                    listaActiva
+                );
 
 
             tarjetas += `
 
                 <div
-                    class="tarjeta-sector-app"
-                    onclick="mostrarSector(${indice})"
+                    class="
+                        tarjeta-sector-app
+                        ${
+                            completo
+                            ? "completo"
+                            : ""
+                        }
+                    "
+                    onclick="
+                        mostrarSector(
+                            ${indice}
+                        )
+                    "
                 >
 
                     <div class="numero-sector">
+
                         ${
-                            String(indice+1)
-                            .padStart(2,"0")
+                            String(
+                                indice+1
+                            )
+                            .padStart(
+                                2,
+                                "0"
+                            )
                         }
+
                     </div>
+
 
                     <div class="datos-sector">
 
@@ -1667,10 +2004,18 @@ function mostrarSectores(){
                         </strong>
 
                         <span>
-                            ${datos.total} tresmiles
+
+                            ${datos.total}
+
+                            tresmiles
+
                         </span>
 
-                        <span class="progreso-sector-texto">
+                        <span
+                            class="
+                                progreso-sector-texto
+                            "
+                        >
 
                             ${datos.completadas}
                             /
@@ -1684,9 +2029,30 @@ function mostrarSectores(){
 
                     </div>
 
-                    <div class="flecha-sector">
-                        ›
-                    </div>
+
+                    ${
+                        completo
+
+                        ? `
+                            <div
+                                class="
+                                    copa-sector
+                                "
+                            >
+                                🏆
+                            </div>
+                          `
+
+                        : `
+                            <div
+                                class="
+                                    flecha-sector
+                                "
+                            >
+                                ›
+                            </div>
+                          `
+                    }
 
                 </div>
 
@@ -1719,11 +2085,15 @@ function mostrarSectores(){
                     <p>
 
                         ${
-                            listaActiva === "217"
+                            listaActiva
+                            ===
+                            "217"
 
-                            ? "Lista Actualizada · 217 tresmiles"
+                            ?
+                            "Lista Actualizada · 217 tresmiles"
 
-                            : "Lista Histórica · 212 tresmiles"
+                            :
+                            "Lista Histórica · 212 tresmiles"
                         }
 
                     </p>
@@ -1732,7 +2102,10 @@ function mostrarSectores(){
 
 
                 <button
-                    class="btn-vista btn-derecha"
+                    class="
+                        btn-vista
+                        btn-derecha
+                    "
                     onclick="cambiarLista()"
                 >
                     Cambiar lista
@@ -1754,10 +2127,12 @@ function mostrarSectores(){
             </div>
 
 
-            <div class="grid-sectores-app">
-
+            <div
+                class="
+                    grid-sectores-app
+                "
+            >
                 ${tarjetas}
-
             </div>
 
         </section>
@@ -1768,15 +2143,17 @@ function mostrarSectores(){
 
 
 /* =========================================================
-   PANTALLA DE UN SECTOR
+   SECTOR
 ========================================================= */
 
 function mostrarSector(indice){
 
     marcarMenu("mis");
 
+
     const sector =
         TACHANDO_DATA[indice];
+
 
     const cumbres =
         cumbresSector(
@@ -1784,11 +2161,20 @@ function mostrarSector(indice){
             listaActiva
         );
 
-    const datosSector =
+
+    const datos =
         progresoDeSector(
             indice,
             listaActiva
         );
+
+
+    const completo =
+        sectorCompleto(
+            indice,
+            listaActiva
+        );
+
 
     let filas = "";
 
@@ -1799,13 +2185,16 @@ function mostrarSector(indice){
             const nombre =
                 cima[0];
 
+
             const altitud =
                 cima[1];
 
-            const nueva217 =
+
+            const nueva =
                 listaActiva === "217"
                 &&
                 cima[3] === 1;
+
 
             const conquistada =
                 estaConquistada(
@@ -1817,37 +2206,61 @@ function mostrarSector(indice){
 
             filas += `
 
-                <div class="
-                    fila-cumbre-app
-                    ${conquistada ? "conquistada" : ""}
-                ">
+                <div
+                    class="
+                        fila-cumbre-app
+                        ${
+                            conquistada
+                            ? "conquistada"
+                            : ""
+                        }
+                    "
+                >
 
-                    <div class="numero-cumbre">
+                    <div
+                        class="
+                            numero-cumbre
+                        "
+                    >
                         ${posicion+1}
                     </div>
 
 
-                    <div class="nombre-cumbre-app">
+                    <div
+                        class="
+                            nombre-cumbre-app
+                        "
+                    >
 
                         <strong>
                             ${nombre}
                         </strong>
 
+
                         ${
-                            nueva217
+                            nueva
 
                             ? `
-                                <span class="marca-nueva">
+                                <span
+                                    class="
+                                        marca-nueva
+                                    "
+                                >
                                     NUEVA 217
                                 </span>
                               `
+
                             : ""
                         }
 
                     </div>
 
 
-                    <div class="altitud-cumbre">
+                    <div
+                        class="
+                            altitud-cumbre
+                        "
+                    >
                         ${altitud}
                     </div>
 
@@ -1855,20 +2268,19 @@ function mostrarSector(indice){
                     <button
                         class="
                             check-cima
-                            ${conquistada ? "conquistada" : ""}
-                        "
-                        onclick='alternarCima(
-                            ${indice},
-                            ${JSON.stringify(nombre)},
-                            ${JSON.stringify(altitud)}
-                        )'
-                        title="
                             ${
                                 conquistada
-                                ? "Desmarcar"
-                                : "Marcar como conseguida"
+                                ? "conquistada"
+                                : ""
                             }
                         "
+                        onclick='
+                            alternarCima(
+                                ${indice},
+                                ${JSON.stringify(nombre)},
+                                ${JSON.stringify(altitud)}
+                            )
+                        '
                     >
                         ✓
                     </button>
@@ -1882,13 +2294,17 @@ function mostrarSector(indice){
 
 
     const porcentaje =
-        datosSector.total
-        ? Math.round(
-            datosSector.completadas /
-            datosSector.total *
+        datos.total
+        ?
+        Math.round(
+            datos.completadas
+            /
+            datos.total
+            *
             100
         )
-        : 0;
+        :
+        0;
 
 
     contenido.innerHTML = `
@@ -1908,30 +2324,55 @@ function mostrarSector(indice){
                 <div class="cabecera-vista-centro">
 
                     <h1>
+
+                        ${
+                            completo
+                            ? "🏆 "
+                            : ""
+                        }
+
                         ${sector.s}
+
                     </h1>
 
-                    <p>
+
+                    <p
+                        class="
+                            ${
+                                completo
+                                ? "sector-completado-cabecera"
+                                : ""
+                            }
+                        "
+                    >
 
                         ${
                             listaActiva === "217"
 
-                            ? "Lista Actualizada 217"
+                            ?
+                            "Lista Actualizada 217"
 
-                            : "Lista Histórica 212"
+                            :
+                            "Lista Histórica 212"
                         }
 
                         ·
 
-                        ${datosSector.completadas}
+                        ${datos.completadas}
                         /
-                        ${datosSector.total}
-
-                        completados
+                        ${datos.total}
 
                         ·
 
                         ${porcentaje} %
+
+                        ${
+                            completo
+                            ?
+                            " · SECTOR COMPLETADO"
+                            :
+                            ""
+                        }
 
                     </p>
 
@@ -1939,8 +2380,15 @@ function mostrarSector(indice){
 
 
                 <button
-                    class="btn-vista btn-derecha"
-                    onclick="cambiarListaSector(${indice})"
+                    class="
+                        btn-vista
+                        btn-derecha
+                    "
+                    onclick="
+                        cambiarListaSector(
+                            ${indice}
+                        )
+                    "
                 >
                     Cambiar lista
                 </button>
@@ -1948,10 +2396,12 @@ function mostrarSector(indice){
             </div>
 
 
-            <div class="contenedor-cumbres">
-
+            <div
+                class="
+                    contenedor-cumbres
+                "
+            >
                 ${filas}
-
             </div>
 
         </section>
@@ -1969,13 +2419,17 @@ function cambiarLista(){
 
     listaActiva =
         listaActiva === "217"
-        ? "212"
-        : "217";
+        ?
+        "212"
+        :
+        "217";
+
 
     localStorage.setItem(
         "tachando_lista",
         listaActiva
     );
+
 
     mostrarSectores();
 
@@ -1986,13 +2440,17 @@ function cambiarListaSector(indice){
 
     listaActiva =
         listaActiva === "217"
-        ? "212"
-        : "217";
+        ?
+        "212"
+        :
+        "217";
+
 
     localStorage.setItem(
         "tachando_lista",
         listaActiva
     );
+
 
     mostrarSector(indice);
 
@@ -2000,7 +2458,7 @@ function cambiarListaSector(indice){
 
 
 /* =========================================================
-   VOLVER A INICIO
+   VOLVER
 ========================================================= */
 
 function volverInicio(){
@@ -2020,20 +2478,26 @@ function marcarMenu(zona){
     .querySelectorAll("nav a")
     .forEach(
         enlace =>
-        enlace.classList.remove("activo")
+        enlace.classList.remove(
+            "activo"
+        )
     );
 
 
     if(zona === "mis"){
 
         menuMis3000
-        .classList.add("activo");
+        .classList.add(
+            "activo"
+        );
 
     }
     else{
 
         menuInicio
-        .classList.add("activo");
+        .classList.add(
+            "activo"
+        );
 
     }
 
@@ -2041,7 +2505,7 @@ function marcarMenu(zona){
 
 
 /* =========================================================
-   ACTUALIZAR PANTALLA DE INICIO
+   INICIO
 ========================================================= */
 
 function actualizarInicio(){
@@ -2049,92 +2513,136 @@ function actualizarInicio(){
     const p217 =
         progresoLista("217");
 
+
     const p212 =
         progresoLista("212");
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "completados217"
-    ).textContent =
-        p217.completadas +
+    )
+    .textContent =
+        p217.completadas
+        +
         " completados";
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "pendientes217"
-    ).textContent =
-        (p217.total-p217.completadas) +
+    )
+    .textContent =
+        (
+            p217.total
+            -
+            p217.completadas
+        )
+        +
         " pendientes";
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "completados212"
-    ).textContent =
-        p212.completadas +
+    )
+    .textContent =
+        p212.completadas
+        +
         " completados";
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "pendientes212"
-    ).textContent =
-        (p212.total-p212.completadas) +
+    )
+    .textContent =
+        (
+            p212.total
+            -
+            p212.completadas
+        )
+        +
         " pendientes";
 
 
     const actual =
         listaActiva === "217"
-        ? p217
-        : p212;
+        ?
+        p217
+        :
+        p212;
 
 
     const porcentaje =
         actual.total
-        ? (
-            actual.completadas /
-            actual.total *
-            100
-          )
-        : 0;
+        ?
+        actual.completadas
+        /
+        actual.total
+        *
+        100
+        :
+        0;
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "progresoNumero"
-    ).textContent =
+    )
+    .textContent =
         actual.completadas;
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "progresoTotal"
-    ).textContent =
-        "/ " + actual.total;
+    )
+    .textContent =
+        "/ "
+        +
+        actual.total;
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "progresoPorcentaje"
-    ).textContent =
+    )
+    .textContent =
         porcentaje
         .toFixed(1)
-        .replace(".",",") +
+        .replace(".",",")
+        +
         " %";
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "barraGeneral"
-    ).style.width =
-        porcentaje + "%";
+    )
+    .style.width =
+        porcentaje
+        +
+        "%";
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "textoListaActiva"
-    ).textContent =
+    )
+    .textContent =
         listaActiva === "217"
-        ? "ACTUALIZADA (217)"
-        : "HISTÓRICA (212)";
+        ?
+        "ACTUALIZADA (217)"
+        :
+        "HISTÓRICA (212)";
 
 
-    actualizarResumenSectores();
+    actualizarTop6();
 
     actualizarUltimasCumbres();
+
+    actualizarMapa();
 
     actualizarLogros();
 
@@ -2142,68 +2650,174 @@ function actualizarInicio(){
 
 
 /* =========================================================
-   RESUMEN DE SECTORES EN INICIO
+   TOP 6 SECTORES
 ========================================================= */
 
-function actualizarResumenSectores(){
+function actualizarTop6(){
 
     const contenedor =
         document.getElementById(
             "resumenSectores"
         );
 
-    /*
-       Mostramos cuatro sectores.
-       Más adelante podemos decidir cuáles.
-    */
 
-    const indices =
-        [0,1,2,3];
+    const ranking =
+        TACHANDO_DATA
+        .map(
+            function(sector,indice){
+
+                const datos =
+                    progresoDeSector(
+                        indice,
+                        listaActiva
+                    );
+
+
+                const porcentaje =
+                    datos.total
+                    ?
+                    datos.completadas
+                    /
+                    datos.total
+                    *
+                    100
+                    :
+                    0;
+
+
+                return {
+
+                    indice,
+
+                    nombre:
+                        sector.s,
+
+                    completadas:
+                        datos.completadas,
+
+                    total:
+                        datos.total,
+
+                    porcentaje
+
+                };
+
+            }
+        )
+        .sort(
+            function(a,b){
+
+                /*
+                Primero:
+                mayor porcentaje.
+
+                En empate:
+                orden oeste → este.
+                */
+
+                if(
+                    b.porcentaje
+                    !==
+                    a.porcentaje
+                ){
+
+                    return (
+                        b.porcentaje
+                        -
+                        a.porcentaje
+                    );
+
+                }
+
+
+                return (
+                    a.indice
+                    -
+                    b.indice
+                );
+
+            }
+        )
+        .slice(0,6);
+
 
     let html = "";
 
 
-    indices.forEach(
-        function(indice){
+    ranking.forEach(
+        function(item){
 
-            const datos =
-                progresoDeSector(
-                    indice,
-                    listaActiva
+            const porcentajeRedondo =
+                Math.round(
+                    item.porcentaje
                 );
 
-            const porcentaje =
-                datos.total
-                ? Math.round(
-                    datos.completadas /
-                    datos.total *
-                    100
-                )
-                : 0;
+
+            const completo =
+                item.total > 0
+                &&
+                item.completadas
+                ===
+                item.total;
 
 
             html += `
 
-                <div class="fila-sector">
+                <div
+                    class="
+                        fila-sector
+                        ${
+                            completo
+                            ?
+                            "completo"
+                            :
+                            ""
+                        }
+                    "
+                >
 
                     <span>
-                        ${TACHANDO_DATA[indice].s}
+
+                        ${
+                            completo
+                            ?
+                            "🏆 "
+                            :
+                            ""
+                        }
+
+                        ${item.nombre}
+
                     </span>
+
 
                     <span>
-                        ${datos.completadas}/${datos.total}
+
+                        ${item.completadas}
+                        /
+                        ${item.total}
+
                     </span>
 
-                    <div class="mini-barra">
+
+                    <div
+                        class="
+                            mini-barra
+                        "
+                    >
 
                         <div
-                            style="width:${porcentaje}%"
+                            style="
+                                width:
+                                ${porcentajeRedondo}%
+                            "
                         ></div>
 
                     </div>
 
+
                     <span>
-                        ${porcentaje}%
+                        ${porcentajeRedondo}%
                     </span>
 
                 </div>
@@ -2216,6 +2830,51 @@ function actualizarResumenSectores(){
 
     contenedor.innerHTML =
         html;
+
+}
+
+
+/* =========================================================
+   MAPA DORADO
+========================================================= */
+
+function actualizarMapa(){
+
+    document
+    .querySelectorAll(
+        ".sector-mapa"
+    )
+    .forEach(
+        function(boton){
+
+            const indice =
+                Number(
+                    boton.dataset.sector
+                );
+
+
+            if(
+                sectorCompleto(
+                    indice,
+                    listaActiva
+                )
+            ){
+
+                boton.classList.add(
+                    "completo"
+                );
+
+            }
+            else{
+
+                boton.classList.remove(
+                    "completo"
+                );
+
+            }
+
+        }
+    );
 
 }
 
@@ -2236,7 +2895,8 @@ function actualizarUltimasCumbres(){
         Object.values(progreso)
         .filter(
             elemento =>
-            elemento &&
+            elemento
+            &&
             elemento.fecha
         )
         .sort(
@@ -2246,7 +2906,11 @@ function actualizarUltimasCumbres(){
         .slice(0,3);
 
 
-    if(elementos.length === 0){
+    if(
+        elementos.length
+        ===
+        0
+    ){
 
         contenedor.innerHTML = `
 
@@ -2257,7 +2921,8 @@ function actualizarUltimasCumbres(){
                     padding-top:8px;
                 "
             >
-                Todavía no has tachado ninguna cumbre.
+                Todavía no has tachado
+                ninguna cumbre.
             </div>
 
         `;
@@ -2275,9 +2940,15 @@ function actualizarUltimasCumbres(){
 
             html += `
 
-                <div class="cumbre">
+                <div
+                    class="cumbre"
+                >
 
-                    <div class="cumbre-icono">
+                    <div
+                        class="
+                            cumbre-icono
+                        "
+                    >
                         ▲
                     </div>
 
@@ -2308,51 +2979,162 @@ function actualizarUltimasCumbres(){
 
 
 /* =========================================================
-   LOGROS BÁSICOS
+   LOGROS
 ========================================================= */
 
 function actualizarLogros(){
 
-    const totalUnico =
-        Object.keys(progreso).length;
+    /*
+       Número de cumbres únicas
+       realmente marcadas.
+    */
+
+    const totalMarcadas =
+        Object.keys(
+            progreso
+        ).length;
 
 
-    document.getElementById(
-        "logro1"
-    ).textContent =
-        totalUnico >= 1
-        ? "Conseguido"
-        : "Pendiente";
+    /*
+       Para el logro de sector,
+       basta completar un sector
+       en cualquiera de las listas.
+    */
+
+    let primerSector =
+        null;
 
 
-    document.getElementById(
-        "logro25"
-    ).textContent =
-        totalUnico >= 25
-        ? "Conseguido"
-        : "Pendiente";
+    TACHANDO_DATA.some(
+        function(sector,indice){
+
+            const completo217 =
+                sectorCompleto(
+                    indice,
+                    "217"
+                );
 
 
-    document.getElementById(
-        "logro50"
-    ).textContent =
-        totalUnico >= 50
-        ? "Conseguido"
-        : "Pendiente";
+            const completo212 =
+                sectorCompleto(
+                    indice,
+                    "212"
+                );
 
 
-    document.getElementById(
-        "logro100"
-    ).textContent =
-        totalUnico >= 100
-        ? "Conseguido"
-        : "Pendiente";
+            if(
+                completo217
+                ||
+                completo212
+            ){
+
+                primerSector =
+                    sector.s;
+
+                return true;
+
+            }
+
+
+            return false;
+
+        }
+    );
+
+
+    marcarLogro(
+        "cajaLogro1",
+        "logro1",
+        totalMarcadas >= 1,
+        "Conseguido"
+    );
+
+
+    marcarLogro(
+        "cajaLogro25",
+        "logro25",
+        totalMarcadas >= 25,
+        totalMarcadas >= 25
+        ?
+        "Conseguido"
+        :
+        totalMarcadas + " / 25"
+    );
+
+
+    marcarLogro(
+        "cajaLogroSector",
+        "logroSector",
+        Boolean(primerSector),
+        primerSector
+        ?
+        primerSector
+        :
+        "Pendiente"
+    );
+
+
+    marcarLogro(
+        "cajaLogro100",
+        "logro100",
+        totalMarcadas >= 100,
+        totalMarcadas >= 100
+        ?
+        "Conseguido"
+        :
+        totalMarcadas + " / 100"
+    );
 
 }
 
 
 /* =========================================================
-   INICIO DE LA APP
+   MOSTRAR LOGRO
+========================================================= */
+
+function marcarLogro(
+    cajaId,
+    textoId,
+    conseguido,
+    texto
+){
+
+    const caja =
+        document.getElementById(
+            cajaId
+        );
+
+
+    const elementoTexto =
+        document.getElementById(
+            textoId
+        );
+
+
+    elementoTexto.textContent =
+        texto;
+
+
+    if(conseguido){
+
+        caja.classList.add(
+            "conseguido"
+        );
+
+    }
+    else{
+
+        caja.classList.remove(
+            "conseguido"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   ARRANQUE
 ========================================================= */
 
 actualizarInicio();
