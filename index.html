@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tachando 3000s</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -39,56 +42,75 @@ body{
     background:var(--fondo);
 }
 
-/* =========================
+/* =========================================================
    ESTRUCTURA GENERAL
-========================= */
+========================================================= */
 
 .app{
     width:100%;
     height:100dvh;
+
     display:grid;
     grid-template-columns:150px minmax(0,1fr);
+
     overflow:hidden;
 }
 
-/* =========================
+/* =========================================================
    MENÚ LATERAL
-========================= */
+========================================================= */
 
 .sidebar{
     height:100dvh;
+
     background:rgba(255,255,255,.97);
+
     border-right:1px solid #cad8e2;
+
     display:flex;
     flex-direction:column;
+
     overflow:hidden;
 }
 
 .marca{
     height:110px;
     flex:0 0 110px;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     border-bottom:1px solid #d9e4eb;
-    background:linear-gradient(180deg,#f7fbfe,#eef6fb);
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbfe,
+            #eef6fb
+        );
 }
 
 .logo-montana{
     position:relative;
+
     width:54px;
     height:33px;
+
     margin-bottom:6px;
 }
 
 .logo-montana:before,
 .logo-montana:after{
     content:"";
+
     position:absolute;
     bottom:0;
+
     width:0;
     height:0;
+
     border-left:16px solid transparent;
     border-right:16px solid transparent;
     border-bottom:29px solid var(--azul-oscuro);
@@ -100,77 +122,104 @@ body{
 
 .logo-montana:after{
     right:1px;
+
     transform:scale(.78);
     transform-origin:bottom;
+
     opacity:.78;
 }
 
 .marca strong{
     text-align:center;
+
     font-size:15px;
     line-height:1.05;
+
     color:var(--azul-muy-oscuro);
+
     letter-spacing:.3px;
 }
 
 nav{
     flex:1;
+
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
+
     padding:5px 0 8px;
 }
 
 nav a{
     min-height:42px;
+
     display:flex;
     align-items:center;
+
     gap:10px;
+
     padding:0 14px;
+
     text-decoration:none;
+
     color:#18354b;
+
     font-size:12px;
+
     border-left:4px solid transparent;
+
     transition:.15s ease;
 }
 
 nav a:hover,
 nav a.activo{
     background:#e5f1f8;
+
     border-left-color:var(--azul);
+
     color:var(--azul-muy-oscuro);
 }
 
 .icono{
     width:22px;
+
     text-align:center;
+
     font-size:16px;
 }
 
-/* =========================
+/* =========================================================
    CONTENIDO
-========================= */
+========================================================= */
 
 .contenido{
     height:100dvh;
+    min-width:0;
+
     display:grid;
     grid-template-rows:auto minmax(0,1fr);
-    min-width:0;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             rgba(240,247,251,.88),
             rgba(234,243,248,.94)
         ),
-        linear-gradient(135deg,#dbeaf4,#edf6fb);
+        linear-gradient(
+            135deg,
+            #dbeaf4,
+            #edf6fb
+        );
 }
 
-/* =========================
-   CABECERA
-========================= */
+/* =========================================================
+   CABECERA INICIO
+========================================================= */
 
 .hero{
     padding:7px 26px 10px;
+
     background:
         radial-gradient(
             circle at 50% -10%,
@@ -178,34 +227,48 @@ nav a.activo{
             rgba(230,242,249,.83) 46%,
             rgba(187,215,232,.76) 100%
         );
+
     border-bottom:1px solid #c8dbe8;
 }
 
 .hero-top{
     height:28px;
+
     display:flex;
     justify-content:flex-end;
+
     gap:7px;
 }
 
 .boton-mini{
     height:27px;
+
     padding:0 10px;
+
     border-radius:7px;
+
     border:1px solid #b9cfde;
+
     background:rgba(255,255,255,.88);
+
     font-size:10px;
     font-weight:700;
+
     color:var(--azul-muy-oscuro);
+
     cursor:pointer;
 }
 
 .titulo{
     text-align:center;
+
     font-size:clamp(34px,3.8vw,54px);
     line-height:.95;
+
     font-weight:900;
+
     letter-spacing:1px;
+
     color:var(--azul-muy-oscuro);
 }
 
@@ -215,55 +278,85 @@ nav a.activo{
 
 .subtitulo{
     text-align:center;
+
     margin-top:4px;
+
     font-size:16px;
+
     color:#23445d;
 }
 
 .elige{
     text-align:center;
+
     margin-top:10px;
     margin-bottom:8px;
+
     font-size:12px;
     font-weight:800;
+
     color:var(--azul-muy-oscuro);
 }
 
 .zona-principal{
     width:min(1160px,100%);
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:1fr 1fr .78fr;
+
+    grid-template-columns:
+        1fr
+        1fr
+        .78fr;
+
     gap:13px;
 }
 
-/* =========================
-   TARJETAS LISTAS
-========================= */
+/* =========================================================
+   TARJETAS 217 / 212
+========================================================= */
 
 .tarjeta-lista,
 .panel-progreso{
     height:181px;
+
     border-radius:13px;
+
     overflow:hidden;
-    box-shadow:0 6px 17px rgba(8,43,76,.12);
+
+    box-shadow:
+        0 6px 17px rgba(8,43,76,.12);
 }
 
 .tarjeta-lista{
     display:flex;
     flex-direction:column;
+
     cursor:pointer;
+
     transition:.16s ease;
 }
 
 .tarjeta-lista:hover{
     transform:translateY(-2px);
-    box-shadow:0 9px 22px rgba(8,43,76,.17);
+
+    box-shadow:
+        0 9px 22px rgba(8,43,76,.17);
 }
 
+/* 217 */
+
 .actualizada{
-    background:linear-gradient(180deg,#174f7e,#0c3b67);
+    background:
+        linear-gradient(
+            180deg,
+            #174f7e,
+            #0c3b67
+        );
+
     color:white;
+
     border:1px solid #2e6690;
 }
 
@@ -277,8 +370,16 @@ nav a.activo{
     background:#082d50;
 }
 
+/* 212 */
+
 .historica{
-    background:linear-gradient(180deg,#f6fbfe,#dceaf3);
+    background:
+        linear-gradient(
+            180deg,
+            #f6fbfe,
+            #dceaf3
+        );
+
     border:1px solid #b8cddb;
 }
 
@@ -297,46 +398,61 @@ nav a.activo{
 
 .lista-contenido{
     flex:1;
+
     position:relative;
+
     text-align:center;
+
     padding:10px 15px 0;
+
     overflow:hidden;
 }
 
 .lista-nombre{
     font-size:13px;
     font-weight:900;
+
     letter-spacing:.2px;
 }
 
 .lista-numero{
     font-size:43px;
     line-height:1;
+
     font-weight:900;
+
     margin-top:5px;
 }
 
 .lista-sub{
     font-size:10px;
     font-weight:800;
+
     margin-top:1px;
 }
 
+/* Montañas tarjetas */
+
 .montanas{
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     height:55px;
 }
 
 .montanas:before,
 .montanas:after{
     content:"";
+
     position:absolute;
     bottom:0;
+
     width:62%;
     height:100%;
+
     clip-path:polygon(
         0 100%,
         19% 69%,
@@ -350,114 +466,148 @@ nav a.activo{
 
 .actualizada .montanas:before{
     left:-4%;
+
     background:#1f679c;
+
     opacity:.70;
 }
 
 .actualizada .montanas:after{
     right:-5%;
+
     background:#0b3156;
+
     opacity:.85;
 }
 
 .historica .montanas:before{
     left:-4%;
+
     background:#a9c4d7;
+
     opacity:.8;
 }
 
 .historica .montanas:after{
     right:-5%;
+
     background:#779eb8;
+
     opacity:.7;
 }
 
 .lista-pie{
     height:31px;
     flex:0 0 31px;
+
     color:white;
+
     display:flex;
     align-items:center;
     justify-content:space-around;
+
     font-size:9px;
 }
 
-/* =========================
+/* =========================================================
    PROGRESO GENERAL
-========================= */
+========================================================= */
 
 .panel-progreso{
     padding:10px 14px;
+
     text-align:center;
+
     background:rgba(255,255,255,.96);
+
     border:1px solid #c2d4df;
 }
 
 .panel-progreso h3{
     font-size:11px;
+
     color:var(--azul-muy-oscuro);
+
     margin-bottom:5px;
 }
 
 .contador{
     font-size:32px;
     line-height:1;
+
     font-weight:900;
+
     color:var(--azul);
 }
 
 .contador span{
     color:#7d8992;
+
     font-size:20px;
 }
 
 .texto-completados{
     margin-top:3px;
+
     font-size:8px;
     font-weight:700;
 }
 
 .porcentaje{
     margin-top:7px;
+
     font-size:25px;
     line-height:1;
+
     font-weight:900;
+
     color:#2b75a9;
 }
 
 .barra{
     height:8px;
+
     margin-top:7px;
+
     border-radius:20px;
+
     background:#dfe5e8;
+
     overflow:hidden;
 }
 
 .barra div{
     width:44.7%;
     height:100%;
-    background:linear-gradient(90deg,#0b4c7d,#3a89bd);
+
+    background:
+        linear-gradient(
+            90deg,
+            #0b4c7d,
+            #3a89bd
+        );
 }
 
 .lista-activa{
     margin-top:6px;
     padding-top:5px;
+
     border-top:1px solid #dde5e9;
+
     font-size:8px;
 }
 
-/* =========================================
-   ZONA INFERIOR V6
-   MAPA | DOS PANELES APILADOS | LOGROS
-========================================= */
+/* =========================================================
+   DASHBOARD
+========================================================= */
 
 .dashboard{
     min-height:0;
+
     padding:9px 16px 11px;
 
     display:grid;
 
-    /* El mapa ocupa aproximadamente la mitad */
     grid-template-columns:
         minmax(0,1.75fr)
         minmax(260px,.95fr)
@@ -466,6 +616,7 @@ nav a.activo{
     gap:11px;
 
     align-items:stretch;
+
     overflow:hidden;
 }
 
@@ -476,11 +627,13 @@ nav a.activo{
     background:rgba(255,255,255,.95);
 
     border:1px solid #cbdbe5;
+
     border-radius:11px;
 
     padding:10px;
 
-    box-shadow:0 4px 12px rgba(10,45,70,.06);
+    box-shadow:
+        0 4px 12px rgba(10,45,70,.06);
 
     overflow:hidden;
 
@@ -491,13 +644,15 @@ nav a.activo{
 .bloque h2{
     font-size:11px;
     line-height:1.1;
+
     color:var(--azul-muy-oscuro);
+
     margin-bottom:8px;
 }
 
-/* =========================
-   MAPA GRANDE V6
-========================= */
+/* =========================================================
+   MAPA INICIO
+========================================================= */
 
 .bloque-mapa{
     height:100%;
@@ -506,17 +661,24 @@ nav a.activo{
 .mapa{
     flex:1;
     min-height:0;
+
     position:relative;
 
     border-radius:8px;
 
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    grid-template-rows:
+        repeat(2,auto);
+
     align-content:center;
 
     gap:8px;
-    padding:12px;
+
+    padding:28px 12px 70px;
 
     background:
         linear-gradient(
@@ -532,17 +694,19 @@ nav a.activo{
     overflow:hidden;
 }
 
-/* Silueta pirenaica provisional */
-
 .mapa:before{
     content:"";
+
     position:absolute;
+
     left:3%;
     right:3%;
     bottom:10%;
-    height:44%;
 
-    background:rgba(61,115,151,.16);
+    height:38%;
+
+    background:
+        rgba(61,115,151,.17);
 
     clip-path:polygon(
         0 87%,
@@ -567,26 +731,47 @@ nav a.activo{
     );
 }
 
-.sector{
+.sector-mapa{
     position:relative;
+
     z-index:2;
 
-    padding:6px 10px;
+    min-width:0;
 
-    background:rgba(255,255,255,.91);
+    padding:6px 5px;
 
-    border:1px solid rgba(112,150,174,.28);
+    background:
+        rgba(255,255,255,.92);
+
+    border:
+        1px solid rgba(112,150,174,.30);
+
     border-radius:25px;
 
-    font-size:9px;
+    font-size:8px;
     font-weight:800;
 
-    color:var(--azul-muy-oscuro);
+    color:
+        var(--azul-muy-oscuro);
+
+    cursor:pointer;
+
+    transition:.15s ease;
 }
 
-/* =========================
-   COLUMNA CENTRAL APILADA
-========================= */
+.sector-mapa:hover{
+    background:
+        var(--azul-oscuro);
+
+    color:white;
+
+    transform:
+        translateY(-2px);
+}
+
+/* =========================================================
+   COLUMNA CENTRAL
+========================================================= */
 
 .columna-central{
     min-width:0;
@@ -601,53 +786,75 @@ nav a.activo{
     gap:11px;
 }
 
-/* =========================
-   PROGRESO POR SECTORES
-========================= */
+/* =========================================================
+   PROGRESO SECTORES
+========================================================= */
 
 .lista-sectores{
     flex:1;
+
     min-height:0;
 }
 
 .fila-sector{
     display:grid;
-    grid-template-columns:1fr 37px .75fr 29px;
+
+    grid-template-columns:
+        1fr
+        37px
+        .75fr
+        29px;
+
     gap:5px;
+
     align-items:center;
+
     margin:6px 0;
+
     font-size:9px;
 }
 
 .mini-barra{
     height:5px;
+
     background:#dce4e9;
+
     border-radius:10px;
+
     overflow:hidden;
 }
 
 .mini-barra div{
     height:100%;
-    background:linear-gradient(90deg,#165c8d,#4d91bd);
+
+    background:
+        linear-gradient(
+            90deg,
+            #165c8d,
+            #4d91bd
+        );
 }
 
-/* =========================
+/* =========================================================
    ÚLTIMAS CUMBRES
-========================= */
+========================================================= */
 
 .lista-cumbres{
     flex:1;
+
     min-height:0;
 }
 
 .cumbre{
     display:flex;
     align-items:center;
+
     gap:7px;
 
     padding:5px 0;
 
-    border-bottom:1px solid #e2eaef;
+    border-bottom:
+        1px solid #e2eaef;
 }
 
 .cumbre:last-child{
@@ -657,6 +864,7 @@ nav a.activo{
 .cumbre-icono{
     width:27px;
     height:27px;
+
     flex:0 0 27px;
 
     border-radius:50%;
@@ -666,25 +874,29 @@ nav a.activo{
     display:grid;
     place-items:center;
 
-    color:var(--azul-oscuro);
+    color:
+        var(--azul-oscuro);
 
     font-size:12px;
 }
 
 .cumbre strong{
     display:block;
+
     font-size:9px;
 }
 
 .cumbre small{
     display:block;
+
     color:#758590;
+
     font-size:8px;
 }
 
-/* =========================
+/* =========================================================
    LOGROS
-========================= */
+========================================================= */
 
 .logros-lista{
     flex:1;
@@ -709,32 +921,376 @@ nav a.activo{
 
     border-radius:7px;
 
-    background:linear-gradient(90deg,#edf5fa,#f7fbfd);
+    background:
+        linear-gradient(
+            90deg,
+            #edf5fa,
+            #f7fbfd
+        );
 
     border:1px solid #dce8ef;
 }
 
 .medalla{
     width:24px;
+
     text-align:center;
+
     font-size:17px;
 }
 
 .logro strong{
     display:block;
+
     font-size:9px;
 }
 
 .logro small{
     display:block;
+
     margin-top:1px;
+
     color:#71818d;
+
     font-size:8px;
 }
 
-/* =========================
-   PANTALLAS MÁS BAJAS
-========================= */
+/* =========================================================
+   PANTALLAS SECUNDARIAS
+========================================================= */
+
+.vista-app{
+    height:100dvh;
+
+    padding:18px 28px;
+
+    overflow:auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eaf5fb,
+            #f6fafc
+        );
+}
+
+.cabecera-vista{
+    min-height:82px;
+
+    display:grid;
+
+    grid-template-columns:
+        150px
+        1fr
+        150px;
+
+    align-items:center;
+
+    padding:12px 18px;
+
+    margin-bottom:18px;
+
+    background:white;
+
+    border:
+        1px solid #cbdde9;
+
+    border-radius:13px;
+
+    box-shadow:
+        0 4px 14px rgba(8,43,76,.07);
+}
+
+.cabecera-vista-centro{
+    text-align:center;
+}
+
+.cabecera-vista h1{
+    font-size:27px;
+
+    color:
+        var(--azul-muy-oscuro);
+}
+
+.cabecera-vista p{
+    margin-top:4px;
+
+    font-size:11px;
+
+    color:#638098;
+}
+
+.btn-vista{
+    width:max-content;
+
+    padding:8px 11px;
+
+    border-radius:8px;
+
+    border:1px solid #b9cfde;
+
+    background:white;
+
+    color:
+        var(--azul-oscuro);
+
+    font-size:10px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.btn-vista:hover{
+    background:#e7f3fa;
+}
+
+.btn-derecha{
+    justify-self:end;
+}
+
+.titulo-listado{
+    text-align:center;
+
+    margin-bottom:15px;
+}
+
+.titulo-listado h2{
+    font-size:15px;
+
+    color:
+        var(--azul-muy-oscuro);
+}
+
+.titulo-listado p{
+    margin-top:3px;
+
+    font-size:9px;
+
+    color:#72899a;
+}
+
+/* =========================================================
+   PANTALLA 12 SECTORES
+========================================================= */
+
+.grid-sectores-app{
+    width:min(1080px,100%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:11px;
+}
+
+.tarjeta-sector-app{
+    min-height:88px;
+
+    display:grid;
+
+    grid-template-columns:
+        43px
+        minmax(0,1fr)
+        22px;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px;
+
+    background:white;
+
+    border:
+        1px solid #c8dae6;
+
+    border-radius:11px;
+
+    box-shadow:
+        0 3px 11px rgba(8,43,76,.05);
+
+    cursor:pointer;
+
+    transition:.15s ease;
+}
+
+.tarjeta-sector-app:hover{
+    transform:
+        translateY(-2px);
+
+    border-color:#5492ba;
+
+    box-shadow:
+        0 6px 15px rgba(8,43,76,.10);
+}
+
+.numero-sector{
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:#dfedf6;
+
+    color:
+        var(--azul);
+
+    font-size:9px;
+    font-weight:900;
+}
+
+.datos-sector strong{
+    display:block;
+
+    font-size:12px;
+
+    color:
+        var(--azul-muy-oscuro);
+}
+
+.datos-sector span{
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    color:#768b9a;
+}
+
+.flecha-sector{
+    text-align:right;
+
+    font-size:22px;
+
+    color:#5f95b7;
+}
+
+/* =========================================================
+   PANTALLA CUMBRES DEL SECTOR
+========================================================= */
+
+.contenedor-cumbres{
+    width:min(1000px,100%);
+
+    margin:auto;
+
+    padding:7px 16px;
+
+    background:white;
+
+    border:
+        1px solid #cbdde9;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 4px 14px rgba(8,43,76,.06);
+}
+
+.fila-cumbre-app{
+    min-height:47px;
+
+    display:grid;
+
+    grid-template-columns:
+        35px
+        minmax(0,1fr)
+        75px
+        42px;
+
+    align-items:center;
+
+    gap:8px;
+
+    border-bottom:
+        1px solid #e2eaef;
+}
+
+.fila-cumbre-app:last-child{
+    border-bottom:none;
+}
+
+.numero-cumbre{
+    text-align:center;
+
+    color:#879ba9;
+
+    font-size:9px;
+}
+
+.nombre-cumbre-app{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    min-width:0;
+}
+
+.nombre-cumbre-app strong{
+    font-size:11px;
+
+    color:#15364e;
+}
+
+.altitud-cumbre{
+    text-align:right;
+
+    font-size:10px;
+
+    color:#687f90;
+}
+
+.marca-nueva{
+    flex:0 0 auto;
+
+    padding:2px 5px;
+
+    background:#ddecf6;
+
+    border-radius:8px;
+
+    color:#17608e;
+
+    font-size:6px;
+    font-weight:900;
+}
+
+.check-cima{
+    width:28px;
+    height:28px;
+
+    justify-self:end;
+
+    border-radius:7px;
+
+    border:
+        1px solid #afc8d7;
+
+    background:white;
+
+    color:#a3b3be;
+
+    cursor:pointer;
+}
+
+.check-cima:hover{
+    background:#e3f1f9;
+
+    color:#0b5688;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-height:760px){
 
@@ -758,6 +1314,7 @@ nav a.activo{
     .elige{
         margin-top:7px;
         margin-bottom:6px;
+
         font-size:10px;
     }
 
@@ -800,14 +1357,11 @@ nav a.activo{
     }
 }
 
-/* =========================
-   PANTALLAS MÁS ESTRECHAS
-========================= */
-
 @media(max-width:1150px){
 
     .app{
-        grid-template-columns:76px minmax(0,1fr);
+        grid-template-columns:
+            76px minmax(0,1fr);
     }
 
     .marca strong{
@@ -816,6 +1370,7 @@ nav a.activo{
 
     nav a{
         justify-content:center;
+
         padding:0;
     }
 
@@ -840,12 +1395,26 @@ nav a.activo{
     }
 }
 
+@media(max-width:900px){
+
+    .grid-sectores-app{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="app">
+
+<!-- =====================================================
+     MENÚ LATERAL
+===================================================== -->
 
 <aside class="sidebar">
 
@@ -862,39 +1431,94 @@ nav a.activo{
 
     <nav>
 
-        <a href="#" class="activo">
-            <span class="icono">⌂</span>
-            <span>Inicio</span>
+        <a href="#" id="menuInicio" class="activo">
+
+            <span class="icono">
+                ⌂
+            </span>
+
+            <span>
+                Inicio
+            </span>
+
         </a>
 
-        <a href="#">
-            <span class="icono">▲</span>
-            <span>Mis 3000s</span>
+
+        <a href="#" id="menuMis3000">
+
+            <span class="icono">
+                ▲
+            </span>
+
+            <span>
+                Mis 3000s
+            </span>
+
         </a>
 
-        <a href="#">
-            <span class="icono">🗺</span>
-            <span>Mapa</span>
+
+        <a href="#" id="menuMapa">
+
+            <span class="icono">
+                🗺
+            </span>
+
+            <span>
+                Mapa
+            </span>
+
         </a>
 
-        <a href="#">
-            <span class="icono">▥</span>
-            <span>Estadísticas</span>
-        </a>
 
         <a href="#">
-            <span class="icono">🏆</span>
-            <span>Logros</span>
+
+            <span class="icono">
+                ▥
+            </span>
+
+            <span>
+                Estadísticas
+            </span>
+
         </a>
 
-        <a href="#">
-            <span class="icono">⚙</span>
-            <span>Ajustes</span>
-        </a>
 
         <a href="#">
-            <span class="icono">⇅</span>
-            <span>Importar / Exportar</span>
+
+            <span class="icono">
+                🏆
+            </span>
+
+            <span>
+                Logros
+            </span>
+
+        </a>
+
+
+        <a href="#">
+
+            <span class="icono">
+                ⚙
+            </span>
+
+            <span>
+                Ajustes
+            </span>
+
+        </a>
+
+
+        <a href="#">
+
+            <span class="icono">
+                ⇅
+            </span>
+
+            <span>
+                Importar / Exportar
+            </span>
+
         </a>
 
     </nav>
@@ -902,7 +1526,16 @@ nav a.activo{
 </aside>
 
 
-<main class="contenido">
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+
+<main class="contenido" id="contenidoPrincipal">
+
+
+<!-- =====================================================
+     INICIO
+===================================================== -->
 
 <section class="hero">
 
@@ -918,21 +1551,37 @@ nav a.activo{
 
     </div>
 
+
     <h1 class="titulo">
-        TACHANDO <span>3000s</span>
+
+        TACHANDO
+
+        <span>
+            3000s
+        </span>
+
     </h1>
+
 
     <p class="subtitulo">
         Tu reto, tus cumbres
     </p>
 
+
     <p class="elige">
         ELIGE LA LISTA QUE QUIERES COMPLETAR
     </p>
 
+
     <div class="zona-principal">
 
-        <div class="tarjeta-lista actualizada">
+
+        <!-- ACTUALIZADA 217 -->
+
+        <div
+            class="tarjeta-lista actualizada"
+            id="tarjeta217"
+        >
 
             <div class="lista-contenido">
 
@@ -954,15 +1603,25 @@ nav a.activo{
 
             <div class="lista-pie">
 
-                <span>97 completados</span>
-                <span>120 pendientes</span>
+                <span>
+                    97 completados
+                </span>
+
+                <span>
+                    120 pendientes
+                </span>
 
             </div>
 
         </div>
 
 
-        <div class="tarjeta-lista historica">
+        <!-- HISTÓRICA 212 -->
+
+        <div
+            class="tarjeta-lista historica"
+            id="tarjeta212"
+        >
 
             <div class="lista-contenido">
 
@@ -984,13 +1643,20 @@ nav a.activo{
 
             <div class="lista-pie">
 
-                <span>94 completados</span>
-                <span>118 pendientes</span>
+                <span>
+                    94 completados
+                </span>
+
+                <span>
+                    118 pendientes
+                </span>
 
             </div>
 
         </div>
 
+
+        <!-- PROGRESO -->
 
         <div class="panel-progreso">
 
@@ -1038,14 +1704,14 @@ nav a.activo{
 </section>
 
 
-<!-- =========================
-     ZONA INFERIOR V6
-========================= -->
+<!-- =====================================================
+     DASHBOARD INFERIOR
+===================================================== -->
 
 <section class="dashboard">
 
 
-    <!-- MAPA GRANDE -->
+    <!-- MAPA -->
 
     <div class="bloque bloque-mapa">
 
@@ -1053,14 +1719,55 @@ nav a.activo{
             EL PIRINEO POR SECTORES
         </h2>
 
-        <div class="mapa">
+        <div class="mapa" id="mapaSectores">
 
-            <div class="sector">Occidental</div>
-            <div class="sector">Ordesa</div>
-            <div class="sector">Benasque</div>
-            <div class="sector">Aigüestortes</div>
-            <div class="sector">Néouvielle</div>
-            <div class="sector">Oriental</div>
+            <button class="sector-mapa" data-sector="0">
+                Balaitus
+            </button>
+
+            <button class="sector-mapa" data-sector="1">
+                Panticosa
+            </button>
+
+            <button class="sector-mapa" data-sector="2">
+                Vignemale
+            </button>
+
+            <button class="sector-mapa" data-sector="3">
+                Ordesa
+            </button>
+
+            <button class="sector-mapa" data-sector="4">
+                La Munia
+            </button>
+
+            <button class="sector-mapa" data-sector="5">
+                Néouvielle
+            </button>
+
+            <button class="sector-mapa" data-sector="6">
+                Bachimala
+            </button>
+
+            <button class="sector-mapa" data-sector="7">
+                Posets
+            </button>
+
+            <button class="sector-mapa" data-sector="8">
+                Perdiguero
+            </button>
+
+            <button class="sector-mapa" data-sector="9">
+                Maladeta-Aneto
+            </button>
+
+            <button class="sector-mapa" data-sector="10">
+                Besiberris
+            </button>
+
+            <button class="sector-mapa" data-sector="11">
+                Estats
+            </button>
 
         </div>
 
@@ -1072,7 +1779,7 @@ nav a.activo{
     <div class="columna-central">
 
 
-        <!-- PROGRESO POR SECTORES -->
+        <!-- PROGRESO SECTORES -->
 
         <div class="bloque">
 
@@ -1083,47 +1790,86 @@ nav a.activo{
             <div class="lista-sectores">
 
                 <div class="fila-sector">
-                    <span>Ordesa</span>
-                    <span>18/25</span>
+
+                    <span>
+                        Ordesa
+                    </span>
+
+                    <span>
+                        18/25
+                    </span>
 
                     <div class="mini-barra">
                         <div style="width:72%"></div>
                     </div>
 
-                    <span>72%</span>
+                    <span>
+                        72%
+                    </span>
+
                 </div>
 
+
                 <div class="fila-sector">
-                    <span>Benasque</span>
-                    <span>31/63</span>
+
+                    <span>
+                        Benasque
+                    </span>
+
+                    <span>
+                        31/63
+                    </span>
 
                     <div class="mini-barra">
                         <div style="width:49%"></div>
                     </div>
 
-                    <span>49%</span>
+                    <span>
+                        49%
+                    </span>
+
                 </div>
 
+
                 <div class="fila-sector">
-                    <span>Aigüestortes</span>
-                    <span>14/41</span>
+
+                    <span>
+                        Aigüestortes
+                    </span>
+
+                    <span>
+                        14/41
+                    </span>
 
                     <div class="mini-barra">
                         <div style="width:34%"></div>
                     </div>
 
-                    <span>34%</span>
+                    <span>
+                        34%
+                    </span>
+
                 </div>
 
+
                 <div class="fila-sector">
-                    <span>Néouvielle</span>
-                    <span>7/25</span>
+
+                    <span>
+                        Néouvielle
+                    </span>
+
+                    <span>
+                        7/25
+                    </span>
 
                     <div class="mini-barra">
                         <div style="width:28%"></div>
                     </div>
 
-                    <span>28%</span>
+                    <span>
+                        28%
+                    </span>
+
                 </div>
 
             </div>
@@ -1141,6 +1887,7 @@ nav a.activo{
 
             <div class="lista-cumbres">
 
+
                 <div class="cumbre">
 
                     <div class="cumbre-icono">
@@ -1148,12 +1895,20 @@ nav a.activo{
                     </div>
 
                     <div>
-                        <strong>Aneto</strong>
-                        <small>3.404 m</small>
+
+                        <strong>
+                            Aneto
+                        </strong>
+
+                        <small>
+                            3.404 m
+                        </small>
+
                     </div>
 
                 </div>
 
+
                 <div class="cumbre">
 
                     <div class="cumbre-icono">
@@ -1161,12 +1916,20 @@ nav a.activo{
                     </div>
 
                     <div>
-                        <strong>Posets</strong>
-                        <small>3.375 m</small>
+
+                        <strong>
+                            Posets
+                        </strong>
+
+                        <small>
+                            3.375 m
+                        </small>
+
                     </div>
 
                 </div>
 
+
                 <div class="cumbre">
 
                     <div class="cumbre-icono">
@@ -1174,8 +1937,15 @@ nav a.activo{
                     </div>
 
                     <div>
-                        <strong>Monte Perdido</strong>
-                        <small>3.355 m</small>
+
+                        <strong>
+                            Monte Perdido
+                        </strong>
+
+                        <small>
+                            3.355 m
+                        </small>
+
                     </div>
 
                 </div>
@@ -1197,6 +1967,7 @@ nav a.activo{
 
         <div class="logros-lista">
 
+
             <div class="logro">
 
                 <span class="medalla">
@@ -1204,11 +1975,19 @@ nav a.activo{
                 </span>
 
                 <div>
-                    <strong>Primer 3000</strong>
-                    <small>Conseguido</small>
+
+                    <strong>
+                        Primer 3000
+                    </strong>
+
+                    <small>
+                        Conseguido
+                    </small>
+
                 </div>
 
             </div>
+
 
             <div class="logro">
 
@@ -1217,11 +1996,19 @@ nav a.activo{
                 </span>
 
                 <div>
-                    <strong>25 cumbres</strong>
-                    <small>Conseguido</small>
+
+                    <strong>
+                        25 cumbres
+                    </strong>
+
+                    <small>
+                        Conseguido
+                    </small>
+
                 </div>
 
             </div>
+
 
             <div class="logro">
 
@@ -1230,11 +2017,19 @@ nav a.activo{
                 </span>
 
                 <div>
-                    <strong>50 cumbres</strong>
-                    <small>Conseguido</small>
+
+                    <strong>
+                        50 cumbres
+                    </strong>
+
+                    <small>
+                        Conseguido
+                    </small>
+
                 </div>
 
             </div>
+
 
             <div class="logro">
 
@@ -1243,8 +2038,15 @@ nav a.activo{
                 </span>
 
                 <div>
-                    <strong>100 tresmiles</strong>
-                    <small>Próximo objetivo</small>
+
+                    <strong>
+                        100 tresmiles
+                    </strong>
+
+                    <small>
+                        Próximo objetivo
+                    </small>
+
                 </div>
 
             </div>
@@ -1258,6 +2060,575 @@ nav a.activo{
 </main>
 
 </div>
+
+
+<!-- =====================================================
+     BASE DE DATOS
+===================================================== -->
+
+<script src="datos-tresmiles.js"></script>
+
+
+<!-- =====================================================
+     FUNCIONAMIENTO
+===================================================== -->
+
+<script>
+
+let listaActiva =
+    localStorage.getItem("tachando_lista") || "217";
+
+
+/* =====================================================
+   REFERENCIAS
+===================================================== */
+
+const contenido =
+    document.getElementById("contenidoPrincipal");
+
+const tarjeta217 =
+    document.getElementById("tarjeta217");
+
+const tarjeta212 =
+    document.getElementById("tarjeta212");
+
+const menuInicio =
+    document.getElementById("menuInicio");
+
+const menuMis3000 =
+    document.getElementById("menuMis3000");
+
+const menuMapa =
+    document.getElementById("menuMapa");
+
+
+/* =====================================================
+   LISTAS 217 / 212
+===================================================== */
+
+tarjeta217.addEventListener(
+    "click",
+    function(){
+
+        seleccionarLista("217");
+
+        mostrarSectores();
+
+    }
+);
+
+
+tarjeta212.addEventListener(
+    "click",
+    function(){
+
+        seleccionarLista("212");
+
+        mostrarSectores();
+
+    }
+);
+
+
+function seleccionarLista(lista){
+
+    listaActiva = lista;
+
+    localStorage.setItem(
+        "tachando_lista",
+        lista
+    );
+
+}
+
+
+/* =====================================================
+   MENÚ
+===================================================== */
+
+menuInicio.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        location.reload();
+
+    }
+);
+
+
+menuMis3000.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        mostrarSectores();
+
+    }
+);
+
+
+menuMapa.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        location.reload();
+
+    }
+);
+
+
+/* =====================================================
+   MAPA
+===================================================== */
+
+document
+.querySelectorAll(".sector-mapa")
+.forEach(function(boton){
+
+    boton.addEventListener(
+        "click",
+        function(){
+
+            const indice =
+                Number(
+                    boton.dataset.sector
+                );
+
+            mostrarSector(indice);
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   PANTALLA DE SECTORES
+===================================================== */
+
+function mostrarSectores(){
+
+    marcarMenu("mis");
+
+    let tarjetas = "";
+
+
+    TACHANDO_DATA.forEach(
+        function(sector,indice){
+
+            const total =
+                contarSector(sector);
+
+            tarjetas += `
+
+                <div
+                    class="tarjeta-sector-app"
+                    onclick="mostrarSector(${indice})"
+                >
+
+                    <div class="numero-sector">
+
+                        ${
+                            String(indice+1)
+                            .padStart(2,"0")
+                        }
+
+                    </div>
+
+
+                    <div class="datos-sector">
+
+                        <strong>
+                            ${sector.s}
+                        </strong>
+
+                        <span>
+                            ${total} tresmiles
+                        </span>
+
+                    </div>
+
+
+                    <div class="flecha-sector">
+                        ›
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    contenido.innerHTML = `
+
+        <section class="vista-app">
+
+            <div class="cabecera-vista">
+
+
+                <button
+                    class="btn-vista"
+                    onclick="volverInicio()"
+                >
+
+                    ‹ Inicio
+
+                </button>
+
+
+                <div class="cabecera-vista-centro">
+
+                    <h1>
+                        MIS 3000s
+                    </h1>
+
+                    <p>
+
+                        ${
+                            listaActiva === "217"
+
+                            ? "Lista Actualizada · 217 tresmiles"
+
+                            : "Lista Histórica · 212 tresmiles"
+                        }
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn-vista btn-derecha"
+                    onclick="cambiarLista()"
+                >
+
+                    Cambiar lista
+
+                </button>
+
+
+            </div>
+
+
+            <div class="titulo-listado">
+
+                <h2>
+                    SECTORES DEL PIRINEO
+                </h2>
+
+                <p>
+                    De oeste a este
+                </p>
+
+            </div>
+
+
+            <div class="grid-sectores-app">
+
+                ${tarjetas}
+
+            </div>
+
+
+        </section>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CONTAR TRESMILES DE UN SECTOR
+===================================================== */
+
+function contarSector(sector){
+
+    if(listaActiva === "217"){
+
+        return sector.a
+        .filter(
+            cima => cima[2] === 1
+        )
+        .length;
+
+    }
+
+    return sector.h.length;
+
+}
+
+
+/* =====================================================
+   PANTALLA DE UN SECTOR
+===================================================== */
+
+function mostrarSector(indice){
+
+    marcarMenu("mis");
+
+
+    const sector =
+        TACHANDO_DATA[indice];
+
+
+    let cumbres;
+
+
+    if(listaActiva === "217"){
+
+        cumbres =
+            sector.a.filter(
+                cima => cima[2] === 1
+            );
+
+    }
+    else{
+
+        cumbres =
+            sector.h;
+
+    }
+
+
+    let filas = "";
+
+
+    cumbres.forEach(
+        function(cima,posicion){
+
+            const nombre =
+                cima[0];
+
+            const altitud =
+                cima[1];
+
+            const nueva217 =
+                listaActiva === "217"
+                &&
+                cima[3] === 1;
+
+
+            filas += `
+
+                <div class="fila-cumbre-app">
+
+
+                    <div class="numero-cumbre">
+
+                        ${posicion+1}
+
+                    </div>
+
+
+                    <div class="nombre-cumbre-app">
+
+                        <strong>
+                            ${nombre}
+                        </strong>
+
+
+                        ${
+                            nueva217
+
+                            ? `
+                            <span class="marca-nueva">
+                                NUEVA 217
+                            </span>
+                            `
+
+                            : ""
+                        }
+
+                    </div>
+
+
+                    <div class="altitud-cumbre">
+
+                        ${altitud}
+
+                    </div>
+
+
+                    <button
+                        class="check-cima"
+                        title="Marcar como conseguida"
+                    >
+
+                        ✓
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    contenido.innerHTML = `
+
+        <section class="vista-app">
+
+
+            <div class="cabecera-vista">
+
+
+                <button
+                    class="btn-vista"
+                    onclick="mostrarSectores()"
+                >
+
+                    ‹ Sectores
+
+                </button>
+
+
+                <div class="cabecera-vista-centro">
+
+                    <h1>
+                        ${sector.s}
+                    </h1>
+
+                    <p>
+
+                        ${
+                            listaActiva === "217"
+
+                            ? "Lista Actualizada 217"
+
+                            : "Lista Histórica 212"
+                        }
+
+                        ·
+
+                        ${cumbres.length}
+
+                        tresmiles
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn-vista btn-derecha"
+                    onclick="cambiarListaSector(${indice})"
+                >
+
+                    Cambiar lista
+
+                </button>
+
+
+            </div>
+
+
+            <div class="contenedor-cumbres">
+
+                ${filas}
+
+            </div>
+
+
+        </section>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CAMBIAR LISTA DESDE SECTORES
+===================================================== */
+
+function cambiarLista(){
+
+    listaActiva =
+        listaActiva === "217"
+        ? "212"
+        : "217";
+
+    localStorage.setItem(
+        "tachando_lista",
+        listaActiva
+    );
+
+    mostrarSectores();
+
+}
+
+
+/* =====================================================
+   CAMBIAR LISTA DENTRO DE UN SECTOR
+===================================================== */
+
+function cambiarListaSector(indice){
+
+    listaActiva =
+        listaActiva === "217"
+        ? "212"
+        : "217";
+
+    localStorage.setItem(
+        "tachando_lista",
+        listaActiva
+    );
+
+    mostrarSector(indice);
+
+}
+
+
+/* =====================================================
+   VOLVER
+===================================================== */
+
+function volverInicio(){
+
+    location.reload();
+
+}
+
+
+/* =====================================================
+   MARCAR MENÚ
+===================================================== */
+
+function marcarMenu(zona){
+
+    document
+    .querySelectorAll("nav a")
+    .forEach(
+        enlace =>
+        enlace.classList.remove("activo")
+    );
+
+
+    if(zona === "mis"){
+
+        menuMis3000
+        .classList.add("activo");
+
+    }
+    else{
+
+        menuInicio
+        .classList.add("activo");
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
