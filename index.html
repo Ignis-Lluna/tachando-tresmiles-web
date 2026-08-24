@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tachando 3000s</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -27,6 +24,7 @@
     --gris-claro:#e8edf1;
     --texto:#10293d;
     --fondo:#edf4f8;
+    --verde-logro:#2e8b57;
 }
 
 html,
@@ -49,10 +47,8 @@ body{
 .app{
     width:100%;
     height:100dvh;
-
     display:grid;
     grid-template-columns:150px minmax(0,1fr);
-
     overflow:hidden;
 }
 
@@ -62,55 +58,38 @@ body{
 
 .sidebar{
     height:100dvh;
-
     background:rgba(255,255,255,.97);
-
     border-right:1px solid #cad8e2;
-
     display:flex;
     flex-direction:column;
-
     overflow:hidden;
 }
 
 .marca{
     height:110px;
     flex:0 0 110px;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     border-bottom:1px solid #d9e4eb;
-
-    background:
-        linear-gradient(
-            180deg,
-            #f7fbfe,
-            #eef6fb
-        );
+    background:linear-gradient(180deg,#f7fbfe,#eef6fb);
 }
 
 .logo-montana{
     position:relative;
-
     width:54px;
     height:33px;
-
     margin-bottom:6px;
 }
 
 .logo-montana:before,
 .logo-montana:after{
     content:"";
-
     position:absolute;
     bottom:0;
-
     width:0;
     height:0;
-
     border-left:16px solid transparent;
     border-right:16px solid transparent;
     border-bottom:29px solid var(--azul-oscuro);
@@ -122,69 +101,49 @@ body{
 
 .logo-montana:after{
     right:1px;
-
     transform:scale(.78);
     transform-origin:bottom;
-
     opacity:.78;
 }
 
 .marca strong{
     text-align:center;
-
     font-size:15px;
     line-height:1.05;
-
     color:var(--azul-muy-oscuro);
-
-    letter-spacing:.3px;
 }
 
 nav{
     flex:1;
-
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
-
     padding:5px 0 8px;
 }
 
 nav a{
     min-height:42px;
-
     display:flex;
     align-items:center;
-
     gap:10px;
-
     padding:0 14px;
-
     text-decoration:none;
-
     color:#18354b;
-
     font-size:12px;
-
     border-left:4px solid transparent;
-
     transition:.15s ease;
 }
 
 nav a:hover,
 nav a.activo{
     background:#e5f1f8;
-
     border-left-color:var(--azul);
-
     color:var(--azul-muy-oscuro);
 }
 
 .icono{
     width:22px;
-
     text-align:center;
-
     font-size:16px;
 }
 
@@ -195,31 +154,23 @@ nav a.activo{
 .contenido{
     height:100dvh;
     min-width:0;
-
     display:grid;
     grid-template-rows:auto minmax(0,1fr);
-
     overflow:hidden;
-
     background:
         linear-gradient(
             rgba(240,247,251,.88),
             rgba(234,243,248,.94)
         ),
-        linear-gradient(
-            135deg,
-            #dbeaf4,
-            #edf6fb
-        );
+        linear-gradient(135deg,#dbeaf4,#edf6fb);
 }
 
 /* =========================================================
-   CABECERA INICIO
+   CABECERA
 ========================================================= */
 
 .hero{
     padding:7px 26px 10px;
-
     background:
         radial-gradient(
             circle at 50% -10%,
@@ -227,48 +178,34 @@ nav a.activo{
             rgba(230,242,249,.83) 46%,
             rgba(187,215,232,.76) 100%
         );
-
     border-bottom:1px solid #c8dbe8;
 }
 
 .hero-top{
     height:28px;
-
     display:flex;
     justify-content:flex-end;
-
     gap:7px;
 }
 
 .boton-mini{
     height:27px;
-
     padding:0 10px;
-
     border-radius:7px;
-
     border:1px solid #b9cfde;
-
     background:rgba(255,255,255,.88);
-
     font-size:10px;
     font-weight:700;
-
     color:var(--azul-muy-oscuro);
-
     cursor:pointer;
 }
 
 .titulo{
     text-align:center;
-
     font-size:clamp(34px,3.8vw,54px);
     line-height:.95;
-
     font-weight:900;
-
     letter-spacing:1px;
-
     color:var(--azul-muy-oscuro);
 }
 
@@ -278,38 +215,25 @@ nav a.activo{
 
 .subtitulo{
     text-align:center;
-
     margin-top:4px;
-
     font-size:16px;
-
     color:#23445d;
 }
 
 .elige{
     text-align:center;
-
     margin-top:10px;
     margin-bottom:8px;
-
     font-size:12px;
     font-weight:800;
-
     color:var(--azul-muy-oscuro);
 }
 
 .zona-principal{
     width:min(1160px,100%);
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        .78fr;
-
+    grid-template-columns:1fr 1fr .78fr;
     gap:13px;
 }
 
@@ -320,43 +244,26 @@ nav a.activo{
 .tarjeta-lista,
 .panel-progreso{
     height:181px;
-
     border-radius:13px;
-
     overflow:hidden;
-
-    box-shadow:
-        0 6px 17px rgba(8,43,76,.12);
+    box-shadow:0 6px 17px rgba(8,43,76,.12);
 }
 
 .tarjeta-lista{
     display:flex;
     flex-direction:column;
-
     cursor:pointer;
-
     transition:.16s ease;
 }
 
 .tarjeta-lista:hover{
     transform:translateY(-2px);
-
-    box-shadow:
-        0 9px 22px rgba(8,43,76,.17);
+    box-shadow:0 9px 22px rgba(8,43,76,.17);
 }
 
-/* 217 */
-
 .actualizada{
-    background:
-        linear-gradient(
-            180deg,
-            #174f7e,
-            #0c3b67
-        );
-
+    background:linear-gradient(180deg,#174f7e,#0c3b67);
     color:white;
-
     border:1px solid #2e6690;
 }
 
@@ -370,16 +277,8 @@ nav a.activo{
     background:#082d50;
 }
 
-/* 212 */
-
 .historica{
-    background:
-        linear-gradient(
-            180deg,
-            #f6fbfe,
-            #dceaf3
-        );
-
+    background:linear-gradient(180deg,#f6fbfe,#dceaf3);
     border:1px solid #b8cddb;
 }
 
@@ -398,61 +297,45 @@ nav a.activo{
 
 .lista-contenido{
     flex:1;
-
     position:relative;
-
     text-align:center;
-
     padding:10px 15px 0;
-
     overflow:hidden;
 }
 
 .lista-nombre{
     font-size:13px;
     font-weight:900;
-
-    letter-spacing:.2px;
 }
 
 .lista-numero{
     font-size:43px;
     line-height:1;
-
     font-weight:900;
-
     margin-top:5px;
 }
 
 .lista-sub{
     font-size:10px;
     font-weight:800;
-
     margin-top:1px;
 }
 
-/* Montañas tarjetas */
-
 .montanas{
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
     height:55px;
 }
 
 .montanas:before,
 .montanas:after{
     content:"";
-
     position:absolute;
     bottom:0;
-
     width:62%;
     height:100%;
-
     clip-path:polygon(
         0 100%,
         19% 69%,
@@ -466,46 +349,35 @@ nav a.activo{
 
 .actualizada .montanas:before{
     left:-4%;
-
     background:#1f679c;
-
     opacity:.70;
 }
 
 .actualizada .montanas:after{
     right:-5%;
-
     background:#0b3156;
-
     opacity:.85;
 }
 
 .historica .montanas:before{
     left:-4%;
-
     background:#a9c4d7;
-
     opacity:.8;
 }
 
 .historica .montanas:after{
     right:-5%;
-
     background:#779eb8;
-
     opacity:.7;
 }
 
 .lista-pie{
     height:31px;
     flex:0 0 31px;
-
     color:white;
-
     display:flex;
     align-items:center;
     justify-content:space-around;
-
     font-size:9px;
 }
 
@@ -515,85 +387,60 @@ nav a.activo{
 
 .panel-progreso{
     padding:10px 14px;
-
     text-align:center;
-
     background:rgba(255,255,255,.96);
-
     border:1px solid #c2d4df;
 }
 
 .panel-progreso h3{
     font-size:11px;
-
     color:var(--azul-muy-oscuro);
-
     margin-bottom:5px;
 }
 
 .contador{
     font-size:32px;
     line-height:1;
-
     font-weight:900;
-
     color:var(--azul);
 }
 
 .contador span{
     color:#7d8992;
-
     font-size:20px;
 }
 
 .texto-completados{
     margin-top:3px;
-
     font-size:8px;
     font-weight:700;
 }
 
 .porcentaje{
     margin-top:7px;
-
     font-size:25px;
     line-height:1;
-
     font-weight:900;
-
     color:#2b75a9;
 }
 
 .barra{
     height:8px;
-
     margin-top:7px;
-
     border-radius:20px;
-
     background:#dfe5e8;
-
     overflow:hidden;
 }
 
 .barra div{
-    width:44.7%;
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0b4c7d,
-            #3a89bd
-        );
+    background:linear-gradient(90deg,#0b4c7d,#3a89bd);
 }
 
 .lista-activa{
     margin-top:6px;
     padding-top:5px;
-
     border-top:1px solid #dde5e9;
-
     font-size:8px;
 }
 
@@ -603,170 +450,86 @@ nav a.activo{
 
 .dashboard{
     min-height:0;
-
     padding:9px 16px 11px;
-
     display:grid;
-
     grid-template-columns:
         minmax(0,1.75fr)
         minmax(260px,.95fr)
         minmax(230px,.78fr);
-
     gap:11px;
-
     align-items:stretch;
-
     overflow:hidden;
 }
 
 .bloque{
     min-width:0;
     min-height:0;
-
     background:rgba(255,255,255,.95);
-
     border:1px solid #cbdbe5;
-
     border-radius:11px;
-
     padding:10px;
-
-    box-shadow:
-        0 4px 12px rgba(10,45,70,.06);
-
+    box-shadow:0 4px 12px rgba(10,45,70,.06);
     overflow:hidden;
-
     display:flex;
     flex-direction:column;
 }
 
 .bloque h2{
     font-size:11px;
-    line-height:1.1;
-
     color:var(--azul-muy-oscuro);
-
     margin-bottom:8px;
 }
 
 /* =========================================================
-   MAPA INICIO
+   MAPA
 ========================================================= */
-
-.bloque-mapa{
-    height:100%;
-}
 
 .mapa{
     flex:1;
-    min-height:0;
-
     position:relative;
-
-    border-radius:8px;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(6,1fr);
-
-    grid-template-rows:
-        repeat(2,auto);
-
+    grid-template-columns:repeat(6,1fr);
+    grid-template-rows:repeat(2,auto);
     align-content:center;
-
     gap:8px;
-
     padding:28px 12px 70px;
-
-    background:
-        linear-gradient(
-            rgba(222,239,248,.20),
-            rgba(222,239,248,.20)
-        ),
-        linear-gradient(
-            135deg,
-            #b9d4e3,
-            #d4e5ee
-        );
-
+    border-radius:8px;
+    background:linear-gradient(135deg,#b9d4e3,#d4e5ee);
     overflow:hidden;
 }
 
 .mapa:before{
     content:"";
-
     position:absolute;
-
     left:3%;
     right:3%;
     bottom:10%;
-
     height:38%;
-
-    background:
-        rgba(61,115,151,.17);
-
+    background:rgba(61,115,151,.17);
     clip-path:polygon(
-        0 87%,
-        6% 71%,
-        12% 76%,
-        18% 55%,
-        23% 68%,
-        29% 43%,
-        35% 60%,
-        41% 34%,
-        48% 53%,
-        54% 27%,
-        61% 50%,
-        67% 35%,
-        74% 59%,
-        80% 40%,
-        86% 61%,
-        92% 48%,
-        100% 73%,
-        100% 100%,
-        0 100%
+        0 87%,6% 71%,12% 76%,18% 55%,23% 68%,
+        29% 43%,35% 60%,41% 34%,48% 53%,54% 27%,
+        61% 50%,67% 35%,74% 59%,80% 40%,86% 61%,
+        92% 48%,100% 73%,100% 100%,0 100%
     );
 }
 
 .sector-mapa{
     position:relative;
-
     z-index:2;
-
-    min-width:0;
-
     padding:6px 5px;
-
-    background:
-        rgba(255,255,255,.92);
-
-    border:
-        1px solid rgba(112,150,174,.30);
-
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(112,150,174,.30);
     border-radius:25px;
-
     font-size:8px;
     font-weight:800;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     cursor:pointer;
-
-    transition:.15s ease;
 }
 
 .sector-mapa:hover{
-    background:
-        var(--azul-oscuro);
-
+    background:var(--azul-oscuro);
     color:white;
-
-    transform:
-        translateY(-2px);
 }
 
 /* =========================================================
@@ -776,85 +539,38 @@ nav a.activo{
 .columna-central{
     min-width:0;
     min-height:0;
-
     display:grid;
-
-    grid-template-rows:
-        minmax(0,1fr)
-        minmax(0,1fr);
-
+    grid-template-rows:1fr 1fr;
     gap:11px;
-}
-
-/* =========================================================
-   PROGRESO SECTORES
-========================================================= */
-
-.lista-sectores{
-    flex:1;
-
-    min-height:0;
 }
 
 .fila-sector{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        37px
-        .75fr
-        29px;
-
+    grid-template-columns:1fr 42px .75fr 30px;
     gap:5px;
-
     align-items:center;
-
     margin:6px 0;
-
     font-size:9px;
 }
 
 .mini-barra{
     height:5px;
-
     background:#dce4e9;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .mini-barra div{
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #165c8d,
-            #4d91bd
-        );
-}
-
-/* =========================================================
-   ÚLTIMAS CUMBRES
-========================================================= */
-
-.lista-cumbres{
-    flex:1;
-
-    min-height:0;
+    background:linear-gradient(90deg,#165c8d,#4d91bd);
 }
 
 .cumbre{
     display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:5px 0;
-
-    border-bottom:
-        1px solid #e2eaef;
+    border-bottom:1px solid #e2eaef;
 }
 
 .cumbre:last-child{
@@ -864,33 +580,22 @@ nav a.activo{
 .cumbre-icono{
     width:27px;
     height:27px;
-
-    flex:0 0 27px;
-
     border-radius:50%;
-
     background:#e1eef6;
-
     display:grid;
     place-items:center;
-
-    color:
-        var(--azul-oscuro);
-
+    color:var(--azul-oscuro);
     font-size:12px;
 }
 
 .cumbre strong{
     display:block;
-
     font-size:9px;
 }
 
 .cumbre small{
     display:block;
-
     color:#758590;
-
     font-size:8px;
 }
 
@@ -900,58 +605,37 @@ nav a.activo{
 
 .logros-lista{
     flex:1;
-
     display:flex;
     flex-direction:column;
-
     justify-content:space-between;
-
     gap:6px;
 }
 
 .logro{
     flex:1;
-
     display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:6px;
-
     border-radius:7px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #edf5fa,
-            #f7fbfd
-        );
-
+    background:linear-gradient(90deg,#edf5fa,#f7fbfd);
     border:1px solid #dce8ef;
 }
 
 .medalla{
     width:24px;
-
     text-align:center;
-
     font-size:17px;
 }
 
 .logro strong{
     display:block;
-
     font-size:9px;
 }
 
 .logro small{
     display:block;
-
-    margin-top:1px;
-
     color:#71818d;
-
     font-size:8px;
 }
 
@@ -961,44 +645,22 @@ nav a.activo{
 
 .vista-app{
     height:100dvh;
-
     padding:18px 28px;
-
     overflow:auto;
-
-    background:
-        linear-gradient(
-            180deg,
-            #eaf5fb,
-            #f6fafc
-        );
+    background:linear-gradient(180deg,#eaf5fb,#f6fafc);
 }
 
 .cabecera-vista{
     min-height:82px;
-
     display:grid;
-
-    grid-template-columns:
-        150px
-        1fr
-        150px;
-
+    grid-template-columns:150px 1fr 150px;
     align-items:center;
-
     padding:12px 18px;
-
     margin-bottom:18px;
-
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:13px;
-
-    box-shadow:
-        0 4px 14px rgba(8,43,76,.07);
+    box-shadow:0 4px 14px rgba(8,43,76,.07);
 }
 
 .cabecera-vista-centro{
@@ -1007,41 +669,25 @@ nav a.activo{
 
 .cabecera-vista h1{
     font-size:27px;
-
-    color:
-        var(--azul-muy-oscuro);
+    color:var(--azul-muy-oscuro);
 }
 
 .cabecera-vista p{
     margin-top:4px;
-
     font-size:11px;
-
     color:#638098;
 }
 
 .btn-vista{
     width:max-content;
-
     padding:8px 11px;
-
     border-radius:8px;
-
     border:1px solid #b9cfde;
-
     background:white;
-
-    color:
-        var(--azul-oscuro);
-
+    color:var(--azul-oscuro);
     font-size:10px;
     font-weight:700;
-
     cursor:pointer;
-}
-
-.btn-vista:hover{
-    background:#e7f3fa;
 }
 
 .btn-derecha{
@@ -1050,167 +696,108 @@ nav a.activo{
 
 .titulo-listado{
     text-align:center;
-
     margin-bottom:15px;
 }
 
 .titulo-listado h2{
     font-size:15px;
-
-    color:
-        var(--azul-muy-oscuro);
+    color:var(--azul-muy-oscuro);
 }
 
 .titulo-listado p{
     margin-top:3px;
-
     font-size:9px;
-
     color:#72899a;
 }
 
 /* =========================================================
-   PANTALLA 12 SECTORES
+   SECTORES
 ========================================================= */
 
 .grid-sectores-app{
     width:min(1080px,100%);
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:11px;
 }
 
 .tarjeta-sector-app{
     min-height:88px;
-
     display:grid;
-
-    grid-template-columns:
-        43px
-        minmax(0,1fr)
-        22px;
-
+    grid-template-columns:43px minmax(0,1fr) 22px;
     align-items:center;
-
     gap:8px;
-
     padding:12px;
-
     background:white;
-
-    border:
-        1px solid #c8dae6;
-
+    border:1px solid #c8dae6;
     border-radius:11px;
-
-    box-shadow:
-        0 3px 11px rgba(8,43,76,.05);
-
+    box-shadow:0 3px 11px rgba(8,43,76,.05);
     cursor:pointer;
-
-    transition:.15s ease;
 }
 
 .tarjeta-sector-app:hover{
-    transform:
-        translateY(-2px);
-
+    transform:translateY(-2px);
     border-color:#5492ba;
-
-    box-shadow:
-        0 6px 15px rgba(8,43,76,.10);
 }
 
 .numero-sector{
     width:34px;
     height:34px;
-
     display:grid;
     place-items:center;
-
     border-radius:50%;
-
     background:#dfedf6;
-
-    color:
-        var(--azul);
-
+    color:var(--azul);
     font-size:9px;
     font-weight:900;
 }
 
 .datos-sector strong{
     display:block;
-
     font-size:12px;
-
-    color:
-        var(--azul-muy-oscuro);
+    color:var(--azul-muy-oscuro);
 }
 
 .datos-sector span{
     display:block;
-
     margin-top:3px;
-
     font-size:9px;
-
     color:#768b9a;
+}
+
+.progreso-sector-texto{
+    color:var(--azul) !important;
+    font-weight:700;
 }
 
 .flecha-sector{
     text-align:right;
-
     font-size:22px;
-
     color:#5f95b7;
 }
 
 /* =========================================================
-   PANTALLA CUMBRES DEL SECTOR
+   CUMBRES
 ========================================================= */
 
 .contenedor-cumbres{
     width:min(1000px,100%);
-
     margin:auto;
-
     padding:7px 16px;
-
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:12px;
-
-    box-shadow:
-        0 4px 14px rgba(8,43,76,.06);
+    box-shadow:0 4px 14px rgba(8,43,76,.06);
 }
 
 .fila-cumbre-app{
     min-height:47px;
-
     display:grid;
-
-    grid-template-columns:
-        35px
-        minmax(0,1fr)
-        75px
-        42px;
-
+    grid-template-columns:35px minmax(0,1fr) 75px 42px;
     align-items:center;
-
     gap:8px;
-
-    border-bottom:
-        1px solid #e2eaef;
+    border-bottom:1px solid #e2eaef;
 }
 
 .fila-cumbre-app:last-child{
@@ -1219,73 +806,66 @@ nav a.activo{
 
 .numero-cumbre{
     text-align:center;
-
     color:#879ba9;
-
     font-size:9px;
 }
 
 .nombre-cumbre-app{
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
-    min-width:0;
 }
 
 .nombre-cumbre-app strong{
     font-size:11px;
-
     color:#15364e;
 }
 
 .altitud-cumbre{
     text-align:right;
-
     font-size:10px;
-
     color:#687f90;
 }
 
 .marca-nueva{
-    flex:0 0 auto;
-
     padding:2px 5px;
-
     background:#ddecf6;
-
     border-radius:8px;
-
     color:#17608e;
-
     font-size:6px;
     font-weight:900;
 }
 
 .check-cima{
-    width:28px;
-    height:28px;
-
+    width:29px;
+    height:29px;
     justify-self:end;
-
     border-radius:7px;
-
-    border:
-        1px solid #afc8d7;
-
+    border:1px solid #afc8d7;
     background:white;
-
     color:#a3b3be;
-
     cursor:pointer;
+    font-weight:900;
+    transition:.15s ease;
 }
 
 .check-cima:hover{
     background:#e3f1f9;
-
     color:#0b5688;
+}
+
+.check-cima.conquistada{
+    background:var(--azul);
+    border-color:var(--azul);
+    color:white;
+}
+
+.fila-cumbre-app.conquistada{
+    background:#f3f9fc;
+}
+
+.fila-cumbre-app.conquistada .nombre-cumbre-app strong{
+    color:#426e8c;
 }
 
 /* =========================================================
@@ -1314,7 +894,6 @@ nav a.activo{
     .elige{
         margin-top:7px;
         margin-bottom:6px;
-
         font-size:10px;
     }
 
@@ -1343,358 +922,166 @@ nav a.activo{
     .porcentaje{
         font-size:21px;
     }
-
-    .dashboard{
-        padding-top:6px;
-    }
-
-    .fila-sector{
-        margin:4px 0;
-    }
-
-    .cumbre{
-        padding:3px 0;
-    }
 }
 
 @media(max-width:1150px){
 
     .app{
-        grid-template-columns:
-            76px minmax(0,1fr);
-    }
-
-    .marca strong{
-        font-size:10px;
+        grid-template-columns:76px minmax(0,1fr);
     }
 
     nav a{
         justify-content:center;
-
         padding:0;
     }
 
     nav a span:not(.icono){
         display:none;
     }
-
-    .zona-principal{
-        gap:8px;
-    }
-
-    .dashboard{
-        grid-template-columns:
-            minmax(0,1.55fr)
-            minmax(220px,.9fr)
-            minmax(190px,.72fr);
-
-        gap:7px;
-
-        padding-left:9px;
-        padding-right:9px;
-    }
-}
-
-@media(max-width:900px){
-
-    .grid-sectores-app{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="app">
 
-<!-- =====================================================
-     MENÚ LATERAL
-===================================================== -->
-
 <aside class="sidebar">
 
     <div class="marca">
-
         <div class="logo-montana"></div>
-
-        <strong>
-            TACHANDO<br>
-            3000s
-        </strong>
-
+        <strong>TACHANDO<br>3000s</strong>
     </div>
 
     <nav>
 
         <a href="#" id="menuInicio" class="activo">
-
-            <span class="icono">
-                ⌂
-            </span>
-
-            <span>
-                Inicio
-            </span>
-
+            <span class="icono">⌂</span>
+            <span>Inicio</span>
         </a>
-
 
         <a href="#" id="menuMis3000">
-
-            <span class="icono">
-                ▲
-            </span>
-
-            <span>
-                Mis 3000s
-            </span>
-
+            <span class="icono">▲</span>
+            <span>Mis 3000s</span>
         </a>
-
 
         <a href="#" id="menuMapa">
-
-            <span class="icono">
-                🗺
-            </span>
-
-            <span>
-                Mapa
-            </span>
-
+            <span class="icono">🗺</span>
+            <span>Mapa</span>
         </a>
 
-
         <a href="#">
-
-            <span class="icono">
-                ▥
-            </span>
-
-            <span>
-                Estadísticas
-            </span>
-
+            <span class="icono">▥</span>
+            <span>Estadísticas</span>
         </a>
 
-
         <a href="#">
-
-            <span class="icono">
-                🏆
-            </span>
-
-            <span>
-                Logros
-            </span>
-
+            <span class="icono">🏆</span>
+            <span>Logros</span>
         </a>
 
-
         <a href="#">
-
-            <span class="icono">
-                ⚙
-            </span>
-
-            <span>
-                Ajustes
-            </span>
-
+            <span class="icono">⚙</span>
+            <span>Ajustes</span>
         </a>
 
-
         <a href="#">
-
-            <span class="icono">
-                ⇅
-            </span>
-
-            <span>
-                Importar / Exportar
-            </span>
-
+            <span class="icono">⇅</span>
+            <span>Importar / Exportar</span>
         </a>
 
     </nav>
 
 </aside>
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
 <main class="contenido" id="contenidoPrincipal">
-
-
-<!-- =====================================================
-     INICIO
-===================================================== -->
 
 <section class="hero">
 
     <div class="hero-top">
-
-        <button class="boton-mini">
-            ? Ayuda
-        </button>
-
-        <button class="boton-mini">
-            ☰ Menú
-        </button>
-
+        <button class="boton-mini">? Ayuda</button>
+        <button class="boton-mini">☰ Menú</button>
     </div>
 
-
     <h1 class="titulo">
-
-        TACHANDO
-
-        <span>
-            3000s
-        </span>
-
+        TACHANDO <span>3000s</span>
     </h1>
-
 
     <p class="subtitulo">
         Tu reto, tus cumbres
     </p>
 
-
     <p class="elige">
         ELIGE LA LISTA QUE QUIERES COMPLETAR
     </p>
 
-
     <div class="zona-principal">
 
-
-        <!-- ACTUALIZADA 217 -->
-
-        <div
-            class="tarjeta-lista actualizada"
-            id="tarjeta217"
-        >
+        <div class="tarjeta-lista actualizada" id="tarjeta217">
 
             <div class="lista-contenido">
-
-                <div class="lista-nombre">
-                    LISTA ACTUALIZADA
-                </div>
-
-                <div class="lista-numero">
-                    217
-                </div>
-
-                <div class="lista-sub">
-                    TRESMILES
-                </div>
-
+                <div class="lista-nombre">LISTA ACTUALIZADA</div>
+                <div class="lista-numero">217</div>
+                <div class="lista-sub">TRESMILES</div>
                 <div class="montanas"></div>
-
             </div>
 
             <div class="lista-pie">
-
-                <span>
-                    97 completados
-                </span>
-
-                <span>
-                    120 pendientes
-                </span>
-
+                <span id="completados217">0 completados</span>
+                <span id="pendientes217">217 pendientes</span>
             </div>
 
         </div>
 
-
-        <!-- HISTÓRICA 212 -->
-
-        <div
-            class="tarjeta-lista historica"
-            id="tarjeta212"
-        >
+        <div class="tarjeta-lista historica" id="tarjeta212">
 
             <div class="lista-contenido">
-
-                <div class="lista-nombre">
-                    LISTA HISTÓRICA
-                </div>
-
-                <div class="lista-numero">
-                    212
-                </div>
-
-                <div class="lista-sub">
-                    TRESMILES
-                </div>
-
+                <div class="lista-nombre">LISTA HISTÓRICA</div>
+                <div class="lista-numero">212</div>
+                <div class="lista-sub">TRESMILES</div>
                 <div class="montanas"></div>
-
             </div>
 
             <div class="lista-pie">
-
-                <span>
-                    94 completados
-                </span>
-
-                <span>
-                    118 pendientes
-                </span>
-
+                <span id="completados212">0 completados</span>
+                <span id="pendientes212">212 pendientes</span>
             </div>
 
         </div>
-
-
-        <!-- PROGRESO -->
 
         <div class="panel-progreso">
 
-            <h3>
-                PROGRESO ACTUAL
-            </h3>
+            <h3>PROGRESO ACTUAL</h3>
 
             <div class="contador">
-
-                97
-
-                <span>
-                    / 217
+                <span id="progresoNumero" style="color:#145d96;font-size:32px">
+                    0
                 </span>
 
+                <span id="progresoTotal">
+                    / 217
+                </span>
             </div>
 
             <div class="texto-completados">
                 TRESMILES COMPLETADOS
             </div>
 
-            <div class="porcentaje">
-                44,7 %
+            <div class="porcentaje" id="progresoPorcentaje">
+                0 %
             </div>
 
             <div class="barra">
-                <div></div>
+                <div id="barraGeneral" style="width:0%"></div>
             </div>
 
             <div class="lista-activa">
-
                 Lista activa:
                 <br>
-
-                <strong>
+                <strong id="textoListaActiva">
                     ACTUALIZADA (217)
                 </strong>
-
             </div>
 
         </div>
@@ -1703,352 +1090,87 @@ nav a.activo{
 
 </section>
 
-
-<!-- =====================================================
-     DASHBOARD INFERIOR
-===================================================== -->
-
 <section class="dashboard">
-
-
-    <!-- MAPA -->
 
     <div class="bloque bloque-mapa">
 
-        <h2>
-            EL PIRINEO POR SECTORES
-        </h2>
+        <h2>EL PIRINEO POR SECTORES</h2>
 
-        <div class="mapa" id="mapaSectores">
+        <div class="mapa">
 
-            <button class="sector-mapa" data-sector="0">
-                Balaitus
-            </button>
-
-            <button class="sector-mapa" data-sector="1">
-                Panticosa
-            </button>
-
-            <button class="sector-mapa" data-sector="2">
-                Vignemale
-            </button>
-
-            <button class="sector-mapa" data-sector="3">
-                Ordesa
-            </button>
-
-            <button class="sector-mapa" data-sector="4">
-                La Munia
-            </button>
-
-            <button class="sector-mapa" data-sector="5">
-                Néouvielle
-            </button>
-
-            <button class="sector-mapa" data-sector="6">
-                Bachimala
-            </button>
-
-            <button class="sector-mapa" data-sector="7">
-                Posets
-            </button>
-
-            <button class="sector-mapa" data-sector="8">
-                Perdiguero
-            </button>
-
-            <button class="sector-mapa" data-sector="9">
-                Maladeta-Aneto
-            </button>
-
-            <button class="sector-mapa" data-sector="10">
-                Besiberris
-            </button>
-
-            <button class="sector-mapa" data-sector="11">
-                Estats
-            </button>
+            <button class="sector-mapa" data-sector="0">Balaitus</button>
+            <button class="sector-mapa" data-sector="1">Panticosa</button>
+            <button class="sector-mapa" data-sector="2">Vignemale</button>
+            <button class="sector-mapa" data-sector="3">Ordesa</button>
+            <button class="sector-mapa" data-sector="4">La Munia</button>
+            <button class="sector-mapa" data-sector="5">Néouvielle</button>
+            <button class="sector-mapa" data-sector="6">Bachimala</button>
+            <button class="sector-mapa" data-sector="7">Posets</button>
+            <button class="sector-mapa" data-sector="8">Perdiguero</button>
+            <button class="sector-mapa" data-sector="9">Maladeta-Aneto</button>
+            <button class="sector-mapa" data-sector="10">Besiberris</button>
+            <button class="sector-mapa" data-sector="11">Estats</button>
 
         </div>
 
     </div>
-
-
-    <!-- COLUMNA CENTRAL -->
 
     <div class="columna-central">
 
-
-        <!-- PROGRESO SECTORES -->
-
         <div class="bloque">
 
-            <h2>
-                PROGRESO POR SECTORES
-            </h2>
+            <h2>PROGRESO POR SECTORES</h2>
 
-            <div class="lista-sectores">
-
-                <div class="fila-sector">
-
-                    <span>
-                        Ordesa
-                    </span>
-
-                    <span>
-                        18/25
-                    </span>
-
-                    <div class="mini-barra">
-                        <div style="width:72%"></div>
-                    </div>
-
-                    <span>
-                        72%
-                    </span>
-
-                </div>
-
-
-                <div class="fila-sector">
-
-                    <span>
-                        Benasque
-                    </span>
-
-                    <span>
-                        31/63
-                    </span>
-
-                    <div class="mini-barra">
-                        <div style="width:49%"></div>
-                    </div>
-
-                    <span>
-                        49%
-                    </span>
-
-                </div>
-
-
-                <div class="fila-sector">
-
-                    <span>
-                        Aigüestortes
-                    </span>
-
-                    <span>
-                        14/41
-                    </span>
-
-                    <div class="mini-barra">
-                        <div style="width:34%"></div>
-                    </div>
-
-                    <span>
-                        34%
-                    </span>
-
-                </div>
-
-
-                <div class="fila-sector">
-
-                    <span>
-                        Néouvielle
-                    </span>
-
-                    <span>
-                        7/25
-                    </span>
-
-                    <div class="mini-barra">
-                        <div style="width:28%"></div>
-                    </div>
-
-                    <span>
-                        28%
-                    </span>
-
-                </div>
-
-            </div>
+            <div id="resumenSectores"></div>
 
         </div>
 
-
-        <!-- ÚLTIMAS CUMBRES -->
-
         <div class="bloque">
 
-            <h2>
-                ÚLTIMAS CUMBRES TACHADAS
-            </h2>
+            <h2>ÚLTIMAS CUMBRES TACHADAS</h2>
 
-            <div class="lista-cumbres">
-
-
-                <div class="cumbre">
-
-                    <div class="cumbre-icono">
-                        ▲
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Aneto
-                        </strong>
-
-                        <small>
-                            3.404 m
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="cumbre">
-
-                    <div class="cumbre-icono">
-                        ▲
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Posets
-                        </strong>
-
-                        <small>
-                            3.375 m
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="cumbre">
-
-                    <div class="cumbre-icono">
-                        ▲
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Monte Perdido
-                        </strong>
-
-                        <small>
-                            3.355 m
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <div id="ultimasCumbres"></div>
 
         </div>
 
     </div>
 
-
-    <!-- LOGROS -->
-
     <div class="bloque">
 
-        <h2>
-            LOGROS
-        </h2>
+        <h2>LOGROS</h2>
 
         <div class="logros-lista">
 
-
             <div class="logro">
-
-                <span class="medalla">
-                    🏆
-                </span>
-
+                <span class="medalla">🏆</span>
                 <div>
-
-                    <strong>
-                        Primer 3000
-                    </strong>
-
-                    <small>
-                        Conseguido
-                    </small>
-
+                    <strong>Primer 3000</strong>
+                    <small id="logro1">Pendiente</small>
                 </div>
-
             </div>
 
-
             <div class="logro">
-
-                <span class="medalla">
-                    🥉
-                </span>
-
+                <span class="medalla">🥉</span>
                 <div>
-
-                    <strong>
-                        25 cumbres
-                    </strong>
-
-                    <small>
-                        Conseguido
-                    </small>
-
+                    <strong>25 cumbres</strong>
+                    <small id="logro25">Pendiente</small>
                 </div>
-
             </div>
 
-
             <div class="logro">
-
-                <span class="medalla">
-                    🥈
-                </span>
-
+                <span class="medalla">🥈</span>
                 <div>
-
-                    <strong>
-                        50 cumbres
-                    </strong>
-
-                    <small>
-                        Conseguido
-                    </small>
-
+                    <strong>50 cumbres</strong>
+                    <small id="logro50">Pendiente</small>
                 </div>
-
             </div>
 
-
             <div class="logro">
-
-                <span class="medalla">
-                    🏔
-                </span>
-
+                <span class="medalla">🏔</span>
                 <div>
-
-                    <strong>
-                        100 tresmiles
-                    </strong>
-
-                    <small>
-                        Próximo objetivo
-                    </small>
-
+                    <strong>100 tresmiles</strong>
+                    <small id="logro100">Pendiente</small>
                 </div>
-
             </div>
 
         </div>
@@ -2061,36 +1183,25 @@ nav a.activo{
 
 </div>
 
-
-<!-- =====================================================
-     BASE DE DATOS
-===================================================== -->
-
 <script src="datos-tresmiles.js"></script>
 
-
-<!-- =====================================================
-     FUNCIONAMIENTO
-===================================================== -->
-
 <script>
+
+/* =========================================================
+   CONFIGURACIÓN Y ALMACENAMIENTO
+========================================================= */
 
 let listaActiva =
     localStorage.getItem("tachando_lista") || "217";
 
+let progreso =
+    JSON.parse(
+        localStorage.getItem("tachando_progreso_v1") || "{}"
+    );
 
-/* =====================================================
-   REFERENCIAS
-===================================================== */
 
 const contenido =
     document.getElementById("contenidoPrincipal");
-
-const tarjeta217 =
-    document.getElementById("tarjeta217");
-
-const tarjeta212 =
-    document.getElementById("tarjeta212");
 
 const menuInicio =
     document.getElementById("menuInicio");
@@ -2102,33 +1213,298 @@ const menuMapa =
     document.getElementById("menuMapa");
 
 
-/* =====================================================
-   LISTAS 217 / 212
-===================================================== */
+/* =========================================================
+   NORMALIZACIÓN DE NOMBRES
+========================================================= */
 
-tarjeta217.addEventListener(
-    "click",
-    function(){
+function normalizar(texto){
 
-        seleccionarLista("217");
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[´’']/g,"")
+        .replace(/lliterola/g,"literola")
+        .replace(/\s+/g," ")
+        .trim();
 
-        mostrarSectores();
+}
+
+
+/* =========================================================
+   IDENTIFICADOR COMPARTIDO 217 / 212
+========================================================= */
+
+function claveCima(indiceSector,nombre,altitud){
+
+    const sector =
+        TACHANDO_DATA[indiceSector];
+
+    const nombreNormal =
+        normalizar(nombre);
+
+    /*
+       Primero buscamos coincidencia exacta
+       del nombre normalizado.
+    */
+
+    const todas =
+        [
+            ...sector.a.map(c=>[c[0],c[1]]),
+            ...sector.h
+        ];
+
+    const exacta =
+        todas.find(
+            c =>
+            normalizar(c[0]) === nombreNormal
+        );
+
+    if(exacta){
+
+        return (
+            indiceSector +
+            "|" +
+            normalizar(exacta[0])
+        );
 
     }
-);
 
 
-tarjeta212.addEventListener(
-    "click",
-    function(){
+    /*
+       Si el nombre difiere entre 212 y 217,
+       intentamos relacionarlo por altitud
+       siempre que esa altitud sea única
+       dentro del sector.
+    */
 
-        seleccionarLista("212");
+    const mismaAltitud =
+        todas.filter(
+            c => c[1] === altitud
+        );
 
-        mostrarSectores();
+    const nombresUnicos =
+        [...new Set(
+            mismaAltitud.map(
+                c => normalizar(c[0])
+            )
+        )];
+
+
+    if(nombresUnicos.length === 1){
+
+        return (
+            indiceSector +
+            "|" +
+            nombresUnicos[0]
+        );
 
     }
-);
 
+
+    return (
+        indiceSector +
+        "|" +
+        nombreNormal
+    );
+
+}
+
+
+/* =========================================================
+   GUARDAR PROGRESO
+========================================================= */
+
+function guardarProgreso(){
+
+    localStorage.setItem(
+        "tachando_progreso_v1",
+        JSON.stringify(progreso)
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER CUMBRES DE UNA LISTA
+========================================================= */
+
+function cumbresSector(indiceSector,lista){
+
+    const sector =
+        TACHANDO_DATA[indiceSector];
+
+    if(lista === "217"){
+
+        return sector.a
+            .filter(
+                cima => cima[2] === 1
+            );
+
+    }
+
+    return sector.h;
+
+}
+
+
+/* =========================================================
+   ESTADO DE UNA CUMBRE
+========================================================= */
+
+function estaConquistada(
+    indiceSector,
+    nombre,
+    altitud
+){
+
+    const clave =
+        claveCima(
+            indiceSector,
+            nombre,
+            altitud
+        );
+
+    return Boolean(
+        progreso[clave]
+    );
+
+}
+
+
+/* =========================================================
+   ALTERNAR CUMBRE
+========================================================= */
+
+function alternarCima(
+    indiceSector,
+    nombre,
+    altitud
+){
+
+    const clave =
+        claveCima(
+            indiceSector,
+            nombre,
+            altitud
+        );
+
+
+    if(progreso[clave]){
+
+        delete progreso[clave];
+
+    }
+    else{
+
+        progreso[clave] = {
+            fecha:Date.now(),
+            nombre:nombre,
+            altitud:altitud,
+            sector:indiceSector
+        };
+
+    }
+
+
+    guardarProgreso();
+
+    mostrarSector(indiceSector);
+
+}
+
+
+/* =========================================================
+   CONTAR PROGRESO
+========================================================= */
+
+function progresoLista(lista){
+
+    let completadas = 0;
+    let total = 0;
+
+
+    TACHANDO_DATA.forEach(
+        function(sector,indice){
+
+            const cumbres =
+                cumbresSector(indice,lista);
+
+            total += cumbres.length;
+
+
+            cumbres.forEach(
+                function(cima){
+
+                    if(
+                        estaConquistada(
+                            indice,
+                            cima[0],
+                            cima[1]
+                        )
+                    ){
+
+                        completadas++;
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return {
+        completadas,
+        total
+    };
+
+}
+
+
+/* =========================================================
+   PROGRESO DE UN SECTOR
+========================================================= */
+
+function progresoDeSector(indice,lista){
+
+    const cumbres =
+        cumbresSector(indice,lista);
+
+    let completadas = 0;
+
+
+    cumbres.forEach(
+        function(cima){
+
+            if(
+                estaConquistada(
+                    indice,
+                    cima[0],
+                    cima[1]
+                )
+            ){
+
+                completadas++;
+
+            }
+
+        }
+    );
+
+
+    return {
+        completadas,
+        total:cumbres.length
+    };
+
+}
+
+
+/* =========================================================
+   SELECCIONAR LISTA
+========================================================= */
 
 function seleccionarLista(lista){
 
@@ -2142,9 +1518,41 @@ function seleccionarLista(lista){
 }
 
 
-/* =====================================================
+/* =========================================================
+   TARJETAS 217 / 212
+========================================================= */
+
+document
+.getElementById("tarjeta217")
+.addEventListener(
+    "click",
+    function(){
+
+        seleccionarLista("217");
+
+        mostrarSectores();
+
+    }
+);
+
+
+document
+.getElementById("tarjeta212")
+.addEventListener(
+    "click",
+    function(){
+
+        seleccionarLista("212");
+
+        mostrarSectores();
+
+    }
+);
+
+
+/* =========================================================
    MENÚ
-===================================================== */
+========================================================= */
 
 menuInicio.addEventListener(
     "click",
@@ -2182,34 +1590,35 @@ menuMapa.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    MAPA
-===================================================== */
+========================================================= */
 
 document
 .querySelectorAll(".sector-mapa")
-.forEach(function(boton){
+.forEach(
+    function(boton){
 
-    boton.addEventListener(
-        "click",
-        function(){
+        boton.addEventListener(
+            "click",
+            function(){
 
-            const indice =
-                Number(
-                    boton.dataset.sector
+                mostrarSector(
+                    Number(
+                        boton.dataset.sector
+                    )
                 );
 
-            mostrarSector(indice);
+            }
+        );
 
-        }
-    );
-
-});
+    }
+);
 
 
-/* =====================================================
+/* =========================================================
    PANTALLA DE SECTORES
-===================================================== */
+========================================================= */
 
 function mostrarSectores(){
 
@@ -2221,8 +1630,21 @@ function mostrarSectores(){
     TACHANDO_DATA.forEach(
         function(sector,indice){
 
-            const total =
-                contarSector(sector);
+            const datos =
+                progresoDeSector(
+                    indice,
+                    listaActiva
+                );
+
+            const porcentaje =
+                datos.total
+                ? Math.round(
+                    datos.completadas /
+                    datos.total *
+                    100
+                )
+                : 0;
+
 
             tarjetas += `
 
@@ -2232,14 +1654,11 @@ function mostrarSectores(){
                 >
 
                     <div class="numero-sector">
-
                         ${
                             String(indice+1)
                             .padStart(2,"0")
                         }
-
                     </div>
-
 
                     <div class="datos-sector">
 
@@ -2248,11 +1667,22 @@ function mostrarSectores(){
                         </strong>
 
                         <span>
-                            ${total} tresmiles
+                            ${datos.total} tresmiles
+                        </span>
+
+                        <span class="progreso-sector-texto">
+
+                            ${datos.completadas}
+                            /
+                            ${datos.total}
+
+                            ·
+
+                            ${porcentaje} %
+
                         </span>
 
                     </div>
-
 
                     <div class="flecha-sector">
                         ›
@@ -2272,14 +1702,11 @@ function mostrarSectores(){
 
             <div class="cabecera-vista">
 
-
                 <button
                     class="btn-vista"
                     onclick="volverInicio()"
                 >
-
                     ‹ Inicio
-
                 </button>
 
 
@@ -2308,11 +1735,8 @@ function mostrarSectores(){
                     class="btn-vista btn-derecha"
                     onclick="cambiarLista()"
                 >
-
                     Cambiar lista
-
                 </button>
-
 
             </div>
 
@@ -2336,7 +1760,6 @@ function mostrarSectores(){
 
             </div>
 
-
         </section>
 
     `;
@@ -2344,58 +1767,28 @@ function mostrarSectores(){
 }
 
 
-/* =====================================================
-   CONTAR TRESMILES DE UN SECTOR
-===================================================== */
-
-function contarSector(sector){
-
-    if(listaActiva === "217"){
-
-        return sector.a
-        .filter(
-            cima => cima[2] === 1
-        )
-        .length;
-
-    }
-
-    return sector.h.length;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    PANTALLA DE UN SECTOR
-===================================================== */
+========================================================= */
 
 function mostrarSector(indice){
 
     marcarMenu("mis");
 
-
     const sector =
         TACHANDO_DATA[indice];
 
+    const cumbres =
+        cumbresSector(
+            indice,
+            listaActiva
+        );
 
-    let cumbres;
-
-
-    if(listaActiva === "217"){
-
-        cumbres =
-            sector.a.filter(
-                cima => cima[2] === 1
-            );
-
-    }
-    else{
-
-        cumbres =
-            sector.h;
-
-    }
-
+    const datosSector =
+        progresoDeSector(
+            indice,
+            listaActiva
+        );
 
     let filas = "";
 
@@ -2414,16 +1807,23 @@ function mostrarSector(indice){
                 &&
                 cima[3] === 1;
 
+            const conquistada =
+                estaConquistada(
+                    indice,
+                    nombre,
+                    altitud
+                );
+
 
             filas += `
 
-                <div class="fila-cumbre-app">
-
+                <div class="
+                    fila-cumbre-app
+                    ${conquistada ? "conquistada" : ""}
+                ">
 
                     <div class="numero-cumbre">
-
                         ${posicion+1}
-
                     </div>
 
 
@@ -2433,16 +1833,14 @@ function mostrarSector(indice){
                             ${nombre}
                         </strong>
 
-
                         ${
                             nueva217
 
                             ? `
-                            <span class="marca-nueva">
-                                NUEVA 217
-                            </span>
-                            `
-
+                                <span class="marca-nueva">
+                                    NUEVA 217
+                                </span>
+                              `
                             : ""
                         }
 
@@ -2450,21 +1848,30 @@ function mostrarSector(indice){
 
 
                     <div class="altitud-cumbre">
-
                         ${altitud}
-
                     </div>
 
 
                     <button
-                        class="check-cima"
-                        title="Marcar como conseguida"
+                        class="
+                            check-cima
+                            ${conquistada ? "conquistada" : ""}
+                        "
+                        onclick='alternarCima(
+                            ${indice},
+                            ${JSON.stringify(nombre)},
+                            ${JSON.stringify(altitud)}
+                        )'
+                        title="
+                            ${
+                                conquistada
+                                ? "Desmarcar"
+                                : "Marcar como conseguida"
+                            }
+                        "
                     >
-
                         ✓
-
                     </button>
-
 
                 </div>
 
@@ -2474,21 +1881,27 @@ function mostrarSector(indice){
     );
 
 
+    const porcentaje =
+        datosSector.total
+        ? Math.round(
+            datosSector.completadas /
+            datosSector.total *
+            100
+        )
+        : 0;
+
+
     contenido.innerHTML = `
 
         <section class="vista-app">
 
-
             <div class="cabecera-vista">
-
 
                 <button
                     class="btn-vista"
                     onclick="mostrarSectores()"
                 >
-
                     ‹ Sectores
-
                 </button>
 
 
@@ -2510,9 +1923,15 @@ function mostrarSector(indice){
 
                         ·
 
-                        ${cumbres.length}
+                        ${datosSector.completadas}
+                        /
+                        ${datosSector.total}
 
-                        tresmiles
+                        completados
+
+                        ·
+
+                        ${porcentaje} %
 
                     </p>
 
@@ -2523,11 +1942,8 @@ function mostrarSector(indice){
                     class="btn-vista btn-derecha"
                     onclick="cambiarListaSector(${indice})"
                 >
-
                     Cambiar lista
-
                 </button>
-
 
             </div>
 
@@ -2538,7 +1954,6 @@ function mostrarSector(indice){
 
             </div>
 
-
         </section>
 
     `;
@@ -2546,9 +1961,9 @@ function mostrarSector(indice){
 }
 
 
-/* =====================================================
-   CAMBIAR LISTA DESDE SECTORES
-===================================================== */
+/* =========================================================
+   CAMBIAR LISTA
+========================================================= */
 
 function cambiarLista(){
 
@@ -2567,10 +1982,6 @@ function cambiarLista(){
 }
 
 
-/* =====================================================
-   CAMBIAR LISTA DENTRO DE UN SECTOR
-===================================================== */
-
 function cambiarListaSector(indice){
 
     listaActiva =
@@ -2588,9 +1999,9 @@ function cambiarListaSector(indice){
 }
 
 
-/* =====================================================
-   VOLVER
-===================================================== */
+/* =========================================================
+   VOLVER A INICIO
+========================================================= */
 
 function volverInicio(){
 
@@ -2599,9 +2010,9 @@ function volverInicio(){
 }
 
 
-/* =====================================================
-   MARCAR MENÚ
-===================================================== */
+/* =========================================================
+   MENÚ ACTIVO
+========================================================= */
 
 function marcarMenu(zona){
 
@@ -2627,6 +2038,324 @@ function marcarMenu(zona){
     }
 
 }
+
+
+/* =========================================================
+   ACTUALIZAR PANTALLA DE INICIO
+========================================================= */
+
+function actualizarInicio(){
+
+    const p217 =
+        progresoLista("217");
+
+    const p212 =
+        progresoLista("212");
+
+
+    document.getElementById(
+        "completados217"
+    ).textContent =
+        p217.completadas +
+        " completados";
+
+
+    document.getElementById(
+        "pendientes217"
+    ).textContent =
+        (p217.total-p217.completadas) +
+        " pendientes";
+
+
+    document.getElementById(
+        "completados212"
+    ).textContent =
+        p212.completadas +
+        " completados";
+
+
+    document.getElementById(
+        "pendientes212"
+    ).textContent =
+        (p212.total-p212.completadas) +
+        " pendientes";
+
+
+    const actual =
+        listaActiva === "217"
+        ? p217
+        : p212;
+
+
+    const porcentaje =
+        actual.total
+        ? (
+            actual.completadas /
+            actual.total *
+            100
+          )
+        : 0;
+
+
+    document.getElementById(
+        "progresoNumero"
+    ).textContent =
+        actual.completadas;
+
+
+    document.getElementById(
+        "progresoTotal"
+    ).textContent =
+        "/ " + actual.total;
+
+
+    document.getElementById(
+        "progresoPorcentaje"
+    ).textContent =
+        porcentaje
+        .toFixed(1)
+        .replace(".",",") +
+        " %";
+
+
+    document.getElementById(
+        "barraGeneral"
+    ).style.width =
+        porcentaje + "%";
+
+
+    document.getElementById(
+        "textoListaActiva"
+    ).textContent =
+        listaActiva === "217"
+        ? "ACTUALIZADA (217)"
+        : "HISTÓRICA (212)";
+
+
+    actualizarResumenSectores();
+
+    actualizarUltimasCumbres();
+
+    actualizarLogros();
+
+}
+
+
+/* =========================================================
+   RESUMEN DE SECTORES EN INICIO
+========================================================= */
+
+function actualizarResumenSectores(){
+
+    const contenedor =
+        document.getElementById(
+            "resumenSectores"
+        );
+
+    /*
+       Mostramos cuatro sectores.
+       Más adelante podemos decidir cuáles.
+    */
+
+    const indices =
+        [0,1,2,3];
+
+    let html = "";
+
+
+    indices.forEach(
+        function(indice){
+
+            const datos =
+                progresoDeSector(
+                    indice,
+                    listaActiva
+                );
+
+            const porcentaje =
+                datos.total
+                ? Math.round(
+                    datos.completadas /
+                    datos.total *
+                    100
+                )
+                : 0;
+
+
+            html += `
+
+                <div class="fila-sector">
+
+                    <span>
+                        ${TACHANDO_DATA[indice].s}
+                    </span>
+
+                    <span>
+                        ${datos.completadas}/${datos.total}
+                    </span>
+
+                    <div class="mini-barra">
+
+                        <div
+                            style="width:${porcentaje}%"
+                        ></div>
+
+                    </div>
+
+                    <span>
+                        ${porcentaje}%
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    contenedor.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   ÚLTIMAS CUMBRES
+========================================================= */
+
+function actualizarUltimasCumbres(){
+
+    const contenedor =
+        document.getElementById(
+            "ultimasCumbres"
+        );
+
+
+    const elementos =
+        Object.values(progreso)
+        .filter(
+            elemento =>
+            elemento &&
+            elemento.fecha
+        )
+        .sort(
+            (a,b) =>
+            b.fecha-a.fecha
+        )
+        .slice(0,3);
+
+
+    if(elementos.length === 0){
+
+        contenedor.innerHTML = `
+
+            <div
+                style="
+                    font-size:9px;
+                    color:#71818d;
+                    padding-top:8px;
+                "
+            >
+                Todavía no has tachado ninguna cumbre.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = "";
+
+
+    elementos.forEach(
+        function(cima){
+
+            html += `
+
+                <div class="cumbre">
+
+                    <div class="cumbre-icono">
+                        ▲
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ${cima.nombre}
+                        </strong>
+
+                        <small>
+                            ${cima.altitud}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    contenedor.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   LOGROS BÁSICOS
+========================================================= */
+
+function actualizarLogros(){
+
+    const totalUnico =
+        Object.keys(progreso).length;
+
+
+    document.getElementById(
+        "logro1"
+    ).textContent =
+        totalUnico >= 1
+        ? "Conseguido"
+        : "Pendiente";
+
+
+    document.getElementById(
+        "logro25"
+    ).textContent =
+        totalUnico >= 25
+        ? "Conseguido"
+        : "Pendiente";
+
+
+    document.getElementById(
+        "logro50"
+    ).textContent =
+        totalUnico >= 50
+        ? "Conseguido"
+        : "Pendiente";
+
+
+    document.getElementById(
+        "logro100"
+    ).textContent =
+        totalUnico >= 100
+        ? "Conseguido"
+        : "Pendiente";
+
+}
+
+
+/* =========================================================
+   INICIO DE LA APP
+========================================================= */
+
+actualizarInicio();
 
 </script>
 
