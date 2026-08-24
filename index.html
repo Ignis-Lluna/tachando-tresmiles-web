@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tachando 3000s</title>
 
-
 <style>
-
-/* =========================================================
-   BASE
-========================================================= */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -26,14 +13,12 @@
 }
 
 :root{
-
     --azul-muy-oscuro:#082b4c;
     --azul-oscuro:#0b3c68;
     --azul:#145d96;
     --azul-medio:#3b7fb0;
     --azul-claro:#dfeef8;
     --azul-hielo:#eef6fb;
-
     --blanco:#ffffff;
     --gris:#6f7d89;
     --texto:#10293d;
@@ -43,420 +28,206 @@
     --oro-oscuro:#9c7112;
     --oro-claro:#fff3bf;
     --oro-fondo:#fff9df;
-
 }
-
 
 html,
 body{
-
     width:100%;
     height:100%;
-
     overflow:hidden;
-
 }
-
 
 body{
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family:Arial,Helvetica,sans-serif;
     color:var(--texto);
-
-    background:
-        var(--fondo);
-
+    background:var(--fondo);
 }
 
-
 /* =========================================================
-   ESTRUCTURA GENERAL
+   ESTRUCTURA
 ========================================================= */
 
 .app{
-
     width:100%;
     height:100dvh;
-
     display:grid;
-
-    grid-template-columns:
-        150px
-        minmax(0,1fr);
-
+    grid-template-columns:150px minmax(0,1fr);
     overflow:hidden;
-
 }
-
 
 .sidebar{
-
     height:100dvh;
-
-    background:
-        rgba(255,255,255,.97);
-
-    border-right:
-        1px solid #cad8e2;
-
+    background:rgba(255,255,255,.97);
+    border-right:1px solid #cad8e2;
     display:flex;
     flex-direction:column;
-
     overflow:hidden;
-
 }
-
 
 .marca{
-
     height:110px;
     flex:0 0 110px;
-
     display:flex;
     flex-direction:column;
-
     justify-content:center;
     align-items:center;
-
-    border-bottom:
-        1px solid #d9e4eb;
-
-    background:
-        linear-gradient(
-            180deg,
-            #f7fbfe,
-            #eef6fb
-        );
-
+    border-bottom:1px solid #d9e4eb;
+    background:linear-gradient(180deg,#f7fbfe,#eef6fb);
 }
-
 
 .logo-montana{
-
     position:relative;
-
     width:54px;
     height:33px;
-
     margin-bottom:6px;
-
 }
-
 
 .logo-montana:before,
 .logo-montana:after{
-
     content:"";
-
     position:absolute;
-
     bottom:0;
-
     width:0;
     height:0;
-
-    border-left:
-        16px solid transparent;
-
-    border-right:
-        16px solid transparent;
-
-    border-bottom:
-        29px solid var(--azul-oscuro);
-
+    border-left:16px solid transparent;
+    border-right:16px solid transparent;
+    border-bottom:29px solid var(--azul-oscuro);
 }
-
 
 .logo-montana:before{
-
     left:1px;
-
 }
-
 
 .logo-montana:after{
-
     right:1px;
-
     transform:scale(.78);
-
-    transform-origin:
-        bottom;
-
+    transform-origin:bottom;
     opacity:.78;
-
 }
-
 
 .marca strong{
-
     text-align:center;
-
     font-size:15px;
     line-height:1.05;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
-
-/* =========================================================
-   MENÚ LATERAL
-========================================================= */
 
 nav{
-
     flex:1;
-
     display:flex;
     flex-direction:column;
-
-    justify-content:
-        space-evenly;
-
-    padding:
-        5px 0 8px;
-
+    justify-content:space-evenly;
+    padding:5px 0 8px;
 }
-
 
 nav a{
-
     min-height:42px;
-
     display:flex;
     align-items:center;
-
     gap:10px;
-
-    padding:
-        0 14px;
-
+    padding:0 14px;
     text-decoration:none;
-
     color:#18354b;
-
     font-size:12px;
-
-    border-left:
-        4px solid transparent;
-
-    transition:
-        .15s ease;
-
+    border-left:4px solid transparent;
+    transition:.15s ease;
 }
-
 
 nav a:hover,
 nav a.activo{
-
     background:#e5f1f8;
-
-    border-left-color:
-        var(--azul);
-
-    color:
-        var(--azul-muy-oscuro);
-
+    border-left-color:var(--azul);
+    color:var(--azul-muy-oscuro);
 }
-
 
 .icono{
-
     width:22px;
-
     text-align:center;
-
     font-size:16px;
-
 }
-
-
-/* =========================================================
-   CONTENIDO
-========================================================= */
 
 .contenido{
-
     height:100dvh;
-
     min-width:0;
-
     display:grid;
-
-    grid-template-rows:
-        auto
-        minmax(0,1fr);
-
+    grid-template-rows:auto minmax(0,1fr);
     overflow:hidden;
-
     background:
-
-        linear-gradient(
-            rgba(240,247,251,.88),
-            rgba(234,243,248,.94)
-        ),
-
-        linear-gradient(
-            135deg,
-            #dbeaf4,
-            #edf6fb
-        );
-
+        linear-gradient(rgba(240,247,251,.88),rgba(234,243,248,.94)),
+        linear-gradient(135deg,#dbeaf4,#edf6fb);
 }
 
-
 /* =========================================================
-   CABECERA INICIO
+   CABECERA
 ========================================================= */
 
 .hero{
-
-    padding:
-        7px 26px 10px;
-
+    padding:7px 26px 10px;
     background:
-
         radial-gradient(
             circle at 50% -10%,
             rgba(255,255,255,.98),
             rgba(230,242,249,.83) 46%,
             rgba(187,215,232,.76) 100%
         );
-
-    border-bottom:
-        1px solid #c8dbe8;
-
+    border-bottom:1px solid #c8dbe8;
 }
-
 
 .hero-top{
-
     height:28px;
-
     display:flex;
-
-    justify-content:
-        flex-end;
-
+    justify-content:flex-end;
     gap:7px;
-
 }
-
 
 .boton-mini{
-
     height:27px;
-
-    padding:
-        0 10px;
-
-    border-radius:
-        7px;
-
-    border:
-        1px solid #b9cfde;
-
-    background:
-        rgba(255,255,255,.88);
-
+    padding:0 10px;
+    border-radius:7px;
+    border:1px solid #b9cfde;
+    background:rgba(255,255,255,.88);
     font-size:10px;
     font-weight:700;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     cursor:pointer;
-
 }
-
 
 .titulo{
-
     text-align:center;
-
-    font-size:
-        clamp(
-            34px,
-            3.8vw,
-            54px
-        );
-
+    font-size:clamp(34px,3.8vw,54px);
     line-height:.95;
-
     font-weight:900;
-
     letter-spacing:1px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
 
 .titulo span{
-
-    color:
-        var(--azul);
-
+    color:var(--azul);
 }
-
 
 .subtitulo{
-
     text-align:center;
-
     margin-top:4px;
-
     font-size:16px;
-
     color:#23445d;
-
 }
-
 
 .elige{
-
     text-align:center;
-
     margin-top:10px;
     margin-bottom:8px;
-
     font-size:12px;
     font-weight:800;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
 
 .zona-principal{
-
-    width:
-        min(
-            1160px,
-            100%
-        );
-
+    width:min(1160px,100%);
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        .78fr;
-
+    grid-template-columns:1fr 1fr .78fr;
     gap:13px;
-
 }
-
 
 /* =========================================================
    TARJETAS 217 / 212
@@ -464,2653 +235,1108 @@ nav a.activo{
 
 .tarjeta-lista,
 .panel-progreso{
-
     height:181px;
-
-    border-radius:
-        13px;
-
+    border-radius:13px;
     overflow:hidden;
-
-    box-shadow:
-        0 6px 17px
-        rgba(8,43,76,.12);
-
+    box-shadow:0 6px 17px rgba(8,43,76,.12);
 }
-
 
 .tarjeta-lista{
-
     display:flex;
     flex-direction:column;
-
     cursor:pointer;
-
-    transition:
-        .16s ease;
-
+    transition:.16s ease;
 }
-
 
 .tarjeta-lista:hover{
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 9px 22px
-        rgba(8,43,76,.17);
-
+    transform:translateY(-2px);
+    box-shadow:0 9px 22px rgba(8,43,76,.17);
 }
-
 
 .actualizada{
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #174f7e,
-            #0c3b67
-        );
-
+    background:linear-gradient(180deg,#174f7e,#0c3b67);
     color:white;
-
-    border:
-        1px solid #2e6690;
-
+    border:1px solid #2e6690;
 }
 
-
-.actualizada
-.lista-numero,
-
-.actualizada
-.lista-nombre,
-
-.actualizada
-.lista-sub{
-
+.actualizada .lista-numero,
+.actualizada .lista-nombre,
+.actualizada .lista-sub{
     color:white;
-
 }
 
-
-.actualizada
-.lista-pie{
-
-    background:
-        #082d50;
-
+.actualizada .lista-pie{
+    background:#082d50;
 }
-
 
 .historica{
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #f6fbfe,
-            #dceaf3
-        );
-
-    border:
-        1px solid #b8cddb;
-
+    background:linear-gradient(180deg,#f6fbfe,#dceaf3);
+    border:1px solid #b8cddb;
 }
 
-
-.historica
-.lista-numero,
-
-.historica
-.lista-nombre{
-
-    color:
-        var(--azul-muy-oscuro);
-
+.historica .lista-numero,
+.historica .lista-nombre{
+    color:var(--azul-muy-oscuro);
 }
 
-
-.historica
-.lista-sub{
-
+.historica .lista-sub{
     color:#42637b;
-
 }
 
-
-.historica
-.lista-pie{
-
-    background:
-        #356985;
-
+.historica .lista-pie{
+    background:#356985;
 }
-
 
 .lista-contenido{
-
     flex:1;
-
     position:relative;
-
     text-align:center;
-
-    padding:
-        10px 15px 0;
-
+    padding:10px 15px 0;
     overflow:hidden;
-
 }
-
 
 .lista-nombre{
-
     font-size:13px;
     font-weight:900;
-
 }
-
 
 .lista-numero{
-
     font-size:43px;
-
     line-height:1;
-
     font-weight:900;
-
     margin-top:5px;
-
 }
-
 
 .lista-sub{
-
     font-size:10px;
     font-weight:800;
-
     margin-top:1px;
-
 }
 
-
 .montanas{
-
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
     height:55px;
-
 }
-
 
 .montanas:before,
 .montanas:after{
-
     content:"";
-
     position:absolute;
-
     bottom:0;
-
     width:62%;
     height:100%;
-
-    clip-path:
-
-        polygon(
-
-            0 100%,
-            19% 69%,
-            32% 78%,
-            50% 37%,
-            65% 64%,
-            82% 48%,
-            100% 100%
-
-        );
-
+    clip-path:polygon(
+        0 100%,19% 69%,32% 78%,50% 37%,
+        65% 64%,82% 48%,100% 100%
+    );
 }
 
-
-.actualizada
-.montanas:before{
-
+.actualizada .montanas:before{
     left:-4%;
-
     background:#1f679c;
-
     opacity:.70;
-
 }
 
-
-.actualizada
-.montanas:after{
-
+.actualizada .montanas:after{
     right:-5%;
-
     background:#0b3156;
-
     opacity:.85;
-
 }
 
-
-.historica
-.montanas:before{
-
+.historica .montanas:before{
     left:-4%;
-
     background:#a9c4d7;
-
     opacity:.8;
-
 }
 
-
-.historica
-.montanas:after{
-
+.historica .montanas:after{
     right:-5%;
-
     background:#779eb8;
-
     opacity:.7;
-
 }
-
 
 .lista-pie{
-
     height:31px;
-
-    flex:
-        0 0 31px;
-
+    flex:0 0 31px;
     color:white;
-
     display:flex;
-
     align-items:center;
-
-    justify-content:
-        space-around;
-
+    justify-content:space-around;
     font-size:9px;
-
 }
-
 
 /* =========================================================
    PROGRESO GENERAL
 ========================================================= */
 
 .panel-progreso{
-
-    padding:
-        10px 14px;
-
+    padding:10px 14px;
     text-align:center;
-
-    background:
-        rgba(255,255,255,.96);
-
-    border:
-        1px solid #c2d4df;
-
+    background:rgba(255,255,255,.96);
+    border:1px solid #c2d4df;
 }
-
 
 .panel-progreso h3{
-
     font-size:11px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     margin-bottom:5px;
-
 }
-
 
 .contador{
-
     font-size:32px;
-
     line-height:1;
-
     font-weight:900;
-
-    color:
-        var(--azul);
-
+    color:var(--azul);
 }
-
 
 .contador span{
-
     color:#7d8992;
-
     font-size:20px;
-
 }
-
 
 .texto-completados{
-
     margin-top:3px;
-
     font-size:8px;
     font-weight:700;
-
 }
-
 
 .porcentaje{
-
     margin-top:7px;
-
     font-size:25px;
-
     line-height:1;
-
     font-weight:900;
-
     color:#2b75a9;
-
 }
-
 
 .barra{
-
     height:8px;
-
     margin-top:7px;
-
     border-radius:20px;
-
     background:#dfe5e8;
-
     overflow:hidden;
-
 }
-
 
 .barra div{
-
     height:100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #0b4c7d,
-            #3a89bd
-        );
-
+    background:linear-gradient(90deg,#0b4c7d,#3a89bd);
 }
-
 
 .lista-activa{
-
     margin-top:6px;
-
     padding-top:5px;
-
-    border-top:
-        1px solid #dde5e9;
-
+    border-top:1px solid #dde5e9;
     font-size:8px;
-
 }
-
 
 /* =========================================================
    DASHBOARD
 ========================================================= */
 
 .dashboard{
-
     min-height:0;
-
-    padding:
-        9px 16px 11px;
-
+    padding:9px 16px 11px;
     display:grid;
-
     grid-template-columns:
-
         minmax(0,1.75fr)
         minmax(260px,.95fr)
         minmax(230px,.78fr);
-
     gap:11px;
-
     align-items:stretch;
-
     overflow:hidden;
-
 }
-
 
 .bloque{
-
     min-width:0;
     min-height:0;
-
-    background:
-        rgba(255,255,255,.95);
-
-    border:
-        1px solid #cbdbe5;
-
-    border-radius:
-        11px;
-
+    background:rgba(255,255,255,.95);
+    border:1px solid #cbdbe5;
+    border-radius:11px;
     padding:10px;
-
-    box-shadow:
-        0 4px 12px
-        rgba(10,45,70,.06);
-
+    box-shadow:0 4px 12px rgba(10,45,70,.06);
     overflow:hidden;
-
     display:flex;
-
     flex-direction:column;
-
 }
-
 
 .bloque h2{
-
     font-size:11px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     margin-bottom:8px;
-
 }
 
-
 /* =========================================================
-   MAPA DE INICIO
+   MAPA
 ========================================================= */
 
 .mapa{
-
     flex:1;
-
     position:relative;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(6,1fr);
-
-    grid-template-rows:
-        repeat(2,auto);
-
+    grid-template-columns:repeat(6,1fr);
+    grid-template-rows:repeat(2,auto);
     align-content:center;
-
     gap:8px;
-
-    padding:
-        28px 12px 70px;
-
+    padding:28px 12px 70px;
     border-radius:8px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #b9d4e3,
-            #d4e5ee
-        );
-
+    background:linear-gradient(135deg,#b9d4e3,#d4e5ee);
     overflow:hidden;
-
 }
 
-
 .mapa:before{
-
     content:"";
-
     position:absolute;
-
     left:3%;
     right:3%;
     bottom:10%;
-
     height:38%;
-
-    background:
-        rgba(61,115,151,.17);
-
-    clip-path:
-
-        polygon(
-
-            0 87%,
-            6% 71%,
-            12% 76%,
-            18% 55%,
-            23% 68%,
-            29% 43%,
-            35% 60%,
-            41% 34%,
-            48% 53%,
-            54% 27%,
-            61% 50%,
-            67% 35%,
-            74% 59%,
-            80% 40%,
-            86% 61%,
-            92% 48%,
-            100% 73%,
-            100% 100%,
-            0 100%
-
-        );
-
+    background:rgba(61,115,151,.17);
+    clip-path:polygon(
+        0 87%,6% 71%,12% 76%,18% 55%,23% 68%,
+        29% 43%,35% 60%,41% 34%,48% 53%,54% 27%,
+        61% 50%,67% 35%,74% 59%,80% 40%,86% 61%,
+        92% 48%,100% 73%,100% 100%,0 100%
+    );
 }
-
 
 .sector-mapa{
-
     position:relative;
-
     z-index:2;
-
-    padding:
-        6px 5px;
-
-    background:
-        rgba(255,255,255,.92);
-
-    border:
-        1px solid
-        rgba(112,150,174,.30);
-
-    border-radius:
-        25px;
-
+    padding:6px 5px;
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(112,150,174,.30);
+    border-radius:25px;
     font-size:8px;
     font-weight:800;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     cursor:pointer;
-
-    transition:
-        .15s ease;
-
+    transition:.15s ease;
 }
-
 
 .sector-mapa:hover{
-
-    background:
-        var(--azul-oscuro);
-
+    background:var(--azul-oscuro);
     color:white;
-
-    transform:
-        translateY(-1px);
-
+    transform:translateY(-1px);
 }
-
 
 .sector-mapa.completo{
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #f5d76e,
-            #d6a926
-        );
-
-    border-color:
-        #b68817;
-
+    background:linear-gradient(180deg,#f5d76e,#d6a926);
+    border-color:#b68817;
     color:#5d4305;
-
-    box-shadow:
-        0 0 0 1px
-        rgba(255,226,119,.7);
-
+    box-shadow:0 0 0 1px rgba(255,226,119,.7);
 }
-
 
 .sector-mapa.completo:before{
-
     content:"🏆 ";
-
 }
-
 
 /* =========================================================
-   MAPA GRANDE
-========================================================= */
-
-.pagina-mapa{
-
-    height:100dvh;
-
-    padding:
-        14px 22px 18px;
-
-    overflow:hidden;
-
-    display:flex;
-    flex-direction:column;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #e9f5fb,
-            #f7fbfd
-        );
-
-}
-
-
-.mapa-grande-cabecera{
-
-    flex:0 0 76px;
-
-    display:grid;
-
-    grid-template-columns:
-        150px
-        1fr
-        150px;
-
-    align-items:center;
-
-    padding:
-        10px 16px;
-
-    margin-bottom:12px;
-
-    background:white;
-
-    border:
-        1px solid #cbdde9;
-
-    border-radius:
-        12px;
-
-    box-shadow:
-        0 4px 14px
-        rgba(8,43,76,.06);
-
-}
-
-
-.mapa-grande-titulo{
-
-    text-align:center;
-
-}
-
-
-.mapa-grande-titulo h1{
-
-    font-size:25px;
-
-    color:
-        var(--azul-muy-oscuro);
-
-}
-
-
-.mapa-grande-titulo p{
-
-    margin-top:4px;
-
-    font-size:10px;
-
-    color:#648096;
-
-}
-
-
-.mapa-grande-panel{
-
-    flex:1;
-
-    min-height:0;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border:
-        1px solid #bdd3e1;
-
-    border-radius:
-        15px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #cce1ed 0%,
-            #bdd8e7 45%,
-            #dceaf2 100%
-        );
-
-    box-shadow:
-        0 7px 22px
-        rgba(8,43,76,.10);
-
-}
-
-
-.mapa-grande-panel:before{
-
-    content:"";
-
-    position:absolute;
-
-    left:2%;
-    right:2%;
-    bottom:5%;
-
-    height:56%;
-
-    opacity:.56;
-
-    background:
-        #739cb7;
-
-    clip-path:
-
-        polygon(
-
-            0 82%,
-            4% 72%,
-            8% 76%,
-            13% 61%,
-            18% 70%,
-            23% 51%,
-            28% 64%,
-            33% 44%,
-            38% 59%,
-            43% 35%,
-            48% 55%,
-            53% 29%,
-            58% 52%,
-            63% 37%,
-            68% 58%,
-            73% 43%,
-            78% 62%,
-            83% 48%,
-            88% 65%,
-            93% 54%,
-            100% 75%,
-            100% 100%,
-            0 100%
-
-        );
-
-}
-
-
-.mapa-grande-panel:after{
-
-    content:"";
-
-    position:absolute;
-
-    left:5%;
-    right:5%;
-    bottom:3%;
-
-    height:37%;
-
-    opacity:.26;
-
-    background:
-        #295f84;
-
-    clip-path:
-
-        polygon(
-
-            0 87%,
-            7% 68%,
-            13% 80%,
-            20% 54%,
-            27% 76%,
-            34% 45%,
-            42% 69%,
-            50% 36%,
-            58% 65%,
-            66% 43%,
-            74% 70%,
-            82% 51%,
-            90% 73%,
-            100% 58%,
-            100% 100%,
-            0 100%
-
-        );
-
-}
-
-
-.sectores-mapa-grande{
-
-    position:absolute;
-
-    z-index:3;
-
-    left:4%;
-    right:4%;
-    top:17%;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(6,1fr);
-
-    gap:
-        22px 11px;
-
-}
-
-
-.sector-mapa-grande{
-
-    min-height:63px;
-
-    padding:
-        8px 5px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid rgba(83,130,160,.37);
-
-    border-radius:
-        11px;
-
-    background:
-        rgba(255,255,255,.90);
-
-    color:
-        var(--azul-muy-oscuro);
-
-    font-size:10px;
-    font-weight:900;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 4px 10px
-        rgba(31,73,99,.08);
-
-    transition:
-        .15s ease;
-
-}
-
-
-.sector-mapa-grande:hover{
-
-    transform:
-        translateY(-3px);
-
-    background:
-        var(--azul-oscuro);
-
-    color:white;
-
-}
-
-
-.sector-mapa-grande.completo{
-
-    border-color:
-        #b88a18;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #fff1ac,
-            #e2b632
-        );
-
-    color:
-        #684b07;
-
-}
-
-
-.sector-mapa-grande
-.numero-sector-mapa{
-
-    margin-top:3px;
-
-    font-size:7px;
-
-    font-weight:700;
-
-    opacity:.72;
-
-}
-
-
-.mapa-leyenda{
-
-    position:absolute;
-
-    z-index:4;
-
-    left:18px;
-    bottom:15px;
-
-    padding:
-        8px 12px;
-
-    border-radius:
-        8px;
-
-    background:
-        rgba(255,255,255,.90);
-
-    border:
-        1px solid #bfd2df;
-
-    font-size:8px;
-
-    color:#526f83;
-
-}
-
-
-/* =========================================================
-   PROGRESO POR SECTORES
+   COLUMNA CENTRAL
 ========================================================= */
 
 .columna-central{
-
     min-width:0;
     min-height:0;
-
     display:grid;
-
-    grid-template-rows:
-        1fr
-        1fr;
-
+    grid-template-rows:1fr 1fr;
     gap:11px;
-
 }
-
 
 .fila-sector{
-
     display:grid;
-
-    grid-template-columns:
-        1fr
-        42px
-        .75fr
-        31px;
-
+    grid-template-columns:1fr 42px .75fr 31px;
     gap:5px;
-
     align-items:center;
-
-    margin:
-        5px 0;
-
+    margin:5px 0;
     font-size:8px;
-
 }
-
 
 .fila-sector.completo{
-
-    color:
-        var(--oro-oscuro);
-
+    color:var(--oro-oscuro);
     font-weight:800;
-
 }
 
-
-.fila-sector.completo
-.mini-barra div{
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #d4a62a,
-            #f2ce58
-        );
-
+.fila-sector.completo .mini-barra div{
+    background:linear-gradient(90deg,#d4a62a,#f2ce58);
 }
-
 
 .mini-barra{
-
     height:5px;
-
     background:#dce4e9;
-
     border-radius:10px;
-
     overflow:hidden;
-
 }
-
 
 .mini-barra div{
-
     height:100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #165c8d,
-            #4d91bd
-        );
-
+    background:linear-gradient(90deg,#165c8d,#4d91bd);
 }
-
-
-/* =========================================================
-   ÚLTIMAS CUMBRES
-========================================================= */
 
 .cumbre{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
-    padding:
-        5px 0;
-
-    border-bottom:
-        1px solid #e2eaef;
-
+    padding:5px 0;
+    border-bottom:1px solid #e2eaef;
 }
-
 
 .cumbre:last-child{
-
     border-bottom:none;
-
 }
-
 
 .cumbre-icono{
-
     width:27px;
     height:27px;
-
-    flex:
-        0 0 27px;
-
+    flex:0 0 27px;
     border-radius:50%;
-
     background:#e1eef6;
-
     display:grid;
     place-items:center;
-
-    color:
-        var(--azul-oscuro);
-
+    color:var(--azul-oscuro);
     font-size:12px;
-
 }
-
 
 .cumbre strong{
-
     display:block;
-
     font-size:9px;
-
 }
-
 
 .cumbre small{
-
     display:block;
-
     color:#758590;
-
     font-size:8px;
-
 }
-
 
 /* =========================================================
    LOGROS
 ========================================================= */
 
 .logros-lista{
-
     flex:1;
-
     display:flex;
     flex-direction:column;
-
-    justify-content:
-        space-between;
-
+    justify-content:space-between;
     gap:6px;
-
 }
-
 
 .logro{
-
     flex:1;
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
     padding:6px;
-
     border-radius:7px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #edf5fa,
-            #f7fbfd
-        );
-
-    border:
-        1px solid #dce8ef;
-
+    background:linear-gradient(90deg,#edf5fa,#f7fbfd);
+    border:1px solid #dce8ef;
     transition:.2s ease;
-
 }
-
 
 .logro.conseguido{
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #fff5c7,
-            #fffaf0
-        );
-
-    border-color:
-        #dfbd55;
-
+    background:linear-gradient(90deg,#fff5c7,#fffaf0);
+    border-color:#dfbd55;
 }
-
 
 .logro.conseguido strong{
-
     color:#805c0b;
-
 }
-
 
 .logro.conseguido small{
-
     color:#a27917;
-
     font-weight:800;
-
 }
-
 
 .medalla{
-
     width:24px;
-
     text-align:center;
-
     font-size:17px;
-
 }
-
 
 .logro strong{
-
     display:block;
-
     font-size:9px;
-
 }
-
 
 .logro small{
-
     display:block;
-
     color:#71818d;
-
     font-size:8px;
-
 }
-
 
 /* =========================================================
    PANTALLA COMPLETA DE LOGROS
 ========================================================= */
 
 .grid-logros-app{
-
-    width:
-        min(
-            1050px,
-            100%
-        );
-
+    width:min(1050px,100%);
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:13px;
-
 }
-
 
 .tarjeta-logro-app{
-
     min-height:126px;
-
     display:grid;
-
-    grid-template-columns:
-        54px
-        minmax(0,1fr);
-
+    grid-template-columns:54px minmax(0,1fr);
     gap:13px;
-
     align-items:center;
-
     padding:15px;
-
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:12px;
-
-    box-shadow:
-        0 4px 13px
-        rgba(8,43,76,.06);
-
+    box-shadow:0 4px 13px rgba(8,43,76,.06);
 }
-
 
 .tarjeta-logro-app.conseguido{
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #fffdf4,
-            #fff1b2
-        );
-
-    border-color:
-        #d4a62a;
-
-    box-shadow:
-        0 4px 14px
-        rgba(174,127,17,.16);
-
+    background:linear-gradient(135deg,#fffdf4,#fff1b2);
+    border-color:#d4a62a;
+    box-shadow:0 4px 14px rgba(174,127,17,.16);
 }
 
-
 .icono-logro-grande{
-
     width:48px;
     height:48px;
-
     display:grid;
-
     place-items:center;
-
     border-radius:50%;
-
     background:#e4f0f7;
-
     font-size:24px;
-
 }
 
-
-.tarjeta-logro-app.conseguido
-.icono-logro-grande{
-
+.tarjeta-logro-app.conseguido .icono-logro-grande{
     background:#e3bd43;
-
 }
 
-
 .info-logro-app h3{
-
     margin-bottom:5px;
-
     font-size:13px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
 
-
-.tarjeta-logro-app.conseguido
-.info-logro-app h3{
-
+.tarjeta-logro-app.conseguido .info-logro-app h3{
     color:#76530a;
-
 }
-
 
 .descripcion-logro-app{
-
     margin-bottom:9px;
-
     font-size:9px;
-
     line-height:1.3;
-
     color:#6d8292;
-
 }
 
-
 .estado-logro-app{
-
     display:flex;
-
-    justify-content:
-        space-between;
-
+    justify-content:space-between;
     gap:10px;
-
     margin-bottom:5px;
-
     font-size:8px;
     font-weight:800;
-
     color:#315f7f;
-
 }
 
-
-.tarjeta-logro-app.conseguido
-.estado-logro-app{
-
+.tarjeta-logro-app.conseguido .estado-logro-app{
     color:#93690d;
-
 }
-
 
 .barra-logro-app{
-
     height:7px;
-
     overflow:hidden;
-
     border-radius:20px;
-
     background:#dfe7ec;
-
 }
 
-
 .barra-logro-app div{
-
     height:100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #145d96,
-            #4c9aca
-        );
-
+    background:linear-gradient(90deg,#145d96,#4c9aca);
     border-radius:20px;
-
 }
 
-
-.tarjeta-logro-app.conseguido
-.barra-logro-app div{
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #b88716,
-            #e7c653
-        );
-
+.tarjeta-logro-app.conseguido .barra-logro-app div{
+    background:linear-gradient(90deg,#b88716,#e7c653);
 }
-
 
 /* =========================================================
    PANTALLAS SECUNDARIAS
 ========================================================= */
 
 .vista-app{
-
     height:100dvh;
-
-    padding:
-        18px 28px;
-
+    padding:18px 28px;
     overflow:auto;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #eaf5fb,
-            #f6fafc
-        );
-
+    background:linear-gradient(180deg,#eaf5fb,#f6fafc);
 }
-
 
 .cabecera-vista{
-
     min-height:82px;
-
     display:grid;
-
-    grid-template-columns:
-        150px
-        1fr
-        150px;
-
+    grid-template-columns:150px 1fr 150px;
     align-items:center;
-
-    padding:
-        12px 18px;
-
+    padding:12px 18px;
     margin-bottom:18px;
-
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:13px;
-
-    box-shadow:
-        0 4px 14px
-        rgba(8,43,76,.07);
-
+    box-shadow:0 4px 14px rgba(8,43,76,.07);
 }
-
 
 .cabecera-vista-centro{
-
     text-align:center;
-
 }
-
 
 .cabecera-vista h1{
-
     font-size:27px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
 
 .cabecera-vista p{
-
     margin-top:4px;
-
     font-size:11px;
-
     color:#638098;
-
 }
-
 
 .btn-vista{
-
     width:max-content;
-
-    padding:
-        8px 11px;
-
+    padding:8px 11px;
     border-radius:8px;
-
-    border:
-        1px solid #b9cfde;
-
+    border:1px solid #b9cfde;
     background:white;
-
-    color:
-        var(--azul-oscuro);
-
+    color:var(--azul-oscuro);
     font-size:10px;
     font-weight:700;
-
     cursor:pointer;
-
 }
-
 
 .btn-derecha{
-
     justify-self:end;
-
 }
-
 
 .titulo-listado{
-
     text-align:center;
-
     margin-bottom:15px;
-
 }
-
 
 .titulo-listado h2{
-
     font-size:15px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
 
 .titulo-listado p{
-
     margin-top:3px;
-
     font-size:9px;
-
     color:#72899a;
-
 }
-
 
 /* =========================================================
    SECTORES
 ========================================================= */
 
 .grid-sectores-app{
-
-    width:
-        min(
-            1080px,
-            100%
-        );
-
+    width:min(1080px,100%);
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:11px;
-
 }
-
 
 .tarjeta-sector-app{
-
     min-height:88px;
-
     display:grid;
-
-    grid-template-columns:
-        43px
-        minmax(0,1fr)
-        30px;
-
+    grid-template-columns:43px minmax(0,1fr) 30px;
     align-items:center;
-
     gap:8px;
-
     padding:12px;
-
     background:white;
-
-    border:
-        1px solid #c8dae6;
-
+    border:1px solid #c8dae6;
     border-radius:11px;
-
-    box-shadow:
-        0 3px 11px
-        rgba(8,43,76,.05);
-
+    box-shadow:0 3px 11px rgba(8,43,76,.05);
     cursor:pointer;
-
-    transition:
-        .15s ease;
-
+    transition:.15s ease;
 }
-
 
 .tarjeta-sector-app:hover{
-
-    transform:
-        translateY(-2px);
-
+    transform:translateY(-2px);
     border-color:#5492ba;
-
 }
 
-
 .tarjeta-sector-app.completo{
-
     background:
-
         linear-gradient(
             135deg,
             #fffdf3,
             #fff2b7
         );
-
-    border:
-        1px solid #d4a62a;
-
+    border:1px solid #d4a62a;
     box-shadow:
-        0 4px 13px
-        rgba(175,128,21,.18);
-
+        0 4px 13px rgba(175,128,21,.18);
 }
-
 
 .tarjeta-sector-app.completo:hover{
-
-    border-color:
-        #b77f0b;
-
+    border-color:#b77f0b;
 }
 
-
-.tarjeta-sector-app.completo
-.numero-sector{
-
-    background:
-        #d7aa2c;
-
+.tarjeta-sector-app.completo .numero-sector{
+    background:#d7aa2c;
     color:white;
-
 }
 
-
-.tarjeta-sector-app.completo
-.datos-sector strong{
-
+.tarjeta-sector-app.completo .datos-sector strong{
     color:#795508;
-
 }
 
-
-.tarjeta-sector-app.completo
-.progreso-sector-texto{
-
-    color:
-        #9c7112 !important;
-
+.tarjeta-sector-app.completo .progreso-sector-texto{
+    color:#9c7112 !important;
 }
-
 
 .numero-sector{
-
     width:34px;
     height:34px;
-
     display:grid;
-
     place-items:center;
-
     border-radius:50%;
-
     background:#dfedf6;
-
-    color:
-        var(--azul);
-
+    color:var(--azul);
     font-size:9px;
     font-weight:900;
-
 }
-
 
 .datos-sector strong{
-
     display:block;
-
     font-size:12px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
 }
-
 
 .datos-sector span{
-
     display:block;
-
     margin-top:3px;
-
     font-size:9px;
-
     color:#768b9a;
-
 }
-
 
 .progreso-sector-texto{
-
-    color:
-        var(--azul) !important;
-
+    color:var(--azul) !important;
     font-weight:700;
-
 }
-
 
 .flecha-sector{
-
     text-align:right;
-
     font-size:22px;
-
     color:#5f95b7;
-
 }
-
 
 .copa-sector{
-
     font-size:18px;
-
     text-align:center;
-
 }
-
 
 /* =========================================================
    CUMBRES
 ========================================================= */
 
 .contenedor-cumbres{
-
-    width:
-        min(
-            1000px,
-            100%
-        );
-
+    width:min(1000px,100%);
     margin:auto;
-
-    padding:
-        7px 16px;
-
+    padding:7px 16px;
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:12px;
-
-    box-shadow:
-        0 4px 14px
-        rgba(8,43,76,.06);
-
+    box-shadow:0 4px 14px rgba(8,43,76,.06);
 }
-
 
 .fila-cumbre-app{
-
     min-height:47px;
-
     display:grid;
-
-    grid-template-columns:
-        35px
-        minmax(0,1fr)
-        75px
-        42px;
-
+    grid-template-columns:35px minmax(0,1fr) 75px 42px;
     align-items:center;
-
     gap:8px;
-
-    border-bottom:
-        1px solid #e2eaef;
-
+    border-bottom:1px solid #e2eaef;
 }
-
 
 .fila-cumbre-app:last-child{
-
     border-bottom:none;
-
 }
-
 
 .numero-cumbre{
-
     text-align:center;
-
     color:#879ba9;
-
     font-size:9px;
-
 }
-
 
 .nombre-cumbre-app{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
 }
-
 
 .nombre-cumbre-app strong{
-
     font-size:11px;
-
     color:#15364e;
-
 }
-
 
 .altitud-cumbre{
-
     text-align:right;
-
     font-size:10px;
-
     color:#687f90;
-
 }
-
 
 .marca-nueva{
-
-    padding:
-        2px 5px;
-
+    padding:2px 5px;
     background:#ddecf6;
-
     border-radius:8px;
-
     color:#17608e;
-
     font-size:6px;
     font-weight:900;
-
 }
-
 
 .check-cima{
-
     width:29px;
     height:29px;
-
     justify-self:end;
-
     border-radius:7px;
-
-    border:
-        1px solid #afc8d7;
-
+    border:1px solid #afc8d7;
     background:white;
-
     color:#a3b3be;
-
     cursor:pointer;
-
     font-weight:900;
-
 }
-
 
 .check-cima.conquistada{
-
-    background:
-        var(--azul);
-
-    border-color:
-        var(--azul);
-
+    background:var(--azul);
+    border-color:var(--azul);
     color:white;
-
 }
-
 
 .fila-cumbre-app.conquistada{
-
     background:#f3f9fc;
-
 }
-
 
 .sector-completado-cabecera{
-
     color:#a47712;
-
     font-weight:900;
-
 }
-
 
 /* =========================================================
    IMPORTAR / EXPORTAR
 ========================================================= */
 
 .backup-grid{
-
-    width:
-        min(
-            980px,
-            100%
-        );
-
+    width:min(980px,100%);
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:16px;
-
 }
-
 
 .backup-card{
-
     min-height:245px;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     padding:28px;
-
     background:white;
-
-    border:
-        1px solid #cbdde9;
-
+    border:1px solid #cbdde9;
     border-radius:14px;
-
-    box-shadow:
-        0 4px 14px
-        rgba(8,43,76,.07);
-
+    box-shadow:0 4px 14px rgba(8,43,76,.07);
 }
-
 
 .backup-icono{
-
     width:62px;
     height:62px;
-
     display:grid;
-
     place-items:center;
-
     margin-bottom:14px;
-
     border-radius:50%;
-
     background:#e4f0f7;
-
-    color:
-        var(--azul-oscuro);
-
+    color:var(--azul-oscuro);
     font-size:29px;
     font-weight:900;
-
 }
-
 
 .backup-card h3{
-
     font-size:17px;
-
-    color:
-        var(--azul-muy-oscuro);
-
+    color:var(--azul-muy-oscuro);
     margin-bottom:8px;
-
 }
-
 
 .backup-card p{
-
     max-width:360px;
-
     min-height:50px;
-
     font-size:10px;
-
     line-height:1.5;
-
     color:#698091;
-
 }
-
 
 .backup-boton{
-
     margin-top:16px;
-
-    padding:
-        10px 18px;
-
-    border:
-        1px solid #246b9d;
-
+    padding:10px 18px;
+    border:1px solid #246b9d;
     border-radius:8px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #246f9f,
-            #14557f
-        );
-
+    background:linear-gradient(180deg,#246f9f,#14557f);
     color:white;
-
     font-size:10px;
     font-weight:800;
-
     cursor:pointer;
-
 }
-
 
 .backup-boton.secundario{
-
     background:white;
-
-    color:
-        var(--azul-oscuro);
-
-    border-color:
-        #aec7d7;
-
+    color:var(--azul-oscuro);
+    border-color:#aec7d7;
 }
-
 
 .backup-boton:hover{
-
-    transform:
-        translateY(-1px);
-
+    transform:translateY(-1px);
 }
-
 
 .backup-info{
-
-    width:
-        min(
-            980px,
-            100%
-        );
-
-    margin:
-        16px auto 0;
-
-    padding:
-        13px 16px;
-
+    width:min(980px,100%);
+    margin:16px auto 0;
+    padding:13px 16px;
     background:#f7fbfd;
-
-    border:
-        1px solid #d4e2eb;
-
+    border:1px solid #d4e2eb;
     border-radius:10px;
-
     text-align:center;
-
     font-size:9px;
-
     line-height:1.5;
-
     color:#617b8d;
-
 }
 
+@media(max-width:850px){
+    .backup-grid{
+        grid-template-columns:1fr;
+    }
+}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(
-    max-width:850px
-){
-
-    .backup-grid{
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-}
-
-
-@media(
-    max-height:760px
-){
+@media(max-height:760px){
 
     .marca{
-
         height:90px;
-
-        flex-basis:
-            90px;
-
+        flex-basis:90px;
     }
-
 
     nav a{
-
         min-height:36px;
-
     }
-
 
     .titulo{
-
         font-size:36px;
-
     }
-
 
     .subtitulo{
-
         font-size:14px;
-
     }
-
 
     .elige{
-
         margin-top:7px;
-
         margin-bottom:6px;
-
         font-size:10px;
-
     }
-
 
     .tarjeta-lista,
     .panel-progreso{
-
         height:155px;
-
     }
-
 
     .lista-numero{
-
         font-size:35px;
-
     }
-
 
     .montanas{
-
         height:42px;
-
     }
-
 
     .lista-pie{
-
         height:27px;
-
         flex-basis:27px;
-
     }
-
 
     .contador{
-
         font-size:27px;
-
     }
 
-
     .porcentaje{
-
         font-size:21px;
-
     }
 
 }
 
-
-@media(
-    max-width:1150px
-){
+@media(max-width:1150px){
 
     .app{
-
-        grid-template-columns:
-            76px
-            minmax(0,1fr);
-
+        grid-template-columns:76px minmax(0,1fr);
     }
-
 
     nav a{
-
         justify-content:center;
-
         padding:0;
-
     }
 
-
-    nav a
-    span:not(.icono){
-
+    nav a span:not(.icono){
         display:none;
-
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="app">
-
-
-<!-- =====================================================
-     MENÚ LATERAL
-===================================================== -->
 
 <aside class="sidebar">
 
-
     <div class="marca">
-
         <div class="logo-montana"></div>
-
-        <strong>
-            TACHANDO
-            <br>
-            3000s
-        </strong>
-
+        <strong>TACHANDO<br>3000s</strong>
     </div>
-
 
     <nav>
 
-
-        <a
-            href="#"
-            id="menuInicio"
-            class="activo"
-        >
-
-            <span class="icono">
-                ⌂
-            </span>
-
-            <span>
-                Inicio
-            </span>
-
+        <a href="#" id="menuInicio" class="activo">
+            <span class="icono">⌂</span>
+            <span>Inicio</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuMis3000"
-        >
-
-            <span class="icono">
-                ▲
-            </span>
-
-            <span>
-                Mis 3000s
-            </span>
-
+        <a href="#" id="menuMis3000">
+            <span class="icono">▲</span>
+            <span>Mis 3000s</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuMapa"
-        >
-
-            <span class="icono">
-                🗺
-            </span>
-
-            <span>
-                Mapa
-            </span>
-
+        <a href="#" id="menuMapa">
+            <span class="icono">🗺</span>
+            <span>Mapa</span>
         </a>
-
-
-        <a
-            href="#"
-            id="menuLogros"
-        >
-
-            <span class="icono">
-                🏆
-            </span>
-
-            <span>
-                Logros
-            </span>
-
-        </a>
-
 
         <a href="#">
-
-            <span class="icono">
-                ⚙
-            </span>
-
-            <span>
-                Ajustes
-            </span>
-
+            <span class="icono">▥</span>
+            <span>Estadísticas</span>
         </a>
 
-
-        <a
-            href="#"
-            id="menuBackup"
-        >
-
-            <span class="icono">
-                ⇅
-            </span>
-
-            <span>
-                Importar / Exportar
-            </span>
-
+        <a href="#" id="menuLogros">
+            <span class="icono">🏆</span>
+            <span>Logros</span>
         </a>
 
+        <a href="#">
+            <span class="icono">⚙</span>
+            <span>Ajustes</span>
+        </a>
+
+        <a href="#" id="menuBackup">
+            <span class="icono">⇅</span>
+            <span>Importar / Exportar</span>
+        </a>
 
     </nav>
 
-
 </aside>
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
-<main
-    class="contenido"
-    id="contenidoPrincipal"
->
-
+<main class="contenido" id="contenidoPrincipal">
 
 <section class="hero">
 
-
     <div class="hero-top">
-
-        <button class="boton-mini">
-
-            ? Ayuda
-
-        </button>
-
-
-        <button class="boton-mini">
-
-            ☰ Menú
-
-        </button>
-
+        <button class="boton-mini">? Ayuda</button>
+        <button class="boton-mini">☰ Menú</button>
     </div>
 
-
     <h1 class="titulo">
-
-        TACHANDO
-
-        <span>
-            3000s
-        </span>
-
+        TACHANDO <span>3000s</span>
     </h1>
 
-
     <p class="subtitulo">
-
         Tu reto, tus cumbres
-
     </p>
-
 
     <p class="elige">
-
         ELIGE LA LISTA QUE QUIERES COMPLETAR
-
     </p>
-
 
     <div class="zona-principal">
 
-
-        <!-- LISTA 217 -->
-
-        <div
-            class="
-                tarjeta-lista
-                actualizada
-            "
-            id="tarjeta217"
-        >
+        <div class="tarjeta-lista actualizada" id="tarjeta217">
 
             <div class="lista-contenido">
 
                 <div class="lista-nombre">
-
                     LISTA ACTUALIZADA
-
                 </div>
-
 
                 <div class="lista-numero">
-
                     217
-
                 </div>
-
 
                 <div class="lista-sub">
-
                     TRESMILES
-
                 </div>
-
 
                 <div class="montanas"></div>
 
             </div>
-
 
             <div class="lista-pie">
 
                 <span id="completados217">
-
                     0 completados
-
                 </span>
 
-
                 <span id="pendientes217">
-
                     217 pendientes
-
                 </span>
 
             </div>
 
-
         </div>
 
-
-        <!-- LISTA 212 -->
-
-        <div
-            class="
-                tarjeta-lista
-                historica
-            "
-            id="tarjeta212"
-        >
+        <div class="tarjeta-lista historica" id="tarjeta212">
 
             <div class="lista-contenido">
 
-
                 <div class="lista-nombre">
-
                     LISTA HISTÓRICA
-
                 </div>
-
 
                 <div class="lista-numero">
-
                     212
-
                 </div>
-
 
                 <div class="lista-sub">
-
                     TRESMILES
-
                 </div>
-
 
                 <div class="montanas"></div>
 
-
             </div>
-
 
             <div class="lista-pie">
 
-
                 <span id="completados212">
-
                     0 completados
-
                 </span>
-
 
                 <span id="pendientes212">
-
                     212 pendientes
-
                 </span>
-
 
             </div>
 
-
         </div>
-
-
-        <!-- PROGRESO -->
 
         <div class="panel-progreso">
 
-
             <h3>
-
                 PROGRESO ACTUAL
-
             </h3>
 
-
             <div class="contador">
-
 
                 <span
                     id="progresoNumero"
@@ -3119,287 +1345,159 @@ nav a.activo{
                         font-size:32px;
                     "
                 >
-
                     0
-
                 </span>
-
 
                 <span id="progresoTotal">
-
                     / 217
-
                 </span>
 
-
             </div>
-
 
             <div class="texto-completados">
-
                 TRESMILES COMPLETADOS
-
             </div>
-
 
             <div
                 class="porcentaje"
                 id="progresoPorcentaje"
             >
-
                 0 %
-
             </div>
-
 
             <div class="barra">
-
                 <div
                     id="barraGeneral"
-                    style="
-                        width:0%
-                    "
+                    style="width:0%"
                 ></div>
-
             </div>
-
 
             <div class="lista-activa">
 
-
                 Lista activa:
-
                 <br>
 
-
-                <strong
-                    id="textoListaActiva"
-                >
-
+                <strong id="textoListaActiva">
                     ACTUALIZADA (217)
-
                 </strong>
-
 
             </div>
 
-
         </div>
-
 
     </div>
 
-
 </section>
-
 
 <section class="dashboard">
 
-
-    <!-- MAPA -->
-
     <div class="bloque">
 
-
         <h2>
-
             EL PIRINEO POR SECTORES
-
         </h2>
-
 
         <div class="mapa">
 
-
-            <button
-                class="sector-mapa"
-                data-sector="0"
-            >
+            <button class="sector-mapa" data-sector="0">
                 Balaitus
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="1"
-            >
+            <button class="sector-mapa" data-sector="1">
                 Panticosa
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="2"
-            >
+            <button class="sector-mapa" data-sector="2">
                 Vignemale
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="3"
-            >
+            <button class="sector-mapa" data-sector="3">
                 Ordesa
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="4"
-            >
+            <button class="sector-mapa" data-sector="4">
                 La Munia
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="5"
-            >
+            <button class="sector-mapa" data-sector="5">
                 Néouvielle
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="6"
-            >
+            <button class="sector-mapa" data-sector="6">
                 Bachimala
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="7"
-            >
+            <button class="sector-mapa" data-sector="7">
                 Posets
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="8"
-            >
+            <button class="sector-mapa" data-sector="8">
                 Perdiguero
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="9"
-            >
+            <button class="sector-mapa" data-sector="9">
                 Maladeta-Aneto
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="10"
-            >
+            <button class="sector-mapa" data-sector="10">
                 Besiberris
             </button>
 
-
-            <button
-                class="sector-mapa"
-                data-sector="11"
-            >
+            <button class="sector-mapa" data-sector="11">
                 Estats
             </button>
 
-
         </div>
 
-
     </div>
-
-
-    <!-- CENTRO -->
 
     <div class="columna-central">
 
-
         <div class="bloque">
 
-
             <h2>
-
                 PROGRESO POR SECTORES
-
             </h2>
-
 
             <div id="resumenSectores"></div>
 
-
         </div>
-
 
         <div class="bloque">
 
-
             <h2>
-
                 ÚLTIMAS CUMBRES TACHADAS
-
             </h2>
-
 
             <div id="ultimasCumbres"></div>
 
-
         </div>
 
-
     </div>
-
-
-    <!-- LOGROS -->
 
     <div class="bloque">
 
-
         <h2>
-
             LOGROS
-
         </h2>
 
-
-        <div
-            class="logros-lista"
-            id="logrosInicio"
-        ></div>
-
+        <div class="logros-lista" id="logrosInicio"></div>
 
     </div>
 
-
 </section>
-
 
 </main>
 
-
 </div>
 
-
-<script
-    src="datos-tresmiles.js"
-></script>
-
+<script src="datos-tresmiles.js"></script>
 
 <script>
 
-/* =========================================================
-   DATOS
-========================================================= */
-
 let listaActiva =
-    localStorage.getItem(
-        "tachando_lista"
-    )
-    ||
-    "217";
+    localStorage.getItem("tachando_lista")
+    || "217";
 
 
 let progreso =
@@ -3407,8 +1505,7 @@ let progreso =
         localStorage.getItem(
             "tachando_progreso_v1"
         )
-        ||
-        "{}"
+        || "{}"
     );
 
 
@@ -3417,21 +1514,6 @@ const contenido =
         "contenidoPrincipal"
     );
 
-
-/*
-Guardamos el HTML exacto de Inicio.
-
-Esto nos permite regresar a Inicio
-sin recargar la página.
-*/
-
-const inicioHTML =
-    contenido.innerHTML;
-
-
-/* =========================================================
-   MENÚ
-========================================================= */
 
 const menuInicio =
     document.getElementById(
@@ -3463,10 +1545,6 @@ const menuBackup =
     );
 
 
-/* =========================================================
-   NORMALIZAR
-========================================================= */
-
 function normalizar(texto){
 
     return texto
@@ -3476,26 +1554,13 @@ function normalizar(texto){
             /[\u0300-\u036f]/g,
             ""
         )
-        .replace(
-            /[´’']/g,
-            ""
-        )
-        .replace(
-            /lliterola/g,
-            "literola"
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
+        .replace(/[´’']/g,"")
+        .replace(/lliterola/g,"literola")
+        .replace(/\s+/g," ")
         .trim();
 
 }
 
-
-/* =========================================================
-   CLAVE COMPARTIDA 217 / 212
-========================================================= */
 
 function claveCima(
     indiceSector,
@@ -3504,38 +1569,26 @@ function claveCima(
 ){
 
     const sector =
-        TACHANDO_DATA[
-            indiceSector
-        ];
+        TACHANDO_DATA[indiceSector];
 
 
     const todas =
         [
-
             ...sector.a.map(
-                c => [
-                    c[0],
-                    c[1]
-                ]
+                c => [c[0],c[1]]
             ),
-
             ...sector.h
-
         ];
 
 
     const nombreNormal =
-        normalizar(
-            nombre
-        );
+        normalizar(nombre);
 
 
     const exacta =
         todas.find(
             c =>
-            normalizar(
-                c[0]
-            )
+            normalizar(c[0])
             ===
             nombreNormal
         );
@@ -3548,9 +1601,7 @@ function claveCima(
             +
             "|"
             +
-            normalizar(
-                exacta[0]
-            )
+            normalizar(exacta[0])
         );
 
     }
@@ -3559,34 +1610,22 @@ function claveCima(
     const mismaAltitud =
         todas.filter(
             c =>
-            c[1]
-            ===
-            altitud
+            c[1] === altitud
         );
 
 
     const nombres =
         [
-
             ...new Set(
-
                 mismaAltitud.map(
                     c =>
-                    normalizar(
-                        c[0]
-                    )
+                    normalizar(c[0])
                 )
-
             )
-
         ];
 
 
-    if(
-        nombres.length
-        ===
-        1
-    ){
+    if(nombres.length === 1){
 
         return (
             indiceSector
@@ -3610,25 +1649,15 @@ function claveCima(
 }
 
 
-/* =========================================================
-   GUARDAR PROGRESO
-========================================================= */
-
 function guardarProgreso(){
 
     localStorage.setItem(
         "tachando_progreso_v1",
-        JSON.stringify(
-            progreso
-        )
+        JSON.stringify(progreso)
     );
 
 }
 
-
-/* =========================================================
-   CUMBRES DE UNA LISTA
-========================================================= */
 
 function cumbresSector(
     indice,
@@ -3636,22 +1665,14 @@ function cumbresSector(
 ){
 
     const sector =
-        TACHANDO_DATA[
-            indice
-        ];
+        TACHANDO_DATA[indice];
 
 
-    if(
-        lista
-        ===
-        "217"
-    ){
+    if(lista === "217"){
 
         return sector.a.filter(
             cima =>
-            cima[2]
-            ===
-            1
+            cima[2] === 1
         );
 
     }
@@ -3661,10 +1682,6 @@ function cumbresSector(
 
 }
 
-
-/* =========================================================
-   CUMBRE CONQUISTADA
-========================================================= */
 
 function estaConquistada(
     indice,
@@ -3681,17 +1698,11 @@ function estaConquistada(
 
 
     return Boolean(
-        progreso[
-            clave
-        ]
+        progreso[clave]
     );
 
 }
 
-
-/* =========================================================
-   MARCAR / DESMARCAR
-========================================================= */
 
 function alternarCima(
     indice,
@@ -3707,34 +1718,22 @@ function alternarCima(
         );
 
 
-    if(
-        progreso[
-            clave
-        ]
-    ){
+    if(progreso[clave]){
 
-        delete progreso[
-            clave
-        ];
+        delete progreso[clave];
 
     }
     else{
 
-        progreso[
-            clave
-        ] = {
+        progreso[clave] = {
 
-            fecha:
-                Date.now(),
+            fecha:Date.now(),
 
-            nombre:
-                nombre,
+            nombre:nombre,
 
-            altitud:
-                altitud,
+            altitud:altitud,
 
-            sector:
-                indice
+            sector:indice
 
         };
 
@@ -3743,42 +1742,19 @@ function alternarCima(
 
     guardarProgreso();
 
-
-    /*
-    No generamos un nuevo paso
-    de historial al marcar una cima.
-    Seguimos dentro del mismo sector.
-    */
-
-    mostrarSector(
-        indice,
-        false
-    );
+    mostrarSector(indice);
 
 }
 
 
-/* =========================================================
-   PROGRESO LISTA
-========================================================= */
+function progresoLista(lista){
 
-function progresoLista(
-    lista
-){
-
-    let completadas =
-        0;
-
-    let total =
-        0;
+    let completadas = 0;
+    let total = 0;
 
 
     TACHANDO_DATA.forEach(
-
-        function(
-            sector,
-            indice
-        ){
+        function(sector,indice){
 
             const cumbres =
                 cumbresSector(
@@ -3792,7 +1768,6 @@ function progresoLista(
 
 
             cumbres.forEach(
-
                 function(cima){
 
                     if(
@@ -3808,27 +1783,19 @@ function progresoLista(
                     }
 
                 }
-
             );
 
         }
-
     );
 
 
     return {
-
         completadas,
         total
-
     };
 
 }
 
-
-/* =========================================================
-   PROGRESO SECTOR
-========================================================= */
 
 function progresoDeSector(
     indice,
@@ -3842,12 +1809,10 @@ function progresoDeSector(
         );
 
 
-    let completadas =
-        0;
+    let completadas = 0;
 
 
     cumbres.forEach(
-
         function(cima){
 
             if(
@@ -3863,7 +1828,6 @@ function progresoDeSector(
             }
 
         }
-
     );
 
 
@@ -3879,10 +1843,6 @@ function progresoDeSector(
 }
 
 
-/* =========================================================
-   SECTOR COMPLETADO
-========================================================= */
-
 function sectorCompleto(
     indice,
     lista
@@ -3896,30 +1856,19 @@ function sectorCompleto(
 
 
     return (
-
         datos.total > 0
-
         &&
-
         datos.completadas
         ===
         datos.total
-
     );
 
 }
 
 
-/* =========================================================
-   LISTA ACTIVA
-========================================================= */
+function seleccionarLista(lista){
 
-function seleccionarLista(
-    lista
-){
-
-    listaActiva =
-        lista;
+    listaActiva = lista;
 
 
     localStorage.setItem(
@@ -3930,467 +1879,128 @@ function seleccionarLista(
 }
 
 
-/* =========================================================
-   HISTORIAL DEL NAVEGADOR
-========================================================= */
+document
+.getElementById("tarjeta217")
+.addEventListener(
+    "click",
+    function(){
 
-/*
-Esta es la parte nueva más importante
-de la V12.
+        seleccionarLista("217");
 
-Cada pantalla genera un estado real
-dentro del historial del navegador.
-*/
-
-function registrarEstado(
-    vista,
-    datos={}
-){
-
-    const estado = {
-
-        vista:
-            vista,
-
-        lista:
-            listaActiva,
-
-        ...datos
-
-    };
-
-
-    let hash =
-        "#inicio";
-
-
-    if(
-        vista
-        ===
-        "sectores"
-    ){
-
-        hash =
-            "#sectores-"
-            +
-            listaActiva;
+        mostrarSectores();
 
     }
+);
 
 
-    if(
-        vista
-        ===
-        "sector"
-    ){
+document
+.getElementById("tarjeta212")
+.addEventListener(
+    "click",
+    function(){
 
-        hash =
-            "#sector-"
-            +
-            datos.indice;
+        seleccionarLista("212");
 
-    }
-
-
-    if(
-        vista
-        ===
-        "mapa"
-    ){
-
-        hash =
-            "#mapa";
+        mostrarSectores();
 
     }
+);
 
 
-    if(
-        vista
-        ===
-        "logros"
-    ){
+menuInicio.addEventListener(
+    "click",
+    function(event){
 
-        hash =
-            "#logros";
+        event.preventDefault();
 
-    }
-
-
-    if(
-        vista
-        ===
-        "backup"
-    ){
-
-        hash =
-            "#copias";
+        location.reload();
 
     }
+);
 
 
-    history.pushState(
-        estado,
-        "",
-        hash
-    );
+menuMis3000.addEventListener(
+    "click",
+    function(event){
 
-}
+        event.preventDefault();
 
-
-/* =========================================================
-   MENÚ ACTIVO
-========================================================= */
-
-function marcarMenu(
-    zona
-){
-
-    document
-    .querySelectorAll(
-        "nav a"
-    )
-    .forEach(
-        enlace =>
-        enlace
-        .classList
-        .remove(
-            "activo"
-        )
-    );
-
-
-    if(
-        zona
-        ===
-        "mis"
-    ){
-
-        menuMis3000
-        .classList
-        .add(
-            "activo"
-        );
+        mostrarSectores();
 
     }
-    else if(
-        zona
-        ===
-        "mapa"
-    ){
+);
 
-        menuMapa
-        .classList
-        .add(
-            "activo"
-        );
 
-    }
-    else if(
-        zona
-        ===
-        "logros"
-    ){
+menuMapa.addEventListener(
+    "click",
+    function(event){
 
-        menuLogros
-        .classList
-        .add(
-            "activo"
-        );
+        event.preventDefault();
+
+        location.reload();
 
     }
-    else if(
-        zona
-        ===
-        "backup"
-    ){
+);
 
-        menuBackup
-        .classList
-        .add(
-            "activo"
-        );
 
-    }
-    else{
+menuLogros.addEventListener(
+    "click",
+    function(event){
 
-        menuInicio
-        .classList
-        .add(
-            "activo"
-        );
+        event.preventDefault();
+
+        mostrarLogros();
 
     }
+);
 
-}
 
+menuBackup.addEventListener(
+    "click",
+    function(event){
 
-/* =========================================================
-   INICIO
-========================================================= */
+        event.preventDefault();
 
-function mostrarInicio(
-    guardarHistorial=true
-){
-
-    if(
-        guardarHistorial
-    ){
-
-        registrarEstado(
-            "inicio"
-        );
+        mostrarBackup();
 
     }
+);
 
 
-    marcarMenu(
-        "inicio"
-    );
+document
+.querySelectorAll(
+    ".sector-mapa"
+)
+.forEach(
+    function(boton){
 
-
-    contenido.innerHTML =
-        inicioHTML;
-
-
-    conectarEventosInicio();
-
-
-    actualizarInicio();
-
-}
-
-
-/* =========================================================
-   EVENTOS DE INICIO
-========================================================= */
-
-function conectarEventosInicio(){
-
-    const tarjeta217 =
-        document.getElementById(
-            "tarjeta217"
-        );
-
-
-    const tarjeta212 =
-        document.getElementById(
-            "tarjeta212"
-        );
-
-
-    if(
-        tarjeta217
-    ){
-
-        tarjeta217
-        .addEventListener(
-
+        boton.addEventListener(
             "click",
-
             function(){
 
-                seleccionarLista(
-                    "217"
-                );
-
-                mostrarSectores(
-                    true
+                mostrarSector(
+                    Number(
+                        boton.dataset.sector
+                    )
                 );
 
             }
-
         );
 
     }
-
-
-    if(
-        tarjeta212
-    ){
-
-        tarjeta212
-        .addEventListener(
-
-            "click",
-
-            function(){
-
-                seleccionarLista(
-                    "212"
-                );
-
-                mostrarSectores(
-                    true
-                );
-
-            }
-
-        );
-
-    }
-
-
-    document
-    .querySelectorAll(
-        ".sector-mapa"
-    )
-    .forEach(
-
-        function(boton){
-
-            boton
-            .addEventListener(
-
-                "click",
-
-                function(){
-
-                    mostrarSector(
-                        Number(
-                            boton.dataset.sector
-                        ),
-                        true
-                    );
-
-                }
-
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =========================================================
-   MENÚ PRINCIPAL
-========================================================= */
-
-menuInicio
-.addEventListener(
-
-    "click",
-
-    function(event){
-
-        event.preventDefault();
-
-        mostrarInicio(
-            true
-        );
-
-    }
-
 );
 
 
-menuMis3000
-.addEventListener(
+function mostrarSectores(){
 
-    "click",
-
-    function(event){
-
-        event.preventDefault();
-
-        mostrarSectores(
-            true
-        );
-
-    }
-
-);
+    marcarMenu("mis");
 
 
-menuMapa
-.addEventListener(
-
-    "click",
-
-    function(event){
-
-        event.preventDefault();
-
-        mostrarMapaCompleto(
-            true
-        );
-
-    }
-
-);
-
-
-menuLogros
-.addEventListener(
-
-    "click",
-
-    function(event){
-
-        event.preventDefault();
-
-        mostrarLogros(
-            true
-        );
-
-    }
-
-);
-
-
-menuBackup
-.addEventListener(
-
-    "click",
-
-    function(event){
-
-        event.preventDefault();
-
-        mostrarBackup(
-            true
-        );
-
-    }
-
-);
-
-
-/* =========================================================
-   PANTALLA DE SECTORES
-========================================================= */
-
-function mostrarSectores(
-    guardarHistorial=true
-){
-
-    if(
-        guardarHistorial
-    ){
-
-        registrarEstado(
-            "sectores"
-        );
-
-    }
-
-
-    marcarMenu(
-        "mis"
-    );
-
-
-    let tarjetas =
-        "";
+    let tarjetas = "";
 
 
     TACHANDO_DATA.forEach(
-
-        function(
-            sector,
-            indice
-        ){
+        function(sector,indice){
 
             const datos =
                 progresoDeSector(
@@ -4401,9 +2011,7 @@ function mostrarSectores(
 
             const porcentaje =
                 datos.total
-
                 ?
-
                 Math.round(
                     datos.completadas
                     /
@@ -4411,9 +2019,7 @@ function mostrarSectores(
                     *
                     100
                 )
-
                 :
-
                 0;
 
 
@@ -4427,33 +2033,22 @@ function mostrarSectores(
             tarjetas += `
 
                 <div
-
                     class="
                         tarjeta-sector-app
-
                         ${
                             completo
-                            ?
-                            "completo"
-                            :
-                            ""
+                            ? "completo"
+                            : ""
                         }
                     "
-
                     onclick="
                         mostrarSector(
-                            ${indice},
-                            true
+                            ${indice}
                         )
                     "
                 >
 
-
-                    <div
-                        class="
-                            numero-sector
-                        "
-                    >
+                    <div class="numero-sector">
 
                         ${
                             String(
@@ -4468,27 +2063,15 @@ function mostrarSectores(
                     </div>
 
 
-                    <div
-                        class="
-                            datos-sector
-                        "
-                    >
-
+                    <div class="datos-sector">
 
                         <strong>
-
                             ${sector.s}
-
                         </strong>
 
-
                         <span>
-
-                            ${datos.total}
-                            tresmiles
-
+                            ${datos.total} tresmiles
                         </span>
-
 
                         <span
                             class="
@@ -4506,100 +2089,60 @@ function mostrarSectores(
 
                         </span>
 
-
                     </div>
 
 
                     ${
                         completo
 
-                        ?
-
-                        `
-
+                        ? `
                             <div
                                 class="
                                     copa-sector
                                 "
                             >
-
                                 🏆
-
                             </div>
+                          `
 
-                        `
-
-                        :
-
-                        `
-
+                        : `
                             <div
                                 class="
                                     flecha-sector
                                 "
                             >
-
                                 ›
-
                             </div>
-
-                        `
+                          `
                     }
-
 
                 </div>
 
             `;
 
         }
-
     );
 
 
     contenido.innerHTML = `
 
+        <section class="vista-app">
 
-        <section
-            class="
-                vista-app
-            "
-        >
-
-
-            <div
-                class="
-                    cabecera-vista
-                "
-            >
-
+            <div class="cabecera-vista">
 
                 <button
-                    class="
-                        btn-vista
-                    "
-                    onclick="
-                        volverHistorial()
-                    "
+                    class="btn-vista"
+                    onclick="volverInicio()"
                 >
-
-                    ‹ Atrás
-
+                    ‹ Inicio
                 </button>
 
 
-                <div
-                    class="
-                        cabecera-vista-centro
-                    "
-                >
-
+                <div class="cabecera-vista-centro">
 
                     <h1>
-
                         MIS 3000s
-
                     </h1>
-
 
                     <p>
 
@@ -4609,16 +2152,13 @@ function mostrarSectores(
                             "217"
 
                             ?
-
                             "Lista Actualizada · 217 tresmiles"
 
                             :
-
                             "Lista Histórica · 212 tresmiles"
                         }
 
                     </p>
-
 
                 </div>
 
@@ -4628,39 +2168,23 @@ function mostrarSectores(
                         btn-vista
                         btn-derecha
                     "
-                    onclick="
-                        cambiarLista()
-                    "
+                    onclick="cambiarLista()"
                 >
-
                     Cambiar lista
-
                 </button>
-
 
             </div>
 
 
-            <div
-                class="
-                    titulo-listado
-                "
-            >
-
+            <div class="titulo-listado">
 
                 <h2>
-
                     SECTORES DEL PIRINEO
-
                 </h2>
 
-
                 <p>
-
                     De oeste a este
-
                 </p>
-
 
             </div>
 
@@ -4670,11 +2194,8 @@ function mostrarSectores(
                     grid-sectores-app
                 "
             >
-
                 ${tarjetas}
-
             </div>
-
 
         </section>
 
@@ -4683,39 +2204,13 @@ function mostrarSectores(
 }
 
 
-/* =========================================================
-   PANTALLA DE UN SECTOR
-========================================================= */
+function mostrarSector(indice){
 
-function mostrarSector(
-    indice,
-    guardarHistorial=true
-){
-
-    if(
-        guardarHistorial
-    ){
-
-        registrarEstado(
-            "sector",
-            {
-                indice:
-                    indice
-            }
-        );
-
-    }
-
-
-    marcarMenu(
-        "mis"
-    );
+    marcarMenu("mis");
 
 
     const sector =
-        TACHANDO_DATA[
-            indice
-        ];
+        TACHANDO_DATA[indice];
 
 
     const cumbres =
@@ -4739,16 +2234,11 @@ function mostrarSector(
         );
 
 
-    let filas =
-        "";
+    let filas = "";
 
 
     cumbres.forEach(
-
-        function(
-            cima,
-            posicion
-        ){
+        function(cima,posicion){
 
             const nombre =
                 cima[0];
@@ -4759,15 +2249,9 @@ function mostrarSector(
 
 
             const nueva =
-                listaActiva
-                ===
-                "217"
-
+                listaActiva === "217"
                 &&
-
-                cima[3]
-                ===
-                1;
+                cima[3] === 1;
 
 
             const conquistada =
@@ -4780,32 +2264,23 @@ function mostrarSector(
 
             filas += `
 
-
                 <div
-
                     class="
                         fila-cumbre-app
-
                         ${
                             conquistada
-                            ?
-                            "conquistada"
-                            :
-                            ""
+                            ? "conquistada"
+                            : ""
                         }
                     "
-
                 >
-
 
                     <div
                         class="
                             numero-cumbre
                         "
                     >
-
                         ${posicion+1}
-
                     </div>
 
 
@@ -4815,38 +2290,26 @@ function mostrarSector(
                         "
                     >
 
-
                         <strong>
-
                             ${nombre}
-
                         </strong>
 
 
                         ${
                             nueva
 
-                            ?
-
-                            `
-
+                            ? `
                                 <span
                                     class="
                                         marca-nueva
                                     "
                                 >
-
                                     NUEVA 217
-
                                 </span>
+                              `
 
-                            `
-
-                            :
-
-                            ""
+                            : ""
                         }
-
 
                     </div>
 
@@ -4856,57 +2319,41 @@ function mostrarSector(
                             altitud-cumbre
                         "
                     >
-
                         ${altitud}
-
                     </div>
 
 
                     <button
-
                         class="
                             check-cima
-
                             ${
                                 conquistada
-                                ?
-                                "conquistada"
-                                :
-                                ""
+                                ? "conquistada"
+                                : ""
                             }
                         "
-
                         onclick='
-
                             alternarCima(
                                 ${indice},
                                 ${JSON.stringify(nombre)},
                                 ${JSON.stringify(altitud)}
                             )
-
                         '
-
                     >
-
                         ✓
-
                     </button>
-
 
                 </div>
 
             `;
 
         }
-
     );
 
 
     const porcentaje =
         datos.total
-
         ?
-
         Math.round(
             datos.completadas
             /
@@ -4914,58 +2361,32 @@ function mostrarSector(
             *
             100
         )
-
         :
-
         0;
 
 
     contenido.innerHTML = `
 
+        <section class="vista-app">
 
-        <section
-            class="
-                vista-app
-            "
-        >
-
-
-            <div
-                class="
-                    cabecera-vista
-                "
-            >
-
+            <div class="cabecera-vista">
 
                 <button
-                    class="
-                        btn-vista
-                    "
-                    onclick="
-                        volverHistorial()
-                    "
+                    class="btn-vista"
+                    onclick="mostrarSectores()"
                 >
-
-                    ‹ Atrás
-
+                    ‹ Sectores
                 </button>
 
 
-                <div
-                    class="
-                        cabecera-vista-centro
-                    "
-                >
-
+                <div class="cabecera-vista-centro">
 
                     <h1>
 
                         ${
                             completo
-                            ?
-                            "🏆 "
-                            :
-                            ""
+                            ? "🏆 "
+                            : ""
                         }
 
                         ${sector.s}
@@ -4977,25 +2398,19 @@ function mostrarSector(
                         class="
                             ${
                                 completo
-                                ?
-                                "sector-completado-cabecera"
-                                :
-                                ""
+                                ? "sector-completado-cabecera"
+                                : ""
                             }
                         "
                     >
 
                         ${
-                            listaActiva
-                            ===
-                            "217"
+                            listaActiva === "217"
 
                             ?
-
                             "Lista Actualizada 217"
 
                             :
-
                             "Lista Histórica 212"
                         }
 
@@ -5011,18 +2426,13 @@ function mostrarSector(
 
                         ${
                             completo
-
                             ?
-
                             " · SECTOR COMPLETADO"
-
                             :
-
                             ""
                         }
 
                     </p>
-
 
                 </div>
 
@@ -5038,11 +2448,8 @@ function mostrarSector(
                         )
                     "
                 >
-
                     Cambiar lista
-
                 </button>
-
 
             </div>
 
@@ -5052,11 +2459,8 @@ function mostrarSector(
                     contenedor-cumbres
                 "
             >
-
                 ${filas}
-
             </div>
-
 
         </section>
 
@@ -5064,24 +2468,14 @@ function mostrarSector(
 
 }
 
-
-/* =========================================================
-   CAMBIAR LISTA
-========================================================= */
 
 function cambiarLista(){
 
     listaActiva =
-        listaActiva
-        ===
-        "217"
-
+        listaActiva === "217"
         ?
-
         "212"
-
         :
-
         "217";
 
 
@@ -5091,33 +2485,18 @@ function cambiarLista(){
     );
 
 
-    /*
-    Cambiar de lista genera
-    un nuevo paso de historial.
-    */
-
-    mostrarSectores(
-        true
-    );
+    mostrarSectores();
 
 }
 
 
-function cambiarListaSector(
-    indice
-){
+function cambiarListaSector(indice){
 
     listaActiva =
-        listaActiva
-        ===
-        "217"
-
+        listaActiva === "217"
         ?
-
         "212"
-
         :
-
         "217";
 
 
@@ -5127,1681 +2506,206 @@ function cambiarListaSector(
     );
 
 
-    mostrarSector(
-        indice,
-        true
-    );
+    mostrarSector(indice);
 
 }
 
 
-/* =========================================================
-   MAPA GRANDE
-========================================================= */
+function volverInicio(){
 
-function mostrarMapaCompleto(
-    guardarHistorial=true
-){
+    location.reload();
 
-    if(
-        guardarHistorial
-    ){
+}
 
-        registrarEstado(
-            "mapa"
+
+function marcarMenu(zona){
+
+    document
+    .querySelectorAll("nav a")
+    .forEach(
+        enlace =>
+        enlace.classList.remove(
+            "activo"
+        )
+    );
+
+
+    if(zona === "mis"){
+
+        menuMis3000
+        .classList.add(
+            "activo"
+        );
+
+    }
+    else if(zona === "logros"){
+
+        menuLogros
+        .classList.add(
+            "activo"
+        );
+
+    }
+    else if(zona === "backup"){
+
+        menuBackup
+        .classList.add(
+            "activo"
+        );
+
+    }
+    else{
+
+        menuInicio
+        .classList.add(
+            "activo"
         );
 
     }
 
-
-    marcarMenu(
-        "mapa"
-    );
-
-
-    let botones =
-        "";
-
-
-    TACHANDO_DATA.forEach(
-
-        function(
-            sector,
-            indice
-        ){
-
-            const completo =
-                sectorCompleto(
-                    indice,
-                    listaActiva
-                );
-
-
-            botones += `
-
-
-                <button
-
-                    class="
-                        sector-mapa-grande
-
-                        ${
-                            completo
-                            ?
-                            "completo"
-                            :
-                            ""
-                        }
-                    "
-
-                    onclick="
-                        mostrarSector(
-                            ${indice},
-                            true
-                        )
-                    "
-                >
-
-
-                    <span>
-
-                        ${
-                            completo
-                            ?
-                            "🏆 "
-                            :
-                            ""
-                        }
-
-                        ${sector.s}
-
-                    </span>
-
-
-                    <span
-                        class="
-                            numero-sector-mapa
-                        "
-                    >
-
-                        SECTOR
-                        ${indice+1}
-
-                    </span>
-
-
-                </button>
-
-            `;
-
-        }
-
-    );
-
-
-    contenido.innerHTML = `
-
-
-        <section
-            class="
-                pagina-mapa
-            "
-        >
-
-
-            <div
-                class="
-                    mapa-grande-cabecera
-                "
-            >
-
-
-                <button
-                    class="
-                        btn-vista
-                    "
-                    onclick="
-                        volverHistorial()
-                    "
-                >
-
-                    ‹ Atrás
-
-                </button>
-
-
-                <div
-                    class="
-                        mapa-grande-titulo
-                    "
-                >
-
-
-                    <h1>
-
-                        MAPA DEL PIRINEO
-
-                    </h1>
-
-
-                    <p>
-
-                        ${
-                            listaActiva
-                            ===
-                            "217"
-
-                            ?
-
-                            "Lista Actualizada · 217 tresmiles"
-
-                            :
-
-                            "Lista Histórica · 212 tresmiles"
-                        }
-
-                        ·
-
-                        Selecciona un sector
-
-                    </p>
-
-
-                </div>
-
-
-                <button
-                    class="
-                        btn-vista
-                        btn-derecha
-                    "
-                    onclick="
-                        cambiarListaMapa()
-                    "
-                >
-
-                    Cambiar lista
-
-                </button>
-
-
-            </div>
-
-
-            <div
-                class="
-                    mapa-grande-panel
-                "
-            >
-
-
-                <div
-                    class="
-                        sectores-mapa-grande
-                    "
-                >
-
-                    ${botones}
-
-                </div>
-
-
-                <div
-                    class="
-                        mapa-leyenda
-                    "
-                >
-
-                    🏆 Sector completado
-                    &nbsp;&nbsp;·&nbsp;&nbsp;
-                    Orden de oeste a este
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-    `;
-
 }
 
 
-/* =========================================================
-   CAMBIAR LISTA DESDE MAPA
-========================================================= */
-
-function cambiarListaMapa(){
-
-    listaActiva =
-        listaActiva
-        ===
-        "217"
-
-        ?
-
-        "212"
-
-        :
-
-        "217";
-
-
-    localStorage.setItem(
-        "tachando_lista",
-        listaActiva
-    );
-
-
-    mostrarMapaCompleto(
-        true
-    );
-
-}
-
-
-/* =========================================================
-   LOGROS
-========================================================= */
-
-function obtenerLogros(){
-
-    const totalMarcadas =
-        Object.keys(
-            progreso
-        ).length;
-
+function actualizarInicio(){
 
     const p217 =
-        progresoLista(
-            "217"
-        );
+        progresoLista("217");
 
 
     const p212 =
-        progresoLista(
-            "212"
-        );
+        progresoLista("212");
 
 
-    let sectores217 =
-        0;
-
-
-    let sectores212 =
-        0;
-
-
-    TACHANDO_DATA.forEach(
-
-        function(
-            sector,
-            indice
-        ){
-
-            if(
-                sectorCompleto(
-                    indice,
-                    "217"
-                )
-            ){
-
-                sectores217++;
-
-            }
-
-
-            if(
-                sectorCompleto(
-                    indice,
-                    "212"
-                )
-            ){
-
-                sectores212++;
-
-            }
-
-        }
-
-    );
-
-
-    const sectoresConquistados =
-        Math.max(
-            sectores217,
-            sectores212
-        );
-
-
-    const historicaCompleta =
-
-        p212.total > 0
-
-        &&
-
-        p212.completadas
-        ===
-        p212.total;
-
-
-    const actualizadaCompleta =
-
-        p217.total > 0
-
-        &&
-
+    document
+    .getElementById(
+        "completados217"
+    )
+    .textContent =
         p217.completadas
-        ===
-        p217.total;
+        +
+        " completados";
 
 
-    const ambasListas =
-
+    document
+    .getElementById(
+        "pendientes217"
+    )
+    .textContent =
         (
-            historicaCompleta
-            ?
-            1
-            :
-            0
+            p217.total
+            -
+            p217.completadas
         )
-
         +
+        " pendientes";
 
+
+    document
+    .getElementById(
+        "completados212"
+    )
+    .textContent =
+        p212.completadas
+        +
+        " completados";
+
+
+    document
+    .getElementById(
+        "pendientes212"
+    )
+    .textContent =
         (
-            actualizadaCompleta
-            ?
-            1
-            :
-            0
-        );
-
-
-    return [
-
-
-        {
-
-            nombre:
-                "Mi primer tres mil",
-
-            descripcion:
-                "Alcanza tu primera cima de 3.000 metros.",
-
-            icono:
-                "🏔",
-
-            actual:
-                Math.min(
-                    totalMarcadas,
-                    1
-                ),
-
-            objetivo:
-                1,
-
-            unidad:
-                "cima"
-
-        },
-
-
-        {
-
-            nombre:
-                "Sector conquistado",
-
-            descripcion:
-                "Completa todas las cimas de un sector.",
-
-            icono:
-                "🏆",
-
-            actual:
-                Math.min(
-                    sectoresConquistados,
-                    1
-                ),
-
-            objetivo:
-                1,
-
-            unidad:
-                "sector"
-
-        },
-
-
-        {
-
-            nombre:
-                "Centenario de las cumbres",
-
-            descripcion:
-                "Alcanza las 100 cimas únicas ascendidas.",
-
-            icono:
-                "💯",
-
-            actual:
-                Math.min(
-                    totalMarcadas,
-                    100
-                ),
-
-            objetivo:
-                100,
-
-            unidad:
-                "cimas"
-
-        },
-
-
-        {
-
-            nombre:
-                "A las puertas de la gloria",
-
-            descripcion:
-                "Conquista 11 de los 12 sectores.",
-
-            icono:
-                "🧭",
-
-            actual:
-                Math.min(
-                    sectoresConquistados,
-                    11
-                ),
-
-            objetivo:
-                11,
-
-            unidad:
-                "sectores"
-
-        },
-
-
-        {
-
-            nombre:
-                "Doscientas razones para seguir",
-
-            descripcion:
-                "Alcanza las 200 cimas únicas ascendidas.",
-
-            icono:
-                "⭐",
-
-            actual:
-                Math.min(
-                    totalMarcadas,
-                    200
-                ),
-
-            objetivo:
-                200,
-
-            unidad:
-                "cimas"
-
-        },
-
-
-        {
-
-            nombre:
-                "Lista oficial histórica",
-
-            descripcion:
-                "Completa los 212 tresmiles.",
-
-            icono:
-                "📜",
-
-            actual:
-                p212.completadas,
-
-            objetivo:
-                p212.total,
-
-            unidad:
-                "cimas"
-
-        },
-
-
-        {
-
-            nombre:
-                "Lista actualizada",
-
-            descripcion:
-                "Completa los 217 tresmiles.",
-
-            icono:
-                "⛰️",
-
-            actual:
-                p217.completadas,
-
-            objetivo:
-                p217.total,
-
-            unidad:
-                "cimas"
-
-        },
-
-
-        {
-
-            nombre:
-                "Maestro de los Pirineos",
-
-            descripcion:
-                "Completa ambas listas.",
-
-            icono:
-                "👑",
-
-            actual:
-                ambasListas,
-
-            objetivo:
-                2,
-
-            unidad:
-                "listas"
-
-        }
-
-
-    ]
-    .map(
-
-        function(logro){
-
-            const porcentaje =
-
-                logro.objetivo > 0
-
-                ?
-
-                Math.min(
-
-                    100,
-
-                    logro.actual
-                    /
-                    logro.objetivo
-                    *
-                    100
-
-                )
-
-                :
-
-                0;
-
-
-            return {
-
-                ...logro,
-
-                porcentaje:
-                    porcentaje,
-
-                conseguido:
-
-                    logro.objetivo > 0
-
-                    &&
-
-                    logro.actual
-                    >=
-                    logro.objetivo
-
-            };
-
-        }
-
-    );
-
-}
-
-
-/* =========================================================
-   LOGROS EN INICIO
-========================================================= */
-
-function actualizarLogros(){
-
-    const contenedor =
-        document.getElementById(
-            "logrosInicio"
-        );
-
-
-    if(
-        !contenedor
-    ){
-
-        return;
-
-    }
-
-
-    const logros =
-        obtenerLogros()
-
-        .map(
-
-            function(
-                logro,
-                indice
-            ){
-
-                return {
-
-                    ...logro,
-
-                    indice:
-                        indice
-
-                };
-
-            }
-
+            p212.total
+            -
+            p212.completadas
         )
-
-        .sort(
-
-            function(
-                a,
-                b
-            ){
-
-                if(
-                    b.porcentaje
-                    !==
-                    a.porcentaje
-                ){
-
-                    return (
-                        b.porcentaje
-                        -
-                        a.porcentaje
-                    );
-
-                }
-
-
-                return (
-                    a.indice
-                    -
-                    b.indice
-                );
-
-            }
-
-        )
-
-        .slice(
-            0,
-            4
-        );
-
-
-    let html =
-        "";
-
-
-    logros.forEach(
-
-        function(logro){
-
-            html += `
-
-
-                <div
-
-                    class="
-                        logro
-
-                        ${
-                            logro.conseguido
-                            ?
-                            "conseguido"
-                            :
-                            ""
-                        }
-                    "
-
-                >
-
-
-                    <span
-                        class="
-                            medalla
-                        "
-                    >
-
-                        ${logro.icono}
-
-                    </span>
-
-
-                    <div>
-
-
-                        <strong>
-
-                            ${logro.nombre}
-
-                        </strong>
-
-
-                        <small>
-
-                            ${
-                                logro.conseguido
-
-                                ?
-
-                                "Conseguido"
-
-                                :
-
-                                logro.actual
-                                +
-                                " / "
-                                +
-                                logro.objetivo
-                            }
-
-                        </small>
-
-
-                    </div>
-
-
-                </div>
-
-            `;
-
-        }
-
-    );
-
-
-    contenedor.innerHTML =
-        html;
-
-}
-
-
-/* =========================================================
-   PANTALLA LOGROS
-========================================================= */
-
-function mostrarLogros(
-    guardarHistorial=true
-){
-
-    if(
-        guardarHistorial
-    ){
-
-        registrarEstado(
-            "logros"
-        );
-
-    }
-
-
-    marcarMenu(
-        "logros"
-    );
-
-
-    const logros =
-        obtenerLogros();
-
-
-    let tarjetas =
-        "";
-
-
-    logros.forEach(
-
-        function(logro){
-
-            const porcentaje =
-                Math.round(
-                    logro.porcentaje
-                );
-
-
-            tarjetas += `
-
-
-                <div
-
-                    class="
-                        tarjeta-logro-app
-
-                        ${
-                            logro.conseguido
-                            ?
-                            "conseguido"
-                            :
-                            ""
-                        }
-                    "
-
-                >
-
-
-                    <div
-                        class="
-                            icono-logro-grande
-                        "
-                    >
-
-                        ${logro.icono}
-
-                    </div>
-
-
-                    <div
-                        class="
-                            info-logro-app
-                        "
-                    >
-
-
-                        <h3>
-
-                            ${logro.nombre}
-
-                        </h3>
-
-
-                        <div
-                            class="
-                                descripcion-logro-app
-                            "
-                        >
-
-                            ${logro.descripcion}
-
-                        </div>
-
-
-                        <div
-                            class="
-                                estado-logro-app
-                            "
-                        >
-
-
-                            <span>
-
-                                ${
-                                    logro.conseguido
-
-                                    ?
-
-                                    "CONSEGUIDO"
-
-                                    :
-
-                                    logro.actual
-                                    +
-                                    " / "
-                                    +
-                                    logro.objetivo
-                                    +
-                                    " "
-                                    +
-                                    logro.unidad
-                                }
-
-                            </span>
-
-
-                            <span>
-
-                                ${porcentaje}%
-
-                            </span>
-
-
-                        </div>
-
-
-                        <div
-                            class="
-                                barra-logro-app
-                            "
-                        >
-
-
-                            <div
-                                style="
-                                    width:
-                                    ${logro.porcentaje}%
-                                "
-                            ></div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-            `;
-
-        }
-
-    );
-
-
-    const conseguidos =
-        logros.filter(
-            logro =>
-            logro.conseguido
-        ).length;
-
-
-    contenido.innerHTML = `
-
-
-        <section
-            class="
-                vista-app
-            "
-        >
-
-
-            <div
-                class="
-                    cabecera-vista
-                "
-            >
-
-
-                <button
-                    class="
-                        btn-vista
-                    "
-                    onclick="
-                        volverHistorial()
-                    "
-                >
-
-                    ‹ Atrás
-
-                </button>
-
-
-                <div
-                    class="
-                        cabecera-vista-centro
-                    "
-                >
-
-
-                    <h1>
-
-                        LOGROS
-
-                    </h1>
-
-
-                    <p>
-
-                        ${conseguidos}
-                        de
-                        ${logros.length}
-                        conseguidos
-
-                    </p>
-
-
-                </div>
-
-
-                <div></div>
-
-
-            </div>
-
-
-            <div
-                class="
-                    titulo-listado
-                "
-            >
-
-
-                <h2>
-
-                    TU CAMINO POR LOS PIRINEOS
-
-                </h2>
-
-
-                <p>
-
-                    Cada logro muestra tu progreso real
-
-                </p>
-
-
-            </div>
-
-
-            <div
-                class="
-                    grid-logros-app
-                "
-            >
-
-                ${tarjetas}
-
-            </div>
-
-
-        </section>
-
-    `;
-
-}
-
-
-/* =========================================================
-   IMPORTAR / EXPORTAR
-========================================================= */
-
-function mostrarBackup(
-    guardarHistorial=true
-){
-
-    if(
-        guardarHistorial
-    ){
-
-        registrarEstado(
-            "backup"
-        );
-
-    }
-
-
-    marcarMenu(
-        "backup"
-    );
-
-
-    const totalMarcadas =
-        Object.keys(
-            progreso
-        ).length;
-
-
-    contenido.innerHTML = `
-
-
-        <section
-            class="
-                vista-app
-            "
-        >
-
-
-            <div
-                class="
-                    cabecera-vista
-                "
-            >
-
-
-                <button
-                    class="
-                        btn-vista
-                    "
-                    onclick="
-                        volverHistorial()
-                    "
-                >
-
-                    ‹ Atrás
-
-                </button>
-
-
-                <div
-                    class="
-                        cabecera-vista-centro
-                    "
-                >
-
-
-                    <h1>
-
-                        COPIA DE SEGURIDAD
-
-                    </h1>
-
-
-                    <p>
-
-                        Protege y recupera tu progreso de Tachando 3000s
-
-                    </p>
-
-
-                </div>
-
-
-                <div></div>
-
-
-            </div>
-
-
-            <div
-                class="
-                    backup-grid
-                "
-            >
-
-
-                <div
-                    class="
-                        backup-card
-                    "
-                >
-
-
-                    <div
-                        class="
-                            backup-icono
-                        "
-                    >
-
-                        ↓
-
-                    </div>
-
-
-                    <h3>
-
-                        Exportar copia
-
-                    </h3>
-
-
-                    <p>
-
-                        Guarda en un archivo tu progreso actual,
-                        incluyendo las cumbres marcadas y la lista
-                        que tienes activa.
-
-                    </p>
-
-
-                    <button
-                        class="
-                            backup-boton
-                        "
-                        onclick="
-                            exportarCopia()
-                        "
-                    >
-
-                        EXPORTAR COPIA DE SEGURIDAD
-
-                    </button>
-
-
-                </div>
-
-
-                <div
-                    class="
-                        backup-card
-                    "
-                >
-
-
-                    <div
-                        class="
-                            backup-icono
-                        "
-                    >
-
-                        ↑
-
-                    </div>
-
-
-                    <h3>
-
-                        Importar copia
-
-                    </h3>
-
-
-                    <p>
-
-                        Recupera una copia creada anteriormente
-                        en este ordenador o en otro dispositivo.
-
-                    </p>
-
-
-                    <button
-                        class="
-                            backup-boton
-                            secundario
-                        "
-                        onclick="
-                            seleccionarCopia()
-                        "
-                    >
-
-                        IMPORTAR COPIA DE SEGURIDAD
-
-                    </button>
-
-
-                    <input
-
-                        id="archivoBackup"
-
-                        type="file"
-
-                        accept="
-                            .json,
-                            application/json
-                        "
-
-                        hidden
-
-                        onchange="
-                            importarCopia(event)
-                        "
-
-                    >
-
-
-                </div>
-
-
-            </div>
-
-
-            <div
-                class="
-                    backup-info
-                "
-            >
-
-                Ahora mismo tienes
-
-                <strong>
-
-                    ${totalMarcadas}
-
-                </strong>
-
-                cumbres guardadas en este navegador.
-
-                La copia de seguridad no se envía a Internet:
-                el archivo queda bajo tu control.
-
-            </div>
-
-
-        </section>
-
-    `;
-
-}
-
-
-/* =========================================================
-   EXPORTAR
-========================================================= */
-
-function exportarCopia(){
-
-    const copia = {
-
-        aplicacion:
-            "Tachando 3000s",
-
-        versionBackup:
-            1,
-
-        fechaExportacion:
-            new Date()
-            .toISOString(),
-
-        listaActiva:
-            listaActiva,
-
-        progreso:
-            progreso
-
-    };
-
-
-    const contenidoArchivo =
-        JSON.stringify(
-            copia,
-            null,
-            2
-        );
-
-
-    const blob =
-        new Blob(
-
-            [
-                contenidoArchivo
-            ],
-
-            {
-                type:
-                    "application/json"
-            }
-
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const enlace =
-        document.createElement(
-            "a"
-        );
-
-
-    const fecha =
-        new Date()
-        .toISOString()
-        .slice(
-            0,
-            10
-        );
-
-
-    enlace.href =
-        url;
-
-
-    enlace.download =
-
-        "tachando-3000s-copia-"
-
         +
+        " pendientes";
 
-        fecha
 
+    const actual =
+        listaActiva === "217"
+        ?
+        p217
+        :
+        p212;
+
+
+    const porcentaje =
+        actual.total
+        ?
+        actual.completadas
+        /
+        actual.total
+        *
+        100
+        :
+        0;
+
+
+    document
+    .getElementById(
+        "progresoNumero"
+    )
+    .textContent =
+        actual.completadas;
+
+
+    document
+    .getElementById(
+        "progresoTotal"
+    )
+    .textContent =
+        "/ "
         +
-
-        ".json";
-
-
-    document.body
-    .appendChild(
-        enlace
-    );
+        actual.total;
 
 
-    enlace.click();
+    document
+    .getElementById(
+        "progresoPorcentaje"
+    )
+    .textContent =
+        porcentaje
+        .toFixed(1)
+        .replace(".",",")
+        +
+        " %";
 
 
-    enlace.remove();
+    document
+    .getElementById(
+        "barraGeneral"
+    )
+    .style.width =
+        porcentaje
+        +
+        "%";
 
 
-    URL.revokeObjectURL(
-        url
-    );
+    document
+    .getElementById(
+        "textoListaActiva"
+    )
+    .textContent =
+        listaActiva === "217"
+        ?
+        "ACTUALIZADA (217)"
+        :
+        "HISTÓRICA (212)";
+
+
+    actualizarTop6();
+
+    actualizarUltimasCumbres();
+
+    actualizarMapa();
+
+    actualizarLogros();
 
 }
 
-
-/* =========================================================
-   IMPORTAR
-========================================================= */
-
-function seleccionarCopia(){
-
-    const input =
-        document.getElementById(
-            "archivoBackup"
-        );
-
-
-    if(
-        input
-    ){
-
-        input.value =
-            "";
-
-        input.click();
-
-    }
-
-}
-
-
-function importarCopia(
-    event
-){
-
-    const archivo =
-        event.target.files[
-            0
-        ];
-
-
-    if(
-        !archivo
-    ){
-
-        return;
-
-    }
-
-
-    const lector =
-        new FileReader();
-
-
-    lector.onload =
-        function(){
-
-            try{
-
-
-                const copia =
-                    JSON.parse(
-                        lector.result
-                    );
-
-
-                if(
-
-                    !copia
-
-                    ||
-
-                    copia.aplicacion
-                    !==
-                    "Tachando 3000s"
-
-                    ||
-
-                    typeof copia.progreso
-                    !==
-                    "object"
-
-                    ||
-
-                    copia.progreso
-                    ===
-                    null
-
-                    ||
-
-                    ![
-                        "217",
-                        "212"
-                    ]
-                    .includes(
-                        String(
-                            copia.listaActiva
-                        )
-                    )
-
-                ){
-
-                    throw new Error(
-                        "Formato no válido"
-                    );
-
-                }
-
-
-                const cantidad =
-                    Object.keys(
-                        copia.progreso
-                    ).length;
-
-
-                const aceptar =
-                    confirm(
-
-                        "Esta copia contiene "
-
-                        +
-
-                        cantidad
-
-                        +
-
-                        " cumbres marcadas. "
-
-                        +
-
-                        "Al importarla sustituirá el progreso guardado actualmente en este navegador. ¿Continuar?"
-
-                    );
-
-
-                if(
-                    !aceptar
-                ){
-
-                    return;
-
-                }
-
-
-                progreso =
-                    copia.progreso;
-
-
-                listaActiva =
-                    String(
-                        copia.listaActiva
-                    );
-
-
-                localStorage.setItem(
-                    "tachando_progreso_v1",
-                    JSON.stringify(
-                        progreso
-                    )
-                );
-
-
-                localStorage.setItem(
-                    "tachando_lista",
-                    listaActiva
-                );
-
-
-                alert(
-
-                    "Copia de seguridad importada correctamente."
-
-                );
-
-
-                mostrarInicio(
-                    true
-                );
-
-
-            }
-            catch(error){
-
-
-                alert(
-
-                    "No se ha podido importar el archivo. Asegúrate de seleccionar una copia de seguridad válida de Tachando 3000s."
-
-                );
-
-
-            }
-
-        };
-
-
-    lector.onerror =
-        function(){
-
-
-            alert(
-
-                "No se ha podido leer el archivo seleccionado."
-
-            );
-
-
-        };
-
-
-    lector.readAsText(
-        archivo
-    );
-
-}
-
-
-/* =========================================================
-   TOP 6 SECTORES
-========================================================= */
 
 function actualizarTop6(){
 
@@ -6811,24 +2715,10 @@ function actualizarTop6(){
         );
 
 
-    if(
-        !contenedor
-    ){
-
-        return;
-
-    }
-
-
     const ranking =
         TACHANDO_DATA
-
         .map(
-
-            function(
-                sector,
-                indice
-            ){
+            function(sector,indice){
 
                 const datos =
                     progresoDeSector(
@@ -6838,26 +2728,20 @@ function actualizarTop6(){
 
 
                 const porcentaje =
-
                     datos.total
-
                     ?
-
                     datos.completadas
                     /
                     datos.total
                     *
                     100
-
                     :
-
                     0;
 
 
                 return {
 
-                    indice:
-                        indice,
+                    indice,
 
                     nombre:
                         sector.s,
@@ -6868,21 +2752,14 @@ function actualizarTop6(){
                     total:
                         datos.total,
 
-                    porcentaje:
-                        porcentaje
+                    porcentaje
 
                 };
 
             }
-
         )
-
         .sort(
-
-            function(
-                a,
-                b
-            ){
+            function(a,b){
 
                 if(
                     b.porcentaje
@@ -6906,35 +2783,25 @@ function actualizarTop6(){
                 );
 
             }
-
         )
-
-        .slice(
-            0,
-            6
-        );
+        .slice(0,6);
 
 
-    let html =
-        "";
+    let html = "";
 
 
     ranking.forEach(
-
         function(item){
 
-            const porcentaje =
+            const porcentajeRedondo =
                 Math.round(
                     item.porcentaje
                 );
 
 
             const completo =
-
                 item.total > 0
-
                 &&
-
                 item.completadas
                 ===
                 item.total;
@@ -6942,12 +2809,9 @@ function actualizarTop6(){
 
             html += `
 
-
                 <div
-
                     class="
                         fila-sector
-
                         ${
                             completo
                             ?
@@ -6956,9 +2820,7 @@ function actualizarTop6(){
                             ""
                         }
                     "
-
                 >
-
 
                     <span>
 
@@ -6990,31 +2852,25 @@ function actualizarTop6(){
                         "
                     >
 
-
                         <div
                             style="
                                 width:
-                                ${porcentaje}%
+                                ${porcentajeRedondo}%
                             "
                         ></div>
-
 
                     </div>
 
 
                     <span>
-
-                        ${porcentaje}%
-
+                        ${porcentajeRedondo}%
                     </span>
-
 
                 </div>
 
             `;
 
         }
-
     );
 
 
@@ -7024,10 +2880,6 @@ function actualizarTop6(){
 }
 
 
-/* =========================================================
-   MAPA DORADO INICIO
-========================================================= */
-
 function actualizarMapa(){
 
     document
@@ -7035,7 +2887,6 @@ function actualizarMapa(){
         ".sector-mapa"
     )
     .forEach(
-
         function(boton){
 
             const indice =
@@ -7051,33 +2902,24 @@ function actualizarMapa(){
                 )
             ){
 
-                boton
-                .classList
-                .add(
+                boton.classList.add(
                     "completo"
                 );
 
             }
             else{
 
-                boton
-                .classList
-                .remove(
+                boton.classList.remove(
                     "completo"
                 );
 
             }
 
         }
-
     );
 
 }
 
-
-/* =========================================================
-   ÚLTIMAS CUMBRES
-========================================================= */
 
 function actualizarUltimasCumbres(){
 
@@ -7087,46 +2929,19 @@ function actualizarUltimasCumbres(){
         );
 
 
-    if(
-        !contenedor
-    ){
-
-        return;
-
-    }
-
-
     const elementos =
-        Object.values(
-            progreso
-        )
-
+        Object.values(progreso)
         .filter(
-
             elemento =>
             elemento
             &&
             elemento.fecha
-
         )
-
         .sort(
-
-            (
-                a,
-                b
-            )
-            =>
-            b.fecha
-            -
-            a.fecha
-
+            (a,b) =>
+            b.fecha-a.fecha
         )
-
-        .slice(
-            0,
-            3
-        );
+        .slice(0,3);
 
 
     if(
@@ -7144,74 +2959,54 @@ function actualizarUltimasCumbres(){
                     padding-top:8px;
                 "
             >
-
-                Todavía no has tachado ninguna cumbre.
-
+                Todavía no has tachado
+                ninguna cumbre.
             </div>
 
         `;
-
 
         return;
 
     }
 
 
-    let html =
-        "";
+    let html = "";
 
 
     elementos.forEach(
-
         function(cima){
 
             html += `
 
-
                 <div
-                    class="
-                        cumbre
-                    "
+                    class="cumbre"
                 >
-
 
                     <div
                         class="
                             cumbre-icono
                         "
                     >
-
                         ▲
-
                     </div>
-
 
                     <div>
 
-
                         <strong>
-
                             ${cima.nombre}
-
                         </strong>
 
-
                         <small>
-
                             ${cima.altitud}
-
                         </small>
 
-
                     </div>
-
 
                 </div>
 
             `;
 
         }
-
     );
 
 
@@ -7221,11 +3016,13 @@ function actualizarUltimasCumbres(){
 }
 
 
-/* =========================================================
-   ACTUALIZAR INICIO
-========================================================= */
+function obtenerLogros(){
 
-function actualizarInicio(){
+    const totalMarcadas =
+        Object.keys(
+            progreso
+        ).length;
+
 
     const p217 =
         progresoLista(
@@ -7239,390 +3036,769 @@ function actualizarInicio(){
         );
 
 
-    const elementoCompletados217 =
-        document.getElementById(
-            "completados217"
+    let sectores217 = 0;
+    let sectores212 = 0;
+
+
+    TACHANDO_DATA.forEach(
+        function(sector,indice){
+
+            if(
+                sectorCompleto(
+                    indice,
+                    "217"
+                )
+            ){
+
+                sectores217++;
+
+            }
+
+
+            if(
+                sectorCompleto(
+                    indice,
+                    "212"
+                )
+            ){
+
+                sectores212++;
+
+            }
+
+        }
+    );
+
+
+    const sectoresConquistados =
+        Math.max(
+            sectores217,
+            sectores212
         );
 
 
-    /*
-    Si no estamos en Inicio,
-    simplemente salimos.
-    */
+    const historicaCompleta =
+        p212.total > 0
+        &&
+        p212.completadas === p212.total;
 
-    if(
-        !elementoCompletados217
-    ){
 
+    const actualizadaCompleta =
+        p217.total > 0
+        &&
+        p217.completadas === p217.total;
+
+
+    const ambasListas =
+        (historicaCompleta ? 1 : 0)
+        +
+        (actualizadaCompleta ? 1 : 0);
+
+
+    return [
+
+        {
+            nombre:"Mi primer tres mil",
+            descripcion:"Alcanza tu primera cima de 3.000 metros.",
+            icono:"🏔",
+            actual:Math.min(totalMarcadas,1),
+            objetivo:1,
+            unidad:"cima"
+        },
+
+        {
+            nombre:"Sector conquistado",
+            descripcion:"Completa todas las cimas de un sector.",
+            icono:"🏆",
+            actual:Math.min(sectoresConquistados,1),
+            objetivo:1,
+            unidad:"sector"
+        },
+
+        {
+            nombre:"Centenario de las cumbres",
+            descripcion:"Alcanza las 100 cimas únicas ascendidas.",
+            icono:"💯",
+            actual:Math.min(totalMarcadas,100),
+            objetivo:100,
+            unidad:"cimas"
+        },
+
+        {
+            nombre:"A las puertas de la gloria",
+            descripcion:"Conquista 11 de los 12 sectores.",
+            icono:"🧭",
+            actual:Math.min(sectoresConquistados,11),
+            objetivo:11,
+            unidad:"sectores"
+        },
+
+        {
+            nombre:"Doscientas razones para seguir",
+            descripcion:"Alcanza las 200 cimas únicas ascendidas.",
+            icono:"⭐",
+            actual:Math.min(totalMarcadas,200),
+            objetivo:200,
+            unidad:"cimas"
+        },
+
+        {
+            nombre:"Lista oficial histórica",
+            descripcion:"Completa los 212 tresmiles.",
+            icono:"📜",
+            actual:p212.completadas,
+            objetivo:p212.total,
+            unidad:"cimas"
+        },
+
+        {
+            nombre:"Lista actualizada",
+            descripcion:"Completa los 217 tresmiles.",
+            icono:"⛰️",
+            actual:p217.completadas,
+            objetivo:p217.total,
+            unidad:"cimas"
+        },
+
+        {
+            nombre:"Maestro de los Pirineos",
+            descripcion:"Completa ambas listas.",
+            icono:"👑",
+            actual:ambasListas,
+            objetivo:2,
+            unidad:"listas"
+        }
+
+    ]
+    .map(
+        function(logro){
+
+            const porcentaje =
+                logro.objetivo > 0
+                ? Math.min(
+                    100,
+                    logro.actual
+                    /
+                    logro.objetivo
+                    *
+                    100
+                )
+                : 0;
+
+
+            return {
+                ...logro,
+                porcentaje:porcentaje,
+                conseguido:
+                    logro.objetivo > 0
+                    &&
+                    logro.actual >= logro.objetivo
+            };
+
+        }
+    );
+
+}
+
+
+function actualizarLogros(){
+
+    const contenedor =
+        document.getElementById(
+            "logrosInicio"
+        );
+
+
+    if(!contenedor){
         return;
-
     }
 
 
-    elementoCompletados217
-    .textContent =
-
-        p217.completadas
-
-        +
-
-        " completados";
-
-
-    document
-    .getElementById(
-        "pendientes217"
-    )
-    .textContent =
-
-        (
-            p217.total
-            -
-            p217.completadas
+    const logros =
+        obtenerLogros()
+        .map(
+            function(logro,indice){
+                return {
+                    ...logro,
+                    indice:indice
+                };
+            }
         )
+        .sort(
+            function(a,b){
 
-        +
+                if(
+                    b.porcentaje
+                    !==
+                    a.porcentaje
+                ){
 
-        " pendientes";
+                    return (
+                        b.porcentaje
+                        -
+                        a.porcentaje
+                    );
 
-
-    document
-    .getElementById(
-        "completados212"
-    )
-    .textContent =
-
-        p212.completadas
-
-        +
-
-        " completados";
+                }
 
 
-    document
-    .getElementById(
-        "pendientes212"
-    )
-    .textContent =
+                return (
+                    a.indice
+                    -
+                    b.indice
+                );
 
-        (
-            p212.total
-            -
-            p212.completadas
+            }
         )
-
-        +
-
-        " pendientes";
+        .slice(0,4);
 
 
-    const actual =
-
-        listaActiva
-        ===
-        "217"
-
-        ?
-
-        p217
-
-        :
-
-        p212;
+    let html = "";
 
 
-    const porcentaje =
+    logros.forEach(
+        function(logro){
 
-        actual.total
+            html += `
 
-        ?
+                <div
+                    class="
+                        logro
+                        ${
+                            logro.conseguido
+                            ? "conseguido"
+                            : ""
+                        }
+                    "
+                >
 
-        actual.completadas
-        /
-        actual.total
-        *
-        100
+                    <span class="medalla">
+                        ${logro.icono}
+                    </span>
 
-        :
+                    <div>
 
-        0;
+                        <strong>
+                            ${logro.nombre}
+                        </strong>
 
+                        <small>
+                            ${
+                                logro.conseguido
+                                ? "Conseguido"
+                                : logro.actual + " / " + logro.objetivo
+                            }
+                        </small>
 
-    document
-    .getElementById(
-        "progresoNumero"
-    )
-    .textContent =
-        actual.completadas;
+                    </div>
 
+                </div>
 
-    document
-    .getElementById(
-        "progresoTotal"
-    )
-    .textContent =
+            `;
 
-        "/ "
-
-        +
-
-        actual.total;
-
-
-    document
-    .getElementById(
-        "progresoPorcentaje"
-    )
-    .textContent =
-
-        porcentaje
-        .toFixed(
-            1
-        )
-        .replace(
-            ".",
-            ","
-        )
-
-        +
-
-        " %";
+        }
+    );
 
 
-    document
-    .getElementById(
-        "barraGeneral"
-    )
-    .style.width =
-
-        porcentaje
-
-        +
-
-        "%";
-
-
-    document
-    .getElementById(
-        "textoListaActiva"
-    )
-    .textContent =
-
-        listaActiva
-        ===
-        "217"
-
-        ?
-
-        "ACTUALIZADA (217)"
-
-        :
-
-        "HISTÓRICA (212)";
-
-
-    actualizarTop6();
-
-
-    actualizarUltimasCumbres();
-
-
-    actualizarMapa();
-
-
-    actualizarLogros();
+    contenedor.innerHTML =
+        html;
 
 }
 
 
-/* =========================================================
-   BOTÓN INTERNO ATRÁS
-========================================================= */
+function mostrarLogros(){
 
-function volverHistorial(){
+    marcarMenu(
+        "logros"
+    );
 
-    history.back();
+
+    const logros =
+        obtenerLogros();
+
+
+    let tarjetas = "";
+
+
+    logros.forEach(
+        function(logro){
+
+            const porcentaje =
+                Math.round(
+                    logro.porcentaje
+                );
+
+
+            tarjetas += `
+
+                <div
+                    class="
+                        tarjeta-logro-app
+                        ${
+                            logro.conseguido
+                            ? "conseguido"
+                            : ""
+                        }
+                    "
+                >
+
+                    <div
+                        class="icono-logro-grande"
+                    >
+                        ${logro.icono}
+                    </div>
+
+
+                    <div
+                        class="info-logro-app"
+                    >
+
+                        <h3>
+                            ${logro.nombre}
+                        </h3>
+
+
+                        <div
+                            class="descripcion-logro-app"
+                        >
+                            ${logro.descripcion}
+                        </div>
+
+
+                        <div
+                            class="estado-logro-app"
+                        >
+
+                            <span>
+                                ${
+                                    logro.conseguido
+                                    ? "CONSEGUIDO"
+                                    : logro.actual + " / " + logro.objetivo + " " + logro.unidad
+                                }
+                            </span>
+
+                            <span>
+                                ${porcentaje}%
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="barra-logro-app"
+                        >
+
+                            <div
+                                style="width:${logro.porcentaje}%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    const conseguidos =
+        logros.filter(
+            logro => logro.conseguido
+        ).length;
+
+
+    contenido.innerHTML = `
+
+        <section class="vista-app">
+
+            <div class="cabecera-vista">
+
+                <button
+                    class="btn-vista"
+                    onclick="volverInicio()"
+                >
+                    ‹ Inicio
+                </button>
+
+
+                <div
+                    class="cabecera-vista-centro"
+                >
+
+                    <h1>
+                        LOGROS
+                    </h1>
+
+                    <p>
+                        ${conseguidos} de ${logros.length} conseguidos
+                    </p>
+
+                </div>
+
+
+                <div></div>
+
+            </div>
+
+
+            <div
+                class="titulo-listado"
+            >
+
+                <h2>
+                    TU CAMINO POR LOS PIRINEOS
+                </h2>
+
+                <p>
+                    Cada logro muestra tu progreso real
+                </p>
+
+            </div>
+
+
+            <div
+                class="grid-logros-app"
+            >
+                ${tarjetas}
+            </div>
+
+        </section>
+
+    `;
 
 }
 
 
-/* =========================================================
-   FLECHAS DEL NAVEGADOR
-========================================================= */
+function mostrarBackup(){
 
-/*
-Cuando el usuario pulsa:
-
-← Atrás
-→ Adelante
-
-Chrome nos devuelve el estado
-correspondiente y reconstruimos
-esa pantalla SIN añadir otro estado.
-*/
-
-window.addEventListener(
-
-    "popstate",
-
-    function(event){
+    marcarMenu("backup");
 
 
-        const estado =
-            event.state;
+    const totalMarcadas =
+        Object.keys(progreso).length;
 
 
-        if(
-            !estado
-        ){
+    contenido.innerHTML = `
 
-            mostrarInicio(
-                false
-            );
+        <section class="vista-app">
 
-            return;
+            <div class="cabecera-vista">
 
-        }
-
-
-        if(
-            estado.lista
-            ===
-            "217"
-
-            ||
-
-            estado.lista
-            ===
-            "212"
-        ){
-
-            listaActiva =
-                estado.lista;
+                <button
+                    class="btn-vista"
+                    onclick="volverInicio()"
+                >
+                    ‹ Inicio
+                </button>
 
 
-            localStorage.setItem(
-                "tachando_lista",
-                listaActiva
-            );
+                <div class="cabecera-vista-centro">
 
-        }
+                    <h1>
+                        COPIA DE SEGURIDAD
+                    </h1>
 
+                    <p>
+                        Protege y recupera tu progreso de Tachando 3000s
+                    </p>
 
-        switch(
-            estado.vista
-        ){
-
-
-            case "sectores":
-
-                mostrarSectores(
-                    false
-                );
-
-                break;
+                </div>
 
 
-            case "sector":
+                <div></div>
 
-                mostrarSector(
-                    estado.indice,
-                    false
-                );
-
-                break;
+            </div>
 
 
-            case "mapa":
+            <div class="backup-grid">
 
-                mostrarMapaCompleto(
-                    false
-                );
+                <div class="backup-card">
 
-                break;
+                    <div class="backup-icono">
+                        ↓
+                    </div>
+
+                    <h3>
+                        Exportar copia
+                    </h3>
+
+                    <p>
+                        Guarda en un archivo tu progreso actual, incluyendo
+                        las cumbres marcadas y la lista que tienes activa.
+                    </p>
+
+                    <button
+                        class="backup-boton"
+                        onclick="exportarCopia()"
+                    >
+                        EXPORTAR COPIA DE SEGURIDAD
+                    </button>
+
+                </div>
 
 
-            case "logros":
+                <div class="backup-card">
 
-                mostrarLogros(
-                    false
-                );
+                    <div class="backup-icono">
+                        ↑
+                    </div>
 
-                break;
+                    <h3>
+                        Importar copia
+                    </h3>
+
+                    <p>
+                        Recupera una copia creada anteriormente en este
+                        ordenador o en otro dispositivo.
+                    </p>
+
+                    <button
+                        class="backup-boton secundario"
+                        onclick="seleccionarCopia()"
+                    >
+                        IMPORTAR COPIA DE SEGURIDAD
+                    </button>
+
+                    <input
+                        id="archivoBackup"
+                        type="file"
+                        accept=".json,application/json"
+                        hidden
+                        onchange="importarCopia(event)"
+                    >
+
+                </div>
+
+            </div>
 
 
-            case "backup":
+            <div class="backup-info">
+                Ahora mismo tienes <strong>${totalMarcadas}</strong> cumbres
+                guardadas en este navegador. La copia de seguridad no se envía
+                a Internet: el archivo queda bajo tu control.
+            </div>
 
-                mostrarBackup(
-                    false
-                );
+        </section>
 
-                break;
+    `;
+
+}
 
 
-            case "inicio":
+function exportarCopia(){
 
-            default:
+    const copia = {
 
-                mostrarInicio(
-                    false
-                );
+        aplicacion:"Tachando 3000s",
+        versionBackup:1,
+        fechaExportacion:new Date().toISOString(),
+        listaActiva:listaActiva,
+        progreso:progreso
 
-                break;
+    };
 
-        }
+
+    const contenidoArchivo =
+        JSON.stringify(
+            copia,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [contenidoArchivo],
+            {type:"application/json"}
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const enlace =
+        document.createElement("a");
+
+
+    const fecha =
+        new Date()
+        .toISOString()
+        .slice(0,10);
+
+
+    enlace.href = url;
+
+    enlace.download =
+        "tachando-3000s-copia-"
+        + fecha
+        + ".json";
+
+
+    document.body.appendChild(enlace);
+
+    enlace.click();
+
+    enlace.remove();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+function seleccionarCopia(){
+
+    const input =
+        document.getElementById(
+            "archivoBackup"
+        );
+
+
+    if(input){
+
+        input.value = "";
+        input.click();
 
     }
 
-);
+}
 
 
-/* =========================================================
-   ARRANQUE V12
-========================================================= */
+function importarCopia(event){
 
-/*
-La página recién abierta se convierte
-en el primer estado de nuestra aplicación.
-*/
-
-history.replaceState(
-
-    {
-
-        vista:
-            "inicio",
-
-        lista:
-            listaActiva
-
-    },
-
-    "",
-
-    "#inicio"
-
-);
+    const archivo =
+        event.target.files[0];
 
 
-/*
-Conectamos las tarjetas y el mapa
-de la pantalla inicial.
-*/
-
-conectarEventosInicio();
+    if(!archivo){
+        return;
+    }
 
 
-/*
-Cargamos progreso real.
-*/
+    const lector =
+        new FileReader();
+
+
+    lector.onload =
+        function(){
+
+            try{
+
+                const copia =
+                    JSON.parse(
+                        lector.result
+                    );
+
+
+                if(
+                    !copia
+                    ||
+                    copia.aplicacion !== "Tachando 3000s"
+                    ||
+                    typeof copia.progreso !== "object"
+                    ||
+                    copia.progreso === null
+                    ||
+                    ![
+                        "217",
+                        "212"
+                    ].includes(
+                        String(
+                            copia.listaActiva
+                        )
+                    )
+                ){
+
+                    throw new Error(
+                        "Formato no válido"
+                    );
+
+                }
+
+
+                const cantidad =
+                    Object.keys(
+                        copia.progreso
+                    ).length;
+
+
+                const aceptar =
+                    confirm(
+                        "Esta copia contiene "
+                        + cantidad
+                        + " cumbres marcadas. "
+                        + "Al importarla sustituirá el progreso guardado actualmente en este navegador. ¿Continuar?"
+                    );
+
+
+                if(!aceptar){
+                    return;
+                }
+
+
+                progreso =
+                    copia.progreso;
+
+
+                listaActiva =
+                    String(
+                        copia.listaActiva
+                    );
+
+
+                localStorage.setItem(
+                    "tachando_progreso_v1",
+                    JSON.stringify(progreso)
+                );
+
+
+                localStorage.setItem(
+                    "tachando_lista",
+                    listaActiva
+                );
+
+
+                alert(
+                    "Copia de seguridad importada correctamente."
+                );
+
+
+                location.reload();
+
+            }
+            catch(error){
+
+                alert(
+                    "No se ha podido importar el archivo. Asegúrate de seleccionar una copia de seguridad válida de Tachando 3000s."
+                );
+
+            }
+
+        };
+
+
+    lector.onerror =
+        function(){
+
+            alert(
+                "No se ha podido leer el archivo seleccionado."
+            );
+
+        };
+
+
+    lector.readAsText(archivo);
+
+}
+
 
 actualizarInicio();
 
-
 </script>
 
-
 </body>
-
 </html>
