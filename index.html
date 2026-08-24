@@ -6,7 +6,6 @@
 <title>Tachando 3000s</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,13 +13,17 @@
 }
 
 :root{
-    --verde-oscuro:#163f24;
-    --verde:#557f38;
-    --verde-claro:#82a557;
-    --crema:#f5f3ec;
+    --azul-muy-oscuro:#082b4c;
+    --azul-oscuro:#0b3c68;
+    --azul:#145d96;
+    --azul-medio:#3b7fb0;
+    --azul-claro:#dfeef8;
+    --azul-hielo:#eef6fb;
     --blanco:#ffffff;
-    --borde:#dfddd4;
-    --texto:#172119;
+    --gris:#6f7d89;
+    --gris-claro:#e8edf1;
+    --texto:#10293d;
+    --fondo:#edf4f8;
 }
 
 html,
@@ -32,13 +35,13 @@ body{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--crema);
     color:var(--texto);
+    background:var(--fondo);
 }
 
-/* ========================================
+/* ======================================
    ESTRUCTURA GENERAL
-======================================== */
+====================================== */
 
 .app{
     width:100%;
@@ -48,425 +51,511 @@ body{
     overflow:hidden;
 }
 
-/* ========================================
-   MENÚ IZQUIERDO
-======================================== */
+/* ======================================
+   MENÚ LATERAL
+====================================== */
 
 .sidebar{
     height:100dvh;
-    background:#faf9f4;
-    border-right:1px solid #dedbd2;
+    background:rgba(255,255,255,.97);
+    border-right:1px solid #cad8e2;
     display:flex;
     flex-direction:column;
     overflow:hidden;
 }
 
 .marca{
-    height:112px;
-    flex:0 0 112px;
-
+    height:110px;
+    flex:0 0 110px;
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-
-    border-bottom:1px solid #ebe8df;
+    align-items:center;
+    border-bottom:1px solid #d9e4eb;
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbfe,
+            #eef6fb
+        );
 }
 
 .logo-montana{
-    font-size:29px;
-    line-height:1;
-    margin-bottom:5px;
+    position:relative;
+    width:54px;
+    height:33px;
+    margin-bottom:6px;
+}
+
+.logo-montana:before,
+.logo-montana:after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:0;
+    height:0;
+    border-left:16px solid transparent;
+    border-right:16px solid transparent;
+    border-bottom:29px solid var(--azul-oscuro);
+}
+
+.logo-montana:before{
+    left:1px;
+}
+
+.logo-montana:after{
+    right:1px;
+    transform:scale(.78);
+    transform-origin:bottom;
+    opacity:.78;
 }
 
 .marca strong{
-    color:var(--verde-oscuro);
-    font-size:16px;
-    line-height:1.05;
     text-align:center;
+    font-size:15px;
+    line-height:1.05;
+    color:var(--azul-muy-oscuro);
+    letter-spacing:.3px;
 }
 
 nav{
     flex:1;
-
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
-
-    padding:4px 0 10px;
+    padding:5px 0 8px;
 }
 
 nav a{
-    min-height:44px;
-
+    min-height:42px;
     display:flex;
     align-items:center;
     gap:10px;
-
     padding:0 14px;
-
     text-decoration:none;
-    color:#222;
-    font-size:13px;
-
-    border-left:3px solid transparent;
+    color:#18354b;
+    font-size:12px;
+    border-left:4px solid transparent;
+    transition:.15s ease;
 }
 
 nav a:hover,
 nav a.activo{
-    background:#e9ede2;
-    border-left-color:var(--verde);
-    color:var(--verde-oscuro);
+    background:#e5f1f8;
+    border-left-color:var(--azul);
+    color:var(--azul-muy-oscuro);
 }
 
 .icono{
     width:22px;
     text-align:center;
-    font-size:17px;
+    font-size:16px;
 }
 
-/* ========================================
+/* ======================================
    CONTENIDO
-======================================== */
+====================================== */
 
 .contenido{
     height:100dvh;
-    min-width:0;
-
     display:grid;
     grid-template-rows:auto minmax(0,1fr);
-
+    min-width:0;
     overflow:hidden;
-}
-
-/* ========================================
-   ZONA SUPERIOR
-======================================== */
-
-.hero{
-    padding:8px 28px 12px;
 
     background:
         linear-gradient(
-            rgba(255,255,255,.28),
-            rgba(242,244,238,.38)
+            rgba(240,247,251,.88),
+            rgba(234,243,248,.94)
         ),
         linear-gradient(
             135deg,
-            #d8e4da,
-            #eef1eb 48%,
-            #ccd9cf
+            #dbeaf4,
+            #edf6fb
         );
 }
 
-.hero-top{
-    height:31px;
+/* ======================================
+   CABECERA
+====================================== */
 
+.hero{
+    padding:7px 26px 10px;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,255,255,.98),
+            rgba(230,242,249,.83) 46%,
+            rgba(187,215,232,.76) 100%
+        );
+
+    border-bottom:1px solid #c8dbe8;
+}
+
+.hero-top{
+    height:28px;
     display:flex;
     justify-content:flex-end;
-    gap:8px;
+    gap:7px;
 }
 
 .boton-mini{
-    height:29px;
-    padding:0 11px;
-
+    height:27px;
+    padding:0 10px;
     border-radius:7px;
-    border:1px solid #d7d8d2;
-
-    background:rgba(255,255,255,.9);
-
-    font-size:11px;
+    border:1px solid #b9cfde;
+    background:rgba(255,255,255,.88);
+    font-size:10px;
     font-weight:700;
+    color:var(--azul-muy-oscuro);
     cursor:pointer;
 }
 
 .titulo{
     text-align:center;
-
-    font-size:clamp(36px,4vw,57px);
-    line-height:.98;
-
+    font-size:clamp(34px,3.8vw,54px);
+    line-height:.95;
     font-weight:900;
-    letter-spacing:1.3px;
+    letter-spacing:1px;
+    color:var(--azul-muy-oscuro);
+}
 
-    color:var(--verde-oscuro);
+.titulo span{
+    color:var(--azul);
 }
 
 .subtitulo{
     text-align:center;
-    margin-top:5px;
-
-    font-size:18px;
+    margin-top:4px;
+    font-size:16px;
+    color:#23445d;
 }
 
 .elige{
     text-align:center;
-
-    margin-top:12px;
-    margin-bottom:10px;
-
-    font-size:13px;
+    margin-top:10px;
+    margin-bottom:8px;
+    font-size:12px;
     font-weight:800;
+    color:var(--azul-muy-oscuro);
 }
 
 .zona-principal{
     width:min(1160px,100%);
     margin:auto;
-
     display:grid;
     grid-template-columns:1fr 1fr .78fr;
-    gap:14px;
+    gap:13px;
 }
 
-/* ========================================
-   TARJETAS 217 / 212
-======================================== */
+/* ======================================
+   TARJETAS
+====================================== */
 
 .tarjeta-lista,
 .panel-progreso{
-    height:188px;
-
-    background:rgba(255,255,255,.95);
-    border:1px solid rgba(130,130,130,.24);
-    border-radius:11px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.09);
-
+    height:181px;
+    border-radius:13px;
     overflow:hidden;
+    box-shadow:0 6px 17px rgba(8,43,76,.12);
 }
 
 .tarjeta-lista{
     display:flex;
     flex-direction:column;
-
     cursor:pointer;
-    transition:.18s ease;
+    transition:.16s ease;
 }
 
 .tarjeta-lista:hover{
     transform:translateY(-2px);
-    box-shadow:0 7px 18px rgba(0,0,0,.12);
+    box-shadow:0 9px 22px rgba(8,43,76,.17);
 }
+
+/* LISTA ACTUALIZADA */
+
+.actualizada{
+    background:
+        linear-gradient(
+            180deg,
+            #174f7e,
+            #0c3b67
+        );
+    color:white;
+    border:1px solid #2e6690;
+}
+
+.actualizada .lista-numero,
+.actualizada .lista-nombre,
+.actualizada .lista-sub{
+    color:white;
+}
+
+.actualizada .lista-pie{
+    background:#082d50;
+}
+
+/* LISTA HISTÓRICA */
+
+.historica{
+    background:
+        linear-gradient(
+            180deg,
+            #f6fbfe,
+            #dceaf3
+        );
+    border:1px solid #b8cddb;
+}
+
+.historica .lista-numero,
+.historica .lista-nombre{
+    color:var(--azul-muy-oscuro);
+}
+
+.historica .lista-sub{
+    color:#42637b;
+}
+
+.historica .lista-pie{
+    background:#356985;
+}
+
+/* CONTENIDO TARJETAS */
 
 .lista-contenido{
     flex:1;
-
+    position:relative;
     text-align:center;
-    padding:11px 15px 0;
+    padding:10px 15px 0;
+    overflow:hidden;
 }
 
 .lista-nombre{
-    font-size:14px;
+    font-size:13px;
     font-weight:900;
+    letter-spacing:.2px;
 }
 
 .lista-numero{
-    color:var(--verde-oscuro);
-
-    font-size:45px;
+    font-size:43px;
     line-height:1;
-
     font-weight:900;
-
-    margin:5px 0 0;
+    margin-top:5px;
 }
 
 .lista-sub{
-    font-size:11px;
+    font-size:10px;
     font-weight:800;
+    margin-top:1px;
 }
 
-.montanas-decorativas{
-    height:42px;
-    max-width:235px;
+.montanas{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:55px;
+}
 
-    margin:3px auto 0;
+.montanas:before,
+.montanas:after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:62%;
+    height:100%;
+    clip-path:polygon(
+        0 100%,
+        19% 69%,
+        32% 78%,
+        50% 37%,
+        65% 64%,
+        82% 48%,
+        100% 100%
+    );
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            transparent 48%,
-            #7e985f 49% 55%,
-            transparent 56%
-        ),
-        linear-gradient(
-            35deg,
-            transparent 49%,
-            #a7b592 50% 57%,
-            transparent 58%
-        );
+.actualizada .montanas:before{
+    left:-4%;
+    background:#1f679c;
+    opacity:.70;
+}
 
-    background-size:50% 100%;
-    background-position:left bottom,right bottom;
-    background-repeat:no-repeat;
+.actualizada .montanas:after{
+    right:-5%;
+    background:#0b3156;
+    opacity:.85;
+}
+
+.historica .montanas:before{
+    left:-4%;
+    background:#a9c4d7;
+    opacity:.8;
+}
+
+.historica .montanas:after{
+    right:-5%;
+    background:#779eb8;
+    opacity:.7;
 }
 
 .lista-pie{
-    height:33px;
-    flex:0 0 33px;
-
-    background:var(--verde-oscuro);
+    height:31px;
+    flex:0 0 31px;
     color:white;
-
     display:flex;
     align-items:center;
     justify-content:space-around;
-
-    font-size:10px;
+    font-size:9px;
 }
 
-/* ========================================
-   PROGRESO GENERAL
-======================================== */
+/* ======================================
+   PROGRESO ACTUAL
+====================================== */
 
 .panel-progreso{
-    padding:11px 15px;
+    padding:10px 14px;
     text-align:center;
+    background:rgba(255,255,255,.96);
+    border:1px solid #c2d4df;
 }
 
 .panel-progreso h3{
-    font-size:12px;
-    margin-bottom:6px;
+    font-size:11px;
+    color:var(--azul-muy-oscuro);
+    margin-bottom:5px;
 }
 
 .contador{
-    font-size:35px;
+    font-size:32px;
     line-height:1;
-
     font-weight:900;
-    color:var(--verde);
+    color:var(--azul);
 }
 
 .contador span{
-    color:#828782;
-    font-size:21px;
+    color:#7d8992;
+    font-size:20px;
 }
 
 .texto-completados{
-    margin-top:4px;
-
-    font-size:9px;
+    margin-top:3px;
+    font-size:8px;
     font-weight:700;
 }
 
 .porcentaje{
     margin-top:7px;
-
-    font-size:27px;
+    font-size:25px;
+    line-height:1;
     font-weight:900;
-
-    color:var(--verde-claro);
+    color:#2b75a9;
 }
 
 .barra{
-    height:9px;
-
-    margin-top:6px;
-
-    background:#dedfd9;
-
+    height:8px;
+    margin-top:7px;
     border-radius:20px;
+    background:#dfe5e8;
     overflow:hidden;
 }
 
 .barra div{
     width:44.7%;
     height:100%;
-
-    background:linear-gradient(
-        90deg,
-        #5e8a36,
-        #86a756
-    );
-
-    border-radius:inherit;
+    background:
+        linear-gradient(
+            90deg,
+            #0b4c7d,
+            #3a89bd
+        );
 }
 
 .lista-activa{
-    margin-top:7px;
+    margin-top:6px;
     padding-top:5px;
-
-    border-top:1px solid #dedfd9;
-
-    font-size:9px;
+    border-top:1px solid #dde5e9;
+    font-size:8px;
 }
 
-/* ========================================
-   DASHBOARD INFERIOR
-======================================== */
+/* ======================================
+   ZONA INFERIOR
+====================================== */
 
 .dashboard{
     min-height:0;
-
-    padding:10px 18px 12px;
+    padding:9px 16px 11px;
 
     display:grid;
 
     grid-template-columns:
-        1.4fr
+        1.36fr
         .92fr
-        .78fr
-        .84fr;
+        .80fr
+        .86fr;
 
-    gap:11px;
+    gap:10px;
 
-    align-items:start;
+    align-items:stretch;
 
     overflow:hidden;
 }
 
 .bloque{
     min-width:0;
+    height:100%;
 
-    background:white;
+    background:rgba(255,255,255,.95);
 
-    border:1px solid var(--borde);
-    border-radius:10px;
+    border:1px solid #cbdbe5;
+    border-radius:11px;
 
-    padding:11px;
+    padding:10px;
 
-    box-shadow:0 3px 10px rgba(0,0,0,.045);
+    box-shadow:0 4px 12px rgba(10,45,70,.06);
 
     overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
 }
 
 .bloque h2{
-    font-size:12px;
+    font-size:11px;
     line-height:1.1;
-
-    margin-bottom:9px;
+    color:var(--azul-muy-oscuro);
+    margin-bottom:8px;
 }
 
-/* ========================================
+/* ======================================
    MAPA
-======================================== */
+====================================== */
 
 .mapa{
-    height:174px;
+    flex:1;
+    min-height:0;
 
-    border-radius:7px;
+    border-radius:8px;
+    padding:9px;
 
     display:flex;
     flex-wrap:wrap;
-
     justify-content:center;
     align-content:center;
 
     gap:7px;
 
-    padding:10px;
-
     background:
         linear-gradient(
-            rgba(255,255,255,.17),
-            rgba(255,255,255,.17)
+            rgba(232,243,249,.36),
+            rgba(232,243,249,.36)
         ),
         linear-gradient(
             135deg,
-            #d0dac2,
-            #b7c7a7,
-            #ded8b9
+            #c6dce8,
+            #a8c7d8,
+            #dce9ef
         );
 }
 
@@ -475,62 +564,63 @@ nav a.activo{
 
     background:rgba(255,255,255,.9);
 
+    border:1px solid rgba(112,150,174,.28);
     border-radius:25px;
 
     font-size:9px;
     font-weight:800;
+
+    color:var(--azul-muy-oscuro);
 }
 
-/* ========================================
+/* ======================================
    PROGRESO POR SECTORES
-======================================== */
+====================================== */
+
+.lista-sectores{
+    flex:1;
+}
 
 .fila-sector{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        37px
-        .75fr
-        30px;
-
+    grid-template-columns:1fr 37px .75fr 29px;
     gap:5px;
-
     align-items:center;
-
     margin:7px 0;
-
     font-size:9px;
 }
 
 .mini-barra{
     height:5px;
-
-    background:#dddeda;
-
+    background:#dce4e9;
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .mini-barra div{
     height:100%;
-    background:var(--verde);
+    background:
+        linear-gradient(
+            90deg,
+            #165c8d,
+            #4d91bd
+        );
 }
 
-/* ========================================
+/* ======================================
    ÚLTIMAS CUMBRES
-======================================== */
+====================================== */
+
+.lista-cumbres{
+    flex:1;
+}
 
 .cumbre{
     display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:6px 0;
-
-    border-bottom:1px solid #ecebe5;
+    border-bottom:1px solid #e2eaef;
 }
 
 .cumbre:last-child{
@@ -540,15 +630,16 @@ nav a.activo{
 .cumbre-icono{
     width:28px;
     height:28px;
-
     flex:0 0 28px;
 
     border-radius:50%;
 
-    background:#e0e6da;
+    background:#e1eef6;
 
     display:grid;
     place-items:center;
+
+    color:var(--azul-oscuro);
 
     font-size:13px;
 }
@@ -560,60 +651,121 @@ nav a.activo{
 
 .cumbre small{
     display:block;
-
+    color:#758590;
     font-size:8px;
-    color:#707770;
 }
 
-/* ========================================
+/* ======================================
    LOGROS
-======================================== */
+====================================== */
+
+.logros-lista{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
 
 .logro{
     display:flex;
     align-items:center;
-
     gap:7px;
 
-    padding:7px;
-
-    margin-bottom:5px;
+    padding:6px;
 
     border-radius:7px;
 
-    background:#f4f5ef;
-}
+    background:
+        linear-gradient(
+            90deg,
+            #edf5fa,
+            #f7fbfd
+        );
 
-.logro:last-child{
-    margin-bottom:0;
+    border:1px solid #dce8ef;
 }
 
 .medalla{
-    width:25px;
+    width:24px;
     text-align:center;
-
-    font-size:18px;
+    font-size:17px;
 }
 
 .logro strong{
     display:block;
-
     font-size:9px;
 }
 
 .logro small{
     display:block;
-
     margin-top:1px;
-
-    color:#777;
-
+    color:#71818d;
     font-size:8px;
 }
 
-/* ========================================
-   PANTALLAS MÁS ESTRECHAS
-======================================== */
+/* ======================================
+   ALTURAS REDUCIDAS
+====================================== */
+
+@media(max-height:760px){
+
+    .marca{
+        height:90px;
+        flex-basis:90px;
+    }
+
+    nav a{
+        min-height:36px;
+    }
+
+    .titulo{
+        font-size:36px;
+    }
+
+    .subtitulo{
+        font-size:14px;
+    }
+
+    .elige{
+        margin-top:7px;
+        margin-bottom:6px;
+        font-size:10px;
+    }
+
+    .tarjeta-lista,
+    .panel-progreso{
+        height:155px;
+    }
+
+    .lista-numero{
+        font-size:35px;
+    }
+
+    .montanas{
+        height:42px;
+    }
+
+    .lista-pie{
+        height:27px;
+        flex-basis:27px;
+    }
+
+    .contador{
+        font-size:27px;
+    }
+
+    .porcentaje{
+        font-size:21px;
+    }
+
+    .dashboard{
+        padding-top:6px;
+    }
+}
+
+/* ======================================
+   ANCHO REDUCIDO
+====================================== */
 
 @media(max-width:1150px){
 
@@ -622,7 +774,7 @@ nav a.activo{
     }
 
     .marca strong{
-        font-size:11px;
+        font-size:10px;
     }
 
     nav a{
@@ -635,108 +787,13 @@ nav a.activo{
     }
 
     .zona-principal{
-        gap:9px;
-    }
-
-    .dashboard{
         gap:8px;
-        padding-left:10px;
-        padding-right:10px;
-    }
-}
-
-/*
- IMPORTANTE:
- En pantallas de poca altura NO activamos scroll.
- Simplemente reducimos ligeramente los elementos.
-*/
-
-@media(max-height:760px){
-
-    .marca{
-        height:92px;
-        flex-basis:92px;
-    }
-
-    .logo-montana{
-        font-size:24px;
-    }
-
-    nav a{
-        min-height:38px;
-    }
-
-    .hero{
-        padding-top:5px;
-    }
-
-    .hero-top{
-        height:27px;
-    }
-
-    .titulo{
-        font-size:38px;
-    }
-
-    .subtitulo{
-        font-size:15px;
-    }
-
-    .elige{
-        margin-top:8px;
-        margin-bottom:7px;
-        font-size:11px;
-    }
-
-    .tarjeta-lista,
-    .panel-progreso{
-        height:166px;
-    }
-
-    .lista-numero{
-        font-size:38px;
-    }
-
-    .montanas-decorativas{
-        height:34px;
-    }
-
-    .lista-pie{
-        height:29px;
-        flex-basis:29px;
-    }
-
-    .contador{
-        font-size:30px;
-    }
-
-    .porcentaje{
-        font-size:23px;
     }
 
     .dashboard{
-        padding-top:7px;
-    }
-
-    .mapa{
-        height:145px;
-    }
-
-    .bloque{
-        padding:9px;
-    }
-
-    .fila-sector{
-        margin:5px 0;
-    }
-
-    .cumbre{
-        padding:4px 0;
-    }
-
-    .logro{
-        padding:5px;
-        margin-bottom:4px;
+        gap:7px;
+        padding-left:9px;
+        padding-right:9px;
     }
 }
 
@@ -751,9 +808,7 @@ nav a.activo{
 
     <div class="marca">
 
-        <div class="logo-montana">
-            ⛰
-        </div>
+        <div class="logo-montana"></div>
 
         <strong>
             TACHANDO<br>
@@ -770,7 +825,7 @@ nav a.activo{
         </a>
 
         <a href="#">
-            <span class="icono">⛰</span>
+            <span class="icono">▲</span>
             <span>Mis 3000s</span>
         </a>
 
@@ -822,7 +877,7 @@ nav a.activo{
 
 
     <h1 class="titulo">
-        TACHANDO 3000s
+        TACHANDO <span>3000s</span>
     </h1>
 
 
@@ -838,9 +893,9 @@ nav a.activo{
 
     <div class="zona-principal">
 
-        <!-- 217 -->
+        <!-- LISTA ACTUALIZADA -->
 
-        <div class="tarjeta-lista">
+        <div class="tarjeta-lista actualizada">
 
             <div class="lista-contenido">
 
@@ -856,7 +911,7 @@ nav a.activo{
                     TRESMILES
                 </div>
 
-                <div class="montanas-decorativas"></div>
+                <div class="montanas"></div>
 
             </div>
 
@@ -875,14 +930,14 @@ nav a.activo{
         </div>
 
 
-        <!-- 212 -->
+        <!-- LISTA HISTÓRICA -->
 
-        <div class="tarjeta-lista">
+        <div class="tarjeta-lista historica">
 
             <div class="lista-contenido">
 
                 <div class="lista-nombre">
-                    LISTA OFICIAL
+                    LISTA HISTÓRICA
                 </div>
 
                 <div class="lista-numero">
@@ -893,7 +948,7 @@ nav a.activo{
                     TRESMILES
                 </div>
 
-                <div class="montanas-decorativas"></div>
+                <div class="montanas"></div>
 
             </div>
 
@@ -962,6 +1017,7 @@ nav a.activo{
 
 <section class="dashboard">
 
+
     <!-- MAPA -->
 
     <div class="bloque">
@@ -972,29 +1028,12 @@ nav a.activo{
 
         <div class="mapa">
 
-            <div class="sector">
-                Occidental
-            </div>
-
-            <div class="sector">
-                Ordesa
-            </div>
-
-            <div class="sector">
-                Benasque
-            </div>
-
-            <div class="sector">
-                Aigüestortes
-            </div>
-
-            <div class="sector">
-                Néouvielle
-            </div>
-
-            <div class="sector">
-                Oriental
-            </div>
+            <div class="sector">Occidental</div>
+            <div class="sector">Ordesa</div>
+            <div class="sector">Benasque</div>
+            <div class="sector">Aigüestortes</div>
+            <div class="sector">Néouvielle</div>
+            <div class="sector">Oriental</div>
 
         </div>
 
@@ -1009,63 +1048,43 @@ nav a.activo{
             PROGRESO POR SECTORES
         </h2>
 
+        <div class="lista-sectores">
 
-        <div class="fila-sector">
-
-            <span>Ordesa</span>
-
-            <span>18/25</span>
-
-            <div class="mini-barra">
-                <div style="width:72%"></div>
+            <div class="fila-sector">
+                <span>Ordesa</span>
+                <span>18/25</span>
+                <div class="mini-barra">
+                    <div style="width:72%"></div>
+                </div>
+                <span>72%</span>
             </div>
 
-            <span>72%</span>
-
-        </div>
-
-
-        <div class="fila-sector">
-
-            <span>Benasque</span>
-
-            <span>31/63</span>
-
-            <div class="mini-barra">
-                <div style="width:49%"></div>
+            <div class="fila-sector">
+                <span>Benasque</span>
+                <span>31/63</span>
+                <div class="mini-barra">
+                    <div style="width:49%"></div>
+                </div>
+                <span>49%</span>
             </div>
 
-            <span>49%</span>
-
-        </div>
-
-
-        <div class="fila-sector">
-
-            <span>Aigüestortes</span>
-
-            <span>14/41</span>
-
-            <div class="mini-barra">
-                <div style="width:34%"></div>
+            <div class="fila-sector">
+                <span>Aigüestortes</span>
+                <span>14/41</span>
+                <div class="mini-barra">
+                    <div style="width:34%"></div>
+                </div>
+                <span>34%</span>
             </div>
 
-            <span>34%</span>
-
-        </div>
-
-
-        <div class="fila-sector">
-
-            <span>Néouvielle</span>
-
-            <span>7/25</span>
-
-            <div class="mini-barra">
-                <div style="width:28%"></div>
+            <div class="fila-sector">
+                <span>Néouvielle</span>
+                <span>7/25</span>
+                <div class="mini-barra">
+                    <div style="width:28%"></div>
+                </div>
+                <span>28%</span>
             </div>
-
-            <span>28%</span>
 
         </div>
 
@@ -1080,64 +1099,44 @@ nav a.activo{
             ÚLTIMAS CUMBRES TACHADAS
         </h2>
 
+        <div class="lista-cumbres">
 
-        <div class="cumbre">
+            <div class="cumbre">
 
-            <div class="cumbre-icono">
-                ⛰
-            </div>
+                <div class="cumbre-icono">
+                    ▲
+                </div>
 
-            <div>
-
-                <strong>
-                    Aneto
-                </strong>
-
-                <small>
-                    3.404 m
-                </small>
+                <div>
+                    <strong>Aneto</strong>
+                    <small>3.404 m</small>
+                </div>
 
             </div>
 
-        </div>
+            <div class="cumbre">
 
+                <div class="cumbre-icono">
+                    ▲
+                </div>
 
-        <div class="cumbre">
-
-            <div class="cumbre-icono">
-                ⛰
-            </div>
-
-            <div>
-
-                <strong>
-                    Posets
-                </strong>
-
-                <small>
-                    3.375 m
-                </small>
+                <div>
+                    <strong>Posets</strong>
+                    <small>3.375 m</small>
+                </div>
 
             </div>
 
-        </div>
+            <div class="cumbre">
 
+                <div class="cumbre-icono">
+                    ▲
+                </div>
 
-        <div class="cumbre">
-
-            <div class="cumbre-icono">
-                ⛰
-            </div>
-
-            <div>
-
-                <strong>
-                    Monte Perdido
-                </strong>
-
-                <small>
-                    3.355 m
-                </small>
+                <div>
+                    <strong>Monte Perdido</strong>
+                    <small>3.355 m</small>
+                </div>
 
             </div>
 
@@ -1154,85 +1153,57 @@ nav a.activo{
             LOGROS
         </h2>
 
+        <div class="logros-lista">
 
-        <div class="logro">
+            <div class="logro">
 
-            <span class="medalla">
-                🏆
-            </span>
+                <span class="medalla">
+                    🏆
+                </span>
 
-            <div>
-
-                <strong>
-                    Primer 3000
-                </strong>
-
-                <small>
-                    Conseguido
-                </small>
+                <div>
+                    <strong>Primer 3000</strong>
+                    <small>Conseguido</small>
+                </div>
 
             </div>
 
-        </div>
+            <div class="logro">
 
+                <span class="medalla">
+                    🥉
+                </span>
 
-        <div class="logro">
-
-            <span class="medalla">
-                🥉
-            </span>
-
-            <div>
-
-                <strong>
-                    25 cumbres
-                </strong>
-
-                <small>
-                    Conseguido
-                </small>
+                <div>
+                    <strong>25 cumbres</strong>
+                    <small>Conseguido</small>
+                </div>
 
             </div>
 
-        </div>
+            <div class="logro">
 
+                <span class="medalla">
+                    🥈
+                </span>
 
-        <div class="logro">
-
-            <span class="medalla">
-                🥈
-            </span>
-
-            <div>
-
-                <strong>
-                    50 cumbres
-                </strong>
-
-                <small>
-                    Conseguido
-                </small>
+                <div>
+                    <strong>50 cumbres</strong>
+                    <small>Conseguido</small>
+                </div>
 
             </div>
 
-        </div>
+            <div class="logro">
 
+                <span class="medalla">
+                    🏔
+                </span>
 
-        <div class="logro">
-
-            <span class="medalla">
-                🏔
-            </span>
-
-            <div>
-
-                <strong>
-                    100 tresmiles
-                </strong>
-
-                <small>
-                    Próximo objetivo
-                </small>
+                <div>
+                    <strong>100 tresmiles</strong>
+                    <small>Próximo objetivo</small>
+                </div>
 
             </div>
 
