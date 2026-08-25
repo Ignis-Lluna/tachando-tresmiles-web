@@ -1111,6 +1111,167 @@ nav a.activo{
 }
 
 /* =========================================================
+   AJUSTES · V13
+========================================================= */
+
+.ajustes-contenedor{
+    width:min(980px,100%);
+    margin:auto;
+    display:grid;
+    gap:14px;
+}
+
+.ajustes-seccion{
+    padding:18px;
+    background:white;
+    border:1px solid #cbdde9;
+    border-radius:13px;
+    box-shadow:0 4px 14px rgba(8,43,76,.06);
+}
+
+.ajustes-seccion h2{
+    margin-bottom:5px;
+    font-size:15px;
+    color:var(--azul-muy-oscuro);
+}
+
+.ajustes-intro{
+    margin-bottom:13px;
+    font-size:9px;
+    line-height:1.5;
+    color:#6b8293;
+}
+
+.ajustes-listas{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.ajustes-lista{
+    position:relative;
+    min-height:154px;
+    padding:15px;
+    border:1px solid #c8dae6;
+    border-radius:11px;
+    background:#f9fcfe;
+    cursor:pointer;
+    transition:.15s ease;
+}
+
+.ajustes-lista:hover{
+    transform:translateY(-1px);
+    border-color:#5d98bd;
+}
+
+.ajustes-lista.seleccionada{
+    background:linear-gradient(135deg,#e8f4fb,#f8fcfe);
+    border:2px solid var(--azul);
+}
+
+.ajustes-lista h3{
+    padding-right:90px;
+    margin-bottom:8px;
+    font-size:13px;
+    color:var(--azul-muy-oscuro);
+}
+
+.ajustes-lista p{
+    font-size:9px;
+    line-height:1.55;
+    color:#5f788a;
+}
+
+.etiqueta-predeterminada{
+    position:absolute;
+    top:12px;
+    right:12px;
+    padding:4px 7px;
+    border-radius:12px;
+    background:var(--azul);
+    color:white;
+    font-size:7px;
+    font-weight:900;
+}
+
+.ajustes-peligro{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.ajustes-peligro p,
+.acerca-texto{
+    font-size:9px;
+    line-height:1.55;
+    color:#617b8d;
+}
+
+.boton-restablecer{
+    flex:0 0 auto;
+    padding:10px 15px;
+    border:1px solid #b66a64;
+    border-radius:8px;
+    background:#fff7f6;
+    color:#963e37;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.boton-restablecer:hover{
+    background:#963e37;
+    color:white;
+}
+
+.acerca-app{
+    display:grid;
+    grid-template-columns:150px minmax(0,1fr);
+    gap:18px;
+    align-items:center;
+}
+
+.acerca-marca{
+    text-align:center;
+    padding:14px;
+    border-radius:10px;
+    background:linear-gradient(180deg,#edf6fb,#dcebf4);
+}
+
+.acerca-marca strong{
+    display:block;
+    font-size:16px;
+    color:var(--azul-muy-oscuro);
+}
+
+.acerca-marca span{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+    color:#41647d;
+}
+
+.acerca-texto strong{
+    color:var(--azul-muy-oscuro);
+}
+
+.privacidad-local{
+    margin-top:9px;
+    padding:8px 10px;
+    border-radius:8px;
+    background:#eef7fc;
+    font-weight:800;
+    color:#245c7f;
+}
+
+@media(max-width:800px){
+    .ajustes-listas{grid-template-columns:1fr;}
+    .ajustes-peligro{align-items:flex-start;flex-direction:column;}
+    .acerca-app{grid-template-columns:1fr;}
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -1220,7 +1381,7 @@ nav a.activo{
             <span>Logros</span>
         </a>
 
-        <a href="#">
+        <a href="#" id="menuAjustes">
             <span class="icono">⚙</span>
             <span>Ajustes</span>
         </a>
@@ -1531,6 +1692,12 @@ const menuMapa =
 const menuLogros =
     document.getElementById(
         "menuLogros"
+    );
+
+
+const menuAjustes =
+    document.getElementById(
+        "menuAjustes"
     );
 
 
@@ -1945,6 +2112,18 @@ menuLogros.addEventListener(
         event.preventDefault();
 
         mostrarLogros();
+
+    }
+);
+
+
+menuAjustes.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        mostrarAjustes();
 
     }
 );
@@ -2544,6 +2723,14 @@ function marcarMenu(zona){
     else if(zona === "logros"){
 
         menuLogros
+        .classList.add(
+            "activo"
+        );
+
+    }
+    else if(zona === "ajustes"){
+
+        menuAjustes
         .classList.add(
             "activo"
         );
@@ -3618,6 +3805,160 @@ function mostrarLogros(){
         </section>
 
     `;
+
+}
+
+
+function mostrarAjustes(){
+
+    marcarMenu("ajustes");
+
+    contenido.innerHTML = `
+
+        <section class="vista-app">
+
+            <div class="cabecera-vista">
+
+                <button
+                    class="btn-vista"
+                    onclick="volverInicio()"
+                >
+                    ‹ Inicio
+                </button>
+
+                <div class="cabecera-vista-centro">
+                    <h1>AJUSTES</h1>
+                    <p>Configura Tachando 3000s y gestiona tus datos</p>
+                </div>
+
+                <div></div>
+
+            </div>
+
+            <div class="ajustes-contenedor">
+
+                <div class="ajustes-seccion">
+
+                    <h2>LISTA PREDETERMINADA</h2>
+                    <p class="ajustes-intro">
+                        Elige la lista que quieres utilizar como referencia. Puedes cambiarla en cualquier momento sin perder ninguna cumbre marcada.
+                    </p>
+
+                    <div class="ajustes-listas">
+
+                        <div
+                            class="ajustes-lista ${listaActiva === "212" ? "seleccionada" : ""}"
+                            onclick="elegirListaPredeterminada('212')"
+                        >
+                            ${listaActiva === "212" ? '<span class="etiqueta-predeterminada">✓ PREDETERMINADA</span>' : ''}
+                            <h3>Lista Histórica · 212 tresmiles</h3>
+                            <p>
+                                Basada en el catálogo coordinado por Juan Buyse y su equipo, publicado en su forma definitiva en 1993 y reconocido por la UIAA en 1995. Durante décadas ha sido la referencia clásica de los tresmiles del Pirineo y establece, entre otros criterios, una prominencia mínima aproximada de 10 metros para considerar una cima independiente.
+                            </p>
+                        </div>
+
+                        <div
+                            class="ajustes-lista ${listaActiva === "217" ? "seleccionada" : ""}"
+                            onclick="elegirListaPredeterminada('217')"
+                        >
+                            ${listaActiva === "217" ? '<span class="etiqueta-predeterminada">✓ PREDETERMINADA</span>' : ''}
+                            <h3>Lista Actualizada · 217 tresmiles</h3>
+                            <p>
+                                Revisión del catálogo histórico desarrollada por el grupo Los Cazafantasmas, manteniendo los criterios establecidos por Juan Buyse e incorporando nuevas mediciones mediante GPS y técnicas topográficas modernas. Estas revisiones permiten añadir nuevas cimas o retirar aquellas que no cumplen los requisitos de altitud o prominencia.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ajustes-seccion ajustes-peligro">
+
+                    <div>
+                        <h2>DATOS Y PROGRESO</h2>
+                        <p>
+                            Restablecer el progreso elimina todas las cumbres marcadas y devuelve tu registro a cero. Esta acción requiere una doble confirmación.
+                        </p>
+                    </div>
+
+                    <button
+                        class="boton-restablecer"
+                        onclick="restablecerProgreso()"
+                    >
+                        RESTABLECER TODO EL PROGRESO
+                    </button>
+
+                </div>
+
+                <div class="ajustes-seccion">
+
+                    <div class="acerca-app">
+
+                        <div class="acerca-marca">
+                            <strong>Tachando 3000s</strong>
+                            <span>Tu reto, tus cumbres</span>
+                        </div>
+
+                        <div class="acerca-texto">
+                            <strong>Versión web 1.0</strong><br>
+                            Creada por <strong>Ignis Lluna</strong><br><br>
+                            Tu progreso se guarda localmente en este navegador y en este dispositivo. Si utilizas otro navegador, otro ordenador o borras los datos del navegador, tu progreso no aparecerá automáticamente. Utiliza <strong>Importar / Exportar</strong> para conservar una copia de seguridad o trasladar tus datos.
+                            <div class="privacidad-local">
+                                Tus datos no se envían a ningún servidor.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    `;
+
+}
+
+
+function elegirListaPredeterminada(lista){
+
+    seleccionarLista(lista);
+
+    mostrarAjustes();
+
+}
+
+
+function restablecerProgreso(){
+
+    const primeraConfirmacion =
+        confirm(
+            "Vas a eliminar todas las cumbres marcadas en Tachando 3000s. ¿Quieres continuar?"
+        );
+
+    if(!primeraConfirmacion){
+        return;
+    }
+
+    const segundaConfirmacion =
+        confirm(
+            "ÚLTIMA CONFIRMACIÓN: esta acción borrará todo tu progreso guardado en este navegador. ¿Restablecer todo el progreso?"
+        );
+
+    if(!segundaConfirmacion){
+        return;
+    }
+
+    progreso = {};
+
+    guardarProgreso();
+
+    alert(
+        "El progreso se ha restablecido correctamente."
+    );
+
+    mostrarAjustes();
 
 }
 
