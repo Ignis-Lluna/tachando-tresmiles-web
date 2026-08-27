@@ -112,6 +112,15 @@ body{
     color:var(--azul-muy-oscuro);
 }
 
+.logo-oficial{
+    width:62px;
+    height:62px;
+    object-fit:contain;
+    display:block;
+    margin-bottom:4px;
+    border-radius:14px;
+}
+
 nav{
     flex:1;
     display:flex;
@@ -1338,6 +1347,83 @@ nav a.activo{
 
 }
 
+
+/* =========================================================
+   V16 · ADAPTACIÓN MÓVIL
+========================================================= */
+
+@media(max-width:760px){
+    html,body{width:100%;min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;}
+    .app{width:100%;min-height:100dvh;height:auto;display:block;overflow:visible;padding-bottom:66px;}
+    .sidebar{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:1000;width:100%;height:66px;background:rgba(255,255,255,.98);border-right:none;border-top:1px solid #c7d7e2;box-shadow:0 -4px 14px rgba(8,43,76,.10);overflow:hidden;}
+    .marca{display:none;}
+    nav{width:100%;height:100%;padding:0 2px;display:grid;grid-template-columns:repeat(6,1fr);align-items:stretch;gap:0;}
+    nav a{min-width:0;min-height:0;height:66px;padding:5px 1px 4px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;border-left:none;border-top:3px solid transparent;font-size:8px;line-height:1.05;text-align:center;overflow:hidden;}
+    nav a:hover,nav a.activo{border-left-color:transparent;border-top-color:var(--azul);background:#e5f1f8;}
+    nav a span:not(.icono){display:block;width:100%;white-space:normal;}
+    .icono{width:auto;font-size:18px;line-height:1;}
+    .contenido{width:100%;min-height:calc(100dvh - 66px);height:auto;display:block;overflow:visible;}
+    .hero{padding:14px 12px 12px;}
+    .titulo{font-size:32px;line-height:1;letter-spacing:.5px;}
+    .subtitulo{margin-top:5px;font-size:14px;}
+    .elige{margin-top:13px;margin-bottom:9px;font-size:11px;}
+    .zona-principal{width:100%;display:grid;grid-template-columns:1fr;gap:10px;}
+    .tarjeta-lista,.panel-progreso{width:100%;height:150px;}
+    .lista-numero{font-size:38px;}
+    .panel-progreso{height:auto;min-height:145px;padding:13px 16px;}
+    .contador{font-size:30px;}
+    .contador span{font-size:18px;}
+    .porcentaje{font-size:23px;}
+    .dashboard{width:100%;min-height:0;padding:10px 12px 14px;display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;}
+    .bloque{min-height:0;padding:11px;overflow:visible;}
+    .bloque h2{font-size:12px;margin-bottom:9px;}
+    .mapa-svg-contenedor{width:100%;min-height:220px;aspect-ratio:1787/742;}
+    .mapa-svg .sector-etiqueta{font-size:18px;stroke-width:5px;}
+    .mapa-svg .sector-numero{font-size:17px;}
+    .columna-central{display:grid;grid-template-rows:auto auto;gap:10px;}
+    .fila-sector{grid-template-columns:minmax(0,1fr) 48px .8fr 34px;gap:6px;margin:7px 0;font-size:10px;}
+    .mini-barra{height:6px;}
+    .cumbre{padding:7px 0;}
+    .cumbre strong{font-size:11px;}
+    .cumbre small{font-size:9px;}
+    .logro{min-height:56px;padding:9px;}
+    .logro strong{font-size:11px;}
+    .logro small{font-size:9px;}
+    .medalla{width:30px;font-size:20px;}
+    .vista-app{width:100%;min-height:calc(100dvh - 66px);height:auto;padding:10px 10px 18px;overflow:visible;}
+    .cabecera-vista{min-height:76px;grid-template-columns:74px minmax(0,1fr) 74px;gap:5px;padding:9px 7px;margin-bottom:12px;border-radius:10px;}
+    .cabecera-vista h1{font-size:19px;line-height:1.08;}
+    .cabecera-vista p{margin-top:4px;font-size:9px;line-height:1.25;}
+    .btn-vista{max-width:74px;padding:7px 6px;font-size:8px;white-space:normal;line-height:1.15;}
+    .titulo-listado{margin-bottom:11px;}
+    .grid-sectores-app{width:100%;grid-template-columns:1fr;gap:9px;}
+    .tarjeta-sector-app{min-height:80px;padding:11px;}
+    .datos-sector strong{font-size:13px;}
+    .datos-sector span{font-size:10px;}
+    .contenedor-cumbres{width:100%;padding:5px 9px;border-radius:10px;}
+    .fila-cumbre-app{min-height:52px;grid-template-columns:26px minmax(0,1fr) 56px 35px;gap:6px;}
+    .nombre-cumbre-app{min-width:0;gap:5px;flex-wrap:wrap;}
+    .nombre-cumbre-app strong{font-size:11px;overflow-wrap:anywhere;}
+    .altitud-cumbre{font-size:9px;}
+    .grid-logros-app{width:100%;grid-template-columns:1fr;gap:10px;}
+    .tarjeta-logro-app{min-height:118px;grid-template-columns:48px minmax(0,1fr);gap:10px;padding:13px;}
+    .descripcion-logro-app{font-size:10px;line-height:1.4;}
+    .estado-logro-app{font-size:9px;}
+    .mapa-grande-contenedor{width:100%;min-height:260px;aspect-ratio:1787/742;border-radius:10px;}
+    .backup-grid{width:100%;grid-template-columns:1fr;gap:10px;}
+    .backup-card{min-height:210px;padding:20px;}
+    .backup-card p{font-size:11px;}
+    .backup-info{width:100%;font-size:10px;}
+    .ajustes-contenedor{width:100%;gap:10px;}
+    .ajustes-seccion{padding:14px;}
+    .ajustes-listas{grid-template-columns:1fr;}
+    .ajustes-lista{min-height:0;}
+    .ajustes-lista h3{padding-right:0;margin-top:24px;}
+    .ajustes-peligro{align-items:stretch;flex-direction:column;}
+    .acerca-app{grid-template-columns:1fr;}
+    .boton-restablecer{width:100%;}
+}
+
 </style>
 </head>
 
@@ -1348,7 +1434,7 @@ nav a.activo{
 <aside class="sidebar">
 
     <div class="marca">
-        <div class="logo-montana"></div>
+        <img class="logo-oficial" src="tachando3000s-icon.png" alt="Tachando 3000s">
         <strong>TACHANDO<br>3000s</strong>
     </div>
 
