@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tachando 3000s</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b3c68">
 
 <style>
 *{
@@ -4436,6 +4438,14 @@ function importarCopia(event){
 
 actualizarInicio();
 
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js");
+    });
+}
 </script>
 
 </body>
